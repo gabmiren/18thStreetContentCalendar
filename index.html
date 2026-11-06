@@ -1523,6 +1523,11 @@ STORY_PLAN.forEach(s=>s.frames.forEach(f=>{ if(f.post){ f.post=POSTS.find(p=>p.i
 (function(){ const p=POSTS.find(x=>x.title==="Thursday: chip stocks’ worst day since 2020");
  p.gfx=["th1v7_1","th1v7_2","th1v7_3","th1v7_4","th1v7_5","th1v7_6"]; p.gver="v7";
  p.changes.push("6 Nov v7 (design review): cover photo dimmed so the headline and −12.3% lead; shorter bar labels; tiles drop the repeated tickers and the teal edge moves to Micron and AMD to match the headline; slide 4 text column widened and body trimmed (no one-word last line); VIX line tightened; close-slide rings moved clear of the headline and the closing line fits on one line. On-slide copy 183 to 157 words."); })();
+// ---- 7 Nov: Sat 7 check, volume profile v2 ----
+(function(){ const p=POSTS.find(x=>x.title==="How to trade volume profile");
+ p.gfx=["vp1v2_1","vp1v2_q1","vp1v2_x1","vp1v2_q2","vp1v2_x2","vp1v2_s"]; p.gver="v2";
+ p.caption="How to trade volume profile.\n\nWhere the trading actually happened, and the POC reclaim setup it gives you, with a real ES example from 2 Oct.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.";
+ p.changes.push("7 Nov v2 (Sat check): slide 5 chart now labels the POC line 7,775 so it matches slide 3 (the 7,776 tag is the entry); the 7,760 axis label no longer sits under the stop tag; caption no longer says “the last jobs day”, since that is now 6 Nov."); })();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
