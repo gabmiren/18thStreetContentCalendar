@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>18th Street · Content calendar · 3 to 15 Nov 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0C0F11; --base:#16191C; --s1:#1B1F22; --s2:#1F2428; --s3:#22272B; --line:#2C3136;
+  --ink:#E4E6E6; --ink2:#9BA1A6; --ink3:#858B90; --accent:#2C5860; --soft:#7FA0A3;
+  --edu:#7FA6C9; --mkt:#8DB89A; --dif:#A99BC9; --com:#C9A07E; --tec:#9BA1A6;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Archivo,system-ui,sans-serif;font-size:15px;line-height:1.45}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--ink3)}
+a{color:var(--soft)}
+.wrap{max-width:1440px;margin:0 auto;padding:32px 32px 80px}
+header{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;border-bottom:1px solid var(--line);padding-bottom:24px}
+h1{font-size:34px;font-weight:700;letter-spacing:-.03em;margin:8px 0 6px;line-height:1.1}
+h1 em{font-style:normal;color:var(--soft)}
+.sub{color:var(--ink2);max-width:760px;margin:0}
+.stats{display:flex;gap:28px}
+.stat b{display:block;font-size:28px;font-weight:700;letter-spacing:-.02em}
+nav{display:flex;gap:4px;margin:24px 0 20px;flex-wrap:wrap}
+nav button{background:transparent;border:1px solid var(--line);color:var(--ink2);font:inherit;font-size:13px;padding:8px 14px;cursor:pointer;border-radius:0}
+nav button.on{background:var(--s2);color:var(--ink);border-color:#3a4147}
+.view{display:none}.view.on{display:block}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 16px;align-items:center}
+.lg{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2);cursor:pointer;user-select:none;border:1px solid transparent;padding:3px 8px}
+.lg.off{opacity:.35}
+.dot{width:9px;height:9px;border-radius:50%}
+.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-left:1px solid var(--line);border-top:1px solid var(--line)}
+.dh{padding:8px 10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--base)}
+.wk{grid-column:1/-1;padding:10px 10px 8px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg);display:flex;justify-content:space-between}
+.day{min-height:190px;padding:10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--base);display:flex;flex-direction:column;gap:8px}
+.day.out{background:repeating-linear-gradient(135deg,#111417 0 6px,#13161a 6px 12px)}
+.day.out .dn{color:#4a5157}
+.dn{display:flex;justify-content:space-between;align-items:baseline}
+.dn b{font-size:20px;font-weight:600;letter-spacing:-.02em}
+.ev{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--soft);letter-spacing:.03em;line-height:1.35;border-left:2px solid var(--accent);padding-left:6px}
+.card{background:var(--s2);border:1px solid var(--line);border-left:3px solid var(--c);padding:8px 9px;cursor:pointer;transition:background .12s}
+.card:hover{background:var(--s3)}
+.card .t{font-size:13.5px;font-weight:600;line-height:1.25;margin:3px 0 4px}
+.card .m{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);border:1px solid var(--line);padding:1px 5px}
+.tag.s{color:#d8c08f;border-color:#4a4232}
+.tag.g{color:#8DB89A;border-color:#34503d}
+.tag.a{color:var(--soft);border-color:#2f4a4e}
+.st{font-size:11.5px;color:var(--ink3);line-height:1.35;margin-top:auto;padding-top:6px;border-top:1px dashed var(--line)}
+.st.click{cursor:pointer}.st.click:hover{color:var(--ink)}
+.sc{display:grid;grid-template-columns:200px 1fr;gap:22px;border-bottom:1px solid var(--line);padding:22px 0}
+.sc .pic img{width:100%;display:block;border:1px solid var(--line)}
+.sc .pic .ph{aspect-ratio:9/16;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;color:var(--ink3);font-size:12.5px}
+.sc h3{margin:4px 0 2px;font-size:19px}
+.fr{border:1px solid var(--line);padding:12px 14px;margin:10px 0}
+.fr .hd{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:6px}
+.cp{display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--bg);border:1px solid var(--line);padding:8px 10px;margin:6px 0}
+.cp .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase}
+.cp .v{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink)}
+.dl{display:inline-block;margin-top:8px;text-decoration:none}
+@media(max-width:700px){.sc{grid-template-columns:1fr}.sc .pic{max-width:220px}}
+.st b{font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:10px;letter-spacing:.08em;color:var(--ink2)}
+.hidden{display:none!important}
+.mix{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:28px 0 8px}
+.mx{background:var(--base);border:1px solid var(--line);padding:14px}
+.mx .n{font-size:13px;color:var(--ink2);margin-bottom:8px;display:flex;gap:6px;align-items:center}
+.bar{height:6px;background:var(--s3);position:relative;margin:10px 0 6px}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--c)}
+.bar s{position:absolute;top:-4px;bottom:-4px;width:1px;background:var(--ink)}
+.mx b{font-size:22px;font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);background:var(--base);position:sticky;top:0}
+tr.r{cursor:pointer}tr.r:hover td{background:var(--s1)}
+.sec{max-width:980px}
+.sec h2{font-size:22px;letter-spacing:-.02em;margin:28px 0 10px}
+.sec h3{font-size:16px;margin:22px 0 6px}
+.sec p,.sec li{color:var(--ink2)}
+.sec li{margin:4px 0}
+.sec li b{color:var(--ink);font-weight:600}
+.ch{background:var(--base);border:1px solid var(--line);padding:16px 18px;margin:12px 0}
+.ch .h{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.ch .h b{font-size:15px}
+.ch ul{margin:10px 0 0;padding-left:18px}
+/* drawer */
+.ov{position:fixed;inset:0;background:rgba(6,8,9,.6);display:none;z-index:10}
+.ov.on{display:block}
+.dr{position:fixed;top:0;right:0;bottom:0;width:min(660px,100%);background:var(--base);border-left:1px solid var(--line);overflow:auto;transform:translateX(100%);transition:transform .2s;z-index:11;padding:28px 30px 60px}
+.dr.on{transform:none}
+.dr h2{font-size:24px;letter-spacing:-.025em;margin:8px 0 4px;line-height:1.15}
+.x{position:absolute;top:18px;right:18px;background:none;border:1px solid var(--line);color:var(--ink2);font:inherit;padding:4px 10px;cursor:pointer}
+.f{display:grid;grid-template-columns:150px 1fr;gap:6px 16px;margin:18px 0}
+.f div:nth-child(odd){font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);padding-top:3px}
+.f div:nth-child(even){color:var(--ink);font-size:14px}
+pre{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);padding:14px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.55;color:var(--ink);margin:6px 0}
+.btn{background:var(--s2);border:1px solid #3a4147;color:var(--ink);font:inherit;font-size:13px;padding:7px 12px;cursor:pointer}
+.btn:hover{background:var(--s3)}
+.box{border:1px solid #4a4232;background:#1a1814;padding:12px 14px;margin:14px 0}
+.box .mono{color:#d8c08f}
+.box ul{margin:6px 0 0;padding-left:18px;color:var(--ink2)}
+textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1px solid var(--line);font-family:"IBM Plex Mono",monospace;font-size:11.5px;padding:12px}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0 18px}.thumbs img{width:100%;display:block;border:1px solid var(--line)}.thumbs.st{grid-template-columns:repeat(4,1fr)}
+.gp{border-bottom:1px solid var(--line);padding:22px 0}.gp h3{margin:4px 0 10px;font-size:18px}.gp .thumbs{grid-template-columns:repeat(6,1fr)}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--s3);border:1px solid #3a4147;padding:8px 14px;font-size:13px;opacity:0;transition:opacity .2s;z-index:20}
+.toast.on{opacity:1}
+@media (max-width:900px){.grid{grid-template-columns:1fr}.dh{display:none}.day.out{display:none}.mix{grid-template-columns:1fr 1fr}header{grid-template-columns:1fr}.wrap{padding:20px 16px 60px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <div class="mono">18th Street Studio · Content calendar · Draft v8 · 4 Nov 2026</div>
+    <h1>Two weeks, <em>Tue 3 to Sun 15 Nov</em></h1>
+    <p class="sub">Built from Santi’s W45 rows in Notion and improved. One or two feed posts a day, plus Stories every trading day, with every graphic and every video we can make without Jay ready. Times are ET. Everything here is a draft for legal review and Jay’s approval, and everything is now in Santi’s Notion calendar (4 Nov).</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><b id="sPosts"></b><span class="mono">Feed posts</span></div>
+    <div class="stat"><b id="sBoard"></b><span class="mono">Already on the board</span></div>
+    <div class="stat"><b id="sSanti"></b><span class="mono">From Santi’s W45</span></div>
+    <div class="stat"><b>$0</b><span class="mono">Est. cost</span></div>
+  </div>
+</header>
+
+<nav id="nav">
+  <button data-v="cal" class="on">Calendar</button>
+  <button data-v="list">All posts</button>
+  <button data-v="sto">Stories</button>
+  <button data-v="gfx">Graphics</button>
+  <button data-v="rev">Review</button>
+  <button data-v="chg">What changed from W45</button>
+  <button data-v="facts">Dates and facts</button>
+  <button data-v="qs">Open questions</button>
+  <button data-v="csv">Copy for Notion</button>
+</nav>
+
+<section class="view on" id="v-cal">
+  <div class="legend" id="legend"></div>
+  <div class="grid" id="grid"></div>
+  <div class="mix" id="mix"></div>
+  <p class="mono" style="margin-top:6px" id="mixnote">Bar = share of the feed posts · white tick = the client’s target split</p>
+</section>
+
+<section class="view" id="v-list"><div style="overflow:auto"><table id="tbl"></table></div></section>
+
+<section class="view" id="v-sto"></section>
+<section class="view" id="v-gfx"></section>
+<section class="view sec" id="v-rev"></section>
+<section class="view sec" id="v-chg"></section>
+
+<section class="view sec" id="v-facts">
+  <h2>Market dates in the window</h2>
+  <table>
+    <tr><th>Date</th><th>Event (ET)</th><th>Source</th><th>Used in</th></tr>
+    <tr><td>Tue 3 Nov</td><td>US Election Day: politics is off-limits, so no post mentions it or the market reaction to it</td><td>Brand rules</td><td>01, 02</td></tr>
+    <tr><td>Wed 4 Nov</td><td>PCE (September), 8:30 AM; ISM Services, 10:00 AM</td><td>BEA schedule (one calendar source; check bea.gov); board This week draft</td><td>Context only</td></tr>
+    <tr><td>Fri 6 Nov</td><td>Jobs report (October), 8:30 AM</td><td>BLS Employment Situation schedule (via calendars citing bls.gov); reconfirm on bls.gov on the day</td><td>05, 06, 07</td></tr>
+    <tr><td>Tue 10 Nov</td><td>CPI (October), 8:30 AM</td><td>bls.gov CPI release schedule</td><td>09, 12</td></tr>
+    <tr><td>Wed 11 Nov</td><td>Veterans Day: CME products settle at normal times; bond market closed</td><td>CME Veterans Day 2026 settlement advisory; SIFMA (check the week before)</td><td>09</td></tr>
+    <tr><td>Fri 13 Nov</td><td>PPI (October), 8:30 AM</td><td>BLS PPI schedule</td><td>09, 18</td></tr>
+    <tr><td>Tue 17 Nov</td><td>Retail sales (October), 8:30 AM</td><td>Census Bureau schedule</td><td>20</td></tr>
+    <tr><td>Tue 17 Nov</td><td>Nvidia Q3 FY27 results after the close, call at 5:00 PM</td><td>NVIDIA press release “NVIDIA Sets Conference Call for Third-Quarter Financial Results”</td><td>20, 25</td></tr>
+    <tr><td>Wed 18 Nov</td><td>Fed minutes (27–28 Oct meeting), 2:00 PM</td><td>federalreserve.gov November 2026 calendar</td><td>20</td></tr>
+    <tr><td>Thu 26 Nov</td><td>Thanksgiving (outside the window; Know your hours in the next calendar)</td><td>CME holiday calendar</td><td>Next plan</td></tr>
+  </table>
+  <h2>18th Street figures used</h2>
+  <p>Checked on trade18th.com/progression on 3 Nov 2026. Re-check on the day each post goes out.</p>
+  <table>
+    <tr><th>Plan</th><th>Fee</th><th>Payout per phase (1 / 2 / 3 / 4)</th><th>Total</th><th>Live account</th></tr>
+    <tr><td>$25K</td><td>$265</td><td>$500 / $750 / $750 / $1,500</td><td>$3,500</td><td>$3,000</td></tr>
+    <tr><td>$50K</td><td>$525</td><td>$1,000 / $1,500 / $1,500 / $3,000</td><td>$7,000</td><td>$6,000</td></tr>
+    <tr><td>$100K</td><td>$1,000</td><td>$2,000 / $3,000 / $3,000 / $6,000</td><td>$14,000</td><td>$12,000</td></tr>
+    <tr><td>$150K</td><td>$1,595</td><td>$3,000 / $4,500 / $4,500 / $9,000</td><td>$21,000</td><td>$18,000</td></tr>
+  </table>
+  <p>Every phase: 9% profit target, 5% end-of-day trailing drawdown, 25% consistency rule, 60 days. 90% profit split on the Live account only.</p>
+</section>
+
+<section class="view sec" id="v-qs">
+  <h2>Open questions before this goes to Notion</h2>
+  <ol>
+    <li><b>Today and tomorrow.</b> Tue 3 and Wed 4 use finished board drafts, but they only go out if Jay approves them in time: today’s post needs a same-day OK, and Wednesday’s drafts need to reach him today. If he can’t, those slots stay empty and the calendar starts on Thu 5.</li>
+    <li><b>A fast approval lane for news.</b> Three posts are written on the day (The week in futures on both Fridays and the CPI alert, plus their stories). They carry no product claims. Can Jay agree a same-day review for these?</li>
+    <li><b>Jay’s trade for Fri 13.</b> Trade of the Week needs his trade, chart export and written OK by Wed 11. The fallback is the Friday afternoon Types of traders carousel.</li>
+    <li><b>The Climb Gauge end card.</b> It still needs the re-render (no glow on the logo, tagline outside the clear space) before Mon 9.</li>
+    <li><b>Discord.</b> Every Discord CTA is held until the client confirms the name (“the trading floor”), the invite and that the morning breakdowns happen.</li>
+    <li><b>Collabs.</b> The two clips go out as Instagram Collabs. Which talk is each clip from, and has the partner agreed?</li>
+    <li><b>“No flash sales, one price every day”</b> on Why 18th Street needs the client’s confirmation.</li>
+    <li><b>Format status.</b> Only Motion explainers and Trade of the Week are client-approved. The other 18 posts use formats still in review on the board. Has the client approved any more since 3 Nov?</li>
+    <li><b>The client’s own statics.</b> I couldn’t see their last two weeks on Instagram from here. Worth a quick look so nothing doubles up.</li>
+    <li><b>Notion options.</b> Adding W46 and W47 to the Week list, and TikTok to Platform if reels go there too.</li>
+    <li><b>Date style.</b> The board writes “Tue 10 Nov”; the audit suggested US style “Tue, Nov 10”. This plan keeps the board style for now.</li>
+  </ol>
+</section>
+
+<section class="view sec" id="v-csv">
+  <h2>Copy for Notion</h2>
+  <p>One row per post, with the Content Calendar’s own property names. When you’re happy with the plan, I can write the rows into Notion directly. This copy is here in case you’d rather import it as a CSV.</p>
+  <button class="btn" id="copyCsv">Copy CSV</button>
+  <textarea id="csv" readonly></textarea>
+</section>
+</div>
+
+<div class="ov" id="ov"></div>
+<aside class="dr" id="dr"></aside>
+<div class="toast" id="toast">Copied</div>
+
+<script>
+// 18th Street two-week calendar data, v1 (3 Nov 2026)
+const G = "Futures trading involves substantial risk and may result in losses. Educational content, not financial advice.";
+const P = "Phases 1–4 are simulated with notional capital. Payouts, advancement and profitability are not guaranteed. Futures trading involves substantial risk.";
+const TR = "Futures trading involves substantial risk and may result in losses. Educational content, not financial advice. Past performance does not predict future results. Shared with the trader's permission. [If the account is simulated:] Phases 1–4 are simulated with notional capital. Payouts, advancement and profitability are not guaranteed. [If the voice is AI:] Voiceover generated with AI.";
+const BOARD = "https://claude.ai/artifact/HXaYVwTfvaAMvoGfLhskig";
+
+const EVENTS = {
+  "2026-11-03": ["US Election Day · not a topic"],
+  "2026-11-04": ["8:30 AM ET · PCE (Sep), check bea.gov", "10:00 AM ET · ISM Services"],
+  "2026-11-05": [],
+  "2026-11-06": ["8:30 AM ET · Jobs report (Oct)"],
+  "2026-11-08": [],
+  "2026-11-10": ["8:30 AM ET · CPI (Oct)"],
+  "2026-11-11": ["Veterans Day · futures open, bond market closed"],
+  "2026-11-13": ["8:30 AM ET · PPI (Oct)"],
+  "2026-11-17": ["8:30 AM ET · Retail sales (Oct)", "5:00 PM ET · Nvidia results call"],
+  "2026-11-18": ["2:00 PM ET · Fed minutes (Oct meeting)"],
+  "2026-11-15": []
+};
+
+const STORIES = {
+  "2026-11-03": "Question sticker “Which chart pattern do you trust most?” + share All traders should know.",
+  "2026-11-04": "Question sticker “What’s your reset after a red day?” + share the red-day carousel.",
+  "2026-11-05": "One big number: “8:30 AM ET”, shared with the jobs-report post.",
+  "2026-11-06": "Morning poll “Trading the jobs report or waiting?” · evening One big number from The week in futures.",
+  "2026-11-08": "One big number: “8:30 AM Tue”, shared with This week.",
+  "2026-11-09": "Poll “What do you trade most? ES / NQ / CL / GC” + share The Climb Gauge reel.",
+  "2026-11-10": "One big number: the CPI headline figure, shared with the News alert.",
+  "2026-11-11": "Quiz “A trailing drawdown follows your… highest end-of-day balance / starting balance / last trade” + share Why 18th Street.",
+  "2026-11-12": "Question sticker “Which order type do you use for your stops?” + share All traders should know.",
+  "2026-11-13": "One big number: the biggest weekly move, shared with The week in futures.",
+  "2026-11-15": "One big number: “5:00 PM ET Tue”, Nvidia’s call, shared with This week.",
+  "2026-11-16": "Quiz “Futures trade almost 24 hours: true or false?” + share Futures basics.",
+  "2026-11-17": "Poll “Watching Nvidia’s results tonight?” + share the VWAP carousel.",
+  "2026-11-18": "One big number: Nvidia’s headline figure, shared with the News brief."
+};
+
+const POSTS = [
+{
+ id:"A", date:"2026-11-03", time:"18:00", week:"2026-W45",
+ title:"Two chart patterns worth learning first",
+ format:"Carousel", board:"All traders should know · Chart patterns", boardId:"fmt14", skill:"18th-street-evergreen-graphics",
+ platform:"Instagram", pillar:"Futures education & strategies", production:"Slides (HTML)", status:"Review", compliance:"Pending", silent:true, ai:false,
+ hook:"Cover: the “All traders should know” label, “Chart patterns” in light teal, the pointing character.",
+ onscreen:"Two slides per pattern: a hand-drawn diagram with numbered circles, then the real chart with the same circles, the trade box and a “target hit” tick, with the R:R underneath. Ends on a pinned cheat sheet.",
+ beats:"Cover, double bottom (diagram, then crude oil Oct 2024 to Jan 2025), head and shoulders (diagram, then Nvidia Oct to Dec 2025), cheat sheet.",
+ caption:`Two chart patterns worth learning before any others.
+
+Each one comes with a real example and a full trade plan:
+- Double bottom: crude oil, Oct 2024 to Jan 2025
+- Head and shoulders: Nvidia, Oct to Dec 2025
+
+Follow the numbered circles, then look at where each entry sits: at the second bottom or the right shoulder, close to the stop and before the breakout. That’s where the reward-to-risk is at its best.
+
+Which one do you trade?
+
+${G}`,
+ hashtags:"#chartpatterns #technicalanalysis #futurestrading",
+ claims:"Chart examples from real price data, “DRAWN WITH HINDSIGHT FOR TEACHING.” No 18th Street figures.",
+ notes:"Today’s post: it can only go out if Jay approves it today. Generic education with no product claim, so it’s the safest one to ask for same-day. The board slides carry “EDUCATIONAL ONLY. NOT FINANCIAL ADVICE.” on the graphic; swap it for the tagline and the hindsight line before posting (open item).",
+ why:"Election Day: a calm, save-worthy education post that stays well away from the news. Tuesday is this format’s usual day, and the draft is finished.",
+ ref:"https://www.investopedia.com/articles/technical/112601.asp", audio:"n/a (carousel)",
+ draft:BOARD, draftNote:"Board draft (swap the on-graphic disclaimer)",
+ due:"Today, same-day OK from Jay", fromSanti:null,
+ changes:["New. Fills today with a finished board draft; Santi’s risk carousel for today moved to Thu 5."]
+},
+{
+ id:"B", date:"2026-11-04", time:"12:00", week:"2026-W45",
+ title:"What to do after a red day",
+ format:"Carousel", board:"Meme explainer · Lessons · After a red day", boardId:"fmt1", skill:"18th-street-memes",
+ platform:"Instagram", pillar:"Futures education & strategies", production:"Slides (HTML)", status:"Review", compliance:"Pending", silent:true, ai:false,
+ hook:"Question cover: “Red days happen to every trader, including the good ones.”",
+ onscreen:"One step per slide, key words in light teal, memes whole. Ends on a takeaways slide.",
+ beats:"Cover, three steps, takeaways.",
+ caption:`Red days happen to every trader, including the good ones.
+
+What you do in the next hour shapes tomorrow:
+- close the platform and step away
+- write one line about each trade
+- come back at your normal size, or smaller
+
+What’s the first thing you do after a red day?
+
+${G}`,
+ hashtags:"#futurestrading #daytrading #tradingpsychology",
+ claims:"None.",
+ notes:"Keep it evergreen: no mention of the election or why markets moved this week (politics is off-limits). Meme rights checked.",
+ why:"Markets can be jumpy the day after a big national event, and this lesson is useful whichever way the day goes, with no need to name the reason.",
+ ref:"https://www.instagram.com/topstep/p/DcHYSIAiQBr/", audio:"n/a (carousel)",
+ draft:BOARD, draftNote:"Board draft",
+ due:"Today (Tue 3)", fromSanti:null,
+ changes:["New, from the board. Takes Santi’s Wed 4 slot; his revenge-trading reel moves to the next calendar."]
+},
+{
+ id:"C", date:"2026-11-04", time:"18:00", week:"2026-W45",
+ title:"Clip: Why most prop firms look the same",
+ format:"Reel", board:"Clips from long form · Version 2", boardId:"rl5", skill:"18th-street-long-form-clips",
+ platform:"Instagram", pillar:"Trading tech & industry", production:"Client footage", status:"Review", compliance:"Needs client OK", silent:false, ai:false,
+ hook:"Question as text at 0 s: “Why do most prop firms look the same?”",
+ onscreen:"Keyword captions, speaker name and source on screen, brand cards in place of stock shots, lockup at y 1690.",
+ beats:"30 to 60 s cut from existing footage. Post as an Instagram Collab with the partner.",
+ caption:`Starting a prop firm is the easy part. Building one that lasts takes longer.
+
+Jay on why 18th Street was built for the long term, with its value tied to the traders it develops.
+
+What made you trust the firm you trade with today?
+
+${G}`,
+ hashtags:"#propfirm #futurestrading #futurestrader",
+ claims:"No figures.",
+ notes:"Industry view without naming competitors. Jay’s OK. Collab needs the partner’s agreement. Re-cut to 30 to 60 s (3 Nov decision).",
+ why:"Introduces Jay with a calm, strong view on the industry early in the fortnight, before the Climb Gauge explains the plans on Mon 9. It’s also the fortnight’s tech and industry post.",
+ ref:"https://www.tiktok.com/@financepodcastclipss/video/7675776935296847117", audio:"Source audio",
+ draft:BOARD, draftNote:"Board draft (V2)",
+ due:"Today (Tue 3)", fromSanti:null, crosspost:"YouTube Shorts",
+ changes:["New, from the board."]
+},
+{
+ id:"01", date:"2026-11-05", time:"12:00", week:"2026-W45",
+ title:"Some risk habits feel safe",
+ format:"Carousel", board:"Meme explainer · Myth or fact · Risk", boardId:"fmt1", skill:"18th-street-memes",
+ platform:"Instagram", pillar:"Futures education & strategies", production:"Slides (HTML)", status:"Review", compliance:"Pending", silent:true, ai:false,
+ hook:"Cover: “Some risk habits feel safe while they quietly drain your account.” Swipe prompt: “Swipe for the facts →”",
+ onscreen:"Each slide: the habit crossed out, “Nope.” and the fact. One meme slide, shown whole. Logo bottom right.",
+ beats:"5 slides. 1 Cover. 2 “A wider stop is safer.” It only helps if your size shrinks with it. 3 “One more contract won’t matter.” On ES each extra contract adds $50 to every point you’re wrong. 4 “Adding to a loser lowers my average.” It doubles down on being wrong. 5 “No daily loss limit means no limit.” The trailing loss is still in play. Ends on the last myth; the caption starts the conversation.",
+ caption:`Some risk habits feel safe while they quietly drain your account.
+
+- A wider stop only helps if your size shrinks with it.
+- One more contract on ES adds $50 to every point you’re wrong.
+- Adding to a loser means doubling down on being wrong.
+- No daily loss limit still leaves your trailing loss in play.
+
+Which one have you caught yourself doing?
+
+${G}`,
+ hashtags:"#futurestrading #propfirm #riskmanagement",
+ claims:"ES $50 a point per contract (CME E-mini S&P 500 contract specs; check cmegroup.com before design). No 18th Street figures.",
+ notes:"Generic education, no product claim. Keep “your trailing loss” generic, with no 18th Street rule numbers.",
+ why:"Opens the fortnight with the format Santi’s research flagged (FTMO’s myths carousel ran 7.7x its feed median). The client has already seen this layout on the board.",
+ ref:"https://www.instagram.com/p/Dd_utlPjLxQ/", audio:"n/a (carousel)",
+ draft:"https://claude.ai/artifact/LERZxJ62dcGVm7cJ3eEzvW", draftNote:"Santi’s draft + board Risk set",
+ due:"Wed 4 Nov", fromSanti:"4 risk myths that quietly end futures evaluations (Tue 3 Nov)",
+ changes:[
+  "Moved from Tue 3 Nov, which left no time for the 24-hour approval.",
+  "Merged with the board’s Myth or fact · Risk set, which the client has seen, keeping Santi’s ES sizing myth with the $50 a point example.",
+  "Dropped the revenge-trading myth so revenge trading gets its own reel in the next calendar. Today’s slot now carries the finished Chart patterns carousel.",
+  "Removed “Most blown evaluations aren’t a bad setup. They’re…” (a “not X but Y” line) and “Educational only. Not financial advice.”; the caption now carries the standard disclosure.",
+  "Hashtags cut from 5 to the Myth or fact set of 3; the Discord CTA became a comment question until the client confirms the Discord name and invite."
+ ]
+},
+{
+ id:"02", date:"2026-11-05", time:"18:00", week:"2026-W45",
+ title:"Jobs report tomorrow, 8:30 AM ET",
+ format:"Carousel", board:"This week · single-event layout", boardId:"fmt5", skill:"18th-street-news-desk",
+ platform:"Instagram", pillar:"Market insights & analysis", production:"Slides (HTML)", status:"Scripted", compliance:"Pending", silent:true, ai:false,
+ hook:"Cover: “The jobs report lands tomorrow at 8:30 AM ET.” Full-colour photo strip, a FRI 6 NOV date card and a clock at 8:30.",
+ onscreen:"Slide 2 “What it is”, slide 3 “Why traders care” (jobs → rate expectations → yields → ES and NQ), slide 4 the five checks, slide 5 CTA “Sitting out the release is a plan too.” with the tagline in small mono.",
+ beats:"5 slides. 1 Cover. 2 The BLS monthly jobs report for October, with the last three payroll prints pulled from bls.gov on the day. 3 Why ES and NQ react, often within minutes. 4 Five checks before the open. 5 CTA slide. Source line on every data slide.",
+ caption:`The October jobs report lands tomorrow at 8:30 AM ET, an hour before the stock market opens.
+
+Payrolls can move rate expectations within minutes, and ES and NQ often react first. Five checks for the morning:
+- Expect wider spreads around the release
+- Plan for stops filling worse than usual
+- Set your size the night before
+- Know where you’re wrong before you enter
+- Check your firm’s news rule
+
+What’s your plan for 8:30 tomorrow?
+
+${G}`,
+ hashtags:"#futurestrading #economiccalendar #daytrading",
+ claims:"Release Fri 6 Nov, 8:30 AM ET (BLS Employment Situation schedule; reconfirm on bls.gov on the day). Prior payroll prints: pull from the BLS release on the day. Santi’s figures (Jul −10K, Aug +133K, Sep +29K, 4.2%) are unverified and stay off the slides until checked.",
+ notes:"No forecasts, levels or trade ideas. Keep the news-rule check generic; naming 18th Street’s 3-minute rule turns it into a product post that needs Jay.",
+ why:"The biggest scheduled release of the week. The Sunday 1 Nov This week never went out, so this is the only jobs-week setup post.",
+ ref:"https://www.instagram.com/p/De991caA4Ra/", audio:"n/a (carousel)",
+ draft:"https://claude.ai/artifact/4URa6kBLWGbxARdpEcCKon", draftNote:"Santi’s draft, to restyle",
+ due:"Wed 4 Nov", fromSanti:"NFP tomorrow: 5 checks before 8:30 ET (Thu 5 Nov)",
+ story:"One big number “8:30 AM ET”",
+ changes:[
+  "Kept the slot, the idea and the five checks.",
+  "Unverified payroll numbers pulled until they are checked on bls.gov.",
+  "Removed “The risk isn’t the number. It’s trading it without a plan.” (“not X but Y”) and swapped “No trade is also a decision.” for the board line “Sitting out the release is a plan too.”",
+  "Restyled into the This week event-slide look so it sits in the News family on the feed.",
+  "AI disclosure unticked (no AI voice or visuals planned; tick it if AI photos are used). Hashtags 5 to 3. Paired One big number story added."
+ ]
+},
+{
+ id:"03", date:"2026-11-06", time:"08:00", week:"2026-W45",
+ title:"Jobs day, 8:29 AM. Which one are you?",
+ format:"Carousel", board:"Meme explainer · Types of traders · Jobs day", boardId:"fmt1", skill:"18th-street-memes",
+ platform:"Instagram", pillar:"Futures education & strategies", production:"Slides (HTML)", status:"Review", compliance:"Pending", silent:true, ai:false,
+ hook:"Grid cover: “Jobs day, 8:29 AM. Which one are you?”",
+ onscreen:"Grid cover, then one slide per type, each laid out around its meme, shown whole. Logo right, prompt left (Types of traders footer).",
+ beats:"5 slides. Cover grid. 1 The planner. 2 The refresher. 3 The size-up. 4 The sitter-outer. Finishes on the last type.",
+ caption:`Jobs day, 8:29 AM. Which one are you?
+
+- 1: The planner. Size picked the night before.
+- 2: The refresher. Checking every ten seconds.
+- 3: The size-up. Doubled size because it feels big.
+- 4: The sitter-outer. Flat until the dust settles.
+
+Comment your number, and be honest.
+
+${G}`,
+ hashtags:"#daytrading #tradermemes #futurestrading",
+ claims:"None.",
+ notes:"The board version still says “The all-in” (gambling wording); post “The size-up” as here. Check each meme’s rights first.",
+ why:"Goes out 30 minutes before the release, when every futures trader is thinking about the same moment. A light, shareable post after Thursday’s serious setup.",
+ ref:"https://www.instagram.com/p/DcgYRkID69h/", audio:"n/a (carousel)",
+ draft:BOARD, draftNote:"Board draft",
+ due:"Thu 5 Nov", fromSanti:null,
+ changes:["New. Gives Friday morning a shareable post; Santi’s Friday had one footage-dependent reel."]
+},
+{
+ id:"04", date:"2026-11-06", time:"17:30", week:"2026-W45",
+ title:"The week in futures: 2 to 6 Nov",
+ format:"Static", board:"The week in futures", boardId:"fmt16", skill:"18th-street-news-desk",
+ platform:"Instagram", pillar:"Market insights & analysis", production:"Slides (HTML)", status:"Idea", compliance:"Pending", silent:true, ai:false,
+ hook:"Headline written after the close on what moved, key word in light teal.",
+ onscreen:"Five contract cards (ES, NQ, YM, CL, GC): ticker, name and price in small mono, a centred bar for the move, % with the per-contract dollars underneath. Source line.",
+ beats:"Single graphic. Made after Friday’s close with the static kit.",
+ caption:`[One line on what moved this week, written after Friday’s close.]
+
+- ES [move] ([$ a contract])
+- NQ [move] ([$])
+- YM [move] ([$])
+- CL [move] ([$])
+- GC [move] ([$])
+
+Same week, very different outcomes depending on the contract and the size you traded.
+
+Which one did you trade this week?
+
+${G}`,
+ hashtags:"#futurestrading #weeklyrecap #daytrading",
+ claims:"Weekly moves from a named source, checked after the close. Per-contract dollars = points × CME point value (ES $50, NQ $20, YM $5, CL $1,000 per $1, GC $100 per $1; confirm on cmegroup.com).",
+ notes:"Written on the day, so it needs the fast approval lane with Jay (no product claims). No views on next week.",
+ why:"The fixed Friday slot, missing from W45. A data habit people come back to, like CoinGecko’s weekly tables.",
+ ref:"", audio:"n/a (static)", draft:BOARD, draftNote:"Board template (26–30 Oct)",
+ due:"Same day, fast lane", fromSanti:null, story:"One big number: the biggest weekly move",
+ changes:["New fixed slot."]
+},
+{
+ id:"05", date:"2026-11-07", time:"11:00", week:"2026-W45",
+ title:"When you’re long, there will be signs",
+ format:"Reel", board:"Memes (reel)", boardId:"rl3", skill:"18th-street-memes",
+ platform:"Instagram", pillar:"Futures education & strategies", production:"Motion graphics", status:"Review", compliance:"Pending", silent:true, ai:false,
+ hook:"Caption in caps above the clip: “WHEN YOU’RE LONG, THERE WILL BE SIGNS”",
+ onscreen:"Caption above, the clip whole in the middle, logo centred below, charcoal ground. Under 20 s so it loops.",
+ beats:"One clip, one line. Re-cut for YouTube Shorts.",
+ caption:`We can’t prove it, but we think they’re long.
+
+${G}`,
+ hashtags:"#futurestrading #daytrading #tradingpsychology",
+ claims:"None.",
+ notes:"The board caption used “bro”, which the client’s banned list covers; rewritten. Film and TV clips carry copyright risk, so use original or licensed footage where possible.",
+ why:"Weekend reach post. Every Take Profit Trader reel above 400K views was a meme under 10 seconds.",
+ ref:"", audio:"Clip audio if licensed, otherwise the approved track", draft:BOARD, draftNote:"Board draft",
+ due:"Fri 6 Nov", fromSanti:null,
+ changes:["New. Caption fixed for the banned word."]
+},
+{
+ id:"06", date:"2026-11-08", time:"18:00", week:"2026-W45",
+ title:"This week: 9 to 13 Nov",
+ format:"Carousel", board:"This week", boardId:"fmt5", skill:"18th-street-news-desk",
+ platform:"Instagram", pillar:"Market insights & analysis", production:"Slides (HTML)", status:"Review", compliance:"Pending", silent:true, ai:false,
+ hook:"Cover: “A big week for price data.” Photo strips per event and five day cards, CPI and PPI days on a teal top edge.",
+ onscreen:"One slide per key event: photo, date card, clock, “What it is” and “Why traders care”. Dark CTA slide.",
+ beats:"Cover, CPI, Veterans Day, PPI, CTA.",
+ caption:`A big week for price data.
+
+- Tue 10 Nov: CPI at 8:30 AM ET
+- Wed 11 Nov: Veterans Day. Bonds close, futures stay open
+- Fri 13 Nov: PPI at 8:30 AM ET
+
+Will you trade CPI on Tuesday, or let the first move settle?
+
+${G}`,
+ hashtags:"#futurestrading #economiccalendar #daytrading",
+ claims:"CPI Tue 10 Nov and PPI Fri 13 Nov, both 8:30 AM ET (BLS schedules). Veterans Day: CME’s advisory says all products settle at normal times on 11 Nov; the bond market close follows SIFMA. Check CME’s holiday hours page the week before.",
+ notes:"No politics (Election Day aftermath stays out). Dates in board style “Tue 10 Nov” until the US date style is decided.",
+ why:"The fixed Sunday slot, missing from W45. The board draft is ready.",
+ ref:"", audio:"n/a (carousel)", draft:BOARD, draftNote:"Board draft (Week of 9–13 Nov)",
+ due:"Sat 7 Nov", fromSanti:null, story:"One big number “8:30 AM Tue”",
+ changes:["New fixed slot, using the board draft as it is."]
+},
+{
+ id:"07", date:"2026-11-09", time:"12:00", week:"2026-W46",
+ title:"Four phases, with a payout at every one",
+ format:"Reel", board:"Motion explainers · The Climb Gauge", boardId:"rl6", skill:"18th-street-motion-design", approved:true,
+ platform:"Instagram", pillar:"18th Street differentiation", production:"Motion graphics", status:"Review", compliance:"Needs client OK", silent:false, ai:false,
+ hook:"On screen at 0 s: “Four phases, with a payout at every one.”",
+ onscreen:"The approved Climb Gauge cut. End card in small mono: “Phases 1–4 are simulated. Plan fees don’t guarantee completion of a phase, a payout or a live account.”",
+ beats:"Use the client-approved video. Before posting, re-render the end card: no teal glow on the logo, and the tagline moved outside the logo’s clear space.",
+ caption:`Four phases, with a payout at every one.
+
+Every phase runs on one published standard: a 9% profit target, a 5% end-of-day trailing drawdown and a 25% consistency rule. Complete a phase and you earn its fixed payout. On the $50K plan that’s $1,000, then $1,500, $1,500 and $3,000.
+
+Which plan size would you start with?
+
+${P}`,
+ hashtags:"#propfirm #futurestrading #futurestrader",
+ claims:"9% target, 5% end-of-day trailing drawdown, 25% consistency, $50K payouts $1,000 / $1,500 / $1,500 / $3,000 (total $7,000): trade18th.com/progression, checked 3 Nov 2026. Re-check on the day.",
+ notes:"Product post with rules and payouts, so it needs Jay’s explicit OK. End-card re-render (logo glow, tagline clear space) has been open since 3 Nov.",
+ why:"The client approved this video on 3 Nov, so the clearest explanation of the model is ready with no new production. It was Santi’s W45 lead post and stays the lead differentiation piece.",
+ ref:"https://www.instagram.com/reel/DewJ5wmJ5dM/", audio:"Approved arpmedia track (kit assets/music.mp3)",
+ draft:BOARD, draftNote:"Board · client-approved",
+ due:"Fri 6 Nov (end card re-rendered by Thu 5)", fromSanti:"Four phases, explained in 30 seconds (Mon 2 Nov)", crosspost:"YouTube Shorts",
+ changes:[
+  "Uses the client-approved Climb Gauge instead of a new build.",
+  "Removed the client line “One qualification. Four phases. One standard.” (a triplet we quote only when the client asks).",
+  "“This one pays at every step” became the site’s wording: a fixed payout earned on completing each phase.",
+  "The “[Full disclaimer…]” placeholder became the phases disclosure; the on-screen line uses the approved end-card wording.",
+  "Moved from Mon 2 Nov so the end card can be re-rendered. Hashtags 5 to 3. The Discord CTA became a comment question."
+ ]
+},
+{
+ id:"08", date:"2026-11-09", time:"18:00", week:"2026-W46",
+ title:"4 signs you’re overtrading",
+ format:"Carousel", board:"Meme explainer · Lessons", boardId:"fmt1", skill:"18th-street-memes",
+ platform:"Instagram", pillar:"Futures education & strategies", production:"Slides (HTML)", status:"Review", compliance:"Pending", silent:true, ai:false,
+ hook:"Question cover: “If you can’t remember trade six, this one’s for you.”",
+ onscreen:"One point per slide, key words in light teal, memes whole. Ends on a takeaways slide.",
+ beats:"Cover, four signs, takeaways.",
+ caption:`If you can’t remember trade six, this one’s for you.
+
+Overtrading rarely announces itself. It creeps in like this:
+- you’ve lost count of today’s trades
+- you’re trading because the market feels slow
+- you hit your target and kept going
+- you check your P&L every five minutes
+
+How many trades did you take yesterday?
+
+${G}`,
+ hashtags:"#futurestrading #daytrading #tradingpsychology",
+ claims:"None.", notes:"Meme rights checked before posting.",
+ why:"A habit check on the evening before a heavy data week.",
+ ref:"", audio:"n/a (carousel)", draft:BOARD, draftNote:"Board draft",
+ due:"Sun 8 Nov", fromSanti:null, changes:["New, from the board."]
+},
+{
+ id:"09", date:"2026-11-10", time:"09:15", week:"2026-W46",
+ title:"CPI News alert",
+ format:"Static", board:"News alert", boardId:"fmt3", skill:"18th-street-news-desk",
+ platform:"Instagram", pillar:"Market insights & analysis", production:"Slides (HTML)", status:"Idea", compliance:"Pending", silent:true, ai:false,
+ hook:"Written after 8:30 AM ET: one bold headline on the print and a one-line standfirst.",
+ onscreen:"Photo on top with a dark panel, or one simple chart on charcoal. Logo bottom right, “Source: BLS, 10 Nov 2026.” along the bottom.",
+ beats:"Single graphic, made between 8:30 and 9:15 AM ET.",
+ caption:`[Headline on the October CPI print, written after 8:30 AM ET.]
+
+[One or two sentences: headline and core inflation against the forecast, and how ES and NQ moved in the first minutes.]
+
+[One question.]
+
+${G}`,
+ hashtags:"#marketnews #stockmarket #futurestrading",
+ claims:"CPI from the BLS release, the forecast from a named source, the futures move from a named data source, all checked on the day.",
+ notes:"Same-day post: needs the fast approval lane with Jay. No forecasts or trade ideas. Evergreen posts stay off CPI day.",
+ why:"The biggest data release of the fortnight. Big data days get the news formats.",
+ ref:"", audio:"n/a (static)", draft:BOARD, draftNote:"Board template",
+ due:"Same day, fast lane", fromSanti:null, story:"One big number: the CPI headline figure",
+ changes:["New."]
+},
+{
+ id:"10", date:"2026-11-11", time:"12:00", week:"2026-W46",
+ title:"Why 18th Street? Here’s the honest answer.",
+ format:"Static", board:"Why 18th Street · The four reasons", boardId:"fmt10", skill:"18th-street-evergreen-graphics",
+ platform:"Instagram", pillar:"18th Street differentiation", production:"Slides (HTML)", status:"Review", compliance:"Needs client OK", silent:false, ai:false,
+ hook:"Headline: “Why 18th Street? Here’s the honest answer.”",
+ onscreen:"Charcoal editorial layout, the four answers as numbered circles, black-and-white Chicago photo in a circle.",
+ beats:"Single graphic. Pin to the profile once approved.",
+ caption:`Why 18th Street? Here’s the honest answer.
+
+- Paid from Phase 1: $1,000 when you complete it on a $50K plan, then a payout after every phase that follows.
+- Every rule is published before you pay.
+- Only the close counts: a 5% end-of-day trailing loss, and no daily loss limit.
+- No flash sales or countdowns. One price, every day.
+
+Which of these matters most to you?
+
+Full rules at trade18th.com/qualification
+
+${P}`,
+ hashtags:"#propfirm #futurestrading #futurestrader",
+ claims:"$50K Phase 1 payout $1,000; 5% end-of-day trailing; no daily loss limit (trade18th.com/progression and /qualification, checked 3 Nov). “No flash sales, one price every day”: confirm with the client.",
+ notes:"Product post, so it needs Jay’s explicit OK.",
+ why:"The pin post the profile needs before new followers arrive. Lands on Veterans Day, a quieter market day.",
+ ref:"", audio:"n/a (static)", draft:BOARD, draftNote:"Board draft",
+ due:"Mon 9 Nov", fromSanti:null, changes:["New, from the board. Due every 2 weeks, so the next one is Wed 25 Nov."]
+},
+{
+ id:"11", date:"2026-11-11", time:"18:00", week:"2026-W46",
+ title:"Hunting for the bottom",
+ format:"Reel", board:"Memes (reel)", boardId:"rl3", skill:"18th-street-memes",
+ platform:"Instagram", pillar:"Futures education & strategies", production:"Motion graphics", status:"Idea", compliance:"Pending", silent:true, ai:false,
+ hook:"Caption in caps above the clip: “ME BUYING THE DIP FOR THE FOURTH TIME TODAY”",
+ onscreen:"Board meme layout: caption above, clip whole, logo below. Under 20 s.",
+ beats:"New meme from the format’s topic list. Make 3 to 4 clip options for you to pick from.",
+ caption:`Every dip looks like the bottom until the next one.
+
+${G}`,
+ hashtags:"#futurestrading #daytrading #tradingpsychology",
+ claims:"None.", notes:"Original or licensed clip where possible. No public figures.",
+ why:"A light evening post on a holiday, and a lesson about averaging down that follows on from last week’s risk carousel.",
+ ref:"", audio:"Clip audio if licensed, otherwise the approved track", draft:"", draftNote:"To make",
+ due:"Tue 10 Nov", fromSanti:null, changes:["New."]
+},
+{
+ id:"12", date:"2026-11-12", time:"12:00", week:"2026-W46",
+ title:"All traders should know: order types",
+ format:"Carousel", board:"All traders should know", boardId:"fmt14", skill:"18th-street-evergreen-graphics",
+ platform:"Instagram", pillar:"Futures education & strategies", production:"Slides (HTML)", status:"Idea", compliance:"Pending", silent:true, ai:false,
+ hook:"Cover: the “All traders should know” label, “Order types” in light teal, the pointing character.",
+ onscreen:"Two slides per order type: a hand-drawn diagram with numbered circles, then a real ES chart with the same circles. “DRAWN WITH HINDSIGHT FOR TEACHING.” Ends on a pinned cheat sheet.",
+ beats:"Cover, market, limit, stop market, stop limit, cheat sheet. About 10 design options first (new topic).",
+ caption:`Four order types decide how every futures trade gets in and out.
+
+- Market: fills now, at the best price available
+- Limit: fills at your price or better, or not at all
+- Stop market: becomes a market order once price reaches your stop
+- Stop limit: becomes a limit order at your stop, so it may not fill in a fast move
+
+Which one do you use for your stops?
+
+${G}`,
+ hashtags:"#ordertypes #futurestrading #daytrading",
+ claims:"Order-type definitions checked against CME Group’s education pages. Chart example from real ES data.",
+ notes:"Generic education. No platform claims unless checked (DXFutures, Volumetrica, Rithmic, Tickblaze).",
+ why:"Next topic on the format’s list, and order types matter most in a data week, when stops can fill worse than planned.",
+ ref:"", audio:"n/a (carousel)", draft:"", draftNote:"To make",
+ due:"Tue 10 Nov", fromSanti:null, changes:["New. Moved off Tuesday, its usual day, because CPI takes Tuesday."]
+},
+{
+ id:"13", date:"2026-11-12", time:"18:00", week:"2026-W46",
+ title:"Clip: 5 principles from an institutional desk",
+ format:"Reel", board:"Clips from long form · Version 2", boardId:"rl5", skill:"18th-street-long-form-clips",
+ platform:"Instagram", pillar:"18th Street differentiation", production:"Client footage", status:"Review", compliance:"Needs client OK", silent:false, ai:false,
+ hook:"Question as text at 0 s: “What does an institutional desk teach first?”",
+ onscreen:"Keyword captions, speaker name and source on screen, brand cards in place of stock shots, lockup at y 1690.",
+ beats:"30 to 60 s cut from existing footage. Post as an Instagram Collab with the partner.",
+ caption:`The same principles you’d find on an institutional desk.
+
+Jay walks through the standard every 18th Street trader is held to, starting with protecting the account.
+
+Which one is hardest for you to stick to?
+
+${G}`,
+ hashtags:"#propfirm #futurestrading #riskmanagement",
+ claims:"No figures. Every principle named must match the rules on trade18th.com/qualification.",
+ notes:"Mentions the firm’s standard, so Jay’s OK. Collab needs the partner’s agreement. Re-cut to 30 to 60 s (3 Nov decision).",
+ why:"Puts Jay’s voice on the feed mid-week and pairs with the morning’s education post. Public’s creator Collab beat nearly all of its own reels.",
+ ref:"https://www.tiktok.com/@financepodcastclipss/video/7675776935296847117", audio:"Source audio",
+ draft:BOARD, draftNote:"Board draft (V2)",
+ due:"Tue 10 Nov", fromSanti:null, crosspost:"YouTube Shorts", changes:["New, from the board."]
+},
+{
+ id:"14", date:"2026-11-13", time:"12:00", week:"2026-W46",
+ title:"Trade of the Week 01: the plan before the number",
+ format:"Reel", board:"Trade of the week · Faceless founder edit", boardId:"rl2", skill:"18th-street-trade-of-the-week", approved:true,
+ platform:"Instagram", pillar:"Traders & community", production:"Founder clip", status:"Idea", compliance:"Needs client OK", silent:false, ai:false,
+ hook:"Result in R and the instrument at 0 s, then: “The best part of this trade happened before the entry.”",
+ onscreen:"Chart replay with entry, stop and exit marked. Stat bar: instrument, account type, risk, hold time, result in R. Small mono account label (wording to confirm with the client). Close on “Would you have taken it?”",
+ beats:"35 to 55 s. 1 Result at 0 s. 2 Jay’s plan, written before the open: where he’s wrong, his size, what he won’t do. 3 What price did. 4 The decision and why. 5 Result in R. 6 One-line lesson and the question.",
+ caption:`[One line on the decision that made the trade, in Jay’s words.]
+
+[Two sentences: the setup, where he was wrong, how he managed it. Result in R.]
+
+Would you have taken it?
+
+${TR}`,
+ hashtags:"#tradeoftheweek #futurestrading #es",
+ claims:"Jay’s own trade from his platform export. Result in R only, never dollars.",
+ notes:"Needs Jay’s trade, chart export and written OK by Wed 11 Nov. Never use the FTMO example. Nothing framed as a call to copy. Fallback: Types of traders · Friday afternoon (board draft).",
+ why:"The series that makes up a third of FTMO’s feed, in a style the client approved on 3 Nov. Jay is the one trader we can ask this week.",
+ ref:"https://www.instagram.com/reel/DcGoQlJjSax/", audio:"Jay’s voice (or an AI voice with the label), approved track under it",
+ draft:BOARD, draftNote:"Board · approved style",
+ due:"Trade by Wed 11, draft to Jay Thu 12", fromSanti:"Friday Trade Review 01: the plan before the number (Fri 6 Nov)",
+ fallback:"Types of traders · Friday afternoon (board draft, light and safe)",
+ changes:[
+  "Moved from Fri 6 Nov: Jay’s footage by Thu 5 wasn’t realistic.",
+  "Built in the approved Trade of the Week format, so the client has already seen the look.",
+  "Kept Santi’s R-only rule and the plan-first story.",
+  "Removed “Not a signal. Educational only.” from the screen; the caption carries the trade disclosure lines instead.",
+  "Named fallback added. Hashtags to the Trade of the Week set."
+ ]
+},
+{
+ id:"15", date:"2026-11-13", time:"17:30", week:"2026-W46",
+ title:"The week in futures: 9 to 13 Nov",
+ format:"Static", board:"The week in futures", boardId:"fmt16", skill:"18th-street-news-desk",
+ platform:"Instagram", pillar:"Market insights & analysis", production:"Slides (HTML)", status:"Idea", compliance:"Pending", silent:true, ai:false,
+ hook:"Headline written after the close, tying the week to CPI and PPI.",
+ onscreen:"Same five-contract scoreboard as 6 Nov.",
+ beats:"Single graphic, made after Friday’s close.",
+ caption:`[One line on how CPI and PPI week ended, written after Friday’s close.]
+
+- ES [move] ([$ a contract])
+- NQ [move] ([$])
+- YM [move] ([$])
+- CL [move] ([$])
+- GC [move] ([$])
+
+[One line on the biggest mover.]
+
+Which contract are you watching next week?
+
+${G}`,
+ hashtags:"#futurestrading #weeklyrecap #daytrading",
+ claims:"As on 6 Nov: named source, CME point values, checked after the close.",
+ notes:"Fast approval lane. Vary the closing line each week so the series doesn’t read as a template.",
+ why:"Fixed Friday slot.",
+ ref:"", audio:"n/a (static)", draft:BOARD, draftNote:"Board template",
+ due:"Same day, fast lane", fromSanti:null, story:"One big number: the biggest weekly move",
+ changes:["New fixed slot."]
+},
+{
+ id:"16", date:"2026-11-14", time:"11:00", week:"2026-W46",
+ title:"Life after you pass your first eval",
+ format:"Reel", board:"Memes (reel)", boardId:"rl3", skill:"18th-street-memes",
+ platform:"Instagram", pillar:"Traders & community", production:"Motion graphics", status:"Review", compliance:"Pending", silent:false, ai:false,
+ hook:"Caption in caps above the clip: “LIFE AFTER YOU PASS YOUR FIRST EVAL”",
+ onscreen:"Board meme layout. Under 20 s.",
+ beats:"One clip, one line.",
+ caption:`Phase 1 complete. On to Phase 2
+
+${P}`,
+ hashtags:"#futurestrading #daytrading #tradingpsychology",
+ claims:"Names a phase, so it takes the phases disclosure.",
+ notes:"Board caption “main character mode unlocked” replaced (open item). Clip rights checked.",
+ why:"Weekend reach, built on the moment every trader in an evaluation is working towards.",
+ ref:"", audio:"Clip audio if licensed, otherwise the approved track", draft:BOARD, draftNote:"Board draft",
+ due:"Fri 13 Nov", fromSanti:null, changes:["New. Caption fixed per the open item."]
+},
+{
+ id:"17", date:"2026-11-15", time:"18:00", week:"2026-W46",
+ title:"This week: 16 to 20 Nov",
+ format:"Carousel", board:"This week", boardId:"fmt5", skill:"18th-street-news-desk",
+ platform:"Instagram", pillar:"Market insights & analysis", production:"Slides (HTML)", status:"Review", compliance:"Pending", silent:true, ai:false,
+ hook:"Cover: “A quieter week, with one big evening in the middle.”",
+ onscreen:"Five day cards, Tuesday on a teal top edge. Event slides for retail sales, Nvidia results and the Fed minutes.",
+ beats:"Cover, retail sales, Nvidia, Fed minutes, CTA. Add an Nvidia slide to the board draft.",
+ caption:`A quieter week, with one big evening in the middle.
+
+- Tue 17 Nov: retail sales at 8:30 AM ET
+- Tue 17 Nov: Nvidia reports after the close, with its call at 5:00 PM ET
+- Wed 18 Nov: Fed meeting minutes at 2:00 PM ET
+
+Calm weeks are the best time to practise your plan at normal size. Which part of yours will you work on?
+
+${G}`,
+ hashtags:"#futurestrading #economiccalendar #daytrading",
+ claims:"Retail sales Tue 17 Nov 8:30 AM ET (Census schedule). Nvidia call Tue 17 Nov 5:00 PM ET (NVIDIA press release). Fed minutes Wed 18 Nov 2:00 PM ET (Federal Reserve calendar).",
+ notes:"Name Nvidia as a market event only, with no view on the stock.",
+ why:"Fixed Sunday slot. The board draft is ready but missed Nvidia’s results.",
+ ref:"", audio:"n/a (carousel)", draft:BOARD, draftNote:"Board draft (Week of 16–20 Nov)",
+ due:"Sat 14 Nov", fromSanti:null, story:"One big number “5:00 PM ET Tue”",
+ changes:["Board draft updated: NVIDIA has set its results call for Tue 17 Nov, so the week isn’t as quiet as the draft says."]
+},
+{
+ id:"18", date:"2026-11-16", time:"12:00", week:"2026-W47",
+ title:"Three futures myths we still hear",
+ format:"Carousel", board:"Meme explainer · Myth or fact · Futures basics", boardId:"fmt1", skill:"18th-street-memes",
+ platform:"Instagram", pillar:"Futures education & strategies", production:"Slides (HTML)", status:"Review", compliance:"Pending", silent:true, ai:false,
+ hook:"Cover: “Three futures myths we still hear from new traders.” Swipe prompt “Swipe for the facts →”",
+ onscreen:"The myth crossed out, “Nope.” and the fact.",
+ beats:"Cover and three myths.",
+ caption:`Three futures myths we still hear from new traders.
+
+- “You need $100K to start.” The Micro E-mini S&P 500 moves $5 a point.
+- “Futures only trade 9:30 to 4.” They run almost 24 hours.
+- “Futures are just oil and corn.” The biggest ones track the stock market.
+
+Which one did you believe when you started?
+
+${G}`,
+ hashtags:"#futurestrading #propfirm #riskmanagement",
+ claims:"MES $5 a point (CME contract specs). Equity index futures trade almost 24 hours, 5:00 PM to 4:00 PM CT (CME hours). Check both on cmegroup.com.",
+ notes:"The board version says “Micro contracts move $5 a point”, which is only true of MES (Micro Nasdaq is $2), so the line now names the contract. The slide needs the same fix.",
+ why:"A beginner-friendly Monday post for the new followers the week’s clips and memes bring in.",
+ ref:"https://www.instagram.com/p/Dd_utlPjLxQ/", audio:"n/a (carousel)", draft:BOARD, draftNote:"Board draft (fix slide 2)",
+ due:"Sun 15 Nov", fromSanti:null, changes:["New, from the board, with the micro-contract fact corrected."]
+},
+{
+ id:"19", date:"2026-11-16", time:"18:00", week:"2026-W47",
+ title:"Clip: Why most prop firms look the same",
+ format:"Reel", board:"Clips from long form · Version 2", boardId:"rl5", skill:"18th-street-long-form-clips",
+ platform:"Instagram", pillar:"Trading tech & industry", production:"Client footage", status:"Review", compliance:"Needs client OK", silent:false, ai:false,
+ hook:"Question as text at 0 s: “Why do most prop firms look the same?”",
+ onscreen:"Keyword captions, speaker name and source on screen, brand cards, lockup at y 1690.",
+ beats:"30 to 60 s. Collab with the partner.",
+ caption:`Starting a prop firm is the easy part. Building one that lasts takes longer.
+
+Jay on why 18th Street was built for the long term, with its value tied to the traders it develops.
+
+What made you trust the firm you trade with today?
+
+${G}`,
+ hashtags:"#propfirm #futurestrading #futurestrader",
+ claims:"No figures.",
+ notes:"Industry view without naming competitors. Jay’s OK. Collab needs the partner’s agreement.",
+ why:"The fortnight’s industry post; a strong opinion about the category, told calmly by the founder.",
+ ref:"https://www.tiktok.com/@financepodcastclipss/video/7675776935296847117", audio:"Source audio",
+ draft:BOARD, draftNote:"Board draft (V2)",
+ due:"Sat 14 Nov", fromSanti:null, crosspost:"YouTube Shorts", changes:["New, from the board."]
+},
+{
+ id:"20", date:"2026-11-17", time:"12:00", week:"2026-W47",
+ title:"All traders should know: VWAP",
+ format:"Carousel", board:"All traders should know", boardId:"fmt14", skill:"18th-street-evergreen-graphics",
+ platform:"Instagram", pillar:"Futures education & strategies", production:"Slides (HTML)", status:"Idea", compliance:"Pending", silent:true, ai:false,
+ hook:"Cover: the label, “VWAP” in light teal, the pointing character.",
+ onscreen:"Diagram slide with numbered circles, then a real ES chart with the same circles, the trade box, a “target hit” tick and the R:R. Pinned cheat sheet.",
+ beats:"Cover, what VWAP is, the reclaim setup (diagram, then real chart), cheat sheet.",
+ caption:`VWAP shows the average price traders have paid today, weighted by volume.
+
+Many intraday traders read it as the day’s fair value:
+- Above VWAP, buyers have been paying up
+- Below it, sellers have had the upper hand
+- A reclaim after a flush is a setup worth learning
+
+Do you keep VWAP on your chart?
+
+${G}`,
+ hashtags:"#vwap #futurestrading #daytrading",
+ claims:"VWAP definition. Chart example and R:R from real ES data, “DRAWN WITH HINDSIGHT FOR TEACHING.”",
+ notes:"Generic education.",
+ why:"Weekly education slot, back on its usual Tuesday. A calmer morning before Nvidia’s evening.",
+ ref:"", audio:"n/a (carousel)", draft:"", draftNote:"To make",
+ due:"Mon 16 Nov", fromSanti:null, changes:["New."]
+},
+{
+ id:"21", date:"2026-11-17", time:"18:00", week:"2026-W47",
+ title:"The most expensive trade is often the one after a loss",
+ format:"Reel", board:"Motion (glow look) · education", boardId:"rl6", skill:"18th-street-motion-design",
+ platform:"Instagram", pillar:"Futures education & strategies", production:"Motion graphics", status:"Idea", compliance:"Pending", silent:true, ai:false,
+ hook:"On screen: “The most expensive trade is often the one right after a loss.” An equity line drawn live on a glow panel, a loss, then a steeper second drop.",
+ onscreen:"Series label “THE PSYCHOLOGY OF RISK · 01”; Path A / Path B labels; the rule; “Consistency over aggression.”",
+ beats:"20 to 30 s. 1 Hook and the line drops. 2 “After a loss, the next entry is about getting back to even.” 3 Split: Path A sizes up and the drawdown deepens; Path B follows a rule written before the open and the line holds. 4 The rule: a set number of losses per session, then stop. 5 “Consistency over aggression.” 6 End card with the question.",
+ caption:`The most expensive trade is often the one right after a loss.
+
+After a red trade, the next entry tends to be about getting back to even. Size creeps up and patience runs out. The traders who last write their stop-for-the-day rule before the open, and keep it when it stings.
+
+What’s your stop-for-the-day rule?
+
+${G}`,
+ hashtags:"#futurestrading #daytrading #tradingpsychology",
+ claims:"None.",
+ notes:"No studies or loss-aversion percentages unless sourced. New topic on the approved glow look, so make 3 to 4 options first.",
+ why:"Psychology was the most repeated winning topic in Santi’s research. Revenge trading now appears once in the fortnight.",
+ ref:"https://www.instagram.com/reel/DewJ5wmJ5dM/", audio:"Approved track; it drops out when Path B’s line goes flat (Santi’s idea)",
+ draft:"", draftNote:"To make", due:"Sun 15 Nov", fromSanti:"The most expensive trade is the one after a loss (Wed 4 Nov)", crosspost:"YouTube Shorts",
+ changes:[
+  "Moved from Wed 4 Nov to Tue 17 Nov. In W45 revenge trading was in three posts in two days (the myths carousel, this reel and the Stories question).",
+  "Removed “The fix isn’t willpower. It’s a rule…” (“not X but Y”).",
+  "“is the one” softened to “is often the one”, so the hook doesn’t claim an absolute.",
+  "Built on the approved glow motion kit; Santi’s series label kept.",
+  "Discord CTA replaced with the comment question. Hashtags 5 to 3."
+ ]
+},
+{
+ id:"22", date:"2026-11-18", time:"09:00", week:"2026-W47",
+ title:"Nvidia earnings News brief",
+ format:"Carousel", board:"News brief", boardId:"fmt4", skill:"18th-street-news-desk",
+ platform:"Instagram", pillar:"Market insights & analysis", production:"Slides (HTML)", status:"Idea", compliance:"Pending", silent:true, ai:false,
+ hook:"Written the morning after the results: the single most striking fact, in one line.",
+ onscreen:"Full-colour photo cover, report card of filled, half and empty circles, a 1-year chart, what it meant for NQ per contract, dark CTA slide.",
+ beats:"5 slides, within 24 hours of the release.",
+ caption:`[Hook on the results, written after the release.]
+
+[Two sentences: the results against NVIDIA’s own guidance, the stock’s move after hours, and roughly what NQ’s move meant on a single contract.]
+
+[One question.]
+
+${G}`,
+ hashtags:"#futurestrading #stockmarket #marketnews",
+ claims:"Results from NVIDIA’s release (nvidianews.nvidia.com and the SEC 8-K), reaction from a named source, NQ $20 a point (CME). Checked on the day.",
+ notes:"Fast approval lane. No view on the stock, no trade ideas.",
+ why:"The biggest earnings report of the fortnight for NQ traders. NVIDIA has confirmed its call for 5:00 PM ET on Tue 17 Nov.",
+ ref:"", audio:"n/a (carousel)", draft:BOARD, draftNote:"Board template (Alphabet brief)",
+ due:"Same morning, fast lane", fromSanti:null, story:"One big number: Nvidia’s headline figure",
+ changes:["New."]
+},
+{
+ id:"23", date:"2026-11-18", time:"18:00", week:"2026-W47",
+ title:"Clip: Get paid at every phase",
+ format:"Reel", board:"Clips from long form · Version 2", boardId:"rl5", skill:"18th-street-long-form-clips",
+ platform:"Instagram", pillar:"18th Street differentiation", production:"Client footage", status:"Review", compliance:"Needs client OK", silent:false, ai:false,
+ hook:"Question as text at 0 s: “Why pay traders from Phase 1?”",
+ onscreen:"Keyword captions and brand cards. Card fix: “$50K plan · paid every phase” becomes “Payout on completing each phase”. On-screen simulated line on the end card.",
+ beats:"30 to 60 s. Collab with the partner.",
+ caption:`A fixed payout, earned at the end of every phase.
+
+Jay explains why 18th Street pays from Phase 1, and how that keeps the firm’s interests lined up with yours.
+
+Which phase are you aiming for first?
+
+${P}`,
+ hashtags:"#propfirm #futurestrading #futurestrader",
+ claims:"Payouts from Phase 1, fixed per phase (trade18th.com/progression, checked 3 Nov). Re-check on the day.",
+ notes:"Product post: Jay’s explicit OK. The board caption had no question; one added.",
+ why:"Closes the fortnight on the firm’s clearest difference, nine days after the Climb Gauge, in Jay’s own words.",
+ ref:"https://www.tiktok.com/@financepodcastclipss/video/7675776935296847117", audio:"Source audio",
+ draft:BOARD, draftNote:"Board draft (V2, card to fix)",
+ due:"Mon 16 Nov", fromSanti:null, crosspost:"YouTube Shorts",
+ changes:["New, from the board, with the payout card wording fixed and a question added."]
+}
+];
+
+const SANTI_STORIES = {
+  title:"Stories W45 (every trading day)",
+  changes:[
+   "Kept: Stories every trading day, one idea per frame, sticker-led (poll, quiz, question).",
+   "Removed the “What’s your stop-for-the-day rule?” question here, since revenge trading gets one dedicated reel in the next calendar.",
+   "Removed the NFP countdown sticker: countdown timers are on the client’s avoid list.",
+   "Discord link sticker held until the client confirms the name and invite; UTM tags stay ready.",
+   "Added a One big number story within an hour of every news post, as the format playbook asks.",
+   "Jay’s Discord morning-brief frame kept as an option once he says yes."
+  ]
+};
+
+POSTS.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+POSTS.forEach((p,i)=>p.id=String(i+1).padStart(2,"0"));
+
+const GFX = {
+ "2026-11-03 18:00":["cp1_1","cp1_q1","cp1_x1","cp1_q2","cp1_x2","cp1_s"],
+ "2026-11-04 12:00":["rd1_1","rd1_2","rd1_3","rd1_4","rd1_5"],
+ "2026-11-05 12:00":["rk1_1","rk1_2","rk1_3","rk1_4","rk1_5"],
+ "2026-11-05 18:00":["jr1_1","jr1_2","jr1_3"],
+ "2026-11-06 08:00":["jd1_1","jd1_2","jd1_3","jd1_4","jd1_5"],
+ "2026-11-08 18:00":["wk9_1","wk9_2","wk9_3","wk9_4","wk9_5"],
+ "2026-11-09 18:00":["ov1_1","ov1_2","ov1_3","ov1_4","ov1_5","ov1_6"],
+ "2026-11-11 12:00":["wy4_1"],
+ "2026-11-12 12:00":["ot1_1","ot1_q1","ot1_q2","ot1_q3","ot1_q4","ot1_s"],
+ "2026-11-15 18:00":["wk16_1","wk16_2","wk16_3","wk16_4","wk16_5"]
+};
+const STORY_GFX = {"2026-11-03":["ss3_1"],"2026-11-04":["ss4_1"],"2026-11-05":["ob5_1"],"2026-11-06":["ss6_1"],"2026-11-08":["ob8_1"],
+ "2026-11-09":["ss9_1"],"2026-11-11":["ss11_1"],"2026-11-12":["ss12_1"],"2026-11-15":["ob15_1"]};
+const ONDAY = {"2026-11-06 17:30":1,"2026-11-10 09:15":1,"2026-11-13 17:30":1};
+for (let i=POSTS.length-1;i>=0;i--){ if(POSTS[i].date>"2026-11-15") POSTS.splice(i,1); }
+POSTS.forEach((p,i)=>{p.id=String(i+1).padStart(2,"0"); const k=p.date+" "+p.time;
+  p.gfx=GFX[k]||null; p.gstate=GFX[k]?"ready":(ONDAY[k]?"onday":(p.format==="Reel"?"video":"todo"));});
+// v3 content updates
+(function(){
+ const by=t=>POSTS.find(p=>p.title===t);
+ const r=by("Some risk habits feel safe"); r.title="4 risk myths that quietly drain accounts";
+ r.hook="Cover: “4 risk myths that quietly drain accounts” over the burning-office meme. Swipe prompt “Swipe for the facts →”.";
+ r.beats="5 slides. 1 Cover. 2 “A wider stop is a safer stop.” Only if your size gets smaller. 3 “One more contract won’t matter.” Each ES contract adds $50 a point (Santi’s slide, on the buff doge ES · $50 / MES · $5 meme). 4 “Adding to a loser lowers your risk.” It doubles down on being wrong. 5 “No daily loss limit means no limit.” Your trailing loss still counts.";
+ r.changes.push("Board cover prompt “Swipe if you dare” changed to the plain “Swipe for the facts →”.");
+ const j=by("Jobs day, 8:29 AM. Which one are you?");
+ j.notes="“The all-in” is now “The size-up” on the grid and slide 3. The snow-monkey photo (it carries a photographer’s credit) is replaced by the raccoon-on-a-phone meme. Check each meme’s rights before posting.";
+ const o=by("4 signs you’re overtrading");
+ o.notes="Two memes replaced: the David Goggins photo (public figure) is now the “ight imma head out” SpongeBob, with the lead line turned around to show the right habit, and the credited snow-monkey photo is now the cat watching a chart. The Discord line and the on-graphic disclaimer are gone from the takeaways slide.";
+ const rd=by("What to do after a red day");
+ rd.notes="Evergreen: no mention of the election or why markets moved. The takeaways slide no longer carries the Discord line or “Educational only. Not financial advice.”; it ends on “Save this for the next one.”";
+ const cp=by("Two chart patterns worth learning first");
+ cp.notes="Today’s post: it can only go out if Jay approves it today. Generic education, the safest one to ask for same-day. The on-graphic disclaimers are now “DRAWN WITH HINDSIGHT FOR TEACHING.” and the tagline.";
+ const ot=by("All traders should know: order types");
+ ot.beats="6 slides: cover, then a diagram for each order type (market, limit, stop market, stop limit) with numbered circles, then the pinned cheat sheet. The real-chart slides are left out: order types are clearer as drawings, and I can’t pull live ES data from here.";
+ ot.status="Review"; ot.draftNote="Designed v1";
+ const t16=by("This week: 16 to 20 Nov"); t16.draftNote="Designed v1 (Nvidia slide added)";
+ const jr=by("Jobs report tomorrow, 8:30 AM ET"); jr.draftNote="Designed v1"; jr.status="Review";
+})();
+
+// ---- v4: three board meme reels + social/brand review changes ----
+(function(){
+ const by=t=>{const p=POSTS.find(p=>p.title===t); if(!p) throw new Error("missing "+t); return p;};
+ const REV=[];
+ // meme reels from the board
+ const s=by("When you’re long, there will be signs");
+ s.video="vid/rl3_signs.mp4"; s.gstate="ready"; s.status="Review"; s.draftNote="Board draft (video ready)";
+ s.date="2026-11-05"; s.time="12:00"; s.due="Wed 4 Nov";
+ s.why="Moved to Thu 5 noon by the review: it breaks up three carousels in a row, and a long-bias joke lands well the day before the jobs report. Every Take Profit Trader reel above 400K views was a meme under 10 seconds.";
+ const e=by("Life after you pass your first eval");
+ e.video="vid/rl3_eval.mp4"; e.gstate="ready"; e.status="Review"; e.draftNote="Board draft (video ready)";
+ e.date="2026-11-12"; e.time="18:00"; e.due="Wed 11 Nov";
+ e.why="Moved to Thu 12 evening by the review, so Thu 12’s clip and Fri 13’s Trade of the Week aren’t two Jay pieces back to back. A light post after the order-types lesson.";
+ const f=by("Hunting for the bottom");
+ Object.assign(f,{title:"Holding my long through FOMC",board:"Memes (reel)",status:"Review",compliance:"Pending",
+  hook:"Caption in caps above the clip: “HOLDING MY LONG THROUGH FOMC”",
+  onscreen:"Board meme layout: caption above, the knight-kitten clip whole, logo below. 5.6 s, loops.",
+  beats:"The finished board reel, as it is.",
+  caption:"The Fed speaks in 5 minutes. We are not closing the trade.\n\n"+G,
+  claims:"None.",
+  notes:"The board caption named Powell. It now says “The Fed”: politics and public figures stay out, and the Fed chair named on the board may no longer be right. Clip rights checked before posting.",
+  why:"Uses a finished board reel instead of making a new one. A Fed-day joke that still works in a week with no Fed meeting, and it leads into the Fed minutes the following Wednesday.",
+  ref:"",audio:"Clip audio if licensed, otherwise the approved track",draft:BOARD,draftNote:"Board draft (video ready)",due:"Tue 10 Nov",
+  video:"vid/rl3_fomc.mp4",gstate:"ready",changes:["Replaces “Hunting for the bottom”, which didn’t exist yet, with the finished board reel."]});
+ // review moves
+ const r=by("4 risk myths that quietly drain accounts");
+ r.date="2026-11-07"; r.time="11:00"; r.due="Fri 6 Nov";
+ r.why="Moved to Saturday by the review: weekends suit save-worthy carousels, and Thu 5 no longer has two carousels back to back. Santi’s research flagged myth carousels as an outlier format (FTMO’s ran 7.7x its feed median).";
+ r.caption=r.caption.replace("Which one have you caught yourself doing?","Have you caught yourself doing any of these?");
+ r.changes.push("Review: moved to Sat 7 so the week doesn’t run three carousels in a row; question reworded so five posts don’t all ask “Which one…?”.");
+ const c=by("Clip: 5 principles from an institutional desk");
+ c.date="2026-11-14"; c.time="11:00"; c.due="Thu 12 Nov";
+ c.why="Moved to Saturday morning by the review, a better slot for a longer watch, and it spaces Jay’s clip away from Friday’s Trade of the Week.";
+ // copy fixes
+ const g=by("Four phases, with a payout at every one");
+ g.caption=g.caption.replace("Complete a phase and you earn its fixed payout.","Complete a simulated phase within the rules and you earn its fixed payout.");
+ g.changes.push("Review: the payout line now says “simulated phase within the rules”, the brand’s required wording, so the body doesn’t lean on the disclosure alone.");
+ const w6=by("The week in futures: 2 to 6 Nov");
+ w6.caption=w6.caption.replace("Which one did you trade this week?","Did you trade jobs week, or sit it out?");
+ const o=by("All traders should know: order types");
+ o.caption=o.caption.replace("Which one do you use for your stops?","Do you use stop market or stop limit for your stops? Save this for your next session.");
+ const t16=by("This week: 16 to 20 Nov");
+ t16.caption=t16.caption.replace("practise","practice");
+ // cross-posting
+ ["This week: 9 to 13 Nov","This week: 16 to 20 Nov","The week in futures: 2 to 6 Nov","The week in futures: 9 to 13 Nov","CPI News alert","Jobs report tomorrow, 8:30 AM ET"].forEach(t=>{by(t).crosspost="X (@trade18th): the cover image with the caption’s first line and the list";});
+ ["Why 18th Street? Here’s the honest answer.","Clip: Why most prop firms look the same","Clip: 5 principles from an institutional desk"].forEach(t=>{const p=by(t);p.crosspost=(p.format==="Reel"?"YouTube Shorts, LinkedIn":"LinkedIn");});
+ ["When you’re long, there will be signs","Holding my long through FOMC","Life after you pass your first eval","Four phases, with a payout at every one"].forEach(t=>{by(t).crosspost="YouTube Shorts";});
+ POSTS.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+ POSTS.forEach((p,i)=>p.id=String(i+1).padStart(2,"0"));
+})();
+const REVIEW = {
+ skills:"social-media-skills: batch-content-plan (mix, formats, sequencing, repurposing) and marketing: brand-review (voice, terms, claims, compliance), checked against the 18th Street brand and compliance rules.",
+ summary:"The plan is strongly built: every post has a pillar, a board format and a real brief, value content far outweighs asks, and the copy is calm and on-brand. The fixes are about rhythm and a few lines: too many carousels in a row, firm-focused posts bunched in W46, repeated “Which one…?” questions, and two lines that needed safer wording.",
+ rows:[
+  ["Format monotony","Thu 5 to Fri 6 ran three carousels in a row (risk myths, jobs report, jobs day), and 11 of 20 posts were carousels","Medium","Moved the risk myths carousel to Sat 7 and the “When you’re long” meme reel to Thu 5 noon. Reels now land on 6 of the 9 weekdays in the window."],
+  ["Sequencing","Jay’s clip (Thu 12 evening) sat directly before Trade of the Week (Fri 13 noon), and W46 had four firm-focused posts in five days","Medium","Swapped the clip to Sat 14 morning and the eval meme reel to Thu 12 evening."],
+  ["Compliance wording","The Climb Gauge caption said “Complete a phase and you earn its fixed payout”","High","Now “Complete a simulated phase within the rules and you earn its fixed payout”, the required phrasing."],
+  ["Public figure / accuracy","The FOMC meme caption named Powell","High","Now “The Fed speaks in 5 minutes.” No public figure, and no risk of naming the wrong chair."],
+  ["Unverified claim","Why 18th Street: “No flash sales or countdowns. One price, every day.”","High","Kept, flagged “confirm with the client” before it goes to Jay (unchanged from before)."],
+  ["Question variety","Five captions asked “Which one…?”","Low","Reworded three: risk myths, The week in futures (6 Nov), order types."],
+  ["Save prompt","Order types is the most save-worthy post but had no save line","Low","Added “Save this for your next session.”"],
+  ["US spelling","“practise” on the 16 to 20 Nov This week (caption and close slide)","Low","Changed to “practice” and re-rendered the slide."],
+  ["Repurposing","Everything was Instagram-only, though X, YouTube and LinkedIn are live channels","Medium","Added cross-posts: news and calendar posts to X, reels to YouTube Shorts, clips and Why 18th Street to LinkedIn. Each is tailored, never a straight copy."],
+  ["Meme reels","Wed 11 needed a new meme reel","Medium","Replaced with the finished board reel “Holding my long through FOMC”; Sat 7 and Sat 14 use the finished board reels too. The Powell reel stays out (public figure)."]
+ ],
+ kept:["Intent mix: 15 of 20 posts are education, entertainment or market value; the 2 direct asks (Climb Gauge, Why 18th Street) are a clear minority, with proof and Jay’s views around them.","Recurring series anchor both weeks: This week on Sundays, The week in futures on Fridays, All traders should know weekly, Trade of the Week on Fri 13.","Every caption has one clear hook, one question, the right disclosure and three hashtags, with no hype, emojis or banned words.","Posting times stay as tests (8:00, 12:00, 18:00 ET), not claims: there are no insights yet to time against."]
+};
+
+// ---- v5: videos fixed or rebuilt with free tools, ToTW fallback ready ----
+(function(){
+ const by=t=>{const p=POSTS.find(p=>p.title===t); if(!p) throw new Error("missing "+t); return p;};
+ const g=by("Four phases, with a payout at every one");
+ Object.assign(g,{video:"vid/climb_gauge_v2.mp4",gstate:"ready",draftNote:"End card rebuilt (v2)",
+  beats:"The client-approved Climb Gauge, unchanged up to 17.9 s. The end card is rebuilt: the closing bar now shrinks into the divider’s spot and is gone before the lockup appears, so the logo keeps its own silver divider with no glow on it. The tagline moved from 44px under the lockup to below the URL pill, outside the clear space. Same length (22.27 s, 668 frames), same music and the same layout otherwise; QA passes."});
+ g.changes.push("End card rebuilt with the free motion kit: no glow on the logo, tagline outside its clear space (the open item from 3 Nov).");
+ const a=by("Clip: Why most prop firms look the same");
+ Object.assign(a,{video:"vid/clip_why_most_v3.mp4",gstate:"ready",draftNote:"Re-rendered v3 (35.5 s)",
+  beats:"35.5 s. The board’s 24 s cut joined with the second half of “The real value of a prop firm”, which follows on in the same talk, so it now meets the 30 to 60 s rule and drops the repeated “selling accounts” line. Rebuilt with the clips kit: question card from 0 s, Archivo captions with teal key words, speaker label, lockup, and three dark brand cards in place of the old cards. Wide shots zoomed so no blurred strips show. QA passes (−14 LUFS, captions match the audio).",
+  notes:"Industry view without naming competitors; Jay’s OK. Source label reads “Tickblaze webinar” (the board’s card mentioned the Tickblaze community): confirm before posting. Collab needs the partner’s agreement."});
+ const b=by("Clip: 5 principles from an institutional desk");
+ Object.assign(b,{video:"vid/clip_five_principles_v3.mp4",gstate:"ready",draftNote:"Re-rendered v3 (48 s)",
+  beats:"48 s, the board’s cut re-rendered with the clips kit: question card from 0 s, Archivo captions with teal key words, speaker label and lockup. The two light webinar slides and the old card are now dark brand cards (“Built on an institutional standard.”, “Not every market needs a trade”, “Responsibility is earned”). Wide shots zoomed to fill the frame. QA passes."});
+ b.hook="Question as text at 0 s: “What would an institutional desk expect of you?”";
+ const t=by("Trade of the Week 01: the plan before the number");
+ t.fallbackGfx=["fa1_1","fa1_2","fa1_3","fa1_4","fa1_5"];
+ t.fallback="Types of traders · Friday afternoon, ready (slides below). The board version’s “closer” meme was a Fresh Step cat-litter ad with its logo, and “the reviewer” reused Monday’s messy-chart meme; both swapped for unused board memes.";
+})();
+
+// ---- v6 (4 Nov): no funny or meme posts in W45 except Friday's meme explainer ----
+const MOVED_OUT=[];
+(function(){
+ const by=t=>{const p=POSTS.find(p=>p.title===t); if(!p) throw new Error("missing "+t); return p;};
+ const out=t=>{const i=POSTS.findIndex(p=>p.title===t); if(i<0) throw new Error("missing "+t); MOVED_OUT.push(POSTS[i].title); POSTS.splice(i,1);};
+ out("What to do after a red day"); out("When you’re long, there will be signs"); out("4 risk myths that quietly drain accounts");
+ const cp=by("Two chart patterns worth learning first");
+ cp.onscreen="Serious cover for this week: no pointing character, a one-line subtitle and the two pinned cards as a preview, logo bottom right. Then two slides per pattern (diagram, real chart) and the pinned cheat sheet.";
+ cp.changes.push("4 Nov: cover rebuilt without the cartoon character, for a serious first week.");
+ const w=by("Why 18th Street? Here’s the honest answer.");
+ w.date="2026-11-05"; w.time="12:00"; w.week="2026-W45"; w.due="Wed 4 Nov (Jay’s OK)";
+ w.why="Moved up from Wed 11 so the profile’s pin goes up in the first serious week, before the jobs report brings new visitors.";
+ const base={platform:"Instagram",ai:false,ref:"",fromSanti:null,crosspost:"",gstate:"ready",changes:["New in v6 (4 Nov): replaces a meme post so the first week stays serious."]};
+ POSTS.push(Object.assign({},base,{
+  id:"", date:"2026-11-04", time:"12:00", week:"2026-W45", title:"A futures day starts the evening before",
+  format:"Static", board:"Know your hours · A futures day", boardId:"fmt11", skill:"18th-street-evergreen-graphics",
+  pillar:"Market insights & analysis", production:"Slides (HTML)", status:"Review", compliance:"Needs client OK", silent:false,
+  hook:"Headline: “A futures day” with the mono subhead “Equity index hours · Central time”.",
+  onscreen:"Faded black-and-white photo, status rows with ticks and crosses: Sun 5:00 PM week opens, Mon–Thu trades almost 24 hours, 3:55 PM 18th Street auto-flatten (outlined in teal), 4:00–5:00 PM daily break, Fri 4:00 PM week closes.",
+  beats:"Single graphic, the board draft as it is.",
+  caption:"A futures day starts the evening before.\n\nEquity index futures open at 5:00 PM CT on Sunday and trade almost 24 hours, with a one-hour break each afternoon. At 18th Street, positions auto-flatten at 3:55 PM CT.\n\nWhat time does your trading day start?\n\n"+G,
+  hashtags:"#futurestrading #tradinghours #daytrading",
+  claims:"CME equity index hours (CME Group trading hours). 18th Street auto-flatten at 3:55 PM CT: trade18th.com/qualification, checked 3 Nov 2026. Re-check on the day.",
+  notes:"States an 18th Street rule (the 3:55 PM CT auto-flatten), so it needs Jay’s OK, which means it has to reach him today. Calm and evergreen, with nothing about the election or the market reaction.",
+  why:"A calm, useful screenshot post the day after the election, and it sets up the hours before Friday’s jobs report.",
+  audio:"n/a (static)", draft:BOARD, draftNote:"Board draft", due:"Today, Tue 3 Nov", gfx:["kh4_1"]}));
+ POSTS.push(Object.assign({},base,{
+  id:"", date:"2026-11-07", time:"11:00", week:"2026-W45", title:"How to trade volume profile",
+  format:"Carousel", board:"All traders should know · Volume profile", boardId:"fmt14", skill:"18th-street-evergreen-graphics",
+  pillar:"Futures education & strategies", production:"Slides (HTML)", status:"Review", compliance:"Pending", silent:true,
+  hook:"Cover: “How to trade volume profile”, with a subtitle and the two pinned cards as a preview (no cartoon character this week).",
+  onscreen:"Volume profile diagram with numbered circles, the real ES example from 2 Oct, the POC reclaim diagram, the real example from 2 to 5 Oct with the trade box and 1:3, then the pinned cheat sheet. “DRAWN WITH HINDSIGHT FOR TEACHING.” on the examples.",
+  beats:"6 slides: cover, indicator, real example, strategy, real example, cheat sheet.",
+  caption:"How to trade volume profile.\n\nVolume profile shows where the trading actually happened, and price has a habit of returning there.\n- Point of control (POC): the price that traded the most\n- POC reclaim: after a push, price builds a range, dips under the POC, then takes it back. The long sits on the retest\n\nThe real example is ES around the last jobs day, 2 Oct. Price dipped under the session POC on Monday morning, reclaimed it, and the retest set up a 1:3 trade.\n\nDo you trade with volume profile? Save this for your next session.\n\n"+G,
+  hashtags:"#volumeprofile #futurestrading #daytrading",
+  claims:"ES chart data and levels for 2 to 5 Oct 2026 as on the board draft (POC 7,775, long 7,774, stop 7,758, target 7,816). Re-check against the chart data before posting.",
+  notes:"Generic education, no 18th Street rules. Board slides’ on-graphic disclaimers swapped for “DRAWN WITH HINDSIGHT FOR TEACHING.” and the tagline.",
+  why:"A weekend study post that ties to the week: its real example is the last jobs day. All traders should know runs twice this week, since it’s the most serious save-worthy format we have.",
+  audio:"n/a (carousel)", draft:BOARD, draftNote:"Board draft (serious cover)", due:"Fri 6 Nov", gfx:["vp1_1","vp1_q1","vp1_x1","vp1_q2","vp1_x2","vp1_s"]}));
+ POSTS.push(Object.assign({},base,{
+  id:"", date:"2026-11-11", time:"12:00", week:"2026-W46", title:"Who we built 18th Street for",
+  format:"Static", board:"Why 18th Street · Who we built it for", boardId:"fmt10", skill:"18th-street-evergreen-graphics",
+  pillar:"18th Street differentiation", production:"Slides (HTML)", status:"Review", compliance:"Needs client OK", silent:false,
+  hook:"Headline: “Who we built 18th Street for”.",
+  onscreen:"Built for you if: four ticks. Probably not for you if: two crosses. Black-and-white Chicago photo in a circle, tagline in small mono.",
+  beats:"Single graphic, the board draft as it is.",
+  caption:"We built 18th Street for traders who treat this as a profession.\n\nIt’s a good fit if you put risk management before profit, want to be paid as you progress, and read the rules before you buy.\n\nIt probably isn’t the right place if you’re chasing a quick payout or hoping to skip phases.\n\nSound like you? Tell us what you trade.\n\n"+P,
+  hashtags:"#propfirm #futurestrading #futurestrader",
+  claims:"Payouts from Phase 1 and no buying or skipping phases (trade18th.com/progression and /faq, checked 3 Nov 2026).",
+  notes:"Product post, so it needs Jay’s explicit OK. Second Why 18th Street post in 6 days, an exception to the every-2-weeks cadence while the profile is being rebuilt.",
+  why:"Takes Wed 11 now that the pin moved to Thu 5: an honest note on who the firm is for, on a quiet market holiday.",
+  audio:"n/a (static)", draft:BOARD, draftNote:"Board draft", due:"Mon 9 Nov", gfx:["wy5_1"]}));
+ STORIES["2026-11-04"]="Question sticker “What time does your trading day start?” + share A futures day.";
+ STORIES["2026-11-11"]="Quiz “A trailing drawdown follows your… highest end-of-day balance / starting balance / last trade” + share Who we built 18th Street for.";
+ const FB=["Two chart patterns worth learning first","A futures day starts the evening before","Clip: Why most prop firms look the same","Why 18th Street? Here’s the honest answer.","Jobs day, 8:29 AM. Which one are you?","How to trade volume profile","This week: 9 to 13 Nov","Four phases, with a payout at every one","4 signs you’re overtrading","Who we built 18th Street for","Holding my long through FOMC","Life after you pass your first eval","Clip: 5 principles from an institutional desk","This week: 16 to 20 Nov"];
+ POSTS.forEach(p=>p.fromBoard=FB.includes(p.title));
+ POSTS.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+ POSTS.forEach((p,i)=>p.id=String(i+1).padStart(2,"0"));
+ REVIEW.rows.unshift(["No memes in week 1 (your call, 4 Nov)","Wed 4 red-day carousel, Thu 5 “When you’re long” reel, Sat 7 risk myths carousel, and the cartoon character on Tue 3’s cover","High","Replaced with serious posts: A futures day (Wed 4), the Why 18th Street pin moved up to Thu 5, Volume profile (Sat 7) and Who we built it for on Wed 11. Friday’s Jobs day meme explainer stays. The three meme posts move to the next calendar."]);
+ REVIEW.rows[1][3]="Superseded by the no-memes week: reels now fall on 5 of the 9 weekdays, all from Wed 4 onwards.";
+})();
+
+// ---- v7 (4 Nov): the Why 18th Street pin opens the serious week tonight ----
+(function(){
+ const by=t=>{const p=POSTS.find(p=>p.title===t); if(!p) throw new Error("missing "+t); return p;};
+ const w=by("Why 18th Street? Here’s the honest answer.");
+ w.date="2026-11-03"; w.time="18:00"; w.due="Today, Tue 3 Nov (Jay’s same-day OK)";
+ w.why="Opens the overhauled, serious feed by saying plainly who the firm is, then gets pinned so every new visitor sees it first. Your pick for tonight (4 Nov).";
+ w.notes="Product post: needs Jay’s explicit OK today, since it goes out at 6:00 PM ET (7:00 AM Wed in KL). “No flash sales, one price every day” still needs the client’s confirmation; if it can’t be confirmed in time, drop that fourth point.";
+ const cp=by("Two chart patterns worth learning first");
+ cp.date="2026-11-05"; cp.time="12:00"; cp.due="Wed 4 Nov";
+ cp.why="The calm, save-worthy lesson on the eve of the jobs report, with the serious cover (no cartoon character) this week.";
+ cp.notes="Generic education, no product claim. The on-graphic disclaimers are now “DRAWN WITH HINDSIGHT FOR TEACHING.” and the tagline.";
+ cp.changes.push("4 Nov: moved from tonight to Thu 5 noon, so the Why 18th Street pin opens the week.");
+ const who=by("Who we built 18th Street for");
+ who.notes="Product post, so it needs Jay’s explicit OK. Lands 8 days after the pin, close to the every-2-weeks cadence for Why 18th Street.";
+ STORIES["2026-11-03"]="Question sticker “What matters most to you in a prop firm?” + share Why 18th Street.";
+ STORIES["2026-11-05"]="One big number: “8:30 AM ET”, shared with the jobs-report post.";
+ POSTS.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+ POSTS.forEach((p,i)=>p.id=String(i+1).padStart(2,"0"));
+ REVIEW.rows[0][3]="Tonight opens with the Why 18th Street pin (your pick). Then A futures day (Wed 4), chart patterns with a serious cover (Thu 5), Volume profile (Sat 7) and Who we built it for (Wed 11). Friday’s Jobs day meme explainer stays. The red-day carousel, the “When you’re long” reel and the risk myths carousel move to the next calendar.";
+})();
+
+// ---- v7b: chart patterns keeps its pointing-character cover (user, 4 Nov) ----
+(function(){
+ const cp=POSTS.find(p=>p.title==="Two chart patterns worth learning first");
+ cp.onscreen="The series cover with the pointing character (kept, your call), then two slides per pattern (diagram, real chart) and the pinned cheat sheet.";
+ cp.changes=cp.changes.filter(c=>!c.startsWith("4 Nov: cover rebuilt"));
+ cp.why="A calm, save-worthy lesson on the eve of the jobs report.";
+})();
+
+// ---- v8 (4 Nov): Why 18th Street pin checked against the site, three reasons, payout-steps image ----
+(function(){
+ const w=POSTS.find(p=>p.title==="Why 18th Street? Here’s the honest answer.");
+ w.gfx=["wy4v7_1"]; w.gstate="ready"; w.gver="v7";
+ w.board="Why 18th Street · The three reasons";
+ w.onscreen="Charcoal editorial layout with three numbered reasons. Top right: four payout bars for Phases 1 to 4 in the real 1 : 1.5 : 1.5 : 3 ratio, which holds on every plan, so no dollar figure is needed. Footer: “All rules published at trade18th.com/qualification” and the simulated-phases disclosure.";
+ w.caption=`Why 18th Street? Here’s the honest answer.
+
+- Paid from Phase 1: every plan pays when you complete it, from $500 to $3,000 by plan size, then a payout after every phase that follows.
+- No daily loss limit. Your 5% trailing loss follows your highest end-of-day balance.
+- One fee, paid once. No subscription or activation fees, and the same price on every platform.
+
+Which of these matters most to you?
+
+Every rule is published in full before you pay: trade18th.com/qualification
+
+${P}`;
+ w.claims="Phase 1 payouts $500 / $1,000 / $2,000 / $3,000 and the phase ratio; 5% trailing loss on the highest end-of-day balance; no daily loss limit; one-time fee, no subscription or activation fees, same price on every platform; rules published in full before payment (trade18th.com/qualification, /progression and /faq, checked 4 Nov).";
+ w.notes="Product post: needs Jay’s explicit OK. Checked line by line against the site on 4 Nov. “Only the close counts” was dropped because the site never says whether an intraday dip breaches; “No flash sales” was replaced with “One fee, paid once”, which the site states, so nothing waits on the client now.";
+ w.changes=(w.changes||[]).concat(["4 Nov: checked against the site. Generic payout line for all four plans, “Every rule is published” moved to the footer, intraday and flash-sale claims replaced, disclosure added on the graphic, Chicago photo replaced with the payout steps (your pick)."]);
+ const r=REVIEW.rows.find(r=>r[0]==="Unverified claim"&&String(r[1]).includes("flash sales"));
+ if(r) r[3]="Resolved 4 Nov: replaced with “One fee, paid once. No subscription or activation fees.”, which the site states.";
+})();
+
+// ---- v8b (4 Nov): small text fixes made while moving the calendar into Notion ----
+(function(){
+ const by=t=>POSTS.find(p=>p.title===t);
+ const who=by("Who we built 18th Street for"); if(who) who.why="Lands 8 days after the Why 18th Street pin: an honest note on who the firm is for, on a quiet market holiday.";
+ const ot=by("All traders should know: order types"); if(ot){ ot.onscreen="One hand-drawn diagram per order type with numbered circles. Ends on a pinned cheat sheet."; ot.beats="6 slides: cover, then a diagram for each order type (market, limit, stop market, stop limit) with numbered circles, then the pinned cheat sheet. No real-chart slides: order types are clearer as drawings."; ot.claims="Order-type definitions checked against CME Group’s education pages. Diagrams only, no chart data."; }
+ const ev=by("Life after you pass your first eval"); if(ev) ev.caption=ev.caption.replace("On to Phase 2\n","On to Phase 2.\n");
+ const cg=by("Four phases, with a payout at every one"); if(cg) cg.notes="Product post with rules and payouts, so it needs Jay’s explicit OK. The end card is already rebuilt (no glow on the logo, tagline outside the clear space).";
+})();
+
+// ---- v8c (4 Nov): Why 18th Street uses the client's CTA block and their first three hashtags ----
+(function(){
+ const w=POSTS.find(p=>p.title==="Why 18th Street? Here’s the honest answer.");
+ w.caption=`Why 18th Street? Here’s the honest answer.
+
+- Paid from Phase 1: every plan pays when you complete it, from $500 to $3,000 by plan size, then a payout after every phase that follows.
+- No daily loss limit. Your 5% trailing loss follows your highest end-of-day balance.
+- One fee, paid once. No subscription or activation fees, and the same price on every platform.
+
+Which of these matters most to you?
+
+🔗 Read every rule before you pay: https://trade18th.com/qualification
+
+Discover 18th Street Trading at trade18th.com. Link in bio.
+
+Institutional Standard. Professional Traders.
+
+${P}`;
+ w.hashtags="#FuturesTrading #PropTrading #FuturesTrader";
+ w.changes.push("4 Nov: CTA block follows the client’s own captions (qualification link, trade18th.com, tagline) in our voice, and the hashtags are their first three.");
+})();
+
+// ---- v8d (4 Nov): pin CTA wording (user) ----
+(function(){
+ const w=POSTS.find(p=>p.title==="Why 18th Street? Here’s the honest answer.");
+ w.caption=w.caption.replace("🔗 Read every rule before you pay: https://trade18th.com/qualification","🔗 Explore qualification at: https://trade18th.com/qualification");
+ if(!w.caption.includes("Explore qualification at:")) throw new Error("cta not replaced");
+})();
+
+// ---- v8e (4 Nov): pin goes out at 9:00 PM ET Tue 3 (10:00 AM Wed in KL), user's call ----
+(function(){
+ const w=POSTS.find(p=>p.title==="Why 18th Street? Here’s the honest answer.");
+ w.time="21:00";
+ w.changes.push("4 Nov: posting at 9:00 PM ET Tue 3 (10:00 AM Wed KL), Gabriel’s call, so it goes out today.");
+})();
+
+// ---- v8f (4 Nov): pin hashtags in lowercase (user) ----
+(function(){ const w=POSTS.find(p=>p.title==="Why 18th Street? Here’s the honest answer."); w.hashtags="#futurestrading #proptrading #futurestrader"; })();
+
+// ---- v8g (4 Nov): no emojis in captions (user, applies to all) ----
+(function(){
+ const re=/\p{Extended_Pictographic}️?\s?/gu;
+ POSTS.forEach(p=>{ if(p.caption) p.caption=p.caption.replace(re,""); });
+})();
+
+// ---- v8h (4 Nov): simple caption for the pin (user) ----
+(function(){
+ const w=POSTS.find(p=>p.title==="Why 18th Street? Here’s the honest answer.");
+ w.caption=`Why 18th Street? Here’s the honest answer.
+
+Paid from Phase 1, no daily loss limit, and one fee, paid once.
+
+Explore qualification at: https://trade18th.com/qualification
+
+Institutional Standard. Professional Traders.
+
+${P}`;
+ w.changes.push("4 Nov: caption simplified to one line of reasons, the qualification link, the tagline and the disclosure (Gabriel).");
+})();
+
+// ---- v8i (4 Nov): tagline removed from the pin caption (user) ----
+(function(){
+ const w=POSTS.find(p=>p.title==="Why 18th Street? Here’s the honest answer.");
+ w.caption=w.caption.replace("Institutional Standard. Professional Traders.\n\n","");
+ if(w.caption.includes("Institutional Standard")) throw new Error("tagline still there");
+})();
+
+// ---- v8j (4 Nov): every caption in the simple style (user): headline, one line, link on product posts, disclosure. No tagline, no question, no emojis ----
+(function(){
+ const CAPS={"A futures day starts the evening before": ["A futures day starts the evening before.\n\nEquity index futures open at 5:00 PM CT and trade almost 24 hours. At 18th Street, positions auto-flatten at 3:55 PM CT.\n\nExplore qualification at: https://trade18th.com/qualification", "G"], "Clip: Why most prop firms look the same": ["Starting a prop firm is the easy part. Building one that lasts takes longer.\n\nJay on why 18th Street was built for the long term.", "G"], "Two chart patterns worth learning first": ["Two chart patterns worth learning before any others.\n\nA double bottom on crude oil and a head and shoulders on Nvidia, each with a real example and a full trade plan.", "G"], "Jobs report tomorrow, 8:30 AM ET": ["The October jobs report lands tomorrow at 8:30 AM ET.\n\nFive checks to run before the release, from your size to your firm’s news rule.", "G"], "Jobs day, 8:29 AM. Which one are you?": ["Jobs day, 8:29 AM. Which one are you?\n\nThe planner, the refresher, the size-up or the sitter-outer. Comment your number.", "G"], "The week in futures: 2 to 6 Nov": ["[One line on what moved this week, written after Friday’s close.]\n\nES, NQ, YM, CL and GC, with each move in dollars per contract.", "G"], "How to trade volume profile": ["How to trade volume profile.\n\nWhere the trading actually happened, and the POC reclaim setup it gives you, with a real ES example from the last jobs day.", "G"], "This week: 9 to 13 Nov": ["A big week for price data.\n\nCPI on Tuesday and PPI on Friday, both at 8:30 AM ET. Bonds close for Veterans Day on Wednesday, and futures stay open.", "G"], "Four phases, with a payout at every one": ["Four phases, with a payout at every one.\n\nThe same published standard at every phase, and a fixed payout each time you complete one.\n\nExplore qualification at: https://trade18th.com/qualification", "P"], "4 signs you’re overtrading": ["If you can’t remember trade six, this one’s for you.\n\nFour quiet signs you’re overtrading. Save it for your next session.", "G"], "CPI News alert": ["[Headline on the October CPI print, written after 8:30 AM ET.]\n\n[One sentence: the print against the forecast, and how ES and NQ moved.]", "G"], "Who we built 18th Street for": ["We built 18th Street for traders who treat this as a profession.\n\nIf you put risk management first and read the rules before you buy, you’ll feel at home here.\n\nExplore qualification at: https://trade18th.com/qualification", "P"], "All traders should know: order types": ["Four order types decide how every futures trade gets in and out.\n\nMarket, limit, stop market and stop limit, each with a simple diagram. Save it for your next session.", "G"], "Trade of the Week 01: the plan before the number": ["[One line on the decision that made the trade, in Jay’s words.]\n\n[One sentence: the setup and the result in R.]", "TR"], "The week in futures: 9 to 13 Nov": ["[One line on how CPI and PPI week ended, written after Friday’s close.]\n\nThe five contracts we track, and what each move meant per contract.", "G"], "Clip: 5 principles from an institutional desk": ["The same principles you’d find on an institutional desk.\n\nJay on the standard every 18th Street trader is held to, starting with protecting the account.", "G"], "This week: 16 to 20 Nov": ["A quieter week, with one big evening in the middle.\n\nRetail sales on Tuesday morning, Nvidia’s results that evening and the Fed minutes on Wednesday.", "G"]};
+ const D={G,P,TR};
+ Object.entries(CAPS).forEach(([t,[body,d]])=>{const p=POSTS.find(x=>x.title===t); if(!p) throw new Error('missing '+t); p.caption=body+'\n\n'+D[d]; (p.changes=p.changes||[]).push('4 Nov: caption simplified to the short style (Gabriel).');});
+ POSTS.forEach(p=>{ if(p.caption) p.caption=p.caption.replace('Institutional Standard. Professional Traders.\n\n',''); if(p.hashtags) p.hashtags=p.hashtags.toLowerCase(); });
+ const k=REVIEW.kept||[]; const i=k.findIndex(s=>s.startsWith('Every caption has one clear hook')); if(i>=0) k[i]='Every caption is short: a headline, one line, the qualification link on product posts, the right disclosure and three lowercase hashtags. No tagline, emojis, hype or banned words (Gabriel, 4 Nov).';
+})();
+
+// ---- v8k (4 Nov evening): check of today's posts ----
+(function(){
+ const by=t=>{const p=POSTS.find(x=>x.title===t); if(!p) throw new Error("missing "+t); return p;};
+ const fd=by("A futures day starts the evening before");
+ fd.gfx=["kh4v2_1"]; fd.gver="v2";
+ fd.onscreen="Faded black-and-white trading-floor photo. Daily cycle in Central time: 5:00 PM session opens the evening before, overnight trading, 8:30 AM US stock market opens, 3:55 PM 18th Street auto-flatten (outlined in teal, marked FLAT), 4:00–5:00 PM daily break. Footnote: “Sunday 5:00 PM opens the week. Friday 4:00 PM closes it.”";
+ fd.caption=`A futures day starts the evening before.
+
+Equity index futures open at 5:00 PM CT and trade 23 hours a day, with a one-hour break at 4:00 PM. At 18th Street, positions auto-flatten at 3:55 PM CT.
+
+Explore qualification at: https://trade18th.com/qualification
+
+${G}`;
+ fd.claims="CME Globex equity index hours: Sun to Fri 5:00 PM to 4:00 PM CT, daily break 4:00 to 5:00 PM CT (cmegroup.com E-mini S&P 500 specs). US stock market open 8:30 AM CT. 18th Street auto-flatten 1555 CST and trading window 1700 to 1555 CST (trade18th.com/qualification). All checked 4 Nov.";
+ fd.changes.push("4 Nov: graphic v2. The rows now show the daily cycle, so the image says what the caption says (the day starts the evening before); the auto-flatten row is marked FLAT instead of the open tick; the empty bottom third carries the week’s open and close.");
+ const cl=by("Clip: Why most prop firms look the same");
+ cl.video="vid/clip_why_most_v4.mp4";
+ cl.caption=`Most prop firms look the same. We set out to build something different.
+
+Our founder Jay on building 18th Street for the long term, around developing traders.
+
+${G}`;
+ cl.notes="Industry view without naming competitors; needs Jay’s OK. v4 drops the unconfirmed “Tickblaze webinar” source label, so it can go out today; the v3 file keeps it if the source is confirmed. Post as a Collab only if the partner agrees.";
+ cl.changes.push("4 Nov: v4 render without the unconfirmed source label (QA passes). Caption now uses Jay’s own framing from the clip and names him as our founder.");
+})();
+(function(){ const fd=POSTS.find(x=>x.title==="A futures day starts the evening before"); fd.beats="Single graphic, v2 (4 Nov): the rows show the daily cycle so the image matches the caption, the auto-flatten row is marked FLAT, and the week’s open and close sit in the footnote."; })();
+(function(){ const cl=POSTS.find(x=>x.title==="Clip: Why most prop firms look the same");
+ cl.video="vid/clip_why_most_v5.mp4";
+ cl.onscreen="Question card from 0 s and keyword captions at the bottom throughout. The three middle cutaways are now animations in the glow style: an identical row of cards with one lifting out and lighting up (“something different”), chart bars that even out into the columns of an institution (“institutional quality”), and identical cards dropping onto a belt faster and faster (“selling as many evaluations as possible”). Speaker label without the unconfirmed source.";
+ cl.changes.push("4 Nov: v5 with real animations in place of the three word cards (Gabriel). Captions, question card and lockup unchanged; QA passes; the baked-in webinar slide and “evaluations sold” counter in the source stay fully covered.");
+})();
+(function(){ const cl=POSTS.find(x=>x.title==="Clip: Why most prop firms look the same");
+ cl.video="vid/clip_why_most_v6.mp4"; cl.audio="Jay’s voice only (the board edit’s thumps and clicks separated out with a free local model)";
+ cl.onscreen=cl.onscreen.replace("identical cards dropping onto a belt faster and faster","labelled evaluation cards (EVALUATION, placeholder numbers, PASS or FAIL stamps) dropping onto a belt faster and faster, with an EVALUATIONS tag and pointer");
+ cl.changes.push("5 Nov: v6. Sound effects removed so only Jay’s voice plays; the evaluation animation now labels the cards (EVALUATION, placeholder numbers, PASS or FAIL) and points to them with an EVALUATIONS tag (Gabriel). QA passes.");
+})();
+(function(){ const cl=POSTS.find(x=>x.title==="Clip: Why most prop firms look the same");
+ cl.video="vid/clip_why_most_v7.mp4";
+ cl.onscreen="Question card from 0 s and keyword captions at the bottom throughout. Jay on camera except two animations in the glow style: chart bars that even out into the columns of an institution (“institutional quality”), and labelled evaluation cards (EVALUATION, placeholder numbers, PASS or FAIL stamps, about one in three passing) dropping onto a belt faster and faster, with an EVALUATIONS tag and pointer (“selling as many evaluations as possible”). Speaker label without the unconfirmed source.";
+ cl.changes.push("5 Nov: v7. The 0:10 animation is gone and Jay is on camera there; the source had a Tickblaze slide baked in at that moment, so it is covered with 2.4 s of Jay footage from later in the talk, zoomed slightly (lips may not match exactly). About one in three evaluation cards now pass. QA passes.");
+})();
+(function(){ const cl=POSTS.find(x=>x.title==="Clip: Why most prop firms look the same");
+ cl.video="vid/clip_why_most_v8.mp4"; cl.audio="Jay’s voice only. Every board sound effect removed (blips, thumps, a 540 Hz beep and the counter boom) and checked by measurement.";
+ cl.changes.push("5 Nov: v8. The remaining sound effects are removed: V1 audio swapped in where only V2 had an effect, exact-sample subtraction of the thump, blip and beep, then voice separation for the low boom. Verified: no effect copies left, nothing between words, QA passes.");
+})();
+
+// ---- 5 Nov: Thu 5 order swapped (user): jobs-report setup at noon, chart patterns in the evening ----
+(function(){
+ const jr=POSTS.find(p=>p.title==="Jobs report tomorrow, 8:30 AM ET"), cp=POSTS.find(p=>p.title==="Two chart patterns worth learning first");
+ jr.time="12:00"; cp.time="18:00";
+ cp.why="A calm, save-worthy lesson for the evening before the jobs report, after the midday setup post.";
+ jr.changes.push("5 Nov: moved to Thu 5 noon so it leads the day (Gabriel)."); cp.changes.push("5 Nov: moved to Thu 5 at 6:00 PM ET, after the jobs-report setup (Gabriel).");
+ POSTS.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)); POSTS.forEach((p,i)=>p.id=String(i+1).padStart(2,"0"));
+ // keep each post's graphics with it (GFX was keyed by slot before)
+})();
+
+// ---- 5 Nov: Stories page (user): one clickable card per story day, graphic + what to type + steps ----
+const STORY_PLAN = [
+ {date:"2026-11-03", kind:"Question sticker", gfx:"ss3_1", frames:[
+   {t:"21:30", what:"Post the graphic, then add a Question sticker in the empty space under the headline.", copy:[["Question sticker text","What matters most to you in a prop firm?"]]},
+   {t:"21:35", what:"Share the Why 18th Street post to your story (open the post, tap Share, then Add to story).", post:"01"}]},
+ {date:"2026-11-04", kind:"Question sticker", gfx:"ss4_1", frames:[
+   {t:"12:30", what:"Post the graphic, then add a Question sticker in the empty space under the headline.", copy:[["Question sticker text","What time does your trading day start?"]]},
+   {t:"12:35", what:"Share the A futures day post to your story.", post:"02"}]},
+ {date:"2026-11-05", kind:"One big number", gfx:"ob5_1", frames:[
+   {t:"12:30", what:"Open the jobs report post, tap Share, then Add to story; Instagram adds the post as a tappable card. Upload this design as the background and line the card up with the placeholder card. Nothing to type.", post:"04", obn:true}]},
+ {date:"2026-11-06", kind:"Poll sticker + One big number", gfx:"ss6_1", frames:[
+   {t:"07:30", what:"Post the graphic, then add a Poll sticker under the headline.", copy:[["Poll question","Trading the jobs report or waiting?"],["Option 1","Trading it"],["Option 2","Waiting"]]},
+   {t:"08:05", what:"Share the Jobs day, 8:29 AM post to your story.", post:"06"},
+   {t:"18:00", what:"One big number from The week in futures. We make this graphic on the day, once Friday’s settles are in, and add it here.", post:"07", onday:true}]},
+ {date:"2026-11-08", kind:"One big number", gfx:"ob8_1", frames:[
+   {t:"18:30", what:"Open the This week post, tap Share, then Add to story. Upload this design as the background and line the card up with the placeholder card. Nothing to type.", post:"09", obn:true}]},
+ {date:"2026-11-09", kind:"Poll sticker", gfx:"ss9_1", frames:[
+   {t:"12:30", what:"Post the graphic, then add a Poll sticker with four options under the headline.", copy:[["Poll question","What do you trade most?"],["Option 1","ES"],["Option 2","NQ"],["Option 3","CL"],["Option 4","GC"]]},
+   {t:"12:35", what:"Share The Climb Gauge reel (Four phases, with a payout at every one) to your story.", post:"10"}]},
+ {date:"2026-11-10", kind:"One big number", gfx:null, frames:[
+   {t:"09:45", what:"One big number: the CPI headline figure, paired with the CPI News alert. We make this graphic on the day, after the 8:30 AM ET release, and add it here.", post:"12", onday:true}]},
+ {date:"2026-11-11", kind:"Quiz sticker", gfx:"ss11_1", frames:[
+   {t:"12:30", what:"Post the graphic, then add a Quiz sticker under the headline and mark option 1 as the correct answer.", copy:[["Quiz question","A trailing drawdown follows your…"],["Option 1 (correct)","highest end-of-day balance"],["Option 2","starting balance"],["Option 3","last trade"]],
+    note:"Checked on trade18th.com/qualification (5 Nov): the threshold sits 5% below the account’s highest end-of-day balance."},
+   {t:"12:35", what:"Share the Who we built 18th Street for post to your story.", post:"13"}]},
+ {date:"2026-11-12", kind:"Question sticker", gfx:"ss12_1", frames:[
+   {t:"12:30", what:"Post the graphic, then add a Question sticker in the empty space under the headline.", copy:[["Question sticker text","Which order type do you use for your stops?"]]},
+   {t:"12:35", what:"Share the order types carousel to your story.", post:"15"}]},
+ {date:"2026-11-13", kind:"One big number", gfx:null, frames:[
+   {t:"18:00", what:"One big number: the biggest weekly move, paired with The week in futures. We make this graphic on the day, once Friday’s settles are in, and add it here.", post:"18", onday:true}]},
+ {date:"2026-11-15", kind:"One big number", gfx:"ob15_1", frames:[
+   {t:"18:30", what:"Open the This week post, tap Share, then Add to story. Upload this design as the background and line the card up with the placeholder card. Nothing to type.", post:"20", obn:true}]}
+];
+// pin story frames to post titles so a later reorder can't break them
+STORY_PLAN.forEach(s=>s.frames.forEach(f=>{ if(f.post){ f.post=POSTS.find(p=>p.id===f.post).title; } }));
+
+// ---- 5 Nov: Thu 5 review (user): jobs report v2, chart patterns v2, story v2 ----
+(function(){
+ const jr=POSTS.find(p=>p.title==="Jobs report tomorrow, 8:30 AM ET"), cp=POSTS.find(p=>p.title==="Two chart patterns worth learning first");
+ jr.gfx=["jr1v2_1","jr1v2_2","jr1v2_3"]; jr.gver="v2";
+ jr.caption=jr.caption.replace("Five checks to run before the release, from your size to your firm’s news rule.","Five checks to run before the release, starting with your firm’s news rule.");
+ jr.changes.push("5 Nov review: Tue 3 now says JOLTS (BLS released it that day), the event slide has its own photo instead of repeating the cover, the cover says “Swipe for the checklist”, and the five checks are numbered and ordered from most to least important, starting with the news rule. Caption line updated to match.");
+ cp.gfx=["cp1v2_1","cp1v2_q1","cp1v2_x1","cp1v2_q2","cp1v2_x2","cp1v2_s"]; cp.gver="v2";
+ cp.changes.push("5 Nov review: the cover now names the topic plainly (“2 chart patterns to learn first”), as the format decision asks, and the crude oil chart no longer prints the 72.50 axis label under the 72.90 target tag.");
+ STORY_GFX["2026-11-05"]=["ob5v2_1"];
+ STORY_PLAN.find(s=>s.date==="2026-11-05").gfx="ob5v2_1";
+})();
+(function(){ const cp=POSTS.find(p=>p.title==="Two chart patterns worth learning first");
+ cp.caption="Two chart patterns worth learning first.\n\nA double bottom on crude oil and a head and shoulders on Nvidia, each on a real chart with the entry, stop and target marked.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.";
+ cp.changes.push("5 Nov review: caption matches the new cover and says what the charts show (entry, stop and target) instead of “a full trade plan”."); })();
+// ---- 5 Nov: jobs report v3 (user): dark office photo on the cover, NYSE on slide 2 ----
+(function(){ const jr=POSTS.find(p=>p.title==="Jobs report tomorrow, 8:30 AM ET");
+ jr.gfx=["jr1v3_1","jr1v3_2","jr1v3_3"]; jr.gver="v3";
+ jr.changes.push("5 Nov v3: the cover uses the dark open-plan office photo (Gabriel’s pick) and slide 2 uses the NYSE front, so the two photos say different things.");
+ STORY_GFX["2026-11-05"]=["ob5v3_1"]; STORY_PLAN.find(s=>s.date==="2026-11-05").gfx="ob5v3_1"; })();
+// ---- 5 Nov: jobs report v4 (user): slide 3 regrouped for the reading path ----
+(function(){ const jr=POSTS.find(p=>p.title==="Jobs report tomorrow, 8:30 AM ET");
+ jr.gfx=["jr1v4_1","jr1v4_2","jr1v4_3"]; jr.gver="v4";
+ jr.changes.push("5 Nov v4: slide 3 regrouped (Gabriel): headline top left, the five checks as numbered rows right under it, the CTA, tagline and logo together at the bottom, and the rings moved clear of the copy."); })();
+// ---- 5 Nov: Fri 6 review (user): Jobs day v2, poll story v2 ----
+(function(){ const jd=POSTS.find(p=>p.title==="Jobs day, 8:29 AM. Which one are you?");
+ jd.gfx=["jd1v2_1","jd1v2_2","jd1v2_3","jd1v2_4","jd1v2_5"]; jd.gver="v2";
+ jd.notes="18th Street’s FAQ bars opening a new position within three minutes either side of a red-folder release, so the sitter-outer now waits five minutes after the print, and the size-up’s kicker no longer mentions a loss limit (18th Street has no daily loss limit). Check each meme’s rights before posting.";
+ jd.changes.push("5 Nov review: copy squared with the news rule and the no-daily-loss-limit fact (sitter-outer waits five minutes; size-up “Most likely to be stopped out by 8:31”). Every type slide now starts at the same spot under the context line, the raccoon and squirrel memes are stacked and shown larger, the small label grey meets contrast, and the cover’s swipe prompt sits on the logo’s line.");
+ STORIES["2026-11-06"]="Morning poll “Holding through it or flat?” · evening One big number from The week in futures.";
+ STORY_GFX["2026-11-06"]=["ss6v2_1"];
+ const s=STORY_PLAN.find(x=>x.date==="2026-11-06"); s.gfx="ss6v2_1";
+ s.frames[0].copy=[["Poll question","Holding through the jobs report or flat?"],["Option 1","Holding through"],["Option 2","Flat"]];
+ s.frames[0].note="Reworded 5 Nov: 18th Street’s rules bar opening a new position within three minutes either side of the release, so the poll asks about holding a position opened earlier (allowed) or being flat.";
+ const wf=POSTS.find(p=>p.title==="The week in futures: 2 to 6 Nov");
+ wf.onscreen="Five contract cards (ES, NQ, YM, CL, GC): ticker, name and price in small mono, a centred bar for the move, the % under a THIS WEEK header with “$X per contract” underneath. Source line.";
+ wf.changes.push("5 Nov review: the template’s column headers now read CONTRACT and THIS WEEK, and each dollar figure says “per contract” itself, so the big % is no longer under a PER CONTRACT label.");
+})();
+// ---- 5 Nov: The week in futures (Fri 6) moved to 9:00 PM ET / 10:00 AM Sat MYT (Gabriel) ----
+(function(){ const wf=POSTS.find(p=>p.title==="The week in futures: 2 to 6 Nov");
+ wf.time="21:00";
+ wf.due="Built Sat 8:30 AM MYT (7:30 PM ET Fri) from final prices, Jay’s fast-lane OK, posted 9:00 PM ET";
+ wf.changes.push("5 Nov: moved from 5:30 PM to 9:00 PM ET (10:00 AM Sat MYT), so it’s built from final prices (GC settles 1:30 PM ET, CL 2:30 PM ET, ES/NQ/YM 4:00 PM ET; trading stops 5:00 PM ET) and checked before it goes out (Gabriel).");
+ const s=STORY_PLAN.find(x=>x.date==="2026-11-06"); s.frames[2].t="21:30";
+ POSTS.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)); POSTS.forEach((p,i)=>p.id=String(i+1).padStart(2,"0")); })();
+// ---- 6 Nov: Jobs day carousel removed (Gabriel) ----
+(function(){ const i=POSTS.findIndex(p=>p.title==="Jobs day, 8:29 AM. Which one are you?"); if(i>=0) POSTS.splice(i,1);
+ const s=STORY_PLAN.find(x=>x.date==="2026-11-06"); s.frames=s.frames.filter(f=>f.post!=="Jobs day, 8:29 AM. Which one are you?");
+ s.kind="Poll sticker + One big number";
+ POSTS.forEach((p,k)=>p.id=String(k+1).padStart(2,"0")); })();
+// ---- 6 Nov: Jobs report News alert replaces Jobs day (Gabriel) ----
+(function(){ const base=POSTS.find(p=>p.title==="CPI News alert");
+ const p=JSON.parse(JSON.stringify(base));
+ Object.assign(p,{date:"2026-11-06",time:"09:15",week:"2026-W45",title:"October jobs report News alert",
+  hook:"Written after 8:30 AM ET: “The US added [X] jobs in October”, Economist style, no full stop.",
+  onscreen:"Daily chart on charcoal: headline, “Monthly change in US jobs, thousands”, three bars (August and September as revised, October in light teal, falls drawn left of zero with a true minus sign), one line on unemployment, pay and the Fed’s 9 Dec meeting, source line. Logo bottom right.",
+  beats:"Single graphic. The layout is built (placeholder numbers); the numbers go in between 8:30 and 9:00 AM ET, then Jay’s fast-lane OK.",
+  caption:"The US added [X] jobs in October.\n\nUnemployment was [X.X]% and average hourly pay rose [X.X]% on a year ago. The Fed’s last meeting of the year is on 9 Dec.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.",
+  hashtags:"#jobsreport #marketnews #futurestrading",
+  claims:"Payrolls (October, plus August and September as revised), the unemployment rate and average hourly earnings from the BLS Employment Situation release, 6 Nov, read twice. FOMC 8 to 9 Dec from federalreserve.gov. No forecast or beat/miss call unless a named consensus source is opened that day.",
+  notes:"Same-day post: needs the fast approval lane with Jay. Facts only: no forecasts, no trade ideas, no view on what the Fed will do. If payrolls fell, the headline becomes “The US lost [X] jobs in October”.",
+  why:"Replaces the Jobs day meme explainer (removed 6 Nov). The follow-up to Thursday’s jobs report setup: what the report actually showed, within an hour of the release.",
+  ref:"", draftNote:"Layout built, numbers on the day", due:"Numbers in by 9:00 AM ET (10:00 PM MYT), post 9:15 AM ET (10:15 PM MYT)",
+  story:"", gfx:["najobs_tpl"], gstate:"onday", changes:["6 Nov: new, replaces Jobs day (Gabriel). Layout built with placeholder numbers; the kit’s bar chart now draws falls left of zero."],
+  crosspost:"X (@trade18th): the graphic with the caption’s first line"});
+ POSTS.push(p);
+ POSTS.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)); POSTS.forEach((q,i)=>q.id=String(i+1).padStart(2,"0")); })();
+// ---- 6 Nov: How to read a jobs report (explainer) added before the release (Gabriel) ----
+(function(){ const base=POSTS.find(p=>p.title==="How to trade volume profile");
+ const p=JSON.parse(JSON.stringify(base));
+ Object.assign(p,{date:"2026-11-06",time:"07:00",week:"2026-W45",title:"How to read a jobs report in 30 seconds",format:"Carousel",
+  board:"Explainer (News brief family)",boardId:"",skill:"18th-street-news-desk",pillar:"Futures education & strategies",
+  hook:"Cover: “How to read a jobs report in 30 seconds” over the bright office photo, with the four numbers listed as rows and “Swipe for the four →”.",
+  onscreen:"One slide per number (jobs added, unemployment rate, pay growth, revisions): “What it is”, “Why traders care” and where to find it in the BLS release. Close: the four in order, one line on the Fed’s two goals, “Save this for the next first Friday.”",
+  beats:"6 slides: cover, four numbers, close. No live figures, so it’s ready now.",
+  caption:"How to read a jobs report in 30 seconds.\n\nThe four numbers traders check first, in order, before the October report lands at 8:30 AM ET.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.",
+  hashtags:"#jobsreport #futurestrading #tradingeducation",
+  claims:"Survey sources, table names (Summary Table A household, Summary Table B establishment) and the two-month revisions checked on bls.gov’s Employment Situation release, 6 Nov. The Fed’s two goals are maximum employment and stable prices.",
+  notes:"Generic education, no product claims, no forecasts.",
+  why:"Added 6 Nov (Gabriel): a save-worthy primer posted before the 8:30 AM ET release, then the News alert with the real numbers at 9:15 AM ET.",
+  ref:"", draftNote:"", due:"Ready", story:"", gfx:["rj1_1","rj1_2","rj1_3","rj1_4","rj1_5","rj1_6"], gver:"v1", gstate:"ready",
+  changes:["6 Nov: new (Gabriel). Built in the new Explainer format, laid out for the reading path."], fromSanti:null, fromBoard:false,
+  crosspost:"X (@trade18th): the cover with the four numbers as a short list"});
+ POSTS.push(p);
+ const s=STORY_PLAN.find(x=>x.date==="2026-11-06");
+ s.frames.splice(1,0,{t:"07:35",what:"Share the How to read a jobs report carousel to your story.",post:"How to read a jobs report in 30 seconds"});
+ POSTS.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)); POSTS.forEach((q,i)=>q.id=String(i+1).padStart(2,"0")); })();
+// ---- 6 Nov: design review v2 for the two new posts (Gabriel) ----
+(function(){ const rj=POSTS.find(p=>p.title==="How to read a jobs report in 30 seconds"), na=POSTS.find(p=>p.title==="October jobs report News alert");
+ rj.gfx=["rj1v2_1","rj1v2_2","rj1v2_3","rj1v2_4","rj1v2_5","rj1v2_6"]; rj.gver="v2";
+ rj.changes.push("6 Nov review v2: copy trimmed (on-graphic words 186 → 139), one accent per slide (only “Why traders care” has the teal edge), each slide laid out in one column on an 8pt rhythm, “Where to find it” fixed at the same height on every point slide, cover prompt back to “Swipe →”.");
+ na.gfx=["najobs_tpl2"];
+ na.onscreen="Headline with the jobs figure in light teal (72px), “Monthly change in US jobs, thousands”, three bars (August and September as revised, October in teal), then two stat blocks (unemployment, hourly pay year on year) and one note on the Fed’s 9 Dec meeting. Mono source line, logo bottom right.";
+ na.changes.push("6 Nov review v2: the figure in the headline is teal to tie it to the October bar, the paragraph is now two stat blocks plus a one-line note, everything sits in one column on an 8pt rhythm, and the source line is mono like the other news formats."); })();
+// ---- 6 Nov: jobs report News alert pushed back 3 hours (Gabriel) ----
+(function(){ const na=POSTS.find(p=>p.title==="October jobs report News alert");
+ na.time="12:15"; na.due="Numbers in after 8:30 AM ET (9:30 PM MYT), Jay’s OK, post 12:15 PM ET (1:15 AM Sat MYT)";
+ na.beats="Single graphic. The layout is built (placeholder numbers); the numbers go in after the 8:30 AM ET release, then Jay’s fast-lane OK.";
+ na.changes.push("6 Nov: moved from 9:15 AM to 12:15 PM ET (1:15 AM Sat MYT), 3 hours later (Gabriel).");
+ POSTS.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)); POSTS.forEach((q,i)=>q.id=String(i+1).padStart(2,"0")); })();
+
+const PIL = {
+ "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
+ "Market insights & analysis":{k:"mkt",c:"var(--mkt)",target:25,short:"Market insights"},
+ "18th Street differentiation":{k:"dif",c:"var(--dif)",target:20,short:"Differentiation"},
+ "Traders & community":{k:"com",c:"var(--com)",target:10,short:"Community"},
+ "Trading tech & industry":{k:"tec",c:"var(--tec)",target:5,short:"Tech & industry"}
+};
+const GB={ready:'<span class="tag g">Graphics ✓</span>',onday:'<span class="tag">On the day</span>',video:'<span class="tag">Video · next</span>',todo:''};
+const DOW=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+const off=new Set();
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function d(iso){const [y,m,dd]=iso.split("-").map(Number);return new Date(Date.UTC(y,m-1,dd));}
+function fmt(iso){const x=d(iso);return DOW[(x.getUTCDay()+6)%7]+" "+x.getUTCDate()+" Nov";}
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");setTimeout(()=>e.classList.remove("on"),1400);}
+function copy(t,msg){navigator.clipboard.writeText(t).then(()=>toast(msg||"Copied"),()=>toast("Copy blocked here: select the text instead"));}
+
+$("#sPosts").textContent=POSTS.length;
+const BOARD_REUSE=POSTS.filter(p=>p.fromBoard);
+$("#sBoard").textContent=BOARD_REUSE.length;
+$("#sSanti").textContent=POSTS.filter(p=>p.fromSanti).length+" + Stories";
+
+// legend
+$("#legend").innerHTML=Object.entries(PIL).map(([n,v])=>`<span class="lg" data-p="${esc(n)}"><span class="dot" style="background:${v.c}"></span>${v.short}</span>`).join("")+
+ `<span class="tag s">From W45</span><span class="tag a">Client-approved format</span>`;
+document.querySelectorAll(".lg").forEach(e=>e.onclick=()=>{const p=e.dataset.p;off.has(p)?off.delete(p):off.add(p);e.classList.toggle("off");apply();});
+function apply(){document.querySelectorAll(".card").forEach(c=>c.classList.toggle("hidden",off.has(c.dataset.p)));}
+
+// grid
+function buildGrid(){
+ let h=DOW.map(x=>`<div class="dh mono">${x}</div>`).join("");
+ const start=d("2026-11-02");
+ const weeks=[["2026-W45","2 to 8 Nov"],["2026-W46","9 to 15 Nov"]];
+ for(let w=0;w<2;w++){
+  const wp=POSTS.filter(p=>p.week===weeks[w][0]).length;
+  h+=`<div class="wk"><span class="mono" style="color:var(--ink2)">${weeks[w][0]} · ${weeks[w][1]}</span><span class="mono">${wp} feed posts in the window</span></div>`;
+  for(let i=0;i<7;i++){
+   const x=new Date(start.getTime()+(w*7+i)*864e5);
+   const iso=x.toISOString().slice(0,10);
+   const inW=iso>="2026-11-03"&&iso<="2026-11-15";
+   const ps=POSTS.filter(p=>p.date===iso).sort((a,b)=>a.time.localeCompare(b.time));
+   const ev=(EVENTS[iso]||[]).map(e=>`<div class="ev">${esc(e)}</div>`).join("");
+   const cards=ps.map(p=>{const pl=PIL[p.pillar];return `<div class="card" style="--c:${pl.c}" data-id="${p.id}" data-p="${esc(p.pillar)}">
+     <div class="m"><span class="mono" style="color:var(--ink)"><b>${myt(p.date,p.time)}</b></span><span class="mono" style="color:var(--ink2)">${et(p.time)}</span><span class="tag">${esc(p.format)}</span>${p.fromSanti?'<span class="tag s">W45</span>':''}${p.approved?'<span class="tag a">Approved</span>':''}${p.video?'<span class="tag g">Video ✓</span>':GB[p.gstate]}</div>
+     <div class="t">${esc(p.title)}</div>
+     <div class="mono" style="font-size:10px;letter-spacing:.05em">${esc(p.board)}</div></div>`}).join("");
+   const st=inW&&STORIES[iso]?`<div class="st${STORY_PLAN.some(s=>s.date===iso)?" click":""}" data-sd="${iso}"><b>STORY</b> ${esc(STORIES[iso])}</div>`:"";
+   h+=`<div class="day ${inW?"":"out"}"><div class="dn"><b>${x.getUTCDate()}</b><span class="mono">${inW?"":"outside window"}</span></div>${inW?ev:""}${cards}${st}</div>`;
+  }
+ }
+ $("#grid").innerHTML=h;
+ document.querySelectorAll(".card").forEach(c=>c.onclick=()=>open(c.dataset.id));
+ document.querySelectorAll(".st.click").forEach(c=>c.onclick=()=>openStory(c.dataset.sd));
+}
+buildGrid();
+
+// mix
+(function(){
+ const n=POSTS.length;
+ $("#mix").innerHTML=Object.entries(PIL).map(([name,v])=>{const c=POSTS.filter(p=>p.pillar===name).length;const pct=Math.round(c/n*100);
+  return `<div class="mx" style="--c:${v.c}"><div class="n"><span class="dot" style="background:${v.c}"></span>${v.short}</div><b>${pct}%</b> <span class="mono">${c} posts · target ${v.target}%</span><div class="bar"><i style="width:${pct}%"></i><s style="left:${v.target}%"></s></div></div>`}).join("");
+document.getElementById('mixnote').textContent='Bar = share of the '+n+' feed posts · white tick = the client’s target split';
+})();
+
+// table
+$("#tbl").innerHTML=`<tr><th>#</th><th>When (ET)</th><th>Post</th><th>Format</th><th>Board format</th><th>Pillar</th><th>Compliance</th><th>Draft to Jay</th></tr>`+
+ POSTS.map(p=>`<tr class="r" data-id="${p.id}"><td class="mono">${p.id}</td><td>${fmt(p.date)} · <b>${myt(p.date,p.time)}</b> · ${et(p.time)}</td><td><b>${esc(p.title)}</b>${p.fromSanti?' <span class="tag s">W45</span>':''}</td><td>${p.format}</td><td>${esc(p.board)}</td><td><span class="dot" style="display:inline-block;background:${PIL[p.pillar].c}"></span> ${PIL[p.pillar].short}</td><td>${p.compliance}</td><td>${esc(p.due)}</td></tr>`).join("");
+document.querySelectorAll("tr.r").forEach(r=>r.onclick=()=>open(r.dataset.id));
+
+// changes view
+(function(){
+ const s=POSTS.filter(p=>p.fromSanti);
+ let h=`<h2>What changed from Santi’s W45</h2>
+ <p>Santi’s six rows are all kept in some form. The biggest changes: the calendar now runs on the board’s formats, so the client is choosing from looks it has already seen; the two fixed slots (Sunday This week, Friday The week in futures) are in; the big data days get the news formats; and each topic appears once in the fortnight.</p>
+ <h3>Across the whole calendar</h3><ul>
+ <li><b>Window and volume.</b> Tue 3 to Sun 15 Nov: 21 feed posts (Jobs day replaced by a jobs report explainer and News alert, 6 Nov), two on most weekdays and one on weekends, CPI day and today, plus Stories every trading day.</li>
+ <li><b>Every post has a board format and an owner skill.</b> 14 posts reuse drafts the client has seen on the board (some re-rendered or fixed), 1 reuses Santi’s draft, and 5 are new: 3 news posts written on the day, order types and Trade of the Week.</li>
+ <li><b>Fixed slots added.</b> This week every Sunday and The week in futures every Friday, both missing from W45.</li>
+ <li><b>Topics spread out.</b> Revenge trading was in three posts in two days; it comes out of this fortnight and gets one dedicated reel in the next calendar (Santi’s concept, kept). Payouts appear once, in The Climb Gauge on Mon 9.</li>
+ <li><b>Copy rules.</b> Removed the “not X but Y” lines, the client triplet and the placeholder disclaimer. Captions use the standard disclosure lines, three hashtags and one comment question each.</li>
+ <li><b>CTAs.</b> Discord CTAs are held until the client confirms the name and invite. Each post asks one easy question instead.</li>
+ <li><b>Fact checks.</b> Firm figures re-checked on trade18th.com/progression today. Santi’s payroll numbers are pulled until they’re checked on bls.gov.</li>
+ <li><b>Posting times.</b> Kept Santi’s 8:00, 12:00 and 18:00 ET pattern, with news posts timed to the release. We test and adjust once insights come in.</li>
+ <li><b>Week 1 is serious (4 Nov).</b> No meme or funny posts from Tue 3 to Sun 8 apart from Friday’s Jobs day meme explainer. Moved to the next calendar: ${MOVED_OUT.join(", ")}, and Santi’s revenge-trading reel.</li></ul><h3>Row by row</h3>`;
+ s.forEach(p=>{h+=`<div class="ch"><div class="h"><b>${esc(p.fromSanti)}</b><span class="mono">now ${fmt(p.date)} · ${myt(p.date,p.time)} (${et(p.time)}) · post ${p.id}</span></div><div class="mono" style="margin-top:6px">→ ${esc(p.title)}</div><ul>${p.changes.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div>`});
+ h+=`<div class="ch"><div class="h"><b>${esc(SANTI_STORIES.title)}</b><span class="mono">now the Story lane, every trading day</span></div><ul>${SANTI_STORIES.changes.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div>`;
+ $("#v-chg").innerHTML=h;
+})();
+
+// graphics view
+(function(){
+ let h=`<div class="sec"><h2>Graphics v1, 3 to 15 Nov</h2><p>Every graphic post and story in the window, in posting order. Each went through the brand checklist and a separate visual review. Click a slide to open it full size; the full-resolution PNGs are in the zip sent in chat. Three posts are made on the day once the data is out. The three meme reels are the finished board videos, The Climb Gauge has its rebuilt end card, and both clips are re-rendered. Trade of the Week waits on Jay’s trade; its fallback carousel is ready.</p></div>`;
+ const days=[...new Set([...POSTS.map(p=>p.date),...Object.keys(STORY_GFX)])].sort();
+ days.forEach(dy=>{
+  POSTS.filter(p=>p.date===dy).sort((a,b)=>a.time.localeCompare(b.time)).forEach(p=>{
+   const fb=p.fallbackGfx?`<p class="mono" style="margin-top:10px">Fallback if Jay’s trade doesn’t arrive</p><div class="thumbs">${p.fallbackGfx.map(g=>`<a href="img/${g}.jpg"><img src="img/${g}.jpg"></a>`).join("")}</div>`:"";
+   const body=p.video?`<video src="${p.video}" controls muted playsinline style="width:260px;display:block;border:1px solid var(--line);margin:8px 0 18px"></video>`:p.gfx?`<div class="thumbs">${p.gfx.map(g=>`<a href="img/${g}.jpg"><img src="img/${g}.jpg" alt="${g}"></a>`).join("")}</div>`:`<p class="mono">${{onday:"Made on the day, after the data is out",video:"Video: next round",todo:"To make"}[p.gstate]}</p>`;
+   h+=`<div class="gp"><div class="mono">Post ${p.id} · ${fmt(p.date)} · ${myt(p.date,p.time)} · ${et(p.time)} · ${esc(p.board)}</div><h3>${esc(p.title)}</h3>${body}${fb}</div>`;});
+  if(STORY_GFX[dy]) h+=`<div class="gp"><div class="mono">Story · ${fmt(dy)}</div><h3>${esc(STORIES[dy]||"")}</h3><div class="thumbs st">${STORY_GFX[dy].map(g=>`<a href="img/${g}.jpg"><img src="img/${g}.jpg" alt="${g}"></a>`).join("")}</div></div>`;
+ });
+ document.getElementById("v-gfx").innerHTML=h;
+})();
+
+// review view
+(function(){
+ let h=`<h2>Social media and brand review</h2><p>${esc(REVIEW.skills)}</p><p>${esc(REVIEW.summary)}</p>
+ <table><tr><th>Issue</th><th>Where</th><th>Severity</th><th>What I changed</th></tr>${REVIEW.rows.map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td></tr>`).join("")}</table>
+ <h3>Kept as it was</h3><ul>${REVIEW.kept.map(k=>`<li>${esc(k)}</li>`).join("")}</ul>`;
+ document.getElementById("v-rev").innerHTML=h;
+})();
+
+// drawer
+function open(id){
+ const p=POSTS.find(x=>x.id===id); const pl=PIL[p.pillar];
+ const full=p.caption+"\n\n"+p.hashtags;
+ const F=(k,v)=>v?`<div>${k}</div><div>${v}</div>`:"";
+ $("#dr").innerHTML=`<button class="x" onclick="closeD()">Close</button>
+ <div class="mono">Post ${p.id} · ${fmt(p.date)} · <b style="color:var(--ink)">${myt(p.date,p.time)}</b> · ${et(p.time)} · ${p.week}</div>
+ <h2>${esc(p.title)}</h2>
+ <div class="m" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px"><span class="tag" style="color:${pl.c};border-color:${pl.c}">${pl.short}</span><span class="tag">${p.format}</span><span class="tag">${esc(p.board)}</span>${p.approved?'<span class="tag a">Client-approved format</span>':''}${p.fromSanti?'<span class="tag s">From W45</span>':''}</div>
+ ${p.fromSanti?`<div class="box"><div class="mono">Improved from Santi’s “${esc(p.fromSanti)}”</div><ul>${p.changes.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div>`:""}
+ ${p.video?`<video src="${p.video}" controls muted playsinline style="width:260px;display:block;border:1px solid var(--line);margin:8px 0 18px"></video>`:p.gfx?`<div class="mono">Graphics ${p.gver||"v1"} · click a slide to open it full size</div><div class="thumbs">${p.gfx.map(g=>`<a href="img/${g}.jpg"><img src="img/${g}.jpg" alt="${g}"></a>`).join("")}</div>`:`<div class="mono" style="margin:12px 0">${{onday:"Graphic made on the day, after the data is out",video:"Video: next round",todo:""}[p.gstate]}</div>`}
+ <div class="f">
+  ${F("Hook",esc(p.hook))}${F("On-screen text",esc(p.onscreen))}${F("Script / beats",esc(p.beats))}
+ </div>
+ <div class="mono" style="display:flex;justify-content:space-between;align-items:center">Caption + hashtags <button class="btn" id="cc">Copy caption</button></div>
+ <pre>${esc(full)}</pre>
+ <div class="f">
+  ${F("Owner skill",esc(p.skill))}${F("Platform",esc(p.platform)+(p.crosspost?" · re-cut for "+esc(p.crosspost):""))}${F("Production",esc(p.production))}
+  ${F("Status",esc(p.status))}${F("Compliance",esc(p.compliance))}${F("Compliance notes",esc(p.notes))}
+  ${F("Claims used",esc(p.claims))}${F("Why this week",esc(p.why))}${F("Draft to Jay by",esc(p.due))}
+  ${F("Fallback",esc(p.fallback))}${p.fallbackGfx?`<div></div><div class="thumbs">${p.fallbackGfx.map(g=>`<a href="img/${g}.jpg"><img src="img/${g}.jpg"></a>`).join("")}</div>`:""}${F("Paired story",esc(p.story))}${F("Audio",esc(p.audio))}
+  ${F("Competitor reference",p.ref?`<a href="${esc(p.ref)}">${esc(p.ref)}</a>`:"")}
+  ${F("Draft",p.draft?`<a href="${esc(p.draft)}">${esc(p.draftNote||p.draft)}</a>`:esc(p.draftNote))}
+  ${F("AI disclosure on",p.ai?"Yes":"No")}${F("Safe for silent approval",(p.silent?"Yes":"No")+" (never treated as approval; legal and Jay review every post)")}${F("Est. cost","$0")}
+ </div>`;
+ $("#cc").onclick=()=>copy(full,"Caption copied");
+ $("#dr").classList.add("on");$("#ov").classList.add("on");$("#dr").scrollTop=0;
+}
+
+// stories
+const CPS=[]; let DL=null;
+(async()=>{try{if(window.claude&&claude.use){DL=await claude.use("downloads");if(DL)document.querySelectorAll("[data-dl]").forEach(b=>b.style.display="inline-block");}}catch(e){}})();
+function myt(date,t){const [h,m]=t.split(":").map(Number);const x=new Date(Date.UTC(...date.split("-").map((v,i)=>i==1?v-1:+v),h+5+8,m));
+ const hh=x.getUTCHours(),mm=String(x.getUTCMinutes()).padStart(2,"0");const iso=x.toISOString().slice(0,10);
+ return `${(hh%12)||12}:${mm} ${hh<12?"AM":"PM"} ${iso===date?"":fmt(iso).split(" ")[0]+" "}MYT`;}
+function et(t){const [h,m]=t.split(":").map(Number);return `${(h%12)||12}:${String(m).padStart(2,"0")} ${h<12?"AM":"PM"} ET`;}
+function storyHTML(s){
+ const pic=s.gfx?`<a href="img/story/18th-Street_story_${s.gfx}.png"><img src="img/${s.gfx}.jpg" alt="${s.gfx}"></a><button class="btn dl" data-dl="img/story/18th-Street_story_${s.gfx}.png" data-fn="18th-Street_story_${s.date}.png" style="display:${DL?"inline-block":"none"}">Download PNG</button>`
+  :`<div class="ph">Graphic made on the day, after the data is out</div>`;
+ const fr=s.frames.map((f,i)=>{const p=f.post?POSTS.find(x=>x.title===f.post):null;
+  const cps=(f.copy||[]).map(([k,v])=>{CPS.push(v);return `<div class="cp"><div><div class="k">${esc(k)}</div><div class="v">${esc(v)}</div></div><button class="btn" data-cp="${CPS.length-1}">Copy</button></div>`}).join("");
+  return `<div class="fr"><div class="hd"><span class="mono" style="color:var(--ink2)">Frame ${i+1}</span><b>${et(f.t)}</b><span class="mono">${myt(s.date,f.t)}</span>${f.onday?'<span class="tag">On the day</span>':""}</div>
+   <div>${esc(f.what)}</div>${cps}${f.note?`<div class="mono" style="margin-top:6px;font-size:11px">${esc(f.note)}</div>`:""}
+   ${p?`<div class="mono" style="margin-top:8px">Post: <a href="#" data-op="${p.id}" style="color:var(--ink)">${esc(p.title)}</a> · ${myt(p.date,p.time)} · ${et(p.time)}</div>`:""}
+   ${f.obn?`<div class="mono" style="margin-top:6px;font-size:11px">If Instagram won’t let you put the design behind the card, post the design as one frame and the shared post as the next.</div>`:""}</div>`}).join("");
+ return `<div class="sc" id="sto-${s.date}"><div class="pic">${pic}</div><div><div class="mono">Story · ${fmt(s.date)}</div><h3>${esc(s.kind)}</h3><div style="color:var(--ink3)">${esc(STORIES[s.date]||"")}</div>${fr}</div></div>`;
+}
+function wireStory(root){
+ root.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>copy(CPS[+b.dataset.cp],"Copied"));
+ root.querySelectorAll("[data-dl]").forEach(b=>{if(DL)b.style.display="inline-block";b.onclick=async()=>{
+  if(!DL)return; try{const r=await fetch(b.dataset.dl);const blob=await r.blob();await DL.save({filename:b.dataset.fn,data:blob});toast("Saved");}
+  catch(e){toast(e&&e.code==="declined"?"Download cancelled":"Download not available here: open the image and save it");}};});
+ root.querySelectorAll("[data-op]").forEach(a=>a.onclick=e=>{e.preventDefault();open(a.dataset.op);});
+}
+(function(){
+ const v=$("#v-sto");
+ v.innerHTML=`<div class="sec"><h2>Stories, 3 to 15 Nov</h2><p>One card per story day, in posting order. Each frame has its time in ET and MYT, what to do, and copy buttons for anything you type into a sticker. Stories have no caption, so the sticker text is the only copy. Tap a graphic to open it full size, or use Download PNG for the 1080 × 1920 file. Each story goes up within an hour of the post it shares, as the playbook asks.</p></div>`+STORY_PLAN.map(storyHTML).join("");
+ wireStory(v);
+})();
+function openStory(date){const s=STORY_PLAN.find(x=>x.date===date);if(!s)return;
+ $("#dr").innerHTML=`<button class="x" onclick="closeD()">Close</button>`+storyHTML(s).replace('class="sc"','class="sc" style="grid-template-columns:170px 1fr;border:0;padding-top:30px"');
+ wireStory($("#dr"));$("#dr").classList.add("on");$("#ov").classList.add("on");$("#dr").scrollTop=0;}
+function closeD(){$("#dr").classList.remove("on");$("#ov").classList.remove("on");}
+$("#ov").onclick=closeD; document.addEventListener("keydown",e=>{if(e.key==="Escape")closeD();});
+
+// nav
+document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>{
+ document.querySelectorAll("#nav button").forEach(x=>x.classList.toggle("on",x===b));
+ document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id==="v-"+b.dataset.v));
+});
+
+// csv
+(function(){
+ const cols=["Post","Publish date","Week","Format","Platform","Pillar","Production","Status","Compliance","Hook","On-screen text","Script / beats","Caption","Hashtags","Claims used","Compliance notes","Why this week","Competitor reference","Audio","Draft","Est. cost","AI disclosure on","Safe for silent approval"];
+ const q=v=>'"'+String(v==null?"":v).replace(/"/g,'""')+'"';
+ const rows=POSTS.map(p=>[p.title,`${p.date}T${p.time}:00-05:00`,p.week,p.format,p.platform,p.pillar,p.production,p.status,p.compliance,p.hook,p.onscreen,p.beats,p.caption,p.hashtags,p.claims,p.notes,p.why,p.ref,p.audio,p.draft,0,p.ai?"Yes":"No",p.silent?"Yes":"No"].map(q).join(","));
+ const t=[cols.map(q).join(","),...rows].join("\n");
+ $("#csv").value=t; $("#copyCsv").onclick=()=>copy(t,"CSV copied");
+})();
+</script>
+</body>
+</html>
