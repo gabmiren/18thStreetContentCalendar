@@ -1528,6 +1528,12 @@ STORY_PLAN.forEach(s=>s.frames.forEach(f=>{ if(f.post){ f.post=POSTS.find(p=>p.i
  p.gfx=["vp1v2_1","vp1v2_q1","vp1v2_x1","vp1v2_q2","vp1v2_x2","vp1v2_s"]; p.gver="v2";
  p.caption="How to trade volume profile.\n\nWhere the trading actually happened, and the POC reclaim setup it gives you, with a real ES example from 2 Oct.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.";
  p.changes.push("7 Nov v2 (Sat check): slide 5 chart now labels the POC line 7,775 so it matches slide 3 (the 7,776 tag is the entry); the 7,760 axis label no longer sits under the stop tag; caption no longer says “the last jobs day”, since that is now 6 Nov."); })();
+// ---- 7 Nov: Sun 8 check, This week v2 + story v2 ----
+(function(){ const p=POSTS.find(x=>x.title==="This week: 9 to 13 Nov");
+ p.gfx=["wk9v2_1","wk9v2_2","wk9v2_3","wk9v2_4","wk9v2_5"]; p.gver="v2";
+ p.changes.push("7 Nov v2 (Sun check): last slide now says “Tuesday, 8:30 AM ET” so the time zone matches the event slides; the rings moved clear of the headline. Dates re-checked: CPI Tue 10 Nov and PPI Fri 13 Nov at 8:30 AM ET (BLS schedule); SIFMA recommends a full bond market close on Wed 11 Nov, NYSE open.");
+ const sp=(Array.isArray(STORY_PLAN)?STORY_PLAN:Object.values(STORY_PLAN)).find(s=>s.date==="2026-11-08"); if(sp){ sp.gfx="ob8v2_1"; }
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
