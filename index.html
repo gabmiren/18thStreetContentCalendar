@@ -1543,6 +1543,10 @@ STORY_PLAN.forEach(s=>s.frames.forEach(f=>{ if(f.post){ f.post=POSTS.find(p=>p.i
 (function(){ const p=POSTS.find(x=>x.title==="The week in futures: 2 to 6 Nov");
  p.caption="Oil futures had their biggest weekly drop since 2022.\n\nCrude fell 12.8% and gold rose 4.5%. Stock index futures fell too, led by the Nasdaq 100 at 5.1%. The dollar figure under each move is what one contract gained or lost if held all week.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.\n\n#futurestrading #crudeoil #gold";
  p.changes.push("7 Nov: caption rewritten in plain sentences; the second line was a fragment."); })();
+// ---- 7 Nov: week in futures final caption (Gabriel) ----
+(function(){ const p=POSTS.find(x=>x.title==="The week in futures: 2 to 6 Nov");
+ p.caption="Oil futures had their biggest weekly drop since 2022.\n\nCrude fell 12.8% and gold rose 4.5%. Stock index futures fell too, led by the Nasdaq 100 at 5.1%.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.\n\n#futurestrading #weeklyrecap #daytrading";
+ p.changes.push("7 Nov: final caption from Gabriel."); })();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
