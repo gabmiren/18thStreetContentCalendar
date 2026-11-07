@@ -1539,6 +1539,10 @@ STORY_PLAN.forEach(s=>s.frames.forEach(f=>{ if(f.post){ f.post=POSTS.find(p=>p.i
  p.gfx=["wd2_1"]; p.gver="v1";
  p.caption="The week in futures: oil sank, gold rose.\n\nCrude fell 12.8% on the week while gold gained 4.5%. ES, NQ, YM, CL and GC, with each move in dollars per contract.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.\n\n#futurestrading #crudeoil #gold";
  p.changes=(p.changes||[]); p.changes.push("7 Nov: built from December contract settles, 30 Oct to 6 Nov (Barchart; 30 Oct also checked against last week’s board, CL/GC against Bloomberg, Investrade, CME). ES 7,614 to 7,402 (−2.8%, −$10,600); NQ 28,534 to 27,085.25 (−5.1%, −$28,975); YM 51,918 to 51,385 (−1.0%, −$2,665); CL $104.12 to $90.83 (−12.8%, −$13,290); GC $3,898.90 to $4,074.90 (+4.5%, +$17,600). Bars scaled to 13% so oil's move reads true."); })();
+// ---- 7 Nov: week in futures caption rewrite ----
+(function(){ const p=POSTS.find(x=>x.title==="The week in futures: 2 to 6 Nov");
+ p.caption="Oil futures had their biggest weekly drop since 2022.\n\nCrude fell 12.8% and gold rose 4.5%. Stock index futures fell too, led by the Nasdaq 100 at 5.1%. The dollar figure under each move is what one contract gained or lost if held all week.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.\n\n#futurestrading #crudeoil #gold";
+ p.changes.push("7 Nov: caption rewritten in plain sentences; the second line was a fragment."); })();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
