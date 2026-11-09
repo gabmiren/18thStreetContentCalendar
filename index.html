@@ -1565,6 +1565,16 @@ STORY_PLAN.forEach(s=>s.frames.forEach(f=>{ if(f.post){ f.post=POSTS.find(p=>p.i
  const sg=(d,g)=>{const s=S.find(x=>x.date===d); if(s) s.gfx=g;};
  sg("2026-11-09","ss9v3_1"); sg("2026-11-11","ss11v3_1"); sg("2026-11-12","ss12v3_1"); sg("2026-11-15","ob15v2_1");
 })();
+// ---- 9 Nov: design loop round 4 ----
+(function(){
+ const set=(t,g,v,note)=>{const p=POSTS.find(x=>x.title===t); if(!p) throw new Error('missing '+t); p.gfx=g; p.gver=v; p.changes.push(note);};
+ set("4 signs you’re overtrading",["ov1v4_1","ov1v4_2","ov1v4_3","ov1v4_4","ov1v4_5","ov1v4_6"],"v4","9 Nov v4 (round 4, passed): bigger cover meme from Gabriel’s sharper file, closing line 88px, slide 4 headline back in line, P&L cat at native size.");
+ set("All traders should know: order types",["ot1v5_1","ot1v5_q1","ot1v5_q2","ot1v5_q3","ot1v5_q4","ot1v5_s"],"v5","9 Nov v5 (round 4, not passed): even 48px panel padding, flat background with no grid, wider cheat-sheet gap. Open: cover meme outweighs the headline, Market diagram fill placement, diagrams fill too little of the panel.");
+ set("This week: 16 to 20 Nov",["wk16v5_1","wk16v5_2","wk16v5_3","wk16v5_4","wk16v5_5"],"v5","9 Nov v5 (round 4, not passed): 8px photo gutters, time row under the date chip, roomier timeline labels, supermarket photo darkened and desaturated. Open: bright sky on the Fed photo.");
+ set("Who we built 18th Street for",["wy5v3_1"],"v3","9 Nov v3 (round 4, passed): headline line height 1.05, photo circle fully inside the frame.");
+ const S=Array.isArray(STORY_PLAN)?STORY_PLAN:Object.values(STORY_PLAN);
+ const sg=(d,g)=>{const s=S.find(x=>x.date===d); if(s) s.gfx=g;}; sg("2026-11-11","ss11v4_1"); sg("2026-11-15","ob15v3_1");
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
