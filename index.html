@@ -1654,6 +1654,30 @@ const X_PLAN=[
    note:"Cover and the three big events in the post, the closing slide in the reply. Name Nvidia as a market event only, with no view on the stock."}
  ]}
 ];
+// ---- 10 Nov: Wed 11 Nov 18:00 swaps the FOMC meme reel for the rebuilt "Get paid at every phase" clip ----
+(function(){
+ const p=POSTS.find(x=>x.id==="16");
+ Object.assign(p,{
+  title:"Clip: Get paid at every phase",format:"Reel",board:"Clips from long form",boardId:"rl5",skill:"18th-street-long-form-clips",
+  pillar:"18th Street differentiation",production:"Founder clip",silent:false,ai:false,
+  hook:"Question card from 0 s: “When should a prop firm start paying you?”",
+  onscreen:"Jay in the video band with captions; brand cards for the phase payouts, the four phase names and plan fee vs Phase 1 payout at every plan size; closing card “Full rules at trade18th.com”. 30.4 s.",
+  beats:"Jay: you get paid at every phase, a fixed amount four times before the Live account, and at every plan size the Phase 1 payout is more than the plan fee.",
+  caption:"A fixed payout each time you complete a phase.\n\nJay on why 18th Street pays from Phase 1, and how the Phase 1 payout is more than the plan fee at every plan size.\n\nRead the rules first: trade18th.com/qualification\n\nPhases 1–4 are simulated with notional capital. Payouts, advancement and profitability are not guaranteed. Futures trading involves substantial risk.",
+  hashtags:"#propfirm #futurestrading #futurestrader",
+  claims:"Plan fees and Phase 1 payouts ($265/$500, $525/$1,000, $1,000/$2,000, $1,595/$3,000), four phases and their names, “Phase payouts are fixed amounts, paid on completing each phase”: all checked on trade18th.com/qualification, 10 Nov.",
+  notes:"Product post with payouts: needs Jay’s explicit OK. Source label “Tickblaze webinar” still to confirm, and whether Tickblaze agrees to a Collab. Rebuilt from the board’s Version 2 file with the clips kit (QA PASS: 30.4 s, -14 LUFS, captions 0% mismatch).",
+  why:"Swapped in for the FOMC meme reel. A trust post in Jay’s own words on the firm’s clearest difference, mid-week between the order types and eval posts.",
+  audio:"Source audio (Jay)",draft:"",draftNote:"Video ready (v2)",
+  video:"vid/clip_get_paid_v2.mp4",gstate:"ready",crosspost:"YouTube Shorts",fromBoard:true,
+  changes:["10 Nov: replaces “Holding my long through FOMC”. The clip was rebuilt from the board with the clips kit: question card, brand cards, ink captions with teal key words."]
+ });
+ for(const d of X_PLAN) for(const x of d.posts) if(x.vid==="vid/rl3_fomc.mp4"){
+  Object.assign(x,{from:"Clip: Get paid at every phase",vid:"vid/clip_get_paid_v2.mp4",
+   text:"When should a prop firm start paying you?\n\nJay on why 18th Street pays a fixed amount on completing each phase, starting from Phase 1.",
+   note:"Native upload. Product post with payouts: needs Jay’s explicit OK. No disclaimer on X; legal may still want the simulated-phases line here."});
+ }
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
