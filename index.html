@@ -111,6 +111,13 @@ textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1p
 <style>
 #lb{position:fixed;inset:0;z-index:9999;background:rgba(8,10,12,.94);display:none;align-items:center;justify-content:center}
 #lb.on{display:flex}
+#lb .dlbar{position:absolute;top:18px;left:18px;display:flex;gap:8px}
+#lb .dlbar button{position:static;width:auto;height:40px;padding:0 16px;font:500 14px/1 Archivo,sans-serif}
+.dlrow{display:flex;gap:8px;align-items:center;margin:-10px 0 18px}
+.dlrow button{background:#1F2428;color:#E4E6E6;border:1px solid #2C3136;padding:7px 12px;font:500 13px/1 Archivo,sans-serif;cursor:pointer}
+.dlrow button:hover{background:#2C3136}
+.dlrow span{font:400 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#858B90;text-transform:uppercase}
+
 #lb img{max-width:92vw;max-height:84vh;object-fit:contain;box-shadow:0 10px 40px rgba(0,0,0,.6)}
 #lb button{position:absolute;background:#1F2428;color:#E4E6E6;border:1px solid #2C3136;border-radius:999px;width:48px;height:48px;font:600 22px/1 Archivo,sans-serif;cursor:pointer}
 #lb button:hover{background:#2C3136}
@@ -1751,7 +1758,7 @@ function open(id){
 }
 
 // stories
-const CPS=[]; let DL=null;
+const CPS=[]; var DL=null;
 (async()=>{try{if(window.claude&&claude.use){DL=await claude.use("downloads");if(DL)document.querySelectorAll("[data-dl]").forEach(b=>b.style.display="inline-block");}}catch(e){}})();
 function myt(date,t){const [h,m]=t.split(":").map(Number);const x=new Date(Date.UTC(...date.split("-").map((v,i)=>i==1?v-1:+v),h+5+8,m));
  const hh=x.getUTCHours(),mm=String(x.getUTCMinutes()).padStart(2,"0");const iso=x.toISOString().slice(0,10);
@@ -1821,12 +1828,12 @@ document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>{
  $("#csv").value=t; $("#copyCsv").onclick=()=>copy(t,"CSV copied");
 })();
 </script>
-<div id="lb" role="dialog" aria-modal="true" aria-label="Graphic preview"><button class="x" aria-label="Close preview">✕</button><button class="pv" aria-label="Previous graphic">‹</button><img alt=""><button class="nx" aria-label="Next graphic">›</button><div class="ct"></div></div>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Graphic preview"><button class="x" aria-label="Close preview">✕</button><button class="pv" aria-label="Previous graphic">‹</button><img alt=""><button class="nx" aria-label="Next graphic">›</button><div class="ct"></div><div class="dlbar"><button class="d1">Download</button><button class="da">Download all</button></div></div>
 <script>
 (function(){
  const lb=document.getElementById("lb"), im=lb.querySelector("img"), ct=lb.querySelector(".ct"), pv=lb.querySelector(".pv"), nx=lb.querySelector(".nx");
  let set=[], i=0;
- function show(){ im.src=set[i]; const many=set.length>1; pv.style.display=nx.style.display=many?"block":"none"; ct.textContent=many?(i+1)+" / "+set.length+(matchMedia("(pointer:coarse)").matches?"  ·  swipe to browse":"  ·  ← → to browse, Esc to close"):""; }
+ function show(){ im.src=set[i]; const many=set.length>1; pv.style.display=nx.style.display=many?"block":"none"; da.style.display=many?"inline-block":"none"; da.textContent="Download all "+set.length; ct.textContent=many?(i+1)+" / "+set.length+(matchMedia("(pointer:coarse)").matches?"  ·  swipe to browse":"  ·  ← → to browse, Esc to close"):""; }
  function open(list,k){ set=list; i=k; show(); lb.classList.add("on"); }
  function close(){ lb.classList.remove("on"); im.removeAttribute("src"); }
  document.addEventListener("click",e=>{
@@ -1836,6 +1843,29 @@ document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>{
   const box=a.closest(".thumbs"); const links=box?[...box.querySelectorAll("a")]:[a];
   open(links.map(x=>x.getAttribute("href")), Math.max(0,links.indexOf(a)));
  },true);
+
+ // downloads: claude downloads capability in the artifact, a plain download link on GitHub Pages
+ const fname=u=>"18th-Street_"+u.split("/").pop().replace(/^18th-Street_/,"");
+ async function dl(u){
+  try{ if(window.DL){ const r=await fetch(u); await DL.save({filename:fname(u),data:await r.blob()}); return; } }catch(e){}
+  try{ const r=await fetch(u); const b=URL.createObjectURL(await r.blob()); const a=document.createElement("a"); a.href=b; a.download=fname(u); document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(b),4000); }
+  catch(e){ const a=document.createElement("a"); a.href=u; a.download=fname(u); document.body.appendChild(a); a.click(); a.remove(); }
+ }
+ async function dlAll(list,btn){ const t=btn&&btn.textContent; for(let k=0;k<list.length;k++){ if(btn) btn.textContent="Saving "+(k+1)+" / "+list.length; await dl(list[k]); await new Promise(r=>setTimeout(r,350)); } if(btn){ btn.textContent="Saved"; setTimeout(()=>btn.textContent=t,1500);} }
+ const d1=lb.querySelector(".d1"), da=lb.querySelector(".da");
+ d1.onclick=e=>{e.stopPropagation(); dl(set[i]);};
+ da.onclick=e=>{e.stopPropagation(); dlAll(set,da);};
+ function decorate(){
+  document.querySelectorAll(".thumbs").forEach(box=>{
+   if(box.dataset.dlr) return; const links=[...box.querySelectorAll("a")].map(x=>x.getAttribute("href")).filter(h=>/^img\/.*\.(jpe?g|png)$/i.test(h||""));
+   if(!links.length) return; box.dataset.dlr="1";
+   const row=document.createElement("div"); row.className="dlrow";
+   row.innerHTML=`<button type="button">${links.length>1?"Download all ("+links.length+")":"Download"}</button><span>${links.length>1?"or open a slide to save just one":"full size"}</span>`;
+   row.querySelector("button").onclick=e=>{e.stopPropagation(); dlAll(links,e.currentTarget);};
+   const host=box.parentNode; if(box.style.display==="flex"){ row.style.margin="0 0 10px"; } host.insertBefore(row,box.nextSibling);
+  });
+ }
+ decorate(); new MutationObserver(()=>decorate()).observe(document.body,{childList:true,subtree:true});
  lb.querySelector(".x").onclick=close;
  pv.onclick=e=>{e.stopPropagation(); i=(i-1+set.length)%set.length; show();};
  nx.onclick=e=>{e.stopPropagation(); i=(i+1)%set.length; show();};
