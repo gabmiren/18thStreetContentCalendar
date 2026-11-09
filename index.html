@@ -1547,6 +1547,24 @@ STORY_PLAN.forEach(s=>s.frames.forEach(f=>{ if(f.post){ f.post=POSTS.find(p=>p.i
 (function(){ const p=POSTS.find(x=>x.title==="The week in futures: 2 to 6 Nov");
  p.caption="Oil futures had their biggest weekly drop since 2022.\n\nCrude fell 12.8% and gold rose 4.5%. Stock index futures fell too, led by the Nasdaq 100 at 5.1%.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.\n\n#futurestrading #weeklyrecap #daytrading";
  p.changes.push("7 Nov: final caption from Gabriel."); })();
+// ---- 9 Nov: design loop (3 rounds) for 9 to 15 Nov ----
+(function(){
+ // split the change log that three posts were sharing
+ const A=POSTS.find(x=>x.title==="A futures day starts the evening before"), V=POSTS.find(x=>x.title==="How to trade volume profile"), W=POSTS.find(x=>x.title==="Who we built 18th Street for");
+ const old=W.changes.slice(); const cap="4 Nov: caption simplified to the short style (Gabriel).";
+ A.changes=[old[0],cap].concat(old.filter(c=>c.startsWith("4 Nov: graphic v2. The rows")));
+ V.changes=["New, from the board.",cap].concat(old.filter(c=>c.startsWith("7 Nov v2 (Sat check)")));
+ W.changes=["New, from the board.",cap];
+ const L=" Run through the 3-round design loop on 9 Nov (fresh reviewer each round, gates G1 to G13); final round left items open, see the loop notes.";
+ const set=(t,g,v,note)=>{const p=POSTS.find(x=>x.title===t); if(!p) throw new Error(t); p.gfx=g; p.gver=v; p.changes.push(note+L);};
+ set("4 signs you’re overtrading ",["ov1v3_1","ov1v3_2","ov1v3_3","ov1v3_4","ov1v3_5","ov1v3_6"],"v3","9 Nov v3: bodies cut to one line, shorter meme set-ups, smaller cover meme under a bigger headline, logo on the 80px copy edge, “Takeaways” as a small label, “Save this.” added. On-graphic words 151 to 121.");
+ set("All traders should know: order types",["ot1v4_1","ot1v4_q1","ot1v4_q2","ot1v4_q3","ot1v4_q4","ot1v4_s"],"v4","9 Nov v4: dark panels instead of light ones, cover character shown whole, grid kept clear of copy and the logo, FIG labels and tagline removed, bigger diagrams and labels, “Cheat sheet” end slide with “Stop market / limit”. On-graphic words 128 to 66 (badges not counted).");
+ set("This week: 16 to 20 Nov",["wk16v4_1","wk16v4_2","wk16v4_3","wk16v4_4","wk16v4_5"],"v4","9 Nov v4: shopping-bag photo with a visible brand logo swapped for the supermarket aisle; cover day tiles became a dotted timeline; photos toned down; smaller date numbers so the titles lead; card labels and tagline removed; “Swipe for the big three”. On-graphic words 170 to 135.");
+ set("Who we built 18th Street for",["wy5v2_1"],"v2","9 Nov v2: shorter lines (“You put risk first.”, “You read the rules first.”, “You want to skip phases.”), stronger label contrast, tagline removed. On-graphic words 62 to 48.");
+ const S=Array.isArray(STORY_PLAN)?STORY_PLAN:Object.values(STORY_PLAN);
+ const sg=(d,g)=>{const s=S.find(x=>x.date===d); if(s) s.gfx=g;};
+ sg("2026-11-09","ss9v3_1"); sg("2026-11-11","ss11v3_1"); sg("2026-11-12","ss12v3_1"); sg("2026-11-15","ob15v2_1");
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
