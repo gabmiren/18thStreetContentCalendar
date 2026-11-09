@@ -1576,7 +1576,7 @@ STORY_PLAN.forEach(s=>s.frames.forEach(f=>{ if(f.post){ f.post=POSTS.find(p=>p.i
  const S=Array.isArray(STORY_PLAN)?STORY_PLAN:Object.values(STORY_PLAN);
  const sg=(d,g)=>{const s=S.find(x=>x.date===d); if(s) s.gfx=g;}; sg("2026-11-11","ss11v4_1"); sg("2026-11-15","ob15v3_1");
 })();
-// ---- 10 Nov: X plan for 9 to 15 Nov, round 2 after the 2-month scroll of FTMO, FTMO Futures, Lucid and Topstep ----
+// ---- 10 Nov: X plan for 9 to 15 Nov, round 3 (no polls) after the 2-month scroll of FTMO, FTMO Futures, Lucid and Topstep ----
 const DISC="Futures trading involves substantial risk and may result in losses. Educational content, not financial advice.";
 const DISC_P="Phases 1–4 are simulated with notional capital. Payouts, advancement and profitability are not guaranteed. Futures trading involves substantial risk.";
 const QUAL="https://trade18th.com/qualification";
@@ -1590,7 +1590,7 @@ const X_INFO={
  ],
  takeaways:[
   "None of the four post 4-image dumps. Each post leads with one image or one video and a short line, so our carousels now lead with their strongest single slide and the rest follow in the replies.",
-  "Short text works for futures accounts. One-line takes and fill-in-the-blank prompts replace most of the polls; we keep two polls a week (Monday and Friday) and the Wednesday quiz.",
+  "Short text works for futures accounts, so one-line takes run on Wednesday and Thursday mornings. Polls and reply prompts wait until the account has an audience to answer them.",
   "Video carries reach. All four reels from Instagram are on X this week, including the four phases reel, which moved to Saturday.",
   "Macro heads-ups before big data mornings are a staple for FTMO, so CPI and PPI mornings keep a short text post.",
   "Payout quote-posts drive most of Topstep’s feed. They need traders’ permission and Jay’s OK, so they stay out until he decides."
@@ -1618,7 +1618,6 @@ const X_ALT={
 };
 const X_PLAN=[
  {date:"2026-11-09",posts:[
-  {t:"16:30",kind:"Poll",from:"IG story poll (Mon)",text:"Futures traders, what do you trade most?",poll:["ES","NQ","CL","GC"],note:"Native X poll, 1 day. The answers tell us which contracts to explain first."},
   {t:"18:00",kind:"Image, then replies",from:"4 signs you’re overtrading",gfx:["ov1v4_1"],text:"Are you overtrading?\n\nFour quiet signs ↓",
    replies:[
     {gfx:["ov1v4_2","ov1v4_3","ov1v4_4","ov1v4_5"],text:"You lose count of your trades, trade because you’re bored, keep going after your target and check your P&L every few minutes.\n\nSound familiar?"},
@@ -1630,24 +1629,21 @@ const X_PLAN=[
   {t:"09:15",kind:"Image",from:"CPI News alert",gfx:[],onday:true,text:"[Headline on the October CPI print, written after 8:30 AM ET.]\n\n[One line: headline and core, month on month.]\n\n"+DISC,note:"Same graphic as Instagram, made on the day. Fast approval lane with Jay."}
  ]},
  {date:"2026-11-11",posts:[
-  {t:"08:15",kind:"Text",from:"New for X (fill in the blank)",text:"Fill in the blank.\n\nI stop trading for the day when ______.",note:"Topstep’s fill-in-the-blank beat its polls; FTMO Futures runs the same format. Reply to the best answers with no promises or performance talk."},
+  {t:"08:15",kind:"Text",from:"New for X (one-line take)",text:"Knowing when to stop for the day is part of the strategy.",note:"One-line take in the FTMO Futures style. Swapped from a fill-in-the-blank, since a new account won’t get many replies yet."},
   {t:"12:00",kind:"Image",from:"Who we built 18th Street for",gfx:["wy5v3_1"],text:"We built 18th Street for traders who treat this as a profession.\n\nRead the rules first: "+QUAL+"\n\n"+DISC_P,note:"Product post: needs Jay’s explicit OK, as on Instagram."},
-  {t:"10:00",kind:"Poll, then answer",from:"IG quiz story (Wed)",text:"Quick quiz. A trailing drawdown follows your…",poll:["Highest EOD balance","Starting balance","Last trade’s P&L"],
-   replies:[{t:"16:00",gfx:["x_tdd_v3"],text:"Answer: your highest end-of-day balance.\n\nHere’s how it moves on a $50K plan. Full rules: "+QUAL+"\n\n"+DISC_P}],
-   note:"New graphic for X, drawn from the $50K worked example on trade18th.com/qualification (re-checked 10 Nov). Set the poll to 6 hours so it closes just before the answer goes out at 4:00 PM. Moved to 10:00 so it doesn’t sit 30 minutes after the product post."},
+  {t:"10:00",kind:"Image",from:"New for X (trailing drawdown)",gfx:["x_tdd_v3"],text:"A trailing drawdown follows your highest end-of-day balance.\n\nHow it moves on a $50K plan. Full rules: "+QUAL+"\n\n"+DISC_P,note:"New graphic for X, drawn from the $50K worked example on trade18th.com/qualification (re-checked 10 Nov). Was the quiz poll; now a plain explainer."},
   {t:"18:00",kind:"Video",from:"Holding my long through FOMC (reel)",vid:"vid/rl3_fomc.mp4",text:"POV: the Fed speaks in 5 minutes and you’re still in the trade.\n\n"+DISC,note:"Native upload (no Instagram link). Clip rights checked before posting."}
  ]},
  {date:"2026-11-12",posts:[
   {t:"08:15",kind:"Text",from:"New for X (one-line take)",text:"A stop you keep moving isn’t a stop.",note:"One-line takes were FTMO Futures’ best text posts. No disclosure on short prompts like this one: legal to confirm."},
-  {t:"12:00",kind:"Image, then reply",from:"All traders should know: order types",gfx:["ot1v5_s"],text:"Two ways in, two ways out.\n\nThe four order types every futures trader uses, on one card. Which do you use for your stops?",
+  {t:"12:00",kind:"Image, then reply",from:"All traders should know: order types",gfx:["ot1v5_s"],text:"Two ways in, two ways out.\n\nThe four order types every futures trader uses, on one card. Save it for your next session.",
    replies:[{gfx:["ot1v5_q1","ot1v5_q2","ot1v5_q3","ot1v5_q4"],text:"Each one, step by step: market, limit, stop market and stop limit.\n\n"+DISC}],
-   note:"Leads with the cheat sheet, the most useful single slide. The cover stays on Instagram. The question replaces the separate stops poll. The Market slide still has the open design note from the last review (where FILLED NOW sits)."},
+   note:"Leads with the cheat sheet, the most useful single slide. The cover stays on Instagram. The Market slide still has the open design note from the last review (where FILLED NOW sits)."},
   {t:"18:00",kind:"Video",from:"Life after you pass your first eval (reel)",vid:"vid/rl3_eval.mp4",text:"Phase 1 complete. On to Phase 2.\n\n"+DISC_P,note:"Native upload. Clip rights checked."}
  ]},
  {date:"2026-11-13",posts:[
   {t:"08:00",kind:"Text",from:"New for X (PPI morning)",text:"Producer prices (PPI) are out at 8:30 AM ET, the second inflation read this week after Tuesday’s CPI.\n\n"+DISC,note:"BLS schedule: PPI for October, Fri 13 Nov, 8:30 AM ET."},
   {t:"12:00",kind:"Video",from:"Trade of the Week 01 (reel)",onday:true,text:"[Same line as the Instagram caption, in Jay’s words.]\n\n"+DISC+" Past performance does not predict future results. Shared with the trader’s permission.",note:"Only if Jay’s trade and written OK arrive. Fallback: skip on X."},
-  {t:"15:30",kind:"Poll",from:"New for X (Friday check-in)",text:"Friday check-in. Did you follow your trading rules this week?",poll:["Yes, every day","Mostly","Not this week"],note:"Poll length 1 day. A weekly habit, like Topstep’s Friday prompt."},
   {t:"17:30",kind:"Image",from:"The week in futures: 9 to 13 Nov",gfx:[],onday:true,text:"[One line on how CPI and PPI week ended, written after the close.]\n\n"+DISC,note:"Same graphic as Instagram, built after Friday’s close."}
  ]},
  {date:"2026-11-14",posts:[
