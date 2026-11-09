@@ -1845,9 +1845,7 @@ function wireStory(root){
    ${(p.replies||(p.reply?[p.reply]:[])).map((r,ri)=>`<div class="mono" style="margin-top:12px">${r.t?"Reply at "+et(r.t)+" · "+myt(d,r.t):(["First","Second","Third"][ri]||"Next")+" reply (thread)"}</div>${thumbs(r.gfx)}${alts(r.gfx)}${cp("Reply "+(ri+1)+" text",r.text)}`).join("")}
    ${p.note?`<div class="mono" style="margin-top:6px;font-size:11px">${esc(p.note)}</div>`:""}</div>`;
  v.innerHTML=(typeof X_INFO!=="undefined"?`<div class="sec"><h2>X, 9 to 15 Nov</h2><p>${esc(X_INFO.intro)}</p>
-  <h3 style="margin-top:22px">What we found on X</h3><p class="mono" style="margin:2px 0 10px">Two months of posts, Sep to Nov 2026, read on 10 Nov. Views as shown on X.</p>
-  ${X_INFO.research.map(([a,b])=>`<p style="margin:0 0 10px;color:var(--ink2)"><b style="color:var(--ink)">${esc(a)}.</b> ${esc(b)}</p>`).join("")}
-  <h3 style="margin-top:22px">What changed in our plan</h3><ul style="margin:6px 0 0;padding-left:18px;color:var(--ink2)">${X_INFO.takeaways.map(x=>`<li style="margin-bottom:6px">${esc(x)}</li>`).join("")}</ul></div>`:"")
+</div>`:"")
   + X_PLAN.map(d=>`<div class="sc" style="grid-template-columns:1fr"><div><div class="mono">X · ${fmt(d.date)}</div><h3>${d.posts.length} post${d.posts.length>1?"s":""}</h3>${d.posts.slice().sort((x,y)=>x.t.localeCompare(y.t)).map(p=>post(d.date,p)).join("")}</div></div>`).join("");
  v.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>copy(CPS[+b.dataset.cp],"Copied"));
 })();
