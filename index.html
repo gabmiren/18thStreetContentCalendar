@@ -1576,7 +1576,7 @@ STORY_PLAN.forEach(s=>s.frames.forEach(f=>{ if(f.post){ f.post=POSTS.find(p=>p.i
  const S=Array.isArray(STORY_PLAN)?STORY_PLAN:Object.values(STORY_PLAN);
  const sg=(d,g)=>{const s=S.find(x=>x.date===d); if(s) s.gfx=g;}; sg("2026-11-11","ss11v4_1"); sg("2026-11-15","ob15v3_1");
 })();
-// ---- 10 Nov: X plan for 9 to 15 Nov, round 3 (no polls) after the 2-month scroll of FTMO, FTMO Futures, Lucid and Topstep ----
+// ---- 10 Nov: X plan for 9 to 15 Nov, round 5 (no polls, 4 images plus a reply, no disclaimers) after the 2-month scroll of FTMO, FTMO Futures, Lucid and Topstep ----
 const DISC="Futures trading involves substantial risk and may result in losses. Educational content, not financial advice.";
 const DISC_P="Phases 1–4 are simulated with notional capital. Payouts, advancement and profitability are not guaranteed. Futures trading involves substantial risk.";
 const QUAL="https://trade18th.com/qualification";
@@ -1618,42 +1618,40 @@ const X_ALT={
 };
 const X_PLAN=[
  {date:"2026-11-09",posts:[
-  {t:"18:00",kind:"Image, then replies",from:"4 signs you’re overtrading",gfx:["ov1v4_1"],text:"Are you overtrading?\n\nFour quiet signs ↓",
-   replies:[
-    {gfx:["ov1v4_2","ov1v4_3","ov1v4_4","ov1v4_5"],text:"You lose count of your trades, trade because you’re bored, keep going after your target and check your P&L every few minutes.\n\nSound familiar?"},
-    {gfx:["ov1v4_6"],text:"The best trade is often the one you skip.\n\n"+DISC}],
-   note:"The cover goes out alone, the four signs follow in the first reply and the takeaways in the second. Memes shown whole, as on Instagram."}
+  {t:"18:00",kind:"4 images, then reply",from:"4 signs you’re overtrading",gfx:["ov1v4_2","ov1v4_3","ov1v4_4","ov1v4_5"],text:"Some of the most expensive trades are the ones you never needed to take.\n\nFour signs you might be overtrading.",
+   replies:[{gfx:["ov1v4_6"],text:"The fix is usually simple.\n\nSet your limits before the session starts, and give yourself permission to log off once you hit them."}],
+   note:"X takes 4 images, filled top-left, top-right, bottom-left, bottom-right, so attach the signs in order. The cover stays on Instagram. Memes shown whole."}
  ]},
  {date:"2026-11-10",posts:[
-  {t:"08:00",kind:"Text",from:"New for X (CPI morning)",text:"October CPI is out at 8:30 AM ET.\n\nNo official yearly rate this month: October 2025 prices were never collected in the shutdown. Watch the monthly numbers.\n\n"+DISC,note:"Facts from the BLS schedule and CPI previews (9 Nov). No forecast, no trade idea."},
-  {t:"09:15",kind:"Image",from:"CPI News alert",gfx:[],onday:true,text:"[Headline on the October CPI print, written after 8:30 AM ET.]\n\n[One line: headline and core, month on month.]\n\n"+DISC,note:"Same graphic as Instagram, made on the day. Fast approval lane with Jay."}
+  {t:"08:00",kind:"Text",from:"New for X (CPI morning)",text:"October CPI is out at 8:30 AM ET.\n\nNo official yearly rate this month: October 2025 prices were never collected in the shutdown. Watch the monthly numbers.",note:"Facts from the BLS schedule and CPI previews (9 Nov). No forecast, no trade idea."},
+  {t:"09:15",kind:"Image",from:"CPI News alert",gfx:[],onday:true,text:"[Headline on the October CPI print, written after 8:30 AM ET.]\n\n[One line: headline and core, month on month.]",note:"Same graphic as Instagram, made on the day. Fast approval lane with Jay."}
  ]},
  {date:"2026-11-11",posts:[
   {t:"08:15",kind:"Text",from:"New for X (one-line take)",text:"Knowing when to stop for the day is part of the strategy.",note:"One-line take in the FTMO Futures style. Swapped from a fill-in-the-blank, since a new account won’t get many replies yet."},
-  {t:"12:00",kind:"Image",from:"Who we built 18th Street for",gfx:["wy5v3_1"],text:"We built 18th Street for traders who treat this as a profession.\n\nRead the rules first: "+QUAL+"\n\n"+DISC_P,note:"Product post: needs Jay’s explicit OK, as on Instagram."},
-  {t:"10:00",kind:"Image",from:"New for X (trailing drawdown)",gfx:["x_tdd_v3"],text:"A trailing drawdown follows your highest end-of-day balance.\n\nHow it moves on a $50K plan. Full rules: "+QUAL+"\n\n"+DISC_P,note:"New graphic for X, drawn from the $50K worked example on trade18th.com/qualification (re-checked 10 Nov). Was the quiz poll; now a plain explainer."},
-  {t:"18:00",kind:"Video",from:"Holding my long through FOMC (reel)",vid:"vid/rl3_fomc.mp4",text:"POV: the Fed speaks in 5 minutes and you’re still in the trade.\n\n"+DISC,note:"Native upload (no Instagram link). Clip rights checked before posting."}
+  {t:"12:00",kind:"Image",from:"Who we built 18th Street for",gfx:["wy5v3_1"],text:"We built 18th Street for traders who treat this as a profession.\n\nRead the rules first: "+QUAL+"",note:"Product post: needs Jay’s explicit OK, as on Instagram. No disclaimer on X; legal may still want the simulated-phases line here."},
+  {t:"10:00",kind:"Image",from:"New for X (trailing drawdown)",gfx:["x_tdd_v3"],text:"A trailing drawdown follows your highest end-of-day balance.\n\nHow it moves on a $50K plan. Full rules: "+QUAL+"",note:"New graphic for X, drawn from the $50K worked example on trade18th.com/qualification (re-checked 10 Nov). Was the quiz poll; now a plain explainer."},
+  {t:"18:00",kind:"Video",from:"Holding my long through FOMC (reel)",vid:"vid/rl3_fomc.mp4",text:"POV: the Fed speaks in 5 minutes and you’re still in the trade.",note:"Native upload (no Instagram link). Clip rights checked before posting."}
  ]},
  {date:"2026-11-12",posts:[
   {t:"08:15",kind:"Text",from:"New for X (one-line take)",text:"A stop you keep moving isn’t a stop.",note:"One-line takes were FTMO Futures’ best text posts. No disclosure on short prompts like this one: legal to confirm."},
-  {t:"12:00",kind:"Image, then reply",from:"All traders should know: order types",gfx:["ot1v5_s"],text:"Two ways in, two ways out.\n\nThe four order types every futures trader uses, on one card. Save it for your next session.",
-   replies:[{gfx:["ot1v5_q1","ot1v5_q2","ot1v5_q3","ot1v5_q4"],text:"Each one, step by step: market, limit, stop market and stop limit.\n\n"+DISC}],
-   note:"Leads with the cheat sheet, the most useful single slide. The cover stays on Instagram. The Market slide still has the open design note from the last review (where FILLED NOW sits)."},
-  {t:"18:00",kind:"Video",from:"Life after you pass your first eval (reel)",vid:"vid/rl3_eval.mp4",text:"Phase 1 complete. On to Phase 2.\n\n"+DISC_P,note:"Native upload. Clip rights checked."}
+  {t:"12:00",kind:"4 images, then reply",from:"All traders should know: order types",gfx:["ot1v5_q1","ot1v5_q2","ot1v5_q3","ot1v5_q4"],text:"Two ways in, two ways out.\n\nThe four order types every futures trader uses.",
+   replies:[{gfx:["ot1v5_s"],text:"All four on one card. Save it for your next session."}],
+   note:"The four order types in the post, the cheat sheet in the reply. The cover stays on Instagram. The Market slide still has the open design note from the last review."},
+  {t:"18:00",kind:"Video",from:"Life after you pass your first eval (reel)",vid:"vid/rl3_eval.mp4",text:"Phase 1 complete. On to Phase 2.",note:"Native upload. Clip rights checked."}
  ]},
  {date:"2026-11-13",posts:[
-  {t:"08:00",kind:"Text",from:"New for X (PPI morning)",text:"Producer prices (PPI) are out at 8:30 AM ET, the second inflation read this week after Tuesday’s CPI.\n\n"+DISC,note:"BLS schedule: PPI for October, Fri 13 Nov, 8:30 AM ET."},
-  {t:"12:00",kind:"Video",from:"Trade of the Week 01 (reel)",onday:true,text:"[Same line as the Instagram caption, in Jay’s words.]\n\n"+DISC+" Past performance does not predict future results. Shared with the trader’s permission.",note:"Only if Jay’s trade and written OK arrive. Fallback: skip on X."},
-  {t:"17:30",kind:"Image",from:"The week in futures: 9 to 13 Nov",gfx:[],onday:true,text:"[One line on how CPI and PPI week ended, written after the close.]\n\n"+DISC,note:"Same graphic as Instagram, built after Friday’s close."}
+  {t:"08:00",kind:"Text",from:"New for X (PPI morning)",text:"Producer prices (PPI) are out at 8:30 AM ET, the second inflation read this week after Tuesday’s CPI.",note:"BLS schedule: PPI for October, Fri 13 Nov, 8:30 AM ET."},
+  {t:"12:00",kind:"Video",from:"Trade of the Week 01 (reel)",onday:true,text:"[Same line as the Instagram caption, in Jay’s words.]\n\nShared with the trader’s permission.",note:"Only if Jay’s trade and written OK arrive. Fallback: skip on X."},
+  {t:"17:30",kind:"Image",from:"The week in futures: 9 to 13 Nov",gfx:[],onday:true,text:"[One line on how CPI and PPI week ended, written after the close.]",note:"Same graphic as Instagram, built after Friday’s close."}
  ]},
  {date:"2026-11-14",posts:[
-  {t:"11:00",kind:"Video",from:"Four phases, with a payout at every one (reel)",vid:"vid/climb_gauge_v2.mp4",text:"Four phases, with a payout at every one.\n\nThe same published standard at each phase: "+QUAL+"\n\n"+DISC_P,note:"Instagram ran this on Monday. Product post with rules and payouts, so it needs Jay’s explicit OK."}
+  {t:"11:00",kind:"Video",from:"Four phases, with a payout at every one (reel)",vid:"vid/climb_gauge_v2.mp4",text:"Four phases, with a payout at every one.\n\nThe same published standard at each phase: "+QUAL+"",note:"Instagram ran this on Monday. Product post with rules and payouts, so it needs Jay’s explicit OK. No disclaimer on X; legal may still want the simulated-phases line here."}
  ]},
  {date:"2026-11-15",posts:[
-  {t:"11:00",kind:"Video",from:"Clip: 5 principles from an institutional desk",vid:"vid/clip_five_principles_v3.mp4",text:"What would an institutional desk expect of you?\n\nJay on the standard every 18th Street trader is held to, starting with protecting the account.\n\n"+DISC,note:"Moved from Saturday. Jay’s OK, as on Instagram. Tag the partner only if they agree."},
-  {t:"18:00",kind:"Image, then reply",from:"This week: 16 to 20 Nov",gfx:["wk16v5_1"],text:"A quieter week, with one big evening in the middle ↓",
-   replies:[{gfx:["wk16v5_2","wk16v5_3","wk16v5_4","wk16v5_5"],text:"Retail sales on Tuesday morning, Nvidia’s results that evening and the Fed minutes on Wednesday.\n\n"+DISC}],
-   note:"Name Nvidia as a market event only, with no view on the stock."}
+  {t:"11:00",kind:"Video",from:"Clip: 5 principles from an institutional desk",vid:"vid/clip_five_principles_v3.mp4",text:"What would an institutional desk expect of you?\n\nJay on the standard every 18th Street trader is held to, starting with protecting the account.",note:"Moved from Saturday. Jay’s OK, as on Instagram. Tag the partner only if they agree."},
+  {t:"18:00",kind:"4 images, then reply",from:"This week: 16 to 20 Nov",gfx:["wk16v5_1","wk16v5_2","wk16v5_3","wk16v5_4"],text:"A quieter week, with one big evening in the middle.\n\nRetail sales on Tuesday morning, Nvidia’s results that evening and the Fed minutes on Wednesday.",
+   replies:[{gfx:["wk16v5_5"],text:"Calm weeks are a good time to practice your plan at normal size."}],
+   note:"Cover and the three big events in the post, the closing slide in the reply. Name Nvidia as a market event only, with no view on the stock."}
  ]}
 ];
 
