@@ -139,16 +139,8 @@ textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1p
 </header>
 
 <nav id="nav">
-  <button data-v="cal" class="on">Calendar</button>
-  <button data-v="list">All posts</button>
-  <button data-v="sto">Stories</button>
+  <button data-v="cal" class="on">Instagram</button>
   <button data-v="x">X</button>
-  <button data-v="gfx">Graphics</button>
-  <button data-v="rev">Review</button>
-  <button data-v="chg">What changed from W45</button>
-  <button data-v="facts">Dates and facts</button>
-  <button data-v="qs">Open questions</button>
-  <button data-v="csv">Copy for Notion</button>
 </nav>
 
 <section class="view on" id="v-cal">
@@ -158,15 +150,15 @@ textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1p
   <p class="mono" style="margin-top:6px" id="mixnote">Bar = share of the feed posts · white tick = the client’s target split</p>
 </section>
 
-<section class="view" id="v-list"><div style="overflow:auto"><table id="tbl"></table></div></section>
+<section class="view" id="v-list" hidden style="display:none!important"><div style="overflow:auto"><table id="tbl"></table></div></section>
 
-<section class="view" id="v-sto"></section>
+<section class="view" id="v-sto" hidden style="display:none!important"></section>
 <section class="view" id="v-x"></section>
-<section class="view" id="v-gfx"></section>
-<section class="view sec" id="v-rev"></section>
-<section class="view sec" id="v-chg"></section>
+<section class="view" id="v-gfx" hidden style="display:none!important"></section>
+<section class="view sec" id="v-rev" hidden style="display:none!important"></section>
+<section class="view sec" id="v-chg" hidden style="display:none!important"></section>
 
-<section class="view sec" id="v-facts">
+<section class="view sec" id="v-facts" hidden style="display:none!important">
   <h2>Market dates in the window</h2>
   <table>
     <tr><th>Date</th><th>Event (ET)</th><th>Source</th><th>Used in</th></tr>
@@ -193,7 +185,7 @@ textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1p
   <p>Every phase: 9% profit target, 5% end-of-day trailing drawdown, 25% consistency rule, 60 days. 90% profit split on the Live account only.</p>
 </section>
 
-<section class="view sec" id="v-qs">
+<section class="view sec" id="v-qs" hidden style="display:none!important">
   <h2>Open questions before this goes to Notion</h2>
   <ol>
     <li><b>Today and tomorrow.</b> Tue 3 and Wed 4 use finished board drafts, but they only go out if Jay approves them in time: today’s post needs a same-day OK, and Wednesday’s drafts need to reach him today. If he can’t, those slots stay empty and the calendar starts on Thu 5.</li>
@@ -210,7 +202,7 @@ textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1p
   </ol>
 </section>
 
-<section class="view sec" id="v-csv">
+<section class="view sec" id="v-csv" hidden style="display:none!important">
   <h2>Copy for Notion</h2>
   <p>One row per post, with the Content Calendar’s own property names. When you’re happy with the plan, I can write the rows into Notion directly. This copy is here in case you’d rather import it as a CSV.</p>
   <button class="btn" id="copyCsv">Copy CSV</button>
