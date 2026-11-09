@@ -1576,44 +1576,88 @@ STORY_PLAN.forEach(s=>s.frames.forEach(f=>{ if(f.post){ f.post=POSTS.find(p=>p.i
  const S=Array.isArray(STORY_PLAN)?STORY_PLAN:Object.values(STORY_PLAN);
  const sg=(d,g)=>{const s=S.find(x=>x.date===d); if(s) s.gfx=g;}; sg("2026-11-11","ss11v4_1"); sg("2026-11-15","ob15v3_1");
 })();
-// ---- 10 Nov: X plan for 9 to 15 Nov (reuses the Instagram graphics) ----
+// ---- 10 Nov: X plan for 9 to 15 Nov, round 2 after the 2-month scroll of FTMO, FTMO Futures, Lucid and Topstep ----
 const DISC="Futures trading involves substantial risk and may result in losses. Educational content, not financial advice.";
 const DISC_P="Phases 1–4 are simulated with notional capital. Payouts, advancement and profitability are not guaranteed. Futures trading involves substantial risk.";
+const QUAL="https://trade18th.com/qualification";
+const X_INFO={
+ intro:"This week reuses the Instagram graphics and videos, plus a few short X-only posts. Times in ET and MYT. Every post is a draft for legal and Jay’s approval, and we never post it ourselves. Tap any image to preview it, or download it from the button underneath.",
+ research:[
+  ["FTMO (@FTMO_com)","About 6 posts a week, median around 27K views. A monthly run of payout stats, a weekend trade breakdown video, a Monday “volatility this week” text post, and one-line meme images. Blog posts go out as a short line with the link in the first reply."],
+  ["FTMO Futures (@FTMO_Futures)","The closest match to 18th Street: a young futures account, about 3 posts a week, median around 7K views. Its best posts are one-line takes with no image (up to 20K), fill-in-the-blank prompts and short relatable videos."],
+  ["Lucid (@TradingLucid)","Close to one post a day, almost all short video with the team on camera. Plain text posts stall around 3K to 4K views; big announcements and an honest public statement reached 100K to 217K."],
+  ["Topstep (@Topstep)","About 5 posts a day. Two thirds are quote-posts of traders’ payouts, plus a daily “drop your golden rule” prompt and Trader of the Week. A fill-in-the-blank post (15K) beat both of their polls (about 6K). Product updates and monthly results images reach 30K to 47K."]
+ ],
+ takeaways:[
+  "None of the four post 4-image dumps. Each post leads with one image or one video and a short line, so our carousels now lead with their strongest single slide and the rest follow in the replies.",
+  "Short text works for futures accounts. One-line takes and fill-in-the-blank prompts replace most of the polls; we keep two polls a week (Monday and Friday) and the Wednesday quiz.",
+  "Video carries reach. All four reels from Instagram are on X this week, including the four phases reel, which moved to Saturday.",
+  "Macro heads-ups before big data mornings are a staple for FTMO, so CPI and PPI mornings keep a short text post.",
+  "Payout quote-posts drive most of Topstep’s feed. They need traders’ permission and Jay’s OK, so they stay out until he decides."
+ ]
+};
+const X_ALT={
+ ov1v4_1:"Are you overtrading? A price chart buried under dozens of trend lines. 4 signs.",
+ ov1v4_2:"Sign 1. You’ve lost count: if you can’t remember trade 6, you’re probably on trade 9. A startled cat meme.",
+ ov1v4_3:"Sign 2. You’re trading because you’re bored: a quiet market is a cue to slow down. A skeleton waiting on a bench meme.",
+ ov1v4_4:"Sign 3. You hit your target and kept going: the target was the finish line. A cartoon character leaving his chair meme.",
+ ov1v4_5:"Sign 4. You check your P&L every 5 minutes: check it at set times, then look away. A cat staring at a chart meme.",
+ ov1v4_6:"Takeaways: set a max number of trades, no setup means no trade, hit your target and log off, check your P&L at set times. The best trade is often the one you skip.",
+ wy5v3_1:"Who we built 18th Street for. Built for you if you treat trading as a profession, put risk first, want to be paid as you progress and read the rules first. Probably not for you if you’re chasing a quick payout or want to skip phases.",
+ x_tdd_v3:"How the trailing drawdown moves on a $50,000 plan. The end-of-day balance closes at $51,000, $52,500 and $54,000. The loss threshold steps up from $47,500 to $48,500, then locks at $50,000.",
+ ot1v5_s:"Cheat sheet. Getting in: a market or limit order. Getting out: a stop market or stop limit order. Which do you use for stops?",
+ ot1v5_q1:"Market order: you click buy and it fills straight away at the next available price.",
+ ot1v5_q2:"Limit order: you set your price, and it only fills when the market comes down to your limit.",
+ ot1v5_q3:"Stop market order: price falls through your stop, the stop triggers, and it fills at the next price, which can be lower.",
+ ot1v5_q4:"Stop limit order: price falls through your stop and it triggers, but it won’t fill below your limit, so a fast drop can leave it unfilled.",
+ wk16v5_1:"This week, 16 to 20 Nov. A quieter week with one big evening. Retail sales and Nvidia results on Tuesday, Fed minutes on Wednesday, jobless claims on Thursday.",
+ wk16v5_2:"Tuesday 17 Nov, 8:30 AM ET. Retail sales: how much Americans spent in shops and online in October. A big miss or beat can move futures.",
+ wk16v5_3:"Tuesday 17 Nov, 5:00 PM ET. Nvidia results after the stock market closes. A top Nasdaq 100 weight, so NQ can move after hours.",
+ wk16v5_4:"Wednesday 18 Nov, 2:00 PM ET. Fed meeting minutes: notes from the October meeting, out three weeks later, read for clues about December.",
+ wk16v5_5:"Calm weeks are a gift. Practice your plan at normal size. Save this for the week."
+};
 const X_PLAN=[
  {date:"2026-11-09",posts:[
-  {t:"16:30",kind:"Poll",from:"IG story poll (Mon)",text:"What do you trade most?",poll:["ES","NQ","CL","GC"],note:"Native X poll, 1 day. Same question as Monday’s Instagram poll story."},
-  {t:"18:00",kind:"Thread with images",from:"4 signs you’re overtrading",gfx:["ov1v4_1","ov1v4_2","ov1v4_3","ov1v4_4"],text:"Are you overtrading?\n\nFour quiet signs, and what to do instead ↓",
-   reply:{gfx:["ov1v4_5","ov1v4_6"],text:"The best trade is often the one you skip.\n\nSave this for your next session.\n\n"+DISC},note:"X allows 4 images per post, so slides 1 to 4 go in the post and 5 to 6 in the first reply."}
+  {t:"16:30",kind:"Poll",from:"IG story poll (Mon)",text:"Futures traders, what do you trade most?",poll:["ES","NQ","CL","GC"],note:"Native X poll, 1 day. The answers tell us which contracts to explain first."},
+  {t:"18:00",kind:"Image, then replies",from:"4 signs you’re overtrading",gfx:["ov1v4_1"],text:"Are you overtrading?\n\nFour quiet signs ↓",
+   replies:[
+    {gfx:["ov1v4_2","ov1v4_3","ov1v4_4","ov1v4_5"],text:"You lose count of your trades, trade because you’re bored, keep going after your target and check your P&L every few minutes.\n\nSound familiar?"},
+    {gfx:["ov1v4_6"],text:"The best trade is often the one you skip.\n\n"+DISC}],
+   note:"The cover goes out alone, the four signs follow in the first reply and the takeaways in the second. Memes shown whole, as on Instagram."}
  ]},
  {date:"2026-11-10",posts:[
-  {t:"08:00",kind:"Text",from:"New for X (CPI day)",text:"October CPI is out at 8:30 AM ET.\n\nThis month has no official yearly rate: October 2025 prices were never collected during the shutdown. Watch the monthly numbers.\n\n"+DISC,note:"Facts from the BLS schedule and CPI previews (9 Nov). No forecast, no trade idea."},
+  {t:"08:00",kind:"Text",from:"New for X (CPI morning)",text:"October CPI is out at 8:30 AM ET.\n\nNo official yearly rate this month: October 2025 prices were never collected in the shutdown. Watch the monthly numbers.\n\n"+DISC,note:"Facts from the BLS schedule and CPI previews (9 Nov). No forecast, no trade idea."},
   {t:"09:15",kind:"Image",from:"CPI News alert",gfx:[],onday:true,text:"[Headline on the October CPI print, written after 8:30 AM ET.]\n\n[One line: headline and core, month on month.]\n\n"+DISC,note:"Same graphic as Instagram, made on the day. Fast approval lane with Jay."}
  ]},
  {date:"2026-11-11",posts:[
-  {t:"08:15",kind:"Text",from:"New for X (engagement prompt)",text:"Morning, traders.\n\nWhat’s one rule you won’t break today?",note:"Daily-prompt style that Topstep uses. Reply to the best answers; no promises or performance talk."},
-  {t:"12:00",kind:"Image",from:"Who we built 18th Street for",gfx:["wy5v3_1"],text:"We built 18th Street for traders who treat this as a profession.\n\nRead the rules first: https://trade18th.com/qualification\n\n"+DISC_P,note:"Product post: needs Jay’s explicit OK, as on Instagram."},
-  {t:"12:30",kind:"Poll",from:"IG quiz story (Wed)",text:"Quick quiz. A trailing drawdown follows your…",poll:["Highest EOD balance","Starting balance","Last trade"],
-   reply:{t:"16:00",text:"Answer: your highest end-of-day balance. At 18th Street, the threshold sits 5% below it.\n\nRules: https://trade18th.com/qualification\n\n"+DISC_P},note:"Post the answer as a reply when the poll closes. Re-check the 5% figure on trade18th.com/qualification on the day."},
-  {t:"18:00",kind:"Video",from:"Holding my long through FOMC (reel)",vid:"vid/rl3_fomc.mp4",text:"The Fed speaks in 5 minutes. We are not closing the trade.\n\n"+DISC,note:"Upload the same reel natively (no Instagram link). Clip rights checked before posting."}
+  {t:"08:15",kind:"Text",from:"New for X (fill in the blank)",text:"Fill in the blank.\n\nI stop trading for the day when ______.",note:"Topstep’s fill-in-the-blank beat its polls; FTMO Futures runs the same format. Reply to the best answers with no promises or performance talk."},
+  {t:"12:00",kind:"Image",from:"Who we built 18th Street for",gfx:["wy5v3_1"],text:"We built 18th Street for traders who treat this as a profession.\n\nRead the rules first: "+QUAL+"\n\n"+DISC_P,note:"Product post: needs Jay’s explicit OK, as on Instagram."},
+  {t:"10:00",kind:"Poll, then answer",from:"IG quiz story (Wed)",text:"Quick quiz. A trailing drawdown follows your…",poll:["Highest EOD balance","Starting balance","Last trade’s P&L"],
+   replies:[{t:"16:00",gfx:["x_tdd_v3"],text:"Answer: your highest end-of-day balance.\n\nHere’s how it moves on a $50K plan. Full rules: "+QUAL+"\n\n"+DISC_P}],
+   note:"New graphic for X, drawn from the $50K worked example on trade18th.com/qualification (re-checked 10 Nov). Set the poll to 6 hours so it closes just before the answer goes out at 4:00 PM. Moved to 10:00 so it doesn’t sit 30 minutes after the product post."},
+  {t:"18:00",kind:"Video",from:"Holding my long through FOMC (reel)",vid:"vid/rl3_fomc.mp4",text:"POV: the Fed speaks in 5 minutes and you’re still in the trade.\n\n"+DISC,note:"Native upload (no Instagram link). Clip rights checked before posting."}
  ]},
  {date:"2026-11-12",posts:[
-  {t:"12:00",kind:"Thread with images",from:"All traders should know: order types",gfx:["ot1v5_1","ot1v5_q1","ot1v5_q2","ot1v5_q3"],text:"Four order types decide how every futures trade gets in and out ↓",
-   reply:{gfx:["ot1v5_q4","ot1v5_s"],text:"Stop limit, plus a cheat sheet to keep.\n\n"+DISC},note:"Cover plus market, limit and stop market in the post; stop limit and the cheat sheet in the reply."},
-  {t:"12:30",kind:"Poll",from:"IG question story (Thu)",text:"Which order type do you use for your stops?",poll:["Stop market","Stop limit","Depends on the market"],note:"Turns the Instagram question sticker into a poll."},
+  {t:"08:15",kind:"Text",from:"New for X (one-line take)",text:"A stop you keep moving isn’t a stop.",note:"One-line takes were FTMO Futures’ best text posts. No disclosure on short prompts like this one: legal to confirm."},
+  {t:"12:00",kind:"Image, then reply",from:"All traders should know: order types",gfx:["ot1v5_s"],text:"Two ways in, two ways out.\n\nThe four order types every futures trader uses, on one card. Which do you use for your stops?",
+   replies:[{gfx:["ot1v5_q1","ot1v5_q2","ot1v5_q3","ot1v5_q4"],text:"Each one, step by step: market, limit, stop market and stop limit.\n\n"+DISC}],
+   note:"Leads with the cheat sheet, the most useful single slide. The cover stays on Instagram. The question replaces the separate stops poll. The Market slide still has the open design note from the last review (where FILLED NOW sits)."},
   {t:"18:00",kind:"Video",from:"Life after you pass your first eval (reel)",vid:"vid/rl3_eval.mp4",text:"Phase 1 complete. On to Phase 2.\n\n"+DISC_P,note:"Native upload. Clip rights checked."}
  ]},
  {date:"2026-11-13",posts:[
-  {t:"08:00",kind:"Text",from:"New for X (PPI day)",text:"Producer prices (PPI) are out at 8:30 AM ET, the second inflation read this week after Tuesday’s CPI.\n\n"+DISC,note:"BLS schedule: PPI for October, Fri 13 Nov, 8:30 AM ET."},
-  {t:"12:00",kind:"Video",from:"Trade of the Week 01 (reel)",onday:true,text:"[Same line as the Instagram caption, in Jay’s words.]\n\n"+DISC+" Past performance does not predict future results. Shared with the trader's permission.",note:"Only if Jay’s trade and written OK arrive. Fallback: skip on X."},
-  {t:"15:30",kind:"Poll",from:"New for X (Friday check-in)",text:"Friday check-in. Did you follow your trading rules this week?",poll:["Yes, every day","Mostly","Not this week"],note:"A weekly habit; Topstep’s Friday rules poll is one of its better-engaged posts."},
+  {t:"08:00",kind:"Text",from:"New for X (PPI morning)",text:"Producer prices (PPI) are out at 8:30 AM ET, the second inflation read this week after Tuesday’s CPI.\n\n"+DISC,note:"BLS schedule: PPI for October, Fri 13 Nov, 8:30 AM ET."},
+  {t:"12:00",kind:"Video",from:"Trade of the Week 01 (reel)",onday:true,text:"[Same line as the Instagram caption, in Jay’s words.]\n\n"+DISC+" Past performance does not predict future results. Shared with the trader’s permission.",note:"Only if Jay’s trade and written OK arrive. Fallback: skip on X."},
+  {t:"15:30",kind:"Poll",from:"New for X (Friday check-in)",text:"Friday check-in. Did you follow your trading rules this week?",poll:["Yes, every day","Mostly","Not this week"],note:"Poll length 1 day. A weekly habit, like Topstep’s Friday prompt."},
   {t:"17:30",kind:"Image",from:"The week in futures: 9 to 13 Nov",gfx:[],onday:true,text:"[One line on how CPI and PPI week ended, written after the close.]\n\n"+DISC,note:"Same graphic as Instagram, built after Friday’s close."}
  ]},
  {date:"2026-11-14",posts:[
-  {t:"11:00",kind:"Video",from:"Clip: 5 principles from an institutional desk",vid:"vid/clip_five_principles_v3.mp4",text:"What would an institutional desk expect of you?\n\nJay on the standard every 18th Street trader is held to, starting with protecting the account.\n\n"+DISC,note:"Jay’s OK, as on Instagram. Tag the partner only if they agree."}
+  {t:"11:00",kind:"Video",from:"Four phases, with a payout at every one (reel)",vid:"vid/climb_gauge_v2.mp4",text:"Four phases, with a payout at every one.\n\nThe same published standard at each phase: "+QUAL+"\n\n"+DISC_P,note:"Instagram ran this on Monday. Product post with rules and payouts, so it needs Jay’s explicit OK."}
  ]},
  {date:"2026-11-15",posts:[
-  {t:"18:00",kind:"Thread with images",from:"This week: 16 to 20 Nov",gfx:["wk16v5_1","wk16v5_2","wk16v5_3","wk16v5_4"],text:"A quieter week, with one big evening in the middle.\n\nRetail sales on Tuesday morning, Nvidia’s results that evening and the Fed minutes on Wednesday ↓",
-   reply:{gfx:["wk16v5_5"],text:"Save this for the week.\n\n"+DISC},note:"Name Nvidia as a market event only, with no view on the stock."}
+  {t:"11:00",kind:"Video",from:"Clip: 5 principles from an institutional desk",vid:"vid/clip_five_principles_v3.mp4",text:"What would an institutional desk expect of you?\n\nJay on the standard every 18th Street trader is held to, starting with protecting the account.\n\n"+DISC,note:"Moved from Saturday. Jay’s OK, as on Instagram. Tag the partner only if they agree."},
+  {t:"18:00",kind:"Image, then reply",from:"This week: 16 to 20 Nov",gfx:["wk16v5_1"],text:"A quieter week, with one big evening in the middle ↓",
+   replies:[{gfx:["wk16v5_2","wk16v5_3","wk16v5_4","wk16v5_5"],text:"Retail sales on Tuesday morning, Nvidia’s results that evening and the Fed minutes on Wednesday.\n\n"+DISC}],
+   note:"Name Nvidia as a market event only, with no view on the stock."}
  ]}
 ];
 
@@ -1792,19 +1836,23 @@ function wireStory(root){
 (function(){
  if(typeof X_PLAN==="undefined")return;
  const v=$("#v-x");
- const thumbs=g=>g&&g.length?`<div class="thumbs" style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0">${g.map(k=>`<a href="img/${k}.jpg"><img src="img/${k}.jpg" alt="${k}" style="width:92px;height:auto;display:block"></a>`).join("")}</div>`:"";
+ const thumbs=g=>g&&g.length?`<div class="thumbs" style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0">${g.map(k=>`<a href="img/${k}.jpg"><img src="img/${k}.jpg" alt="${esc((typeof X_ALT!=="undefined"&&X_ALT[k])||k)}" style="width:92px;height:auto;display:block"></a>`).join("")}</div>`:"";
+ const ALT=typeof X_ALT!=="undefined"?X_ALT:{};
+ const alts=g=>g&&g.length&&g.some(k=>ALT[k])?`<details style="margin:0 0 10px"><summary class="mono" style="cursor:pointer">Alt text (${g.length})</summary>${g.map((k,i)=>ALT[k]?cp("Alt text, image "+(i+1),ALT[k]):"").join("")}</details>`:"";
  const cp=(k,val)=>{CPS.push(val);return `<div class="cp"><div><div class="k">${esc(k)}</div><div class="v" style="white-space:pre-wrap">${esc(val)}</div></div><button class="btn" data-cp="${CPS.length-1}">Copy</button></div>`;};
  const post=(d,p)=>`<div class="fr"><div class="hd"><b>${et(p.t)}</b><span class="mono">${myt(d,p.t)}</span><span class="tag">${esc(p.kind)}</span>${p.onday?'<span class="tag">On the day</span>':""}</div>
    <div class="mono" style="margin:4px 0">From: ${esc(p.from)}</div>
-   ${thumbs(p.gfx)}${p.onday&&p.gfx&&!p.gfx.length?'<div class="ph" style="margin:8px 0">Graphic made on the day</div>':""}
+   ${thumbs(p.gfx)}${alts(p.gfx)}${p.onday&&p.gfx&&!p.gfx.length?'<div class="ph" style="margin:8px 0">Graphic made on the day</div>':""}
    ${p.vid?`<div style="margin:6px 0"><a href="${p.vid}" style="color:var(--ink)">Open the video file</a></div>`:""}
-   ${cp(p.reply?"Post":"Post text",p.text)}
+   ${cp((p.reply||p.replies)?"Post":"Post text",p.text)}
    ${p.poll?p.poll.map((o,i)=>cp("Poll option "+(i+1),o)).join(""):""}
-   ${p.reply?`<div class="mono" style="margin-top:10px">${p.reply.t?"Reply at "+et(p.reply.t)+" · "+myt(d,p.reply.t):"First reply (thread)"}</div>${thumbs(p.reply.gfx)}${cp("Reply text",p.reply.text)}`:""}
+   ${(p.replies||(p.reply?[p.reply]:[])).map((r,ri)=>`<div class="mono" style="margin-top:12px">${r.t?"Reply at "+et(r.t)+" · "+myt(d,r.t):(["First","Second","Third"][ri]||"Next")+" reply (thread)"}</div>${thumbs(r.gfx)}${alts(r.gfx)}${cp("Reply "+(ri+1)+" text",r.text)}`).join("")}
    ${p.note?`<div class="mono" style="margin-top:6px;font-size:11px">${esc(p.note)}</div>`:""}</div>`;
- v.innerHTML=`<div class="sec"><h2>X, 9 to 15 Nov</h2><p>This week reuses the Instagram graphics and videos, plus a few X-only posts (polls and short text prompts). Times in ET and MYT. X takes up to 4 images per post, so carousels become a post plus a first reply. Every post is a draft for legal and Jay’s approval, and we never post it ourselves. Tap any image to preview it.</p>
-  <p style="color:var(--ink2)"><b>What other futures prop firms do on X</b> (checked 10 Nov): Topstep posts about 4 times a day, mostly quote-posts of traders’ wins plus daily prompts and a Friday rules poll. Apex is mostly trader payout videos. Take Profit Trader runs sales codes and giveaways. Tradeify streams live sessions and posts polls. Lucid leans on memes and humour. MyFundedFutures asks the audience questions. What 18th Street takes: polls and prompts for reach, education threads for saves, no sales codes and no payout amounts without Jay’s OK.</p></div>`
-  + X_PLAN.map(d=>`<div class="sc" style="grid-template-columns:1fr"><div><div class="mono">X · ${fmt(d.date)}</div><h3>${d.posts.length} post${d.posts.length>1?"s":""}</h3>${d.posts.map(p=>post(d.date,p)).join("")}</div></div>`).join("");
+ v.innerHTML=(typeof X_INFO!=="undefined"?`<div class="sec"><h2>X, 9 to 15 Nov</h2><p>${esc(X_INFO.intro)}</p>
+  <h3 style="margin-top:22px">What we found on X</h3><p class="mono" style="margin:2px 0 10px">Two months of posts, Sep to Nov 2026, read on 10 Nov. Views as shown on X.</p>
+  ${X_INFO.research.map(([a,b])=>`<p style="margin:0 0 10px;color:var(--ink2)"><b style="color:var(--ink)">${esc(a)}.</b> ${esc(b)}</p>`).join("")}
+  <h3 style="margin-top:22px">What changed in our plan</h3><ul style="margin:6px 0 0;padding-left:18px;color:var(--ink2)">${X_INFO.takeaways.map(x=>`<li style="margin-bottom:6px">${esc(x)}</li>`).join("")}</ul></div>`:"")
+  + X_PLAN.map(d=>`<div class="sc" style="grid-template-columns:1fr"><div><div class="mono">X · ${fmt(d.date)}</div><h3>${d.posts.length} post${d.posts.length>1?"s":""}</h3>${d.posts.slice().sort((x,y)=>x.t.localeCompare(y.t)).map(p=>post(d.date,p)).join("")}</div></div>`).join("");
  v.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>copy(CPS[+b.dataset.cp],"Copied"));
 })();
 function openStory(date){const s=STORY_PLAN.find(x=>x.date===date);if(!s)return;
