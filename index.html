@@ -1771,6 +1771,7 @@ const X_PLAN=[
 const PUB={through:"2026-11-11",over:{"ig14":"none","x2026-11-1009:15":"none"}};
 // ---- 10 Nov: X is scheduled only through Tue 10 Nov ----
 PUB.xthrough="2026-11-10";
+X_INFO.intro="This week reuses the Instagram graphics and videos, plus a few short X-only posts. Times in ET and MYT. Every post is a draft for legal and Jay’s approval. Tap a post to open its copy, images and alt text.";
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
@@ -1982,9 +1983,8 @@ function xGrid(){
    ${p.poll?p.poll.map((o,i)=>cp("Poll option "+(i+1),o)).join(""):""}
    ${(p.replies||(p.reply?[p.reply]:[])).map((r,ri)=>`<div class="mono" style="margin-top:12px">${r.t?"Reply at "+et(r.t)+" · "+myt(d,r.t):(["First","Second","Third"][ri]||"Next")+" reply (thread)"}</div>${thumbs(r.gfx)}${alts(r.gfx)}${cp("Reply "+(ri+1)+" text",r.text)}`).join("")}
    ${p.note?`<div class="mono" style="margin-top:6px;font-size:11px">${esc(p.note)}</div>`:""}</div>`;
- v.innerHTML=(typeof X_INFO!=="undefined"?`<div class="sec"><h2>X, 9 to 15 Nov</h2><p>${esc(X_INFO.intro)}</p>${PUBLEG}</div>${xGrid()}<div class="sec"><h3 style="margin-top:6px">Post details</h3>
-</div>`:"")
-  + X_PLAN.map(d=>`<div class="sc" style="grid-template-columns:1fr"><div><div class="mono">X · ${fmt(d.date)}</div><h3>${d.posts.length} post${d.posts.length>1?"s":""}</h3>${d.posts.slice().sort((x,y)=>x.t.localeCompare(y.t)).map(p=>post(d.date,p)).join("")}</div></div>`).join("");
+ v.innerHTML=(typeof X_INFO!=="undefined"?`<div class="sec"><h2>X, 9 to 15 Nov</h2><p>${esc(X_INFO.intro)}</p>${PUBLEG}</div>${xGrid()}`:"");
+ window.XD={}; X_PLAN.forEach(d=>d.posts.forEach(p=>{window.XD["xd-"+d.date+"-"+p.t.replace(":","")]={d:d.date,html:post(d.date,p)};}));
  v.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>copy(CPS[+b.dataset.cp],"Copied"));
 })();
 function openStory(date){const s=STORY_PLAN.find(x=>x.date===date);if(!s)return;
@@ -2057,6 +2057,8 @@ document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>{
 })();
 </script>
 <script>try{document.getElementById('publeg-ig').innerHTML=PUBLEG;}catch(e){}</script>
-<script>document.addEventListener("click",e=>{const c=e.target.closest(".xcard");if(!c||e.target.closest("a"))return;e.preventDefault();e.stopPropagation();const el=document.getElementById(c.dataset.xd);if(el){el.scrollIntoView({behavior:"smooth",block:"start"});el.style.outline="2px solid #7FA0A3";setTimeout(()=>el.style.outline="",1600);}},true);</script>
+<script>document.addEventListener("click",e=>{const c=e.target.closest(".xcard");if(!c||e.target.closest("a"))return;e.preventDefault();e.stopPropagation();const x=(window.XD||{})[c.dataset.xd];if(!x)return;
+const dr=document.getElementById("dr");dr.innerHTML=`<button class="x" onclick="closeD()">Close</button><div class="mono" style="margin-top:6px">X · ${fmt(x.d)}</div>`+x.html.replace('class="fr"','class="fr" style="border:0;padding:12px 0 0"');
+dr.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>copy(CPS[+b.dataset.cp],"Copied"));dr.classList.add("on");document.getElementById("ov").classList.add("on");dr.scrollTop=0;},true);</script>
 </body>
 </html>
