@@ -41,6 +41,9 @@ nav button.on{background:var(--s2);color:var(--ink);border-color:#3a4147}
 .dn{display:flex;justify-content:space-between;align-items:baseline}
 .dn b{font-size:20px;font-weight:600;letter-spacing:-.02em}
 .ev{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--soft);letter-spacing:.03em;line-height:1.35;border-left:2px solid var(--accent);padding-left:6px}
+.day.blank{background:var(--bg)}
+.day.today{box-shadow:inset 0 0 0 2px #7FA0A3}
+.day{min-height:120px}
 .card,.fr{position:relative}
 .pub{position:absolute;top:8px;right:8px;width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.35)}
 .pub.posted{background:#3FB37F}.pub.sched{background:#E8C547}.pub.none{background:#E5534B}
@@ -161,7 +164,7 @@ textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1p
 <section class="view on" id="v-cal">
   <div id="publeg-ig"></div>
   <div class="legend" id="legend" style="display:none"></div>
-  <div class="grid" id="grid"></div>
+  <div id="grid"></div>
   <div class="mix" id="mix"></div>
   <p class="mono" style="margin-top:6px" id="mixnote">Bar = share of the feed posts · white tick = the client’s target split</p>
 </section>
@@ -1803,30 +1806,35 @@ document.querySelectorAll(".lg").forEach(e=>e.onclick=()=>{const p=e.dataset.p;o
 function apply(){document.querySelectorAll(".card").forEach(c=>c.classList.toggle("hidden",off.has(c.dataset.p)));}
 
 // grid
+
+const MONTHS=[[2026,10,"November 2026"],[2026,11,"December 2026"]];
+function monthGrids(dayHTML,countFn,unit){
+ const today=new Date(Date.now()-5*3600e3).toISOString().slice(0,10);
+ return MONTHS.map(([Y,M,name])=>{
+  let h=DOW.map(x=>`<div class="dh mono">${x}</div>`).join("");
+  const n=countFn(Y,M);
+  h+=`<div class="wk"><span style="font:700 20px Archivo,sans-serif;letter-spacing:-.02em;color:var(--ink)">${name}</span><span class="mono">${n?n+" "+unit:"Nothing planned yet"}</span></div>`;
+  const first=new Date(Date.UTC(Y,M,1)), lead=(first.getUTCDay()+6)%7, days=new Date(Date.UTC(Y,M+1,0)).getUTCDate();
+  for(let i=0;i<lead;i++) h+=`<div class="day out blank"></div>`;
+  for(let dd=1;dd<=days;dd++){const iso=new Date(Date.UTC(Y,M,dd)).toISOString().slice(0,10);
+   h+=`<div class="day${iso===today?" today":""}"><div class="dn"><b>${dd}</b><span class="mono">${iso===today?"Today":""}</span></div>${dayHTML(iso)}</div>`;}
+  const tail=(7-((lead+days)%7))%7; for(let i=0;i<tail;i++) h+=`<div class="day out blank"></div>`;
+  return `<div class="grid" style="margin-bottom:28px">${h}</div>`;}).join("");
+}
 function buildGrid(){
- let h=DOW.map(x=>`<div class="dh mono">${x}</div>`).join("");
- const start=d("2026-11-02");
- const weeks=[["2026-W45","2 to 8 Nov"],["2026-W46","9 to 15 Nov"]];
- for(let w=0;w<2;w++){
-  const wp=POSTS.filter(p=>p.week===weeks[w][0]).length;
-  h+=`<div class="wk"><span class="mono" style="color:var(--ink2)">${weeks[w][0]} · ${weeks[w][1]}</span><span class="mono">${wp} feed posts in the window</span></div>`;
-  for(let i=0;i<7;i++){
-   const x=new Date(start.getTime()+(w*7+i)*864e5);
-   const iso=x.toISOString().slice(0,10);
-   const inW=iso>="2026-11-03"&&iso<="2026-11-15";
-   const ps=POSTS.filter(p=>p.date===iso).sort((a,b)=>a.time.localeCompare(b.time));
-   const ev=(EVENTS[iso]||[]).map(e=>`<div class="ev">${esc(e)}</div>`).join("");
-   const cards=ps.map(p=>{const pl=PIL[p.pillar];return `<div class="card" style="--c:${pl.c}" data-id="${p.id}" data-p="${esc(p.pillar)}">${pubDot(p.date,p.time,"ig"+p.id)}
-     <div class="m"><span class="mono" style="color:var(--ink)"><b>${myt(p.date,p.time)}</b></span><span class="mono" style="color:var(--ink2)">${et(p.time)}</span><span class="tag">${esc(p.format)}</span>${p.fromSanti?'<span class="tag s">W45</span>':''}${p.approved?'<span class="tag a">Approved</span>':''}${p.video?'<span class="tag g">Video ✓</span>':GB[p.gstate]}</div>
+ const igDay=iso=>{
+  const ps=POSTS.filter(p=>p.date===iso).sort((a,b)=>a.time.localeCompare(b.time));
+  const ev=(EVENTS[iso]||[]).map(e=>`<div class="ev">${esc(e)}</div>`).join("");
+  const cards=ps.map(p=>{const pl=PIL[p.pillar];return `<div class="card" style="--c:${pl.c}" data-id="${p.id}" data-p="${esc(p.pillar)}">${pubDot(p.date,p.time,"ig"+p.id)}
+     <div class="m"><span class="mono" style="color:var(--ink)"><b>${myt(p.date,p.time)}</b></span><span class="mono" style="color:var(--ink2)">${et(p.time)}</span><span class="tag">${esc(p.format)}</span>${p.video?'<span class="tag g">Video ✓</span>':GB[p.gstate]}</div>
      <div class="t">${esc(p.title)}</div>
      <div class="mono" style="font-size:10px;letter-spacing:.05em">${esc(p.board)}</div></div>`}).join("");
-   const st=inW&&STORIES[iso]?`<div class="st${STORY_PLAN.some(s=>s.date===iso)?" click":""}" data-sd="${iso}"><b>STORY</b> ${esc(STORIES[iso])}</div>`:"";
-   h+=`<div class="day ${inW?"":"out"}"><div class="dn"><b>${x.getUTCDate()}</b><span class="mono">${inW?"":"outside window"}</span></div>${inW?ev:""}${cards}${st}</div>`;
-  }
- }
- $("#grid").innerHTML=h;
- document.querySelectorAll(".card").forEach(c=>c.onclick=()=>open(c.dataset.id));
- document.querySelectorAll(".st.click").forEach(c=>c.onclick=()=>openStory(c.dataset.sd));
+  const st=STORIES[iso]&&iso>="2026-11-03"&&iso<="2026-11-15"?`<div class="st${STORY_PLAN.some(s=>s.date===iso)?" click":""}" data-sd="${iso}"><b>STORY</b> ${esc(STORIES[iso])}</div>`:"";
+  return (ps.length||st?ev:"")+cards+st;};
+ const cnt=(Y,M)=>POSTS.filter(p=>{const [y,m]=p.date.split("-").map(Number);return y===Y&&m===M+1;}).length;
+ $("#grid").innerHTML=monthGrids(igDay,cnt,"feed posts");
+ document.querySelectorAll("#grid .card").forEach(c=>c.onclick=()=>open(c.dataset.id));
+ document.querySelectorAll("#grid .st.click").forEach(c=>c.onclick=()=>openStory(c.dataset.sd));
 }
 buildGrid();
 
@@ -1957,24 +1965,16 @@ function wireStory(root){
 function xGrid(){
  const KC={"Text":"#9BA1A6","Video":"#C9A76A","Image":"#7FA0A3"};
  const kc=k=>/Video/.test(k)?KC.Video:/image/i.test(k)?KC.Image:KC.Text;
- let h=DOW.map(x=>`<div class="dh mono">${x}</div>`).join("");
- const n=X_PLAN.reduce((s,d)=>s+d.posts.length,0);
- h+=`<div class="wk"><span class="mono" style="color:var(--ink2)">X · 9 to 15 Nov</span><span class="mono">${n} posts</span></div>`;
- const start=d("2026-11-09");
- for(let i=0;i<7;i++){
-  const x=new Date(start.getTime()+i*864e5), iso=x.toISOString().slice(0,10);
-  const day=X_PLAN.find(z=>z.date===iso); const ps=day?day.posts.slice().sort((a,b)=>a.t.localeCompare(b.t)):[];
-  const ev=(EVENTS[iso]||[]).map(e=>`<div class="ev">${esc(e)}</div>`).join("");
-  const cards=ps.map(p=>{const g=(p.gfx&&p.gfx[0])?`<img src="img/${p.gfx[0]}.jpg" alt="" style="width:100%;height:auto;display:block;margin:6px 0 2px;border:1px solid var(--line)">`:"";
-   const title=(p.from||"").replace(/^New for X \((.*)\)$/,"$1");
-   const first=(p.text||"").split("\n")[0];
+ const xDay=iso=>{const day=X_PLAN.find(z=>z.date===iso); const ps=day?day.posts.slice().sort((a,b)=>a.t.localeCompare(b.t)):[];
+  const ev=ps.length?(EVENTS[iso]||[]).map(e=>`<div class="ev">${esc(e)}</div>`).join(""):"";
+  return ev+ps.map(p=>{const g=(p.gfx&&p.gfx[0])?`<img src="img/${p.gfx[0]}.jpg" alt="" style="width:100%;height:auto;display:block;margin:6px 0 2px;border:1px solid var(--line)">`:"";
+   const title=(p.from||"").replace(/^New for X \((.*)\)$/,"$1"); const first=(p.text||"").split("\n")[0];
    return `<div class="card xcard" style="--c:${kc(p.kind)}" data-xd="xd-${iso}-${p.t.replace(":","")}">${pubDot(iso,p.t,"x"+iso+p.t)}
     <div class="m"><span class="mono" style="color:var(--ink)"><b>${myt(iso,p.t)}</b></span><span class="mono" style="color:var(--ink2)">${et(p.t)}</span><span class="tag">${esc(p.kind)}</span>${p.onday?'<span class="tag">On the day</span>':""}</div>
     <div class="t">${esc(title.charAt(0).toUpperCase()+title.slice(1))}</div>${g}
-    <div class="mono" style="font-size:10px;letter-spacing:.03em;text-transform:none;color:var(--ink2);line-height:1.4">${esc(first.length>90?first.slice(0,88)+"…":first)}</div></div>`}).join("");
-  h+=`<div class="day"><div class="dn"><b>${x.getUTCDate()}</b><span class="mono"></span></div>${ev}${cards}</div>`;
- }
- return `<div class="grid" id="xgrid" style="margin:8px 0 34px">${h}</div>`;
+    <div class="mono" style="font-size:10px;letter-spacing:.03em;text-transform:none;color:var(--ink2);line-height:1.4">${esc(first.length>90?first.slice(0,88)+"…":first)}</div></div>`}).join("");};
+ const cnt=(Y,M)=>X_PLAN.filter(d=>{const [y,m]=d.date.split("-").map(Number);return y===Y&&m===M+1;}).reduce((s,d)=>s+d.posts.length,0);
+ return `<div id="xgrid" style="margin:8px 0 34px">${monthGrids(xDay,cnt,"posts")}</div>`;
 }
  const post=(d,p)=>`<div class="fr" id="xd-${d}-${p.t.replace(":","")}">${pubDot(d,p.t,"x"+d+p.t)}<div class="hd"><b>${et(p.t)}</b><span class="mono">${myt(d,p.t)}</span><span class="tag">${esc(p.kind)}</span>${p.onday?'<span class="tag">On the day</span>':""}</div>
    <div class="mono" style="margin:4px 0">From: ${esc(p.from)}</div>
