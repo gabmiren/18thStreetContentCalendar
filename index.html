@@ -1697,6 +1697,24 @@ const X_PLAN=[
  const i=wed.posts.findIndex(x=>x.vid==="vid/clip_get_paid_v4.mp4");
  if(i>=0){const x=wed.posts.splice(i,1)[0]; x.t="12:30"; tue.posts.push(x);}
 })();
+// ---- 10 Nov: no interactive stories while the account is small; stories only highlight our posts ----
+(function(){
+ const share=(date,t,title,extra)=>({date,kind:"Share post",gfx:null,frames:[{t,what:`Open “${title}”, tap Share, then Add to story. No stickers, nothing to type.`+(extra||""),post:title}]});
+ const set=(s)=>{const i=STORY_PLAN.findIndex(x=>x.date===s.date); if(i>=0) STORY_PLAN[i]=s; else STORY_PLAN.push(s); delete STORY_GFX[s.date];};
+ set(share("2026-11-09","12:30","Four phases, with a payout at every one"));
+ STORIES["2026-11-09"]="Share the four phases reel to story.";
+ // Tue: CPI One big number stays; add a share of today's clip
+ const tue=STORY_PLAN.find(x=>x.date==="2026-11-10");
+ tue.frames.push({t:"13:00",what:"Open “Clip: Get paid at every phase”, tap Share, then Add to story. No stickers, nothing to type.",post:"Clip: Get paid at every phase"});
+ STORIES["2026-11-10"]="One big number: the CPI headline figure, shared with the News alert · share the Get paid clip.";
+ set(share("2026-11-11","12:30","Who we built 18th Street for"));
+ STORIES["2026-11-11"]="Share Who we built 18th Street for to story.";
+ set(share("2026-11-12","12:30","All traders should know: order types"));
+ STORIES["2026-11-12"]="Share the order types carousel to story.";
+ STORIES["2026-11-16"]="Share Futures basics to story.";
+ STORIES["2026-11-17"]="Share the VWAP carousel to story.";
+ STORY_PLAN.sort((a,b)=>a.date.localeCompare(b.date));
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
