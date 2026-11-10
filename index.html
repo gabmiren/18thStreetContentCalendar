@@ -47,6 +47,7 @@ nav button.on{background:var(--s2);color:var(--ink);border-color:#3a4147}
 .publeg{display:flex;gap:18px;align-items:center;font:400 11px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2,#9BA1A6);margin:6px 0 12px}
 .publeg span{display:flex;align-items:center;gap:7px}.publeg i{width:10px;height:10px;border-radius:50%;display:inline-block}
 .fr .hd{padding-right:22px}
+.card .m{padding-right:16px}
 .card{background:var(--s2);border:1px solid var(--line);border-left:3px solid var(--c);padding:8px 9px;cursor:pointer;transition:background .12s}
 .card:hover{background:var(--s3)}
 .card .t{font-size:13.5px;font-weight:600;line-height:1.25;margin:3px 0 4px}
@@ -1947,7 +1948,30 @@ function wireStory(root){
  const ALT=typeof X_ALT!=="undefined"?X_ALT:{};
  const alts=g=>g&&g.length&&g.some(k=>ALT[k])?`<details style="margin:0 0 10px"><summary class="mono" style="cursor:pointer">Alt text (${g.length})</summary>${g.map((k,i)=>ALT[k]?cp("Alt text, image "+(i+1),ALT[k]):"").join("")}</details>`:"";
  const cp=(k,val)=>{CPS.push(val);return `<div class="cp"><div><div class="k">${esc(k)}</div><div class="v" style="white-space:pre-wrap">${esc(val)}</div></div><button class="btn" data-cp="${CPS.length-1}">Copy</button></div>`;};
- const post=(d,p)=>`<div class="fr">${pubDot(d,p.t,"x"+d+p.t)}<div class="hd"><b>${et(p.t)}</b><span class="mono">${myt(d,p.t)}</span><span class="tag">${esc(p.kind)}</span>${p.onday?'<span class="tag">On the day</span>':""}</div>
+
+function xGrid(){
+ const KC={"Text":"#9BA1A6","Video":"#C9A76A","Image":"#7FA0A3"};
+ const kc=k=>/Video/.test(k)?KC.Video:/image/i.test(k)?KC.Image:KC.Text;
+ let h=DOW.map(x=>`<div class="dh mono">${x}</div>`).join("");
+ const n=X_PLAN.reduce((s,d)=>s+d.posts.length,0);
+ h+=`<div class="wk"><span class="mono" style="color:var(--ink2)">X · 9 to 15 Nov</span><span class="mono">${n} posts</span></div>`;
+ const start=d("2026-11-09");
+ for(let i=0;i<7;i++){
+  const x=new Date(start.getTime()+i*864e5), iso=x.toISOString().slice(0,10);
+  const day=X_PLAN.find(z=>z.date===iso); const ps=day?day.posts.slice().sort((a,b)=>a.t.localeCompare(b.t)):[];
+  const ev=(EVENTS[iso]||[]).map(e=>`<div class="ev">${esc(e)}</div>`).join("");
+  const cards=ps.map(p=>{const g=(p.gfx&&p.gfx[0])?`<img src="img/${p.gfx[0]}.jpg" alt="" style="width:100%;height:auto;display:block;margin:6px 0 2px;border:1px solid var(--line)">`:"";
+   const title=(p.from||"").replace(/^New for X \((.*)\)$/,"$1");
+   const first=(p.text||"").split("\n")[0];
+   return `<div class="card xcard" style="--c:${kc(p.kind)}" data-xd="xd-${iso}-${p.t.replace(":","")}">${pubDot(iso,p.t,"x"+iso+p.t)}
+    <div class="m"><span class="mono" style="color:var(--ink)"><b>${myt(iso,p.t)}</b></span><span class="mono" style="color:var(--ink2)">${et(p.t)}</span><span class="tag">${esc(p.kind)}</span>${p.onday?'<span class="tag">On the day</span>':""}</div>
+    <div class="t">${esc(title.charAt(0).toUpperCase()+title.slice(1))}</div>${g}
+    <div class="mono" style="font-size:10px;letter-spacing:.03em;text-transform:none;color:var(--ink2);line-height:1.4">${esc(first.length>90?first.slice(0,88)+"…":first)}</div></div>`}).join("");
+  h+=`<div class="day"><div class="dn"><b>${x.getUTCDate()}</b><span class="mono"></span></div>${ev}${cards}</div>`;
+ }
+ return `<div class="grid" id="xgrid" style="margin:8px 0 34px">${h}</div>`;
+}
+ const post=(d,p)=>`<div class="fr" id="xd-${d}-${p.t.replace(":","")}">${pubDot(d,p.t,"x"+d+p.t)}<div class="hd"><b>${et(p.t)}</b><span class="mono">${myt(d,p.t)}</span><span class="tag">${esc(p.kind)}</span>${p.onday?'<span class="tag">On the day</span>':""}</div>
    <div class="mono" style="margin:4px 0">From: ${esc(p.from)}</div>
    ${thumbs(p.gfx)}${alts(p.gfx)}${p.onday&&p.gfx&&!p.gfx.length?'<div class="ph" style="margin:8px 0">Graphic made on the day</div>':""}
    ${p.vid?`<div style="margin:6px 0"><a href="${p.vid}" style="color:var(--ink)">Open the video file</a></div>`:""}
@@ -1955,7 +1979,7 @@ function wireStory(root){
    ${p.poll?p.poll.map((o,i)=>cp("Poll option "+(i+1),o)).join(""):""}
    ${(p.replies||(p.reply?[p.reply]:[])).map((r,ri)=>`<div class="mono" style="margin-top:12px">${r.t?"Reply at "+et(r.t)+" · "+myt(d,r.t):(["First","Second","Third"][ri]||"Next")+" reply (thread)"}</div>${thumbs(r.gfx)}${alts(r.gfx)}${cp("Reply "+(ri+1)+" text",r.text)}`).join("")}
    ${p.note?`<div class="mono" style="margin-top:6px;font-size:11px">${esc(p.note)}</div>`:""}</div>`;
- v.innerHTML=(typeof X_INFO!=="undefined"?`<div class="sec"><h2>X, 9 to 15 Nov</h2><p>${esc(X_INFO.intro)}</p>${PUBLEG}
+ v.innerHTML=(typeof X_INFO!=="undefined"?`<div class="sec"><h2>X, 9 to 15 Nov</h2><p>${esc(X_INFO.intro)}</p>${PUBLEG}</div>${xGrid()}<div class="sec"><h3 style="margin-top:6px">Post details</h3>
 </div>`:"")
   + X_PLAN.map(d=>`<div class="sc" style="grid-template-columns:1fr"><div><div class="mono">X · ${fmt(d.date)}</div><h3>${d.posts.length} post${d.posts.length>1?"s":""}</h3>${d.posts.slice().sort((x,y)=>x.t.localeCompare(y.t)).map(p=>post(d.date,p)).join("")}</div></div>`).join("");
  v.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>copy(CPS[+b.dataset.cp],"Copied"));
@@ -2030,5 +2054,6 @@ document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>{
 })();
 </script>
 <script>try{document.getElementById('publeg-ig').innerHTML=PUBLEG;}catch(e){}</script>
+<script>document.addEventListener("click",e=>{const c=e.target.closest(".xcard");if(!c||e.target.closest("a"))return;e.preventDefault();e.stopPropagation();const el=document.getElementById(c.dataset.xd);if(el){el.scrollIntoView({behavior:"smooth",block:"start"});el.style.outline="2px solid #7FA0A3";setTimeout(()=>el.style.outline="",1600);}},true);</script>
 </body>
 </html>
