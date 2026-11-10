@@ -1730,6 +1730,19 @@ const X_PLAN=[
 // ---- 10 Nov: CPI heads-up asks who's trading the print ----
 (function(){ const x=X_PLAN.find(d=>d.date==="2026-11-10").posts.find(p=>p.t==="08:00");
  x.text="October CPI is out at 8:30 AM ET.\n\nNo yearly rate this time, since October 2025 prices went uncollected in the shutdown. It all comes down to the monthly number. Who’s trading the print?"; })();
+// ---- 10 Nov: Get paid clip back to Wed 11 Nov 12:30 ET (another video takes today) ----
+(function(){
+ const p=POSTS.find(x=>x.id==="16"); p.date="2026-11-11"; p.time="12:30"; p.due="Wed 11 Nov, before 12:30 PM ET";
+ p.why="A trust post in Jay’s own words on the firm’s clearest difference.";
+ p.changes=(p.changes||[]).concat(["10 Nov: moved back to Wed 11 Nov 12:30 PM ET; another video takes Tue 10 Nov."]);
+ const tue=X_PLAN.find(d=>d.date==="2026-11-10"), wed=X_PLAN.find(d=>d.date==="2026-11-11");
+ const i=tue.posts.findIndex(x=>x.vid==="vid/clip_get_paid_v5.mp4"); if(i>=0){const x=tue.posts.splice(i,1)[0]; x.t="12:30"; wed.posts.push(x);}
+ const st=STORY_PLAN.find(s=>s.date==="2026-11-10"); st.frames=st.frames.filter(f=>f.post!=="Clip: Get paid at every phase");
+ STORIES["2026-11-10"]="One big number: the CPI headline figure, shared with the News alert.";
+ const sw=STORY_PLAN.find(s=>s.date==="2026-11-11");
+ sw.frames.push({t:"13:00",what:"Open “Clip: Get paid at every phase”, tap Share, then Add to story. No stickers, nothing to type.",post:"Clip: Get paid at every phase"});
+ STORIES["2026-11-11"]="Share Who we built 18th Street for and the Get paid clip to story.";
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
