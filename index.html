@@ -1678,6 +1678,15 @@ const X_PLAN=[
    note:"Native upload. Product post with payouts: needs Jay’s explicit OK. No disclaimer on X; legal may still want the simulated-phases line here."});
  }
 })();
+// ---- 10 Nov: Get paid clip v4 (outro cut, one continuous animation 6.0 to 17.3 s) ----
+(function(){
+ const p=POSTS.find(x=>x.id==="16");
+ Object.assign(p,{video:"vid/clip_get_paid_v4.mp4",draftNote:"Video ready (v4)",
+  onscreen:"Jay in the video band with captions. From 6.0 to 17.3 s one continuous animation: the four phases light up with a payout at each, the payouts turn into the $50K plan example amounts ($1,000, $1,500, $1,500, $3,000, labelled as an example), then a push to bars of plan fee vs Phase 1 payout at every plan size. Ends on Jay’s last word. 27.8 s.",
+  notes:p.notes.replace("(QA PASS: 30.4 s, -14 LUFS, captions 0% mismatch)","(v4 QA: -14 LUFS, captions 0% mismatch; 27.8 s, under the kit’s 30 s floor because the outro was cut on request)")});
+ p.changes=(p.changes||[]).concat(["10 Nov v4: outro card cut; the three cards are now one continuous animation with the $50K plan example amounts and no footage between scenes."]);
+ for(const d of X_PLAN) for(const x of d.posts) if(x.vid==="vid/clip_get_paid_v2.mp4") x.vid="vid/clip_get_paid_v4.mp4";
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
