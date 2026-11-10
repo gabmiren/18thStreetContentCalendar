@@ -1830,6 +1830,16 @@ X_INFO.intro="This week reuses the Instagram graphics and videos, plus a few sho
  STORY_GFX["2026-11-10"]=["ob10v3_1"];
  STORIES["2026-11-10"]="One big number: +0.4% CPI, shared with the News alert.";
 })();
+// ---- 10 Nov: CPI News alert v5 after the design review (forecast vs actual pairs, trimmed copy) ----
+(function(){
+ const p=POSTS.find(x=>x.title==="CPI News alert"&&x.date==="2026-11-10");
+ Object.assign(p,{gfx:["nacpiv5_1"],draftNote:"Graphic ready (v5)",hook:"Prices rose faster than expected",
+  onscreen:"Eyebrow “October CPI · month on month”; headline “Prices rose faster than expected”; two bar pairs, forecast vs actual: headline CPI +0.3% vs +0.4%, core CPI +0.2% vs +0.3%; line “Core has risen 0.3% three months in a row.”; footnote with the core definition, the missing yearly rate and sources."});
+ p.changes=(p.changes||[]).concat(["10 Nov v5: design review. Two forecast-vs-actual pairs replace the four-bar table; energy and axis cut; copy trimmed from about 62 to 40 words; footnote contrast lifted to 5.1:1."]);
+ const x=X_PLAN.find(d=>d.date==="2026-11-10").posts.find(q=>q.from==="CPI News alert"); x.gfx=["nacpiv5_1"];
+ X_ALT.nacpiv5_1="Prices rose faster than expected in October. Headline CPI: forecast +0.3%, actual +0.4%. Core CPI: forecast +0.2%, actual +0.3%. Core has risen 0.3% three months in a row. No yearly rate this month because October 2025 data was never collected. Source: BLS, 10 Nov.";
+ const st=STORY_PLAN.find(s=>s.date==="2026-11-10"); st.gfx="ob10v4_1"; STORY_GFX["2026-11-10"]=["ob10v4_1"];
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
