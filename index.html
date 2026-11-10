@@ -1727,6 +1727,9 @@ const X_PLAN=[
 // ---- 10 Nov: playful second line for the X CPI heads-up ----
 (function(){ const d=X_PLAN.find(d=>d.date==="2026-11-10"); const x=d.posts.find(p=>p.t==="08:00");
  x.text="October CPI is out at 8:30 AM ET.\n\nPlot twist: there’s no yearly rate this time. October 2025 prices went uncollected during the shutdown, so the monthly number gets the spotlight."; })();
+// ---- 10 Nov: CPI heads-up asks who's trading the print ----
+(function(){ const x=X_PLAN.find(d=>d.date==="2026-11-10").posts.find(p=>p.t==="08:00");
+ x.text="October CPI is out at 8:30 AM ET.\n\nNo yearly rate this time, since October 2025 prices went uncollected in the shutdown. It all comes down to the monthly number. Who’s trading the print?"; })();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
