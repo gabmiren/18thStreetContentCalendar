@@ -44,6 +44,26 @@ nav button.on{background:var(--s2);color:var(--ink);border-color:#3a4147}
 .day.blank{background:var(--bg)}
 .day.today{box-shadow:inset 0 0 0 2px #7FA0A3}
 .day{min-height:120px}
+
+#editbtn{border:1px solid var(--line)!important}
+body.editing #editbtn{background:#E8C547!important;color:#16191C!important;border-color:#E8C547!important}
+#editbar{margin:0 0 14px;padding:12px 14px;border:1px solid #5A4F22;background:#1D1B12;font:400 13px/1.5 Archivo,sans-serif;color:var(--ink);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+#editbar .mono{font-size:11px;color:#C9B66A}
+#editbar button{background:transparent;border:1px solid #5A4F22;color:var(--ink);padding:6px 10px;font:500 12px Archivo,sans-serif;cursor:pointer}
+body.editing .card[data-uid]{cursor:grab}
+body.editing .card .pub{cursor:pointer;width:14px;height:14px;top:6px;right:6px}
+.card.dragging{opacity:.35}
+.day.drop{box-shadow:inset 0 0 0 2px #E8C547!important}
+.card.drop{outline:2px dashed #E8C547;outline-offset:2px}
+.card.edited::after{content:"EDITED";position:absolute;right:8px;bottom:6px;font:500 9px "IBM Plex Mono",monospace;letter-spacing:.1em;color:#C9B66A}
+.edp{border:1px solid #5A4F22;background:#1D1B12;padding:14px;margin:12px 0 18px}
+.edp label{display:block;font:500 11px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#C9B66A;margin:10px 0 4px}
+.edp input,.edp textarea{width:100%;box-sizing:border-box;background:#121416;color:var(--ink);border:1px solid #3A3A2A;padding:8px;font:400 14px/1.45 Archivo,sans-serif}
+.edp textarea{min-height:120px;resize:vertical}
+.edp .row{display:flex;gap:10px}.edp .row>div{flex:1}
+.edp .acts{display:flex;gap:10px;margin-top:12px}
+.edp button{background:#E8C547;color:#16191C;border:0;padding:8px 14px;font:600 13px Archivo,sans-serif;cursor:pointer}
+.edp button.sec{background:transparent;color:var(--ink);border:1px solid #5A4F22}
 .card,.fr{position:relative}
 .pub{position:absolute;top:8px;right:8px;width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.35)}
 .pub.posted{background:#3FB37F}.pub.sched{background:#E8C547}.pub.none{background:#E5534B}
@@ -159,7 +179,9 @@ textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1p
 <nav id="nav">
   <button data-v="cal" class="on">Instagram</button>
   <button data-v="x">X</button>
+  <button id="editbtn" style="margin-left:auto">Edit</button>
 </nav>
+<div id="editbar" style="display:none"></div>
 
 <section class="view on" id="v-cal">
   <div id="publeg-ig"></div>
@@ -235,8 +257,9 @@ textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1p
 
 <script>
 // Publishing status dots: green posted, yellow scheduled, red not scheduled. PUB comes from the data (scheduled-through date and per-post overrides).
-function pubState(date,t,key){
+function pubState(date,t,key,uid){
   const P=(typeof PUB!=="undefined")?PUB:{through:"",over:{}};
+  if(uid&&typeof EDITS!=="undefined"&&EDITS.pub[uid]) return EDITS.pub[uid];
   if(key&&P.over&&P.over[key]) return P.over[key];
   const [h,m]=(t||"00:00").split(":").map(Number); const [Y,M,D]=date.split("-").map(Number);
   const off=(date>="2026-11-01"&&date<"2027-03-14")?5:4; // ET to UTC
@@ -245,7 +268,7 @@ function pubState(date,t,key){
   if(date<=thr) return Date.now()>=at?"posted":"sched";
   return "none";
 }
-function pubDot(date,t,key){const s=pubState(date,t,key);const lab={posted:"Posted",sched:"Scheduled",none:"Not scheduled"}[s];return `<span class="pub ${s==="sched"?"sched":s}" title="${lab}"></span>`;}
+function pubDot(date,t,key,uid){const s=pubState(date,t,key,uid);const lab={posted:"Posted",sched:"Scheduled",none:"Not scheduled"}[s];return `<span class="pub ${s==="sched"?"sched":s}" title="${lab}"></span>`;}
 const PUBLEG='<div class="publeg"><span><i style="background:#3FB37F"></i>Posted</span><span><i style="background:#E8C547"></i>Scheduled</span><span><i style="background:#E5534B"></i>Not scheduled</span></div>';
 </script>
 <script>
@@ -1881,7 +1904,7 @@ function monthGrids(dayHTML,countFn,unit){
   const first=new Date(Date.UTC(Y,M,1)), lead=(first.getUTCDay()+6)%7, days=new Date(Date.UTC(Y,M+1,0)).getUTCDate();
   for(let i=0;i<lead;i++) h+=`<div class="day out blank"></div>`;
   for(let dd=1;dd<=days;dd++){const iso=new Date(Date.UTC(Y,M,dd)).toISOString().slice(0,10);
-   h+=`<div class="day${iso===today?" today":""}"><div class="dn"><b>${dd}</b><span class="mono">${iso===today?"Today":""}</span></div>${dayHTML(iso)}</div>`;}
+   h+=`<div class="day${iso===today?" today":""}" data-iso="${iso}"><div class="dn"><b>${dd}</b><span class="mono">${iso===today?"Today":""}</span></div>${dayHTML(iso)}</div>`;}
   const tail=(7-((lead+days)%7))%7; for(let i=0;i<tail;i++) h+=`<div class="day out blank"></div>`;
   return `<div class="grid" style="margin-bottom:28px">${h}</div>`;}).join("");
 }
@@ -1889,7 +1912,7 @@ function buildGrid(){
  const igDay=iso=>{
   const ps=POSTS.filter(p=>p.date===iso).sort((a,b)=>a.time.localeCompare(b.time));
   const ev=(EVENTS[iso]||[]).map(e=>`<div class="ev">${esc(e)}</div>`).join("");
-  const cards=ps.map(p=>{const pl=PIL[p.pillar];return `<div class="card" style="--c:${pl.c}" data-id="${p.id}" data-p="${esc(p.pillar)}">${pubDot(p.date,p.time,"ig"+p.id)}
+  const cards=ps.map(p=>{const pl=PIL[p.pillar];return `<div class="card${EDITS.ig[p._uid]?" edited":""}" draggable="true" style="--c:${pl.c}" data-id="${p.id}" data-uid="${esc(p._uid)}" data-p="${esc(p.pillar)}">${pubDot(p.date,p.time,"ig"+p.id,p._uid)}
      <div class="m"><span class="mono" style="color:var(--ink)"><b>${myt(p.date,p.time)}</b></span><span class="mono" style="color:var(--ink2)">${et(p.time)}</span><span class="tag">${esc(p.format)}</span>${p.video?'<span class="tag g">Video ✓</span>':GB[p.gstate]}</div>
      <div class="t">${esc(p.title)}</div>
      <div class="mono" style="font-size:10px;letter-spacing:.05em">${esc(p.board)}</div></div>`}).join("");
@@ -1897,9 +1920,95 @@ function buildGrid(){
   return (ps.length||st?ev:"")+cards+st;};
  const cnt=(Y,M)=>POSTS.filter(p=>{const [y,m]=p.date.split("-").map(Number);return y===Y&&m===M+1;}).length;
  $("#grid").innerHTML=monthGrids(igDay,cnt,"feed posts");
- document.querySelectorAll("#grid .card").forEach(c=>c.onclick=()=>open(c.dataset.id));
+ document.querySelectorAll("#grid .card").forEach(c=>c.onclick=e=>{if(e.target.closest(".pub")&&EDITING)return;open(c.dataset.id);editPanel(c.dataset.uid);});
  document.querySelectorAll("#grid .st.click").forEach(c=>c.onclick=()=>openStory(c.dataset.sd));
 }
+
+// ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
+const EKEY="cal18-edits-v1";
+let EDITS={ig:{},x:{},pub:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
+const normE=d=>({ig:(d&&d.ig)||{},x:(d&&d.x)||{},pub:(d&&d.pub)||{}});
+POSTS.forEach(p=>{p._uid="ig|"+p.title+"|"+p.date+"|"+p.time; p._o={date:p.date,time:p.time,caption:p.caption};});
+const XFLAT=[]; if(typeof X_PLAN!=="undefined") X_PLAN.forEach(d=>d.posts.forEach(p=>{p._uid="x|"+(p.from||"")+"|"+d.date+"|"+p.t; p._o={date:d.date,t:p.t,text:p.text,replies:(p.replies||[]).map(r=>r.text)}; XFLAT.push(p);}));
+function applyEdits(){
+ POSTS.forEach(p=>{const e=EDITS.ig[p._uid]||{}; p.date=e.date||p._o.date; p.time=e.time||p._o.time; p.caption=(e.caption!=null)?e.caption:p._o.caption;});
+ if(typeof X_PLAN==="undefined") return;
+ const g={}; XFLAT.forEach(p=>{const e=EDITS.x[p._uid]||{}; p.t=e.t||p._o.t; p.text=(e.text!=null)?e.text:p._o.text;
+  (p.replies||[]).forEach((r,i)=>{r.text=(e.replies&&e.replies[i]!=null)?e.replies[i]:p._o.replies[i];});
+  const d=e.date||p._o.date; (g[d]=g[d]||[]).push(p);});
+ X_PLAN.length=0; Object.keys(g).sort().forEach(d=>X_PLAN.push({date:d,posts:g[d]}));
+}
+function rerender(){ buildGrid(); if(window.renderX) renderX(); }
+const findU=u=>u.startsWith("ig|")?POSTS.find(p=>p._uid===u):XFLAT.find(p=>p._uid===u);
+const curPos=u=>{const p=findU(u); if(!p) return null; if(u.startsWith("ig|")) return {date:p.date,time:p.time}; const d=X_PLAN.find(z=>z.posts.includes(p)); return {date:d?d.date:p._o.date,time:p.t};};
+function setEdit(u,patch){
+ const ig=u.startsWith("ig|"), p=findU(u), store=ig?EDITS.ig:EDITS.x, e=Object.assign({},store[u]||{},patch);
+ const o=p._o; if(e.date===o.date) delete e.date;
+ if(ig){ if(e.time===o.time) delete e.time; if(e.caption===o.caption) delete e.caption; }
+ else { if(e.t===o.t) delete e.t; if(e.text===o.text) delete e.text; if(e.replies&&e.replies.every((r,i)=>r===o.replies[i])) delete e.replies; }
+ if(Object.keys(e).length) store[u]=e; else delete store[u];
+}
+let dbBusy=false, dbDirty=false;
+async function dbWrite(){ if(!EDB) return; if(dbBusy){dbDirty=true;return;} dbBusy=true;
+ try{ await EDB.doc("cal/edits").set({json:JSON.stringify(EDITS),at:Date.now()}); EERR=""; }
+ catch(e){ EERR="Couldn’t save to the shared calendar, so this edit is saved in this browser only."; }
+ dbBusy=false; if(dbDirty){dbDirty=false; dbWrite();} else editBar(); }
+function persist(){ try{localStorage.setItem(EKEY,JSON.stringify(EDITS));}catch(e){} dbWrite(); editBar(); }
+const nEdits=()=>Object.keys(EDITS.ig).length+Object.keys(EDITS.x).length+Object.keys(EDITS.pub).length;
+let undoArm=false;
+function editBar(){ const b=document.getElementById("editbar"); if(!b) return;
+ if(!EDITING){b.style.display="none";return;} b.style.display="flex";
+ b.innerHTML=`<span>Drag a post to another day, or drop it on another post to swap them. Click a status dot to change it. Open a post to edit its time and copy.</span>
+  <span class="mono">${nEdits()} edit${nEdits()===1?"":"s"} · saved to ${EWHERE}</span>${EERR?`<span class="mono" style="color:#E5534B">${EERR}</span>`:""}
+  <span style="margin-left:auto;display:flex;gap:8px"><button id="ecopy">Copy my edits</button><button id="eundo">${undoArm?"Click again to undo all":"Undo all edits"}</button><button id="edone">Done</button></span>`;
+ b.querySelector("#ecopy").onclick=()=>copy(JSON.stringify(EDITS,null,1),"Edits copied");
+ b.querySelector("#edone").onclick=()=>toggleEdit(false);
+ b.querySelector("#eundo").onclick=()=>{ if(!undoArm){undoArm=true;editBar();setTimeout(()=>{undoArm=false;editBar();},4000);return;} undoArm=false; EDITS=normE({}); applyEdits(); rerender(); persist(); };
+}
+function toggleEdit(on){ EDITING=on; document.body.classList.toggle("editing",on); editBar(); }
+document.addEventListener("click",e=>{ if(e.target.id==="editbtn"){ e.preventDefault(); e.stopImmediatePropagation(); toggleEdit(!EDITING); } },true);
+// status dots
+const CYC=["posted","sched","none"];
+document.addEventListener("click",e=>{ if(!EDITING) return; const d=e.target.closest(".card .pub"); if(!d) return; const c=d.closest(".card[data-uid]"); if(!c) return;
+ e.preventDefault(); e.stopPropagation(); const u=c.dataset.uid, cur=EDITS.pub[u], i=cur?CYC.indexOf(cur):-1;
+ if(i===CYC.length-1) delete EDITS.pub[u]; else EDITS.pub[u]=CYC[i+1]; rerender(); persist();
+ toast(EDITS.pub[u]?{posted:"Marked posted",sched:"Marked scheduled",none:"Marked not scheduled"}[EDITS.pub[u]]:"Status back to automatic"); },true);
+// drag and drop
+let DRAG=null;
+document.addEventListener("dragstart",e=>{ const c=e.target.closest&&e.target.closest(".card[data-uid]"); if(!c) return; if(!EDITING){e.preventDefault();return;}
+ DRAG=c.dataset.uid; e.dataTransfer.setData("text/plain",DRAG); e.dataTransfer.effectAllowed="move"; c.classList.add("dragging"); });
+document.addEventListener("dragend",()=>{ document.querySelectorAll(".dragging,.drop").forEach(x=>x.classList.remove("dragging","drop")); DRAG=null; });
+const dropTarget=e=>{ if(!EDITING||!DRAG) return null; const c=e.target.closest(".card[data-uid]"); if(c&&c.dataset.uid!==DRAG&&c.dataset.uid.slice(0,2)===DRAG.slice(0,2)) return c; const d=e.target.closest(".day[data-iso]"); return d; };
+document.addEventListener("dragover",e=>{ const t=dropTarget(e); document.querySelectorAll(".drop").forEach(x=>{if(x!==t)x.classList.remove("drop")}); if(!t) return; e.preventDefault(); t.classList.add("drop"); });
+document.addEventListener("drop",e=>{ const t=dropTarget(e); if(!t) return; e.preventDefault(); const u=DRAG, ig=u.startsWith("ig|"), a=curPos(u);
+ if(t.classList.contains("card")){ const v=t.dataset.uid, b=curPos(v);
+  setEdit(u,ig?{date:b.date,time:b.time}:{date:b.date,t:b.time}); setEdit(v,ig?{date:a.date,time:a.time}:{date:a.date,t:a.time}); toast("Swapped");
+ } else { const iso=t.dataset.iso; if(iso===a.date) return; setEdit(u,{date:iso}); toast("Moved to "+fmt(iso)); }
+ applyEdits(); rerender(); persist(); });
+// edit panel in the side panel
+function editPanel(u){ if(!EDITING||!u) return; const dr=document.getElementById("dr"); const p=findU(u); if(!p) return; const ig=u.startsWith("ig|"), pos=curPos(u);
+ const box=document.createElement("div"); box.className="edp";
+ box.innerHTML=`<div class="mono" style="color:#C9B66A">Edit this post</div>
+  <div class="row"><div><label>Date</label><input type="date" id="ed-d" value="${pos.date}"></div><div><label>Time (ET)</label><input type="time" id="ed-t" value="${pos.time}"></div></div>
+  <label>${ig?"Caption (hashtags stay as they are)":"Post text"}</label><textarea id="ed-c">${esc(ig?p.caption:p.text)}</textarea>
+  ${!ig&&p.replies?p.replies.map((r,i)=>`<label>Reply ${i+1} text</label><textarea class="ed-r" style="min-height:80px">${esc(r.text)}</textarea>`).join(""):""}
+  <div class="acts"><button id="ed-save">Save</button><button class="sec" id="ed-reset">Back to original</button></div>`;
+ const close=dr.querySelector(".x"); close.after(box);
+ box.querySelector("#ed-save").onclick=()=>{ const d=box.querySelector("#ed-d").value||pos.date, tm=box.querySelector("#ed-t").value||pos.time, c=box.querySelector("#ed-c").value;
+  if(ig) setEdit(u,{date:d,time:tm,caption:c}); else setEdit(u,{date:d,t:tm,text:c,replies:[...box.querySelectorAll(".ed-r")].map(x=>x.value)});
+  applyEdits(); rerender(); persist(); closeD(); toast("Saved"); };
+ box.querySelector("#ed-reset").onclick=()=>{ delete (ig?EDITS.ig:EDITS.x)[u]; delete EDITS.pub[u]; applyEdits(); rerender(); persist(); closeD(); toast("Back to the original"); };
+}
+try{ const s=localStorage.getItem(EKEY); if(s) EDITS=normE(JSON.parse(s)); }catch(e){}
+applyEdits();
+(async()=>{ try{ if(typeof claude==="undefined"||!claude.use) return; const db=await claude.use("db"); if(!db) return; EDB=db; EWHERE="the shared calendar"; editBar();
+  let first=true;
+  db.doc("cal/edits").onSnapshot(s=>{ if(s.metadata&&s.metadata.hasPendingWrites) return;
+   if(s.exists){ try{ const d=normE(JSON.parse(s.data().json)); if(JSON.stringify(d)!==JSON.stringify(EDITS)){ EDITS=d; try{localStorage.setItem(EKEY,JSON.stringify(EDITS));}catch(e){} applyEdits(); rerender(); editBar(); } }catch(e){} }
+   else if(first && nEdits()) dbWrite();
+   first=false; }, ()=>{ EDB=null; EWHERE="this browser"; editBar(); });
+ }catch(e){} })();
+
 buildGrid();
 
 // mix
@@ -2018,7 +2127,7 @@ function wireStory(root){
 })();
 
 // X plan
-(function(){
+window.renderX=function(){
  if(typeof X_PLAN==="undefined")return;
  const v=$("#v-x");
  const thumbs=g=>g&&g.length?`<div class="thumbs" style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0">${g.map(k=>`<a href="img/${k}.jpg"><img src="img/${k}.jpg" alt="${esc((typeof X_ALT!=="undefined"&&X_ALT[k])||k)}" style="width:92px;height:auto;display:block"></a>`).join("")}</div>`:"";
@@ -2033,14 +2142,14 @@ function xGrid(){
   const ev=ps.length?(EVENTS[iso]||[]).map(e=>`<div class="ev">${esc(e)}</div>`).join(""):"";
   return ev+ps.map(p=>{const g=(p.gfx&&p.gfx[0])?`<img src="img/${p.gfx[0]}.jpg" alt="" style="width:100%;height:auto;display:block;margin:6px 0 2px;border:1px solid var(--line)">`:"";
    const title=(p.from||"").replace(/^New for X \((.*)\)$/,"$1"); const first=(p.text||"").split("\n")[0];
-   return `<div class="card xcard" style="--c:${kc(p.kind)}" data-xd="xd-${iso}-${p.t.replace(":","")}">${pubDot(iso,p.t,"x"+iso+p.t)}
+   return `<div class="card xcard${EDITS.x[p._uid]?" edited":""}" draggable="true" style="--c:${kc(p.kind)}" data-uid="${esc(p._uid)}" data-xd="xd-${iso}-${p.t.replace(":","")}">${pubDot(iso,p.t,"x"+iso+p.t,p._uid)}
     <div class="m"><span class="mono" style="color:var(--ink)"><b>${myt(iso,p.t)}</b></span><span class="mono" style="color:var(--ink2)">${et(p.t)}</span><span class="tag">${esc(p.kind)}</span>${p.onday?'<span class="tag">On the day</span>':""}</div>
     <div class="t">${esc(title.charAt(0).toUpperCase()+title.slice(1))}</div>${g}
     <div class="mono" style="font-size:10px;letter-spacing:.03em;text-transform:none;color:var(--ink2);line-height:1.4">${esc(first.length>90?first.slice(0,88)+"…":first)}</div></div>`}).join("");};
  const cnt=(Y,M)=>X_PLAN.filter(d=>{const [y,m]=d.date.split("-").map(Number);return y===Y&&m===M+1;}).reduce((s,d)=>s+d.posts.length,0);
  return `<div id="xgrid" style="margin:8px 0 34px">${monthGrids(xDay,cnt,"posts")}</div>`;
 }
- const post=(d,p)=>`<div class="fr" id="xd-${d}-${p.t.replace(":","")}">${pubDot(d,p.t,"x"+d+p.t)}<div class="hd"><b>${et(p.t)}</b><span class="mono">${myt(d,p.t)}</span><span class="tag">${esc(p.kind)}</span>${p.onday?'<span class="tag">On the day</span>':""}</div>
+ const post=(d,p)=>`<div class="fr" id="xd-${d}-${p.t.replace(":","")}">${pubDot(d,p.t,"x"+d+p.t,p._uid)}<div class="hd"><b>${et(p.t)}</b><span class="mono">${myt(d,p.t)}</span><span class="tag">${esc(p.kind)}</span>${p.onday?'<span class="tag">On the day</span>':""}</div>
    <div class="mono" style="margin:4px 0">From: ${esc(p.from)}</div>
    ${thumbs(p.gfx)}${alts(p.gfx)}${p.onday&&p.gfx&&!p.gfx.length?'<div class="ph" style="margin:8px 0">Graphic made on the day</div>':""}
    ${p.vid?`<div style="margin:6px 0"><a href="${p.vid}" style="color:var(--ink)">Open the video file</a></div>`:""}
@@ -2051,7 +2160,8 @@ function xGrid(){
  v.innerHTML=(typeof X_INFO!=="undefined"?`${PUBLEG}${xGrid()}`:"");
  window.XD={}; X_PLAN.forEach(d=>d.posts.forEach(p=>{window.XD["xd-"+d.date+"-"+p.t.replace(":","")]={d:d.date,html:post(d.date,p)};}));
  v.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>copy(CPS[+b.dataset.cp],"Copied"));
-})();
+};
+renderX();
 function openStory(date){const s=STORY_PLAN.find(x=>x.date===date);if(!s)return;
  $("#dr").innerHTML=`<button class="x" onclick="closeD()">Close</button>`+storyHTML(s).replace('class="sc"','class="sc" style="grid-template-columns:170px 1fr;border:0;padding-top:30px"');
  wireStory($("#dr"));$("#dr").classList.add("on");$("#ov").classList.add("on");$("#dr").scrollTop=0;}
@@ -2122,8 +2232,8 @@ document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>{
 })();
 </script>
 <script>try{document.getElementById('publeg-ig').innerHTML=PUBLEG;}catch(e){}</script>
-<script>document.addEventListener("click",e=>{const c=e.target.closest(".xcard");if(!c||e.target.closest("a"))return;e.preventDefault();e.stopPropagation();const x=(window.XD||{})[c.dataset.xd];if(!x)return;
+<script>document.addEventListener("click",e=>{const c=e.target.closest(".xcard");if(!c||e.target.closest("a")||(EDITING&&e.target.closest(".pub")))return;e.preventDefault();e.stopPropagation();const x=(window.XD||{})[c.dataset.xd];if(!x)return;
 const dr=document.getElementById("dr");dr.innerHTML=`<button class="x" onclick="closeD()">Close</button><div class="mono" style="margin-top:6px">X · ${fmt(x.d)}</div>`+x.html.replace('class="fr"','class="fr" style="border:0;padding:12px 0 0"');
-dr.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>copy(CPS[+b.dataset.cp],"Copied"));dr.classList.add("on");document.getElementById("ov").classList.add("on");dr.scrollTop=0;},true);</script>
+dr.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>copy(CPS[+b.dataset.cp],"Copied"));dr.classList.add("on");document.getElementById("ov").classList.add("on");dr.scrollTop=0;editPanel(c.dataset.uid);},true);</script>
 </body>
 </html>
