@@ -1687,6 +1687,16 @@ const X_PLAN=[
  p.changes=(p.changes||[]).concat(["10 Nov v4: outro card cut; the three cards are now one continuous animation with the $50K plan example amounts and no footage between scenes."]);
  for(const d of X_PLAN) for(const x of d.posts) if(x.vid==="vid/clip_get_paid_v2.mp4") x.vid="vid/clip_get_paid_v4.mp4";
 })();
+// ---- 10 Nov: Get paid clip moves to Tue 10 Nov 12:30 ET, a few hours after the CPI alert ----
+(function(){
+ const p=POSTS.find(x=>x.id==="16");
+ Object.assign(p,{date:"2026-11-10",time:"12:30",due:"Tue 10 Nov, before 12:30 PM ET",
+  why:"A trust post in Jay’s own words on the firm’s clearest difference, a few hours after the CPI alert, when attention is already on the feed."});
+ p.changes=(p.changes||[]).concat(["10 Nov: moved from Wed 11 Nov 6:00 PM to Tue 10 Nov 12:30 PM ET, a few hours after the CPI alert. Wed 6:00 PM is now open."]);
+ const wed=X_PLAN.find(d=>d.date==="2026-11-11"), tue=X_PLAN.find(d=>d.date==="2026-11-10");
+ const i=wed.posts.findIndex(x=>x.vid==="vid/clip_get_paid_v4.mp4");
+ if(i>=0){const x=wed.posts.splice(i,1)[0]; x.t="12:30"; tue.posts.push(x);}
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
