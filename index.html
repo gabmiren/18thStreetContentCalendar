@@ -41,6 +41,12 @@ nav button.on{background:var(--s2);color:var(--ink);border-color:#3a4147}
 .dn{display:flex;justify-content:space-between;align-items:baseline}
 .dn b{font-size:20px;font-weight:600;letter-spacing:-.02em}
 .ev{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--soft);letter-spacing:.03em;line-height:1.35;border-left:2px solid var(--accent);padding-left:6px}
+.card,.fr{position:relative}
+.pub{position:absolute;top:8px;right:8px;width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.35)}
+.pub.posted{background:#3FB37F}.pub.sched{background:#E8C547}.pub.none{background:#E5534B}
+.publeg{display:flex;gap:18px;align-items:center;font:400 11px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2,#9BA1A6);margin:6px 0 12px}
+.publeg span{display:flex;align-items:center;gap:7px}.publeg i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.fr .hd{padding-right:22px}
 .card{background:var(--s2);border:1px solid var(--line);border-left:3px solid var(--c);padding:8px 9px;cursor:pointer;transition:background .12s}
 .card:hover{background:var(--s3)}
 .card .t{font-size:13.5px;font-weight:600;line-height:1.25;margin:3px 0 4px}
@@ -151,6 +157,7 @@ textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1p
 </nav>
 
 <section class="view on" id="v-cal">
+  <div id="publeg-ig"></div>
   <div class="legend" id="legend"></div>
   <div class="grid" id="grid"></div>
   <div class="mix" id="mix"></div>
@@ -221,6 +228,20 @@ textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1p
 <aside class="dr" id="dr"></aside>
 <div class="toast" id="toast">Copied</div>
 
+<script>
+// Publishing status dots: green posted, yellow scheduled, red not scheduled. PUB comes from the data (scheduled-through date and per-post overrides).
+function pubState(date,t,key){
+  const P=(typeof PUB!=="undefined")?PUB:{through:"",over:{}};
+  if(key&&P.over&&P.over[key]) return P.over[key];
+  const [h,m]=(t||"00:00").split(":").map(Number); const [Y,M,D]=date.split("-").map(Number);
+  const off=(date>="2026-11-01"&&date<"2027-03-14")?5:4; // ET to UTC
+  const at=Date.UTC(Y,M-1,D,h+off,m);
+  if(date<=P.through) return Date.now()>=at?"posted":"sched";
+  return "none";
+}
+function pubDot(date,t,key){const s=pubState(date,t,key);const lab={posted:"Posted",sched:"Scheduled",none:"Not scheduled"}[s];return `<span class="pub ${s==="sched"?"sched":s}" title="${lab}"></span>`;}
+const PUBLEG='<div class="publeg"><span><i style="background:#3FB37F"></i>Posted</span><span><i style="background:#E8C547"></i>Scheduled</span><span><i style="background:#E5534B"></i>Not scheduled</span></div>';
+</script>
 <script>
 // 18th Street two-week calendar data, v1 (3 Nov 2026)
 const G = "Futures trading involves substantial risk and may result in losses. Educational content, not financial advice.";
@@ -1743,6 +1764,9 @@ const X_PLAN=[
  sw.frames.push({t:"13:00",what:"Open “Clip: Get paid at every phase”, tap Share, then Add to story. No stickers, nothing to type.",post:"Clip: Get paid at every phase"});
  STORIES["2026-11-11"]="Share Who we built 18th Street for and the Get paid clip to story.";
 })();
+// ---- 10 Nov: publishing status. Gabriel has scheduled everything up to Wed 11 Nov; posts after their time count as posted. ----
+// Override any one post with PUB.over: Instagram key "ig"+id, X key "x"+date+time, value "posted" | "sched" | "none".
+const PUB={through:"2026-11-11",over:{"ig14":"none","x2026-11-1009:15":"none"}};
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
@@ -1786,7 +1810,7 @@ function buildGrid(){
    const inW=iso>="2026-11-03"&&iso<="2026-11-15";
    const ps=POSTS.filter(p=>p.date===iso).sort((a,b)=>a.time.localeCompare(b.time));
    const ev=(EVENTS[iso]||[]).map(e=>`<div class="ev">${esc(e)}</div>`).join("");
-   const cards=ps.map(p=>{const pl=PIL[p.pillar];return `<div class="card" style="--c:${pl.c}" data-id="${p.id}" data-p="${esc(p.pillar)}">
+   const cards=ps.map(p=>{const pl=PIL[p.pillar];return `<div class="card" style="--c:${pl.c}" data-id="${p.id}" data-p="${esc(p.pillar)}">${pubDot(p.date,p.time,"ig"+p.id)}
      <div class="m"><span class="mono" style="color:var(--ink)"><b>${myt(p.date,p.time)}</b></span><span class="mono" style="color:var(--ink2)">${et(p.time)}</span><span class="tag">${esc(p.format)}</span>${p.fromSanti?'<span class="tag s">W45</span>':''}${p.approved?'<span class="tag a">Approved</span>':''}${p.video?'<span class="tag g">Video ✓</span>':GB[p.gstate]}</div>
      <div class="t">${esc(p.title)}</div>
      <div class="mono" style="font-size:10px;letter-spacing:.05em">${esc(p.board)}</div></div>`}).join("");
@@ -1923,7 +1947,7 @@ function wireStory(root){
  const ALT=typeof X_ALT!=="undefined"?X_ALT:{};
  const alts=g=>g&&g.length&&g.some(k=>ALT[k])?`<details style="margin:0 0 10px"><summary class="mono" style="cursor:pointer">Alt text (${g.length})</summary>${g.map((k,i)=>ALT[k]?cp("Alt text, image "+(i+1),ALT[k]):"").join("")}</details>`:"";
  const cp=(k,val)=>{CPS.push(val);return `<div class="cp"><div><div class="k">${esc(k)}</div><div class="v" style="white-space:pre-wrap">${esc(val)}</div></div><button class="btn" data-cp="${CPS.length-1}">Copy</button></div>`;};
- const post=(d,p)=>`<div class="fr"><div class="hd"><b>${et(p.t)}</b><span class="mono">${myt(d,p.t)}</span><span class="tag">${esc(p.kind)}</span>${p.onday?'<span class="tag">On the day</span>':""}</div>
+ const post=(d,p)=>`<div class="fr">${pubDot(d,p.t,"x"+d+p.t)}<div class="hd"><b>${et(p.t)}</b><span class="mono">${myt(d,p.t)}</span><span class="tag">${esc(p.kind)}</span>${p.onday?'<span class="tag">On the day</span>':""}</div>
    <div class="mono" style="margin:4px 0">From: ${esc(p.from)}</div>
    ${thumbs(p.gfx)}${alts(p.gfx)}${p.onday&&p.gfx&&!p.gfx.length?'<div class="ph" style="margin:8px 0">Graphic made on the day</div>':""}
    ${p.vid?`<div style="margin:6px 0"><a href="${p.vid}" style="color:var(--ink)">Open the video file</a></div>`:""}
@@ -1931,7 +1955,7 @@ function wireStory(root){
    ${p.poll?p.poll.map((o,i)=>cp("Poll option "+(i+1),o)).join(""):""}
    ${(p.replies||(p.reply?[p.reply]:[])).map((r,ri)=>`<div class="mono" style="margin-top:12px">${r.t?"Reply at "+et(r.t)+" · "+myt(d,r.t):(["First","Second","Third"][ri]||"Next")+" reply (thread)"}</div>${thumbs(r.gfx)}${alts(r.gfx)}${cp("Reply "+(ri+1)+" text",r.text)}`).join("")}
    ${p.note?`<div class="mono" style="margin-top:6px;font-size:11px">${esc(p.note)}</div>`:""}</div>`;
- v.innerHTML=(typeof X_INFO!=="undefined"?`<div class="sec"><h2>X, 9 to 15 Nov</h2><p>${esc(X_INFO.intro)}</p>
+ v.innerHTML=(typeof X_INFO!=="undefined"?`<div class="sec"><h2>X, 9 to 15 Nov</h2><p>${esc(X_INFO.intro)}</p>${PUBLEG}
 </div>`:"")
   + X_PLAN.map(d=>`<div class="sc" style="grid-template-columns:1fr"><div><div class="mono">X · ${fmt(d.date)}</div><h3>${d.posts.length} post${d.posts.length>1?"s":""}</h3>${d.posts.slice().sort((x,y)=>x.t.localeCompare(y.t)).map(p=>post(d.date,p)).join("")}</div></div>`).join("");
  v.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>copy(CPS[+b.dataset.cp],"Copied"));
@@ -2005,5 +2029,6 @@ document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>{
   if(e.key==="Escape"){ e.stopPropagation(); close(); } else if(e.key==="ArrowLeft") pv.click(); else if(e.key==="ArrowRight") nx.click(); },true);
 })();
 </script>
+<script>try{document.getElementById('publeg-ig').innerHTML=PUBLEG;}catch(e){}</script>
 </body>
 </html>
