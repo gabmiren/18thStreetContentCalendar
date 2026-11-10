@@ -50,7 +50,8 @@ body.editing #editbtn{background:#E8C547!important;color:#16191C!important;borde
 #editbar{margin:0 0 14px;padding:12px 14px;border:1px solid #5A4F22;background:#1D1B12;font:400 13px/1.5 Archivo,sans-serif;color:var(--ink);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 #editbar .mono{font-size:11px;color:#C9B66A}
 #editbar button{background:transparent;border:1px solid #5A4F22;color:var(--ink);padding:6px 10px;font:500 12px Archivo,sans-serif;cursor:pointer}
-body.editing .card[data-uid]{cursor:grab}
+body.editing .card[data-uid]{cursor:grab;touch-action:none;-webkit-user-select:none;user-select:none}
+body.editing .card img{-webkit-user-drag:none;pointer-events:none}
 body.editing .card .pub{cursor:pointer;width:14px;height:14px;top:6px;right:6px}
 .card.dragging{opacity:.35}
 .day.drop{box-shadow:inset 0 0 0 2px #E8C547!important}
@@ -1912,7 +1913,7 @@ function buildGrid(){
  const igDay=iso=>{
   const ps=POSTS.filter(p=>p.date===iso).sort((a,b)=>a.time.localeCompare(b.time));
   const ev=(EVENTS[iso]||[]).map(e=>`<div class="ev">${esc(e)}</div>`).join("");
-  const cards=ps.map(p=>{const pl=PIL[p.pillar];return `<div class="card${EDITS.ig[p._uid]?" edited":""}" draggable="true" style="--c:${pl.c}" data-id="${p.id}" data-uid="${esc(p._uid)}" data-p="${esc(p.pillar)}">${pubDot(p.date,p.time,"ig"+p.id,p._uid)}
+  const cards=ps.map(p=>{const pl=PIL[p.pillar];return `<div class="card${EDITS.ig[p._uid]?" edited":""}" style="--c:${pl.c}" data-id="${p.id}" data-uid="${esc(p._uid)}" data-p="${esc(p.pillar)}">${pubDot(p.date,p.time,"ig"+p.id,p._uid)}
      <div class="m"><span class="mono" style="color:var(--ink)"><b>${myt(p.date,p.time)}</b></span><span class="mono" style="color:var(--ink2)">${et(p.time)}</span><span class="tag">${esc(p.format)}</span>${p.video?'<span class="tag g">Video ✓</span>':GB[p.gstate]}</div>
      <div class="t">${esc(p.title)}</div>
      <div class="mono" style="font-size:10px;letter-spacing:.05em">${esc(p.board)}</div></div>`}).join("");
@@ -1973,18 +1974,32 @@ document.addEventListener("click",e=>{ if(!EDITING) return; const d=e.target.clo
  e.preventDefault(); e.stopPropagation(); const u=c.dataset.uid, cur=EDITS.pub[u], i=cur?CYC.indexOf(cur):-1;
  if(i===CYC.length-1) delete EDITS.pub[u]; else EDITS.pub[u]=CYC[i+1]; rerender(); persist();
  toast(EDITS.pub[u]?{posted:"Marked posted",sched:"Marked scheduled",none:"Marked not scheduled"}[EDITS.pub[u]]:"Status back to automatic"); },true);
-// drag and drop
-let DRAG=null;
-document.addEventListener("dragstart",e=>{ const c=e.target.closest&&e.target.closest(".card[data-uid]"); if(!c) return; if(!EDITING){e.preventDefault();return;}
- DRAG=c.dataset.uid; e.dataTransfer.setData("text/plain",DRAG); e.dataTransfer.effectAllowed="move"; c.classList.add("dragging"); });
-document.addEventListener("dragend",()=>{ document.querySelectorAll(".dragging,.drop").forEach(x=>x.classList.remove("dragging","drop")); DRAG=null; });
-const dropTarget=e=>{ if(!EDITING||!DRAG) return null; const c=e.target.closest(".card[data-uid]"); if(c&&c.dataset.uid!==DRAG&&c.dataset.uid.slice(0,2)===DRAG.slice(0,2)) return c; const d=e.target.closest(".day[data-iso]"); return d; };
-document.addEventListener("dragover",e=>{ const t=dropTarget(e); document.querySelectorAll(".drop").forEach(x=>{if(x!==t)x.classList.remove("drop")}); if(!t) return; e.preventDefault(); t.classList.add("drop"); });
-document.addEventListener("drop",e=>{ const t=dropTarget(e); if(!t) return; e.preventDefault(); const u=DRAG, ig=u.startsWith("ig|"), a=curPos(u);
+// drag and drop (pointer based: works inside frames, on touch screens and with images in cards)
+let DRAG=null, PD=null, GHOST=null, SUPPRESS=0;
+const dropAt=(x,y)=>{ const el=document.elementFromPoint(x,y); if(!el||!DRAG) return null;
+ const c=el.closest(".card[data-uid]"); if(c&&c.dataset.uid!==DRAG&&c.dataset.uid.slice(0,2)===DRAG.slice(0,2)) return c; return el.closest(".day[data-iso]"); };
+document.addEventListener("pointerdown",e=>{ if(!EDITING||e.button>0) return; const c=e.target.closest(".card[data-uid]"); if(!c||e.target.closest(".pub")) return;
+ PD={c,x:e.clientX,y:e.clientY,id:e.pointerId}; });
+document.addEventListener("pointermove",e=>{ if(!PD) return;
+ if(!DRAG){ if(Math.hypot(e.clientX-PD.x,e.clientY-PD.y)<6) return; DRAG=PD.c.dataset.uid; PD.c.classList.add("dragging");
+  const r=PD.c.getBoundingClientRect(); GHOST=PD.c.cloneNode(true); GHOST.classList.remove("dragging");
+  GHOST.style.cssText=`position:fixed;left:${r.left}px;top:${r.top}px;width:${r.width}px;z-index:200;pointer-events:none;opacity:.92;box-shadow:0 12px 30px rgba(0,0,0,.5);transform:rotate(1.5deg)`;
+  GHOST._dx=PD.x-r.left; GHOST._dy=PD.y-r.top; document.body.appendChild(GHOST); document.body.style.userSelect="none"; }
+ e.preventDefault(); GHOST.style.left=(e.clientX-GHOST._dx)+"px"; GHOST.style.top=(e.clientY-GHOST._dy)+"px";
+ const t=dropAt(e.clientX,e.clientY); document.querySelectorAll(".drop").forEach(x=>{if(x!==t)x.classList.remove("drop")}); if(t) t.classList.add("drop");
+ if(e.clientY<60) scrollBy(0,-18); else if(e.clientY>innerHeight-60) scrollBy(0,18); },{passive:false});
+function endDrag(e,cancel){ if(!PD) return; const wasDrag=!!DRAG, u=DRAG, t=(!cancel&&wasDrag)?dropAt(e.clientX,e.clientY):null;
+ document.querySelectorAll(".dragging,.drop").forEach(x=>x.classList.remove("dragging","drop")); if(GHOST){GHOST.remove();GHOST=null;} document.body.style.userSelect="";
+ PD=null; DRAG=null; if(!wasDrag) return; SUPPRESS=Date.now(); if(!t) return;
+ const ig=u.startsWith("ig|"), a=curPos(u);
  if(t.classList.contains("card")){ const v=t.dataset.uid, b=curPos(v);
   setEdit(u,ig?{date:b.date,time:b.time}:{date:b.date,t:b.time}); setEdit(v,ig?{date:a.date,time:a.time}:{date:a.date,t:a.time}); toast("Swapped");
  } else { const iso=t.dataset.iso; if(iso===a.date) return; setEdit(u,{date:iso}); toast("Moved to "+fmt(iso)); }
- applyEdits(); rerender(); persist(); });
+ applyEdits(); rerender(); persist(); }
+document.addEventListener("pointerup",e=>endDrag(e,false));
+document.addEventListener("pointercancel",e=>endDrag(e,true));
+document.addEventListener("click",e=>{ if(Date.now()-SUPPRESS<400){ e.preventDefault(); e.stopImmediatePropagation(); } },true);
+document.addEventListener("dragstart",e=>{ if(e.target.closest&&e.target.closest(".card")) e.preventDefault(); });
 // edit panel in the side panel
 function editPanel(u){ if(!EDITING||!u) return; const dr=document.getElementById("dr"); const p=findU(u); if(!p) return; const ig=u.startsWith("ig|"), pos=curPos(u);
  const box=document.createElement("div"); box.className="edp";
@@ -2142,7 +2157,7 @@ function xGrid(){
   const ev=ps.length?(EVENTS[iso]||[]).map(e=>`<div class="ev">${esc(e)}</div>`).join(""):"";
   return ev+ps.map(p=>{const g=(p.gfx&&p.gfx[0])?`<img src="img/${p.gfx[0]}.jpg" alt="" style="width:100%;height:auto;display:block;margin:6px 0 2px;border:1px solid var(--line)">`:"";
    const title=(p.from||"").replace(/^New for X \((.*)\)$/,"$1"); const first=(p.text||"").split("\n")[0];
-   return `<div class="card xcard${EDITS.x[p._uid]?" edited":""}" draggable="true" style="--c:${kc(p.kind)}" data-uid="${esc(p._uid)}" data-xd="xd-${iso}-${p.t.replace(":","")}">${pubDot(iso,p.t,"x"+iso+p.t,p._uid)}
+   return `<div class="card xcard${EDITS.x[p._uid]?" edited":""}" style="--c:${kc(p.kind)}" data-uid="${esc(p._uid)}" data-xd="xd-${iso}-${p.t.replace(":","")}">${pubDot(iso,p.t,"x"+iso+p.t,p._uid)}
     <div class="m"><span class="mono" style="color:var(--ink)"><b>${myt(iso,p.t)}</b></span><span class="mono" style="color:var(--ink2)">${et(p.t)}</span><span class="tag">${esc(p.kind)}</span>${p.onday?'<span class="tag">On the day</span>':""}</div>
     <div class="t">${esc(title.charAt(0).toUpperCase()+title.slice(1))}</div>${g}
     <div class="mono" style="font-size:10px;letter-spacing:.03em;text-transform:none;color:var(--ink2);line-height:1.4">${esc(first.length>90?first.slice(0,88)+"…":first)}</div></div>`}).join("");};
