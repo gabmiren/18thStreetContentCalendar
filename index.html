@@ -1864,6 +1864,64 @@ X_INFO.intro="This week reuses the Instagram graphics and videos, plus a few sho
  X_ALT.nacpiv5_1="Prices rose faster than expected in October. Headline CPI: forecast +0.3%, actual +0.4%. Core CPI: forecast +0.2%, actual +0.3%. Core has risen 0.3% three months in a row. No yearly rate this month because October 2025 data was never collected. Source: BLS, 10 Nov.";
  const st=STORY_PLAN.find(s=>s.date==="2026-11-10"); st.gfx="ob10v4_1"; STORY_GFX["2026-11-10"]=["ob10v4_1"];
 })();
+// ---- 11 Nov: three posts from Jay's feature list (automated strategies, EOD drawdown, Capital Partner) ----
+(function(){
+ const base={platform:"Instagram",ai:false,fromSanti:null,crosspost:"X",silent:false,status:"Review",production:"Slides (HTML)",audio:"n/a",draft:"",fromBoard:false,gstate:"ready",gver:"v1",ref:"Jay’s feature list in Slack, 11 Nov"};
+ POSTS.push(Object.assign({},base,{
+  id:"24",date:"2026-11-14",time:"18:00",week:"2026-W46",title:"Running your own algo?",format:"Static",
+  board:"Why 18th Street · Allowed / not allowed",boardId:"fmt10",skill:"18th-street-evergreen-graphics",
+  pillar:"Trading tech & industry",compliance:"Needs client OK",
+  hook:"Headline: “Running your own algo?”",
+  onscreen:"Allowed: a strategy you built yourself; copying trades between your own accounts. Not allowed: bought or off-the-shelf strategies; bots sold to pass evaluations; copying to or from anyone else. Server-room photo in a circle.",
+  beats:"Single graphic in the “Who we built it for” layout, with Allowed and Not allowed lists.",
+  caption:"Built your own automated strategy? You can run it at 18th Street.\n\nA strategy you developed yourself is allowed, as long as it follows every other rule. Bought or off-the-shelf strategies, including ones sold to pass evaluations, are not.\n\nFull rules at: https://trade18th.com/faq\n\n"+G,
+  hashtags:"#algotrading #futurestrading #propfirm",
+  claims:"Self-developed automated strategies permitted if they follow every other rule; purchased, third-party or off-the-shelf strategies (including those marketed to pass evaluations) prohibited; copy trading only between accounts you own (trade18th.com/faq, checked 11 Nov 2026).",
+  notes:"Jay’s list said “automated strategies encouraged”. The FAQ says permitted, and only for self-developed strategies, so the post says allowed. Product post, so it needs Jay’s explicit OK.",
+  why:"Trading tech is the pillar we post least (5%), and many prop firms restrict automation, so this sets 18th Street apart on a quiet Saturday.",
+  draftNote:"Graphic ready (v1)",due:"Thu 12 Nov",gfx:["au1_1"],
+  changes:["New, 11 Nov, from Jay’s feature list. “Encouraged” softened to “allowed” to match the FAQ."]}));
+ POSTS.push(Object.assign({},base,{
+  id:"25",date:"2026-11-17",time:"12:00",week:"2026-W47",title:"Intraday vs end-of-day drawdown",format:"Carousel",
+  board:"All traders should know",boardId:"fmt14",skill:"18th-street-evergreen-graphics",
+  pillar:"Futures education & strategies",compliance:"Pending",gver:"v2",
+  hook:"Cover: “Intraday vs end-of-day drawdown” with the pointing character.",
+  onscreen:"Same $50,000 day on both charts: up $1,500 by midday, closes up $200. Intraday trailing leaves $1,200 of room for tomorrow, end-of-day leaves $2,500. Last slide: how 18th Street does it.",
+  beats:"4 slides: cover; intraday trailing chart (threshold follows the $51,500 high to $49,000); end-of-day chart (threshold moves only at the close, to $47,700); 18th Street’s rule: 5% end-of-day trailing loss, no daily loss limit, locks at the starting balance.",
+  caption:"Two traders have the same day. Up $1,500 by midday, closed up $200. One wakes up with $1,200 of room, the other with $2,500.\n\nThe difference is how the drawdown is measured. Swipe to see intraday and end-of-day side by side. At 18th Street only the close counts, and there is no daily loss limit.\n\n"+P,
+  hashtags:"#drawdown #futurestrading #propfirm",
+  claims:"5% end-of-day trailing loss in every phase; no daily loss limit; locks at the starting balance once the account closes 5% above it (trade18th.com/faq and /progression, checked 11 Nov 2026). Chart numbers are an illustrative example, labelled on the slides.",
+  notes:"Jay’s “EOD drawdown” and “no daily loss limit” in one post. X already ran the trailing drawdown graphic on 11 Nov, so this one compares the two methods.",
+  why:"Drawdown is one of the client’s listed objections, and comparing the two methods shows why the end-of-day rule matters without hard selling.",
+  draftNote:"Graphics ready (v2)",due:"Sun 15 Nov",gfx:["dd1_1","dd1v2_2","dd1v2_3","dd1v2_4"],
+  changes:["New, 11 Nov, from Jay’s feature list.","v2: “$47,700” label moved clear of the step line."]}));
+ POSTS.push(Object.assign({},base,{
+  id:"26",date:"2026-11-18",time:"12:00",week:"2026-W47",title:"Life as a Capital Partner",format:"Static",
+  board:"Why 18th Street · numbered",boardId:"fmt10",skill:"18th-street-evergreen-graphics",
+  pillar:"18th Street differentiation",compliance:"Needs client OK",gver:"v2",
+  hook:"Headline: “Life as a Capital Partner”.",
+  onscreen:"01 No target, no clock. 02 You keep 90%. 03 One loss limit, fixed at 50% of the starting balance. 04 Prices from the exchange. Small disclosure at the foot.",
+  beats:"Single graphic in the numbered Why 18th Street layout, 1960s exchange-floor photo in a circle.",
+  caption:"Four phases lead to one place: a Live account as a Capital Partner.\n\nThere, the profit target, consistency rule and time limit fall away. You keep 90% of profits, with one loss limit fixed at 50% of your starting balance and a trade at least every 7 days.\n\nSee the full progression at: https://trade18th.com/progression\n\n"+P,
+  hashtags:"#propfirm #futurestrading #futurestrader",
+  claims:"Live account: no profit target, consistency requirement or time limit; maximum loss fixed at 50% of the starting balance; trader keeps 90% of profits; a trade at least every 7 days; pricing and execution directly from the exchange (trade18th.com/progression and /faq, checked 11 Nov 2026).",
+  notes:"Jay’s list said “Live account with NO rules”. The Live account still has a 50% maximum loss, a trade every 7 days and payout timing, so the post names what falls away instead. Product post, needs Jay’s explicit OK. Fed minutes land at 2:00 PM ET, after this posts.",
+  why:"Shows where the four phases lead, a week after the Why 18th Street posts, and answers Jay’s Live account point accurately.",
+  draftNote:"Graphic ready (v2)",due:"Mon 16 Nov",gfx:["lv1v2_1"],
+  changes:["New, 11 Nov, from Jay’s feature list. “No rules” reworded to what actually drops away on Live.","v2: smaller photo so the headline sits clear of it."]}));
+ const xd=(date)=>{let d=X_PLAN.find(x=>x.date===date); if(!d){d={date,posts:[]};X_PLAN.push(d);X_PLAN.sort((a,b)=>a.date<b.date?-1:1);} return d;};
+ xd("2026-11-14").posts.push({t:"18:00",kind:"Image",from:"Running your own algo?",gfx:["au1_1"],text:"Built your own automated strategy? You can run it here, as long as it follows every other rule.\n\nBought or off-the-shelf strategies aren’t allowed. Full rules: trade18th.com/faq",note:"From Jay’s feature list."});
+ xd("2026-11-17").posts.push({t:"12:00",kind:"2 images, then reply",from:"Intraday vs end-of-day drawdown",gfx:["dd1v2_2","dd1v2_3"],text:"Same account, same day. Up $1,500 by midday, closed up $200.\n\nIntraday trailing leaves $1,200 of room for tomorrow. End-of-day leaves $2,500.",replies:[{gfx:["dd1v2_4"],text:"At 18th Street only the close counts, and there’s no daily loss limit. Full rules: trade18th.com/qualification"}],note:"The two charts in the post, the rule card in the reply. The cover stays on Instagram."});
+ xd("2026-11-18").posts.push({t:"12:00",kind:"Image",from:"Life as a Capital Partner",gfx:["lv1v2_1"],text:"Four phases lead to a Live account.\n\nThere’s no profit target, consistency rule or time limit there. You keep 90%, with one loss limit at 50% of the starting balance. trade18th.com/progression",note:"From Jay’s feature list."});
+ X_ALT.au1_1="Running your own algo? Allowed: a strategy you built yourself, and copying trades between your own accounts. Not allowed: bought or off-the-shelf strategies, bots sold to pass evaluations, and copying to or from anyone else.";
+ X_ALT.dd1v2_2="Intraday trailing drawdown on a $50,000 account. The balance rises to $51,500 by midday and closes at $50,200. The loss threshold follows the intraday high up to $49,000, leaving $1,200 of room for tomorrow.";
+ X_ALT.dd1v2_3="End-of-day trailing drawdown on the same day. The threshold stays at $47,500 during the session and moves to $47,700 at the close, leaving $2,500 of room for tomorrow.";
+ X_ALT.dd1v2_4="How 18th Street does it: a 5% end-of-day trailing loss in every phase, no daily loss limit, and the threshold locks at the starting balance once you close 5% above it.";
+ X_ALT.lv1v2_1="Life as a Capital Partner: no profit target, consistency rule or time limit; you keep 90% of profits on the Live account; one loss limit fixed at 50% of the starting balance; pricing and execution straight from the exchange.";
+ STORIES["2026-11-14"]="Share Running your own algo? to story.";
+ STORIES["2026-11-17"]="Share Intraday vs end-of-day drawdown to story.";
+ STORIES["2026-11-18"]="Share Life as a Capital Partner to story.";
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
