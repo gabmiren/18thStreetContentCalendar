@@ -237,7 +237,8 @@ function pubState(date,t,key){
   const [h,m]=(t||"00:00").split(":").map(Number); const [Y,M,D]=date.split("-").map(Number);
   const off=(date>="2026-11-01"&&date<"2027-03-14")?5:4; // ET to UTC
   const at=Date.UTC(Y,M-1,D,h+off,m);
-  if(date<=P.through) return Date.now()>=at?"posted":"sched";
+  const thr=(key&&key[0]==="x"&&P.xthrough)?P.xthrough:P.through;
+  if(date<=thr) return Date.now()>=at?"posted":"sched";
   return "none";
 }
 function pubDot(date,t,key){const s=pubState(date,t,key);const lab={posted:"Posted",sched:"Scheduled",none:"Not scheduled"}[s];return `<span class="pub ${s==="sched"?"sched":s}" title="${lab}"></span>`;}
@@ -1768,6 +1769,8 @@ const X_PLAN=[
 // ---- 10 Nov: publishing status. Gabriel has scheduled everything up to Wed 11 Nov; posts after their time count as posted. ----
 // Override any one post with PUB.over: Instagram key "ig"+id, X key "x"+date+time, value "posted" | "sched" | "none".
 const PUB={through:"2026-11-11",over:{"ig14":"none","x2026-11-1009:15":"none"}};
+// ---- 10 Nov: X is scheduled only through Tue 10 Nov ----
+PUB.xthrough="2026-11-10";
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
