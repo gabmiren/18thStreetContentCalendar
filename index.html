@@ -2020,6 +2020,26 @@ const W47_SAVED={"risk": {"id": "08", "date": "2026-11-07", "time": "11:00", "we
  xd("2026-11-22").posts.push({t:"18:00",kind:"Image",from:"This week: 23 to 27 Nov",gfx:[],onday:true,text:"A short week, with Thanksgiving on Thursday.\n\nGDP and PCE inflation on Wednesday morning, then shorter futures hours on Thursday and Friday.",note:"Cover image once designed. Holiday times from CME’s advisory."});
  for(const d of X_PLAN) d.posts.sort((a,b)=>a.t<b.t?-1:1);
 })();
+// ---- 11 Nov: Fri 20 Nov slot changes from Trade of the Week 02 to a PPI motion explainer (Gabriel) ----
+(function(){
+ const p=POSTS.find(x=>x.title==="Trade of the Week 02"&&x.date==="2026-11-20");
+ for(const k of ["fallback","fallbackGfx","approved","video"]) delete p[k];
+ Object.assign(p,{title:"PPI explainer: what producer prices tell you",format:"Reel",board:"Motion explainers",boardId:"rl6",skill:"18th-street-motion-design",
+  pillar:"Futures education & strategies",production:"Motion graphics",status:"Idea",compliance:"Pending",silent:true,ai:false,
+  gstate:"todo",draftNote:"Animation to make (no voiceover first)",due:"Wed 18 Nov",
+  hook:"Opening line on screen: “Before prices reach the shelf, they show up here.”",
+  onscreen:"Monochrome line-art on dark, sentence-case captions, full lockup at the bottom. Layout, motion and visual devices must look clearly different from the CPI day reel.",
+  beats:"Just under 1 min. 1 Hook. 2 What PPI tracks: the prices businesses get for their goods and services. 3 Out once a month from the BLS at 8:30 AM ET. 4 Headline vs core (without food and energy). 5 Why it can lead CPI: costs moving down the pipeline to the shelf. 6 Why traders watch it: inflation, the Fed’s path on rates, yields. 7 The gap between forecast and actual is what moves markets. 8 Calm close on the next release to explain.",
+  caption:"Producer prices often move before the prices you pay at the store.\n\nHere’s what PPI measures, how it differs from CPI, and why traders watch both.\n\n"+G,
+  hashtags:"#futurestrading #ppi #inflation",
+  claims:"PPI definition, monthly release at 8:30 AM ET and core measure from bls.gov. October PPI came out Fri 13 Nov. Any market statement kept general and checked with legal.",
+  notes:"Education only, no forecasts or trade ideas, and not salesy: general enough that anyone on the timeline can relate. Same music as the CPI reel. If a voiceover is added later, the caption gets the AI line and ai turns on.",
+  why:"Follows the CPI reel that did well, a week after the October PPI print, while inflation is still the story. Replaces Trade of the Week 02.",
+  audio:"Tech loop (same as the CPI reel)",draft:"",story:"",crosspost:"X, YouTube Shorts",
+  changes:["11 Nov: Trade of the Week 02 swapped for a PPI motion explainer (Gabriel). Video not made yet."]});
+ const x=X_PLAN.find(d=>d.date==="2026-11-20").posts.find(q=>q.from==="Trade of the Week 02 (reel)");
+ Object.assign(x,{from:"PPI explainer (reel)",onday:true,text:"Producer prices often move before the prices you pay at the store.\n\nWhat PPI measures, and why traders watch it.",note:"Native upload once the reel is made."});
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
