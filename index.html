@@ -1775,6 +1775,7 @@ const X_PLAN=[
 const PUB={through:"2026-11-11",over:{"ig14":"none","x2026-11-1009:15":"none"}};
 // ---- 10 Nov: X is scheduled only through Tue 10 Nov ----
 PUB.xthrough="2026-11-10";
+X_INFO.intro="This week reuses the Instagram graphics and videos, plus a few short X-only posts. Times in ET and MYT. Every post is a draft for legal and Jay’s approval. Tap a post to open its copy, images and alt text.";
 // ---- 10 Nov: CPI day motion explainer added at 6:00 AM ET / 7:00 PM MYT, posted (Gabriel) ----
 (function(){
  const before=new Map(POSTS.map(q=>[q.id,q]));
@@ -1805,7 +1806,30 @@ PUB.xthrough="2026-11-10";
  over["ig"+p.id]="posted";
  PUB.over=over;
 })();
-X_INFO.intro="This week reuses the Instagram graphics and videos, plus a few short X-only posts. Times in ET and MYT. Every post is a draft for legal and Jay’s approval. Tap a post to open its copy, images and alt text.";
+// ---- 10 Nov: October CPI is out. News alert, X post and One big number story filled in; moved to 11:30 AM ET since 9:15 passed ----
+(function(){
+ const DISC="Futures trading involves substantial risk and may result in losses. Educational content, not financial advice.";
+ const p=POSTS.find(x=>x.title==="CPI News alert"&&x.date==="2026-11-10");
+ Object.assign(p,{time:"11:30",gfx:["nacpiv3_1"],gstate:"ready",draftNote:"Graphic ready (v3)",
+  hook:"US prices rose 0.4% in October",
+  onscreen:"Headline “US prices rose 0.4% in October”; bars of October CPI vs forecast (headline +0.3% forecast, +0.4% actual; core +0.2% forecast, +0.3% actual); stats: core +0.3% for a 3rd month in a row, energy +0.7%; note on the missing yearly rate; source line.",
+  beats:"Single graphic, built after the 8:30 AM ET release.",
+  caption:"US prices rose 0.4% in October.\n\nBoth headline and core came in a tenth above forecast, and core rose 0.3% for a third month in a row. There’s no yearly rate this month, since October 2025 prices were never collected.\n\n"+DISC,
+  claims:"All items +0.4% and core +0.3% m/m (core also +0.3% in Sep and Aug), energy +0.7%, and no 12-month changes for October 2026: BLS CPI news release, 10 Nov, read on bls.gov. Forecasts +0.3% / +0.2%: Dow Jones survey via CNBC.",
+  notes:"Same-day post: fast approval lane with Jay. Moved from 9:15 to 11:30 AM ET because the release was checked after 9:15. No forecasts, no Fed predictions, no trade ideas.",
+  due:"Tue 10 Nov, before 11:30 AM ET"});
+ p.changes=(p.changes||[]).concat(["10 Nov: graphic built from the BLS release (v3: actual vs forecast); caption written; moved to 11:30 AM ET."]);
+ const tue=X_PLAN.find(d=>d.date==="2026-11-10"); const x=tue.posts.find(q=>q.from==="CPI News alert");
+ Object.assign(x,{t:"11:30",gfx:["nacpiv3_1"],onday:true,
+  text:"US prices rose 0.4% in October, a tenth above forecast.\n\nCore rose 0.3% for a third month in a row. No yearly rate this month, so the monthly numbers carry the news.",
+  note:"Same graphic as Instagram. Fast approval lane with Jay."});
+ X_ALT.nacpiv3_1="US prices rose 0.4% in October. Bars compare October CPI with the forecast: headline forecast +0.3%, actual +0.4%; core forecast +0.2%, actual +0.3%. Core rose 0.3% for a third month in a row and energy rose 0.7%. No yearly rate this month because October 2025 prices were never collected. Source: BLS.";
+ if(PUB.over){ PUB.over["x2026-11-1011:30"]="none"; delete PUB.over["x2026-11-1009:15"]; PUB.over["ig"+p.id]="none"; }
+ const st=STORY_PLAN.find(s=>s.date==="2026-11-10");
+ st.gfx="ob10v3_1"; st.frames=[{t:"11:45",what:"Open the CPI News alert, tap Share, then Add to story. Upload this design as the background and line the card up with the placeholder card. Nothing to type.",post:"CPI News alert",obn:true}];
+ STORY_GFX["2026-11-10"]=["ob10v3_1"];
+ STORIES["2026-11-10"]="One big number: +0.4% CPI, shared with the News alert.";
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
