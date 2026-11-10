@@ -1715,6 +1715,12 @@ const X_PLAN=[
  STORIES["2026-11-17"]="Share the VWAP carousel to story.";
  STORY_PLAN.sort((a,b)=>a.date.localeCompare(b.date));
 })();
+// ---- 10 Nov: Get paid clip v5, the board edit's sound effects removed ----
+(function(){
+ const p=POSTS.find(x=>x.id==="16"); p.video="vid/clip_get_paid_v5.mp4"; p.draftNote="Video ready (v5)"; p.audio="Source audio (Jay), board sound effects removed";
+ p.changes=(p.changes||[]).concat(["10 Nov v5: removed the sound effects baked into the board edit’s audio; Jay’s voice only."]);
+ for(const d of X_PLAN) for(const x of d.posts) if(x.vid==="vid/clip_get_paid_v4.mp4") x.vid="vid/clip_get_paid_v5.mp4";
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
