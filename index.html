@@ -1775,6 +1775,36 @@ const X_PLAN=[
 const PUB={through:"2026-11-11",over:{"ig14":"none","x2026-11-1009:15":"none"}};
 // ---- 10 Nov: X is scheduled only through Tue 10 Nov ----
 PUB.xthrough="2026-11-10";
+// ---- 10 Nov: CPI day motion explainer added at 6:00 AM ET / 7:00 PM MYT, posted (Gabriel) ----
+(function(){
+ const before=new Map(POSTS.map(q=>[q.id,q]));
+ const p={
+  id:"", date:"2026-11-10", time:"06:00", week:"2026-W46",
+  title:"CPI day: what it is and why futures move",
+  format:"Reel", board:"Motion explainers", boardId:"rl6", skill:"18th-street-motion-design",
+  platform:"Instagram", pillar:"Futures education & strategies", production:"Motion graphics", status:"Published", compliance:"Pending", silent:false, ai:true,
+  hook:"Opening caption: “6 minutes on CPI day have their own rule”, over monochrome line-art on dark, AI voiceover (Higgsfield, Alexey).",
+  onscreen:"Monochrome line-art scenes with two-line lowercase captions; full lockup logo at the bottom, growing into the end card. 59.9 s.",
+  beats:"13 lines: the six-minute hook; what CPI tracks; out once a month at 8:30 ET; headline vs core; why one number can move futures; inflation and the Fed’s path on rates; hotter or cooler prints and rate expectations; yields, the dollar, gold and index futures; the gap between forecast and actual; ES at $50 a point, the micro at $5; 18th Street’s rule (no new positions 3 minutes before or after); it covers high-impact releases like CPI, positions opened earlier can stay open; close on “which release should we explain next?”",
+  caption:"CPI lands at 8:30 AM ET today. Here’s what it is, and why one number can move futures.\n\n18th Street doesn’t allow opening a new position within three minutes either side of a high-impact release like CPI. Positions opened earlier can be carried through. Full rules at trade18th.com/faq\n\nWhat do you check first when CPI comes out?\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice. Voiceover generated with AI.",
+  hashtags:"#futurestrading #daytrading #cpi",
+  claims:"CPI release 10 Nov, 8:30 AM ET (bls.gov schedule). ES $50 a point, Micro E-mini $5 (CME contract specs). News rule: no new position within three minutes either side of a high-impact release; positions opened earlier can be carried through (trade18th.com/faq). General market statements (“often in seconds”, “markets tend to react”) are open with legal.",
+  notes:"Education only, no forecasts or trade ideas. AI voice, so the caption carries the AI line. Open with legal: whether the news rule also covers the Live account, and the two general market statements. The tech loop music track is not client-approved yet; confirm its licence. Gabriel posted it himself.",
+  why:"CPI day: a primer on what the number is, posted before the 8:30 AM ET release, ahead of the 9:15 AM ET News alert.",
+  ref:"", audio:"Tech loop (Gabriel’s track, looped on the beat, kept under the voice)", draft:"", draftNote:"Video final (v6)",
+  due:"Posted 6:00 AM ET (7:00 PM MYT)", fromSanti:null, fromBoard:false, story:"",
+  video:"vid/cpi_day_v6.mp4", gstate:"ready",
+  changes:["10 Nov: new (Gabriel). CPI day motion explainer, v6 (59.9 s): line-art style from the references, AI voice (Alexey), tech loop music, static at 54 s cleaned. Posted at 6:00 AM ET."]
+ };
+ POSTS.push(p);
+ POSTS.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)); POSTS.forEach((q,i)=>q.id=String(i+1).padStart(2,"0"));
+ const over={};
+ for(const [k,v] of Object.entries(PUB.over)){
+  if(k.slice(0,2)==="ig"){const q=before.get(k.slice(2)); over[q?"ig"+q.id:k]=v;} else over[k]=v;
+ }
+ over["ig"+p.id]="posted";
+ PUB.over=over;
+})();
 X_INFO.intro="This week reuses the Instagram graphics and videos, plus a few short X-only posts. Times in ET and MYT. Every post is a draft for legal and Jay’s approval. Tap a post to open its copy, images and alt text.";
 
 const PIL = {
