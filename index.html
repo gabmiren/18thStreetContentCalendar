@@ -138,7 +138,7 @@ textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1p
 </head>
 <body>
 <div class="wrap">
-<header>
+<header style="display:none">
   <div>
     <div class="mono">18th Street Studio · Content calendar · Draft v8 · 4 Nov 2026</div>
     <h1>Two weeks, <em>Tue 3 to Sun 15 Nov</em></h1>
@@ -159,7 +159,7 @@ textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1p
 
 <section class="view on" id="v-cal">
   <div id="publeg-ig"></div>
-  <div class="legend" id="legend"></div>
+  <div class="legend" id="legend" style="display:none"></div>
   <div class="grid" id="grid"></div>
   <div class="mix" id="mix"></div>
   <p class="mono" style="margin-top:6px" id="mixnote">Bar = share of the feed posts · white tick = the client’s target split</p>
@@ -1983,7 +1983,7 @@ function xGrid(){
    ${p.poll?p.poll.map((o,i)=>cp("Poll option "+(i+1),o)).join(""):""}
    ${(p.replies||(p.reply?[p.reply]:[])).map((r,ri)=>`<div class="mono" style="margin-top:12px">${r.t?"Reply at "+et(r.t)+" · "+myt(d,r.t):(["First","Second","Third"][ri]||"Next")+" reply (thread)"}</div>${thumbs(r.gfx)}${alts(r.gfx)}${cp("Reply "+(ri+1)+" text",r.text)}`).join("")}
    ${p.note?`<div class="mono" style="margin-top:6px;font-size:11px">${esc(p.note)}</div>`:""}</div>`;
- v.innerHTML=(typeof X_INFO!=="undefined"?`<div class="sec"><h2>X, 9 to 15 Nov</h2><p>${esc(X_INFO.intro)}</p>${PUBLEG}</div>${xGrid()}`:"");
+ v.innerHTML=(typeof X_INFO!=="undefined"?`${PUBLEG}${xGrid()}`:"");
  window.XD={}; X_PLAN.forEach(d=>d.posts.forEach(p=>{window.XD["xd-"+d.date+"-"+p.t.replace(":","")]={d:d.date,html:post(d.date,p)};}));
  v.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>copy(CPS[+b.dataset.cp],"Copied"));
 })();
