@@ -2040,6 +2040,13 @@ const W47_SAVED={"risk": {"id": "08", "date": "2026-11-07", "time": "11:00", "we
  const x=X_PLAN.find(d=>d.date==="2026-11-20").posts.find(q=>q.from==="Trade of the Week 02 (reel)");
  Object.assign(x,{from:"PPI explainer (reel)",onday:true,text:"Producer prices often move before the prices you pay at the store.\n\nWhat PPI measures, and why traders watch it.",note:"Native upload once the reel is made."});
 })();
+// ---- 11 Nov: Trade of the Week paused (client doesn't have many traders yet) ----
+(function(){
+ const i=POSTS.findIndex(p=>p.title==="Trade of the Week 01: the plan before the number"); if(i>=0) POSTS.splice(i,1);
+ const d=X_PLAN.find(x=>x.date==="2026-11-13"); if(d) d.posts=d.posts.filter(q=>q.from!=="Trade of the Week 01 (reel)");
+ const p=POSTS.find(x=>x.title==="PPI explainer: what producer prices tell you");
+ if(p){p.why=p.why.replace(" Replaces Trade of the Week 02.",""); p.changes=["11 Nov: new slot for a PPI motion explainer (Gabriel). Trade of the Week is paused until the client has more traders. Video not made yet."];}
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
