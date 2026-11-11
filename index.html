@@ -2088,6 +2088,16 @@ const W47_SAVED={"risk": {"id": "08", "date": "2026-11-07", "time": "11:00", "we
  mv("Clip: Get paid at every phase","07:00"); mv("Who we built 18th Street for","16:00");
  const d=X_PLAN.find(x=>x.date==="2026-11-11"); d.posts.find(q=>q.from==="Clip: Get paid at every phase").t="07:00"; d.posts.sort((a,b)=>a.t<b.t?-1:1);
 })();
+// ---- 11 Nov: Who we built 18th Street for, v5 redesign (senior design review) ----
+(function(){
+ const p=POSTS.find(x=>x.title==="Who we built 18th Street for");
+ p.gfx=["wy5v5_1"]; p.gver="v5";
+ p.onscreen="Headline “Is 18th Street for you?” over three lines, “for you?” in teal. Yes, if: four lines with thin teal ticks. Probably not, if: two lines with grey crosses, under a hairline. Dimmed Chicago pit photo in a circle.";
+ p.hook="Headline: “Is 18th Street for you?”";
+ p.changes.push("11 Nov v5: headline became the question “Is 18th Street for you?” at 150px over three lines; filled teal discs swapped for thin ticks; “You want to be paid as you progress” → “You want a payout at every phase”; “You put risk first” → “You protect the account” (no repeated “first”); “You’re chasing a quick payout” → “You’re chasing one big day” (no clash with the payout line); labels shortened to “Yes, if” and “Probably not, if”; hairline between the lists; photo dimmed. On-graphic words 47 to 41.");
+ for(const d of X_PLAN) for(const q of d.posts) if(q.from==="Who we built 18th Street for"&&q.gfx) q.gfx=q.gfx.map(g=>g==="wy5v3_1"?"wy5v5_1":g);
+ if(typeof X_ALT!=="undefined") X_ALT.wy5v5_1="Is 18th Street for you? Yes, if you treat trading as a profession, protect the account, want a payout at every phase and read the rules first. Probably not, if you’re chasing one big day or want to skip phases.";
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
