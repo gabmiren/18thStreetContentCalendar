@@ -2122,6 +2122,25 @@ const W47_SAVED={"risk": {"id": "08", "date": "2026-11-07", "time": "11:00", "we
  p.onscreen=p.onscreen.replace("Full silver lockup (monogram and wordmark) top right at 400px; no corner lockup.","Large silver monogram top right in place of the photo; no corner lockup.");
  p.changes.push("11 Nov: back to v7, the large monogram (Gabriel preferred it to the full lockup in v8).");
  for(const d of X_PLAN) for(const q of d.posts) if(q.gfx) q.gfx=q.gfx.map(g=>g==="wy5v8_1"?"wy5v7_1":g);})();
+// ---- 12 Nov: PPI explainer moves to Thu 12 Nov 7:00 AM ET (8:00 PM MYT), the day before the October PPI print; order types takes its old Fri 20 slot (Gabriel) ----
+(function(){
+ const ppi=POSTS.find(x=>x.title==="PPI explainer: what producer prices tell you");
+ const ot=POSTS.find(x=>x.title==="All traders should know: order types");
+ Object.assign(ppi,{date:"2026-11-12",time:"07:00",week:"2026-W46",due:"Thu 12 Nov, by 6:00 PM MYT",
+  caption:"Producer prices often move before the prices you pay at the store.\n\nPPI lands tomorrow at 8:30 AM ET. Here’s what it measures, how it differs from CPI, and why traders watch both.\n\n"+G,
+  beats:ppi.beats.replace("8 Calm close on the next release to explain.","8 Calm close: the October PPI is out Fri 13 Nov at 8:30 AM ET."),
+  why:"Posts the day before the October PPI print (Fri 13 Nov, 8:30 AM ET), following the CPI reel that did well."});
+ ppi.changes.push("12 Nov: moved from Fri 20 Nov to Thu 12 Nov 7:00 AM ET (8:00 PM MYT), the day before the PPI print, as the only post that day (Gabriel). Caption now points to tomorrow’s 8:30 AM ET release.");
+ Object.assign(ot,{date:"2026-11-20",time:"21:00",week:"2026-W47"});
+ (ot.changes=ot.changes||[]).push("12 Nov: moved to Fri 20 Nov 9:00 PM ET to make room for the PPI explainer on Thu 12 Nov.");
+ const mvX=(from,fromDate,toDate,t)=>{const a=X_PLAN.find(z=>z.date===fromDate);const i=a.posts.findIndex(q=>q.from===from);const q=a.posts.splice(i,1)[0];q.t=t;let b=X_PLAN.find(z=>z.date===toDate);if(!b){b={date:toDate,posts:[]};X_PLAN.push(b);}b.posts.push(q);return q;};
+ const xp=mvX("PPI explainer (reel)","2026-11-20","2026-11-12","07:00");
+ xp.text="Producer prices often move before the prices you pay at the store.\n\nPPI is out tomorrow at 8:30 AM ET. What it measures, and why traders watch it.";
+ mvX("All traders should know: order types","2026-11-12","2026-11-20","21:00");
+ X_PLAN.sort((a,b)=>a.date<b.date?-1:1); for(const d of X_PLAN) d.posts.sort((a,b)=>a.t<b.t?-1:1);
+ STORIES["2026-11-12"]="Share the PPI explainer to story.";
+ STORIES["2026-11-20"]=(STORIES["2026-11-20"]||"")+" Later, share the order types carousel.";
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
@@ -2183,27 +2202,6 @@ function buildGrid(){
  document.querySelectorAll("#grid .st.click").forEach(c=>c.onclick=()=>openStory(c.dataset.sd));
 }
 
-// ---- 11 Nov: PPI explainer made (v21, 43 s, Alexey voiceover) and moved up to Thu 12 Nov, the day before October's PPI (Gabriel) ----
-(function(){
- const p=POSTS.find(x=>x.title==="PPI explainer: what producer prices tell you"); if(!p) throw new Error("missing PPI explainer");
- const was=`${p.date} ${p.time}`;
- Object.assign(p,{title:"PPI explainer: what producer prices tell you",date:"2026-11-12",time:"09:00",week:"2026-W46",
-  status:"Review",compliance:"Pending",silent:false,ai:true,gstate:"ready",video:"vid/ppi_v21.mp4",draftNote:"Video final (v21), passed full QA",due:"Posts Thu 12 Nov",
-  hook:"Opening line on screen from frame 0: “Your coffee’s price starts long before it reaches the café”.",
-  onscreen:"Vertical journey down a pipe of glowing cards (grow, make, ship, sell), one centred line of copy at a time, clock, Friday tile, headline vs core bars, gauge, ripple, forecast vs actual bars, bookmark. Full lockup inside the safe zone. 43.3 s.",
-  beats:"10 lines: the coffee hook; it begins with the businesses that grow, make and ship it; PPI tracks what they get paid, one step before what you pay; out once a month at 8:30 AM ET, October’s lands this Friday; headline vs core (food and energy out); why traders watch it, early costs can reach store prices later; a hotter or cooler number can shift rate expectations; yields, the dollar, gold and index futures; markets react to the gap between forecast and actual; save this for Friday, 8:30 AM ET.",
-  caption:"What PPI is, and why traders watch it before Friday’s release.\n\nPPI tracks what businesses get paid, one step before what you pay at the store. October’s number lands Friday at 8:30 AM ET.\n\n"+G+" Voiceover generated with AI.",
-  hashtags:"#futurestrading #ppi #inflation",
-  claims:"October 2026 PPI release Fri 13 Nov, 8:30 AM ET (bls.gov schedule, checked 10 Nov). PPI measures prices received by domestic producers (BLS). Core here = less food and energy; BLS’s main core also leaves out trade services, flagged for legal. General market statements kept general.",
-  notes:"Education only, no forecasts or trade ideas, not salesy (no 18th Street mention beyond the logo). AI voice (Higgsfield Alexey), so the caption carries the AI line. Tech loop music still needs client licence approval. Copy says “this Friday”, so it must go out before Fri 13 Nov 8:30 AM ET.",
-  why:"Posted the day before October’s PPI print, a few days after the CPI reel. Moved up from Fri 20 Nov so the “this Friday” line is true.",
-  audio:"Tech loop (same as the CPI reel), under the voice",crosspost:"X, YouTube Shorts"});
- (p.changes=p.changes||[]).push(`11 Nov: ${was} ET → 2026-11-12 09:00 ET (Gabriel). Video made: v21, 43.3 s, voiceover by Alexey, full QA passed.`);
- // X: move the PPI reel from Fri 20 Nov to Thu 12 Nov, same time as Instagram
- const d20=X_PLAN.find(d=>d.date==="2026-11-20"); const i=d20?d20.posts.findIndex(q=>q.from==="PPI explainer (reel)"):-1;
- if(i>=0){const q=d20.posts.splice(i,1)[0]; Object.assign(q,{t:"09:00",onday:true,text:"Your coffee’s price starts long before it reaches the café.\n\nWhat PPI is, and why traders watch it before Friday’s release.",note:"Native upload of the reel (v21)."});
-  let d=X_PLAN.find(z=>z.date==="2026-11-12"); if(!d){d={date:"2026-11-12",posts:[]};X_PLAN.push(d);} d.posts.push(q); d.posts.sort((a,b)=>a.t<b.t?-1:1);}
-})();
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
