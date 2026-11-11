@@ -2113,6 +2113,11 @@ const W47_SAVED={"risk": {"id": "08", "date": "2026-11-07", "time": "11:00", "we
  p.changes.push("11 Nov v7: photo circle replaced with the silver monogram at 260px, unaltered, with clear space around it; the bottom-right lockup removed (Gabriel).");
  for(const d of X_PLAN) for(const q of d.posts) if(q.gfx) q.gfx=q.gfx.map(g=>g==="wy5v6_1"?"wy5v7_1":g);
  if(typeof X_ALT!=="undefined"&&X_ALT.wy5v6_1) X_ALT.wy5v7_1=X_ALT.wy5v6_1;})();
+(function(){const p=POSTS.find(x=>x.title==="Who we built 18th Street for"); p.gfx=["wy5v8_1"]; p.gver="v8";
+ p.onscreen=p.onscreen.replace("Large silver monogram top right in place of the photo; no corner lockup.","Full silver lockup (monogram and wordmark) top right at 400px; no corner lockup.");
+ p.changes.push("11 Nov v8: the monogram became the full horizontal lockup at 400px, top right, so the wordmark shows (Gabriel). The brand guide has no stacked version, so the primary lockup is used as is.");
+ for(const d of X_PLAN) for(const q of d.posts) if(q.gfx) q.gfx=q.gfx.map(g=>g==="wy5v7_1"?"wy5v8_1":g);
+ if(typeof X_ALT!=="undefined"&&X_ALT.wy5v7_1) X_ALT.wy5v8_1=X_ALT.wy5v7_1;})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
