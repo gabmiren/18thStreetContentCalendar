@@ -2082,6 +2082,12 @@ const W47_SAVED={"risk": {"id": "08", "date": "2026-11-07", "time": "11:00", "we
  X_PLAN.sort((a,b)=>a.date<b.date?-1:1); for(const d of X_PLAN) d.posts.sort((a,b)=>a.t<b.t?-1:1);
  // stories that name times stay as they are (they follow the posts)
 })();
+// ---- 11 Nov: today's times (Gabriel): clip 7:00 AM ET, Who we built 4:00 PM ET ----
+(function(){
+ const mv=(t,time)=>{const p=POSTS.find(x=>x.title===t&&x.date==="2026-11-11"); const was=p.time; p.time=time; (p.changes=p.changes||[]).push(`11 Nov: ${was} → ${time} ET (Gabriel), to fit the posting-time windows.`);};
+ mv("Clip: Get paid at every phase","07:00"); mv("Who we built 18th Street for","16:00");
+ const d=X_PLAN.find(x=>x.date==="2026-11-11"); d.posts.find(q=>q.from==="Clip: Get paid at every phase").t="07:00"; d.posts.sort((a,b)=>a.t<b.t?-1:1);
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
