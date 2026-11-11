@@ -2098,6 +2098,10 @@ const W47_SAVED={"risk": {"id": "08", "date": "2026-11-07", "time": "11:00", "we
  for(const d of X_PLAN) for(const q of d.posts) if(q.from==="Who we built 18th Street for"&&q.gfx) q.gfx=q.gfx.map(g=>g==="wy5v3_1"?"wy5v5_1":g);
  if(typeof X_ALT!=="undefined") X_ALT.wy5v5_1="Is 18th Street for you? Yes, if you treat trading as a profession, protect the account, want a payout at every phase and read the rules first. Probably not, if you’re chasing one big day or want to skip phases.";
 })();
+(function(){const p=POSTS.find(x=>x.title==="Who we built 18th Street for"); p.gfx=["wy5v6_1"]; p.gver="v6";
+ p.changes.push("11 Nov v6: headline and lists moved inside the square grid crop (y 135 to 1215), so nothing is cut in the profile grid; photo moved down with the headline.");
+ for(const d of X_PLAN) for(const q of d.posts) if(q.gfx) q.gfx=q.gfx.map(g=>g==="wy5v5_1"?"wy5v6_1":g);
+ if(typeof X_ALT!=="undefined"&&X_ALT.wy5v5_1) X_ALT.wy5v6_1=X_ALT.wy5v5_1;})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
