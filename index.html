@@ -2232,6 +2232,27 @@ function buildGrid(){
  document.querySelectorAll("#grid .st.click").forEach(c=>c.onclick=()=>openStory(c.dataset.sd));
 }
 
+// ---- 12 Nov: PPI rebuilt as "Inside the 8:30" (v24 r4); replaces the v21 coffee reel in the Thu 12 Nov 8:00 PM MYT slot; Instagram only (Gabriel) ----
+(function(){
+ const p=POSTS.find(x=>x.title==="PPI explainer: what producer prices tell you"); if(!p) throw new Error("missing PPI explainer");
+ const was=`${p.date} ${p.time}`;
+ Object.assign(p,{title:"Inside the 8:30: the first second after PPI",date:"2026-11-12",time:"07:00",week:"2026-W46",
+  status:"Review",compliance:"Pending",silent:false,ai:true,gstate:"ready",video:"vid/ppi_v24_inside_830_r4.mp4",draftNote:"Video final (v24 r4, 44.3 s), passed full QA. Replaces the v21 coffee reel.",due:"Thu 12 Nov, by 6:00 PM MYT",
+  hook:"On screen and spoken from frame 0: “What happens in the first second after PPI drops?”",
+  onscreen:"One order book ladder (rows in ticks, no real prices) and one big clock from 8:29:55 to 8:30:30: book thins, white flash at 8:30:00, price skips ticks, stop chain, CLICK vs FILL gap with an EXAMPLE label, orders return, big 8:29, bookmark and send. Small logo; full lockup and tagline on the end card.",
+  beats:"10 beats: the hook question; Friday at 8:30 AM ET; five seconds before, many market makers pull their orders; at 8:30 machines trade it in milliseconds; price can skip several ticks; one second in, stops trigger; spreads stay wide, so a market order can fill far from your click; thirty seconds in, orders return; the first second belongs to the machines, your plan has to be ready by 8:29; save this for Friday and send it to the trader who clicks market at 8:30.",
+  caption:"What happens in the first second after PPI drops?\n\nOctober’s PPI lands Friday at 8:30 AM ET. In the seconds around the release, the book can thin out and price can skip several ticks at once.\n\nThe first second belongs to the machines. Your plan has to be ready by 8:29.\n\nSend this to the trader who clicks market at 8:30.\n\n"+G+" Voiceover generated with AI.",
+  hashtags:"#futurestrading #ppi #daytrading",
+  claims:"October 2026 PPI release Fri 13 Nov, 8:30 AM ET (bls.gov, checked 12 Nov). Beats 3, 5 and 7 describe general market behaviour (liquidity thinning, ticks skipping, slippage), hedged with “many” and “can”, flagged for legal. Ladder rows are tick offsets with no real prices or contract months; the CLICK and FILL gap is labelled EXAMPLE.",
+  notes:"Education only, no forecasts, levels or trade calls; logo is the only brand presence. AI voice (Higgsfield Alexey), so the caption carries the AI line. Instagram only for this one. Copy says “Friday”, so it must go out before Fri 13 Nov 8:30 AM ET. Tech loop music still needs client licence approval.",
+  why:"Posts the night before October’s PPI print (8:00 PM MYT Thu), as the only post that day. Built from the animated explainer playbook: question hook, one subject (the order book and clock), a quotable close and a send line.",
+  audio:"Tech loop under the voice, with clock ticks, a hit at 8:30:00 and light SFX",crosspost:"None (Instagram only)"});
+ (p.changes=p.changes||[]).push(`12 Nov: rebuilt as “Inside the 8:30” (v24 r4, 44.3 s), replacing the v21 coffee reel at ${was} ET (8:00 PM MYT); full QA passed; Instagram only (Gabriel).`);
+ // X: the PPI reel is Instagram only, so its X entry comes off the plan
+ const d12=X_PLAN.find(d=>d.date==="2026-11-12"); if(d12){d12.posts=d12.posts.filter(q=>q.from!=="PPI explainer (reel)");}
+ STORIES["2026-11-12"]="Share the Inside the 8:30 reel to story.";
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
