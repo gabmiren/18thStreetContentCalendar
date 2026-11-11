@@ -2047,6 +2047,41 @@ const W47_SAVED={"risk": {"id": "08", "date": "2026-11-07", "time": "11:00", "we
  const p=POSTS.find(x=>x.title==="PPI explainer: what producer prices tell you");
  if(p){p.why=p.why.replace(" Replaces Trade of the Week 02.",""); p.changes=["11 Nov: new slot for a PPI motion explainer (Gabriel). Trade of the Week is paused until the client has more traders. Video not made yet."];}
 })();
+// ---- 11 Nov: posting times for non-time-sensitive posts, from OpusClip's 2026 TikTok timing study (Gabriel) ----
+(function(){
+ const why="Moved to the article’s window (OpusClip 2026 timing study: Thu and Sat 7:00 AM ET, Wed 4:00 PM ET, Fri 9:00 PM ET; Mon and Tue use the same 7:00 AM pattern).";
+ const ig=(title,date,time,nd)=>{const p=POSTS.find(x=>x.title===title); if(!p) throw new Error("missing "+title);
+   const was=`${p.date} ${p.time}`; p.time=time; if(nd){p.date=nd;} (p.changes=p.changes||[]).push(`11 Nov: ${was} ET → ${p.date} ${time} ET. ${why}`); return p;};
+ const x=(date,from,time,nd)=>{const d=X_PLAN.find(z=>z.date===date); const i=d.posts.findIndex(q=>q.from===from); if(i<0) throw new Error("missing X "+from);
+   const q=d.posts[i]; q.t=time; if(nd&&nd!==date){d.posts.splice(i,1); let e=X_PLAN.find(z=>z.date===nd); if(!e){e={date:nd,posts:[]};X_PLAN.push(e);} e.posts.push(q);} };
+ // Instagram
+ ig("All traders should know: order types",0,"07:00");
+ ig("Life after you pass your first eval",0,"21:00","2026-11-13");
+ ig("Clip: 5 principles from an institutional desk",0,"07:00");
+ ig("Running your own algo?",0,"16:00");
+ ig("4 risk myths that quietly drain accounts",0,"07:00");
+ ig("Intraday vs end-of-day drawdown",0,"07:00");
+ ig("Life as a Capital Partner",0,"16:00");
+ ig("Clip: The real value of a prop firm",0,"07:00");
+ ig("The most expensive trade is often the one after a loss",0,"16:00");
+ ig("PPI explainer: what producer prices tell you",0,"21:00");
+ ig("When you’re long, there will be signs",0,"07:00");
+ // X, in step with Instagram (X 11 Nov isn't scheduled yet)
+ x("2026-11-11","Who we built 18th Street for","16:00");
+ x("2026-11-12","All traders should know: order types","07:00");
+ x("2026-11-12","Life after you pass your first eval (reel)","21:00","2026-11-13");
+ x("2026-11-14","Four phases, with a payout at every one (reel)","07:00");
+ x("2026-11-14","Running your own algo?","16:00");
+ x("2026-11-16","4 risk myths that quietly drain accounts","07:00");
+ x("2026-11-17","Intraday vs end-of-day drawdown","07:00");
+ x("2026-11-18","Life as a Capital Partner","16:00");
+ x("2026-11-19","Clip: The real value of a prop firm","07:00");
+ x("2026-11-19","The most expensive trade is often the one after a loss (reel)","16:00");
+ x("2026-11-20","PPI explainer (reel)","21:00");
+ x("2026-11-21","When you’re long, there will be signs (reel)","07:00");
+ X_PLAN.sort((a,b)=>a.date<b.date?-1:1); for(const d of X_PLAN) d.posts.sort((a,b)=>a.t<b.t?-1:1);
+ // stories that name times stay as they are (they follow the posts)
+})();
 
 const PIL = {
  "Futures education & strategies":{k:"edu",c:"var(--edu)",target:40,short:"Education"},
