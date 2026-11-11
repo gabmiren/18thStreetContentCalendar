@@ -2183,6 +2183,27 @@ function buildGrid(){
  document.querySelectorAll("#grid .st.click").forEach(c=>c.onclick=()=>openStory(c.dataset.sd));
 }
 
+// ---- 11 Nov: PPI explainer made (v21, 43 s, Alexey voiceover) and moved up to Thu 12 Nov, the day before October's PPI (Gabriel) ----
+(function(){
+ const p=POSTS.find(x=>x.title==="PPI explainer: what producer prices tell you"); if(!p) throw new Error("missing PPI explainer");
+ const was=`${p.date} ${p.time}`;
+ Object.assign(p,{title:"PPI explainer: what producer prices tell you",date:"2026-11-12",time:"09:00",week:"2026-W46",
+  status:"Review",compliance:"Pending",silent:false,ai:true,gstate:"ready",video:"vid/ppi_v21.mp4",draftNote:"Video final (v21), passed full QA",due:"Posts Thu 12 Nov",
+  hook:"Opening line on screen from frame 0: “Your coffee’s price starts long before it reaches the café”.",
+  onscreen:"Vertical journey down a pipe of glowing cards (grow, make, ship, sell), one centred line of copy at a time, clock, Friday tile, headline vs core bars, gauge, ripple, forecast vs actual bars, bookmark. Full lockup inside the safe zone. 43.3 s.",
+  beats:"10 lines: the coffee hook; it begins with the businesses that grow, make and ship it; PPI tracks what they get paid, one step before what you pay; out once a month at 8:30 AM ET, October’s lands this Friday; headline vs core (food and energy out); why traders watch it, early costs can reach store prices later; a hotter or cooler number can shift rate expectations; yields, the dollar, gold and index futures; markets react to the gap between forecast and actual; save this for Friday, 8:30 AM ET.",
+  caption:"What PPI is, and why traders watch it before Friday’s release.\n\nPPI tracks what businesses get paid, one step before what you pay at the store. October’s number lands Friday at 8:30 AM ET.\n\n"+G+" Voiceover generated with AI.",
+  hashtags:"#futurestrading #ppi #inflation",
+  claims:"October 2026 PPI release Fri 13 Nov, 8:30 AM ET (bls.gov schedule, checked 10 Nov). PPI measures prices received by domestic producers (BLS). Core here = less food and energy; BLS’s main core also leaves out trade services, flagged for legal. General market statements kept general.",
+  notes:"Education only, no forecasts or trade ideas, not salesy (no 18th Street mention beyond the logo). AI voice (Higgsfield Alexey), so the caption carries the AI line. Tech loop music still needs client licence approval. Copy says “this Friday”, so it must go out before Fri 13 Nov 8:30 AM ET.",
+  why:"Posted the day before October’s PPI print, a few days after the CPI reel. Moved up from Fri 20 Nov so the “this Friday” line is true.",
+  audio:"Tech loop (same as the CPI reel), under the voice",crosspost:"X, YouTube Shorts"});
+ (p.changes=p.changes||[]).push(`11 Nov: ${was} ET → 2026-11-12 09:00 ET (Gabriel). Video made: v21, 43.3 s, voiceover by Alexey, full QA passed.`);
+ // X: move the PPI reel from Fri 20 Nov to Thu 12 Nov, same time as Instagram
+ const d20=X_PLAN.find(d=>d.date==="2026-11-20"); const i=d20?d20.posts.findIndex(q=>q.from==="PPI explainer (reel)"):-1;
+ if(i>=0){const q=d20.posts.splice(i,1)[0]; Object.assign(q,{t:"09:00",onday:true,text:"Your coffee’s price starts long before it reaches the café.\n\nWhat PPI is, and why traders watch it before Friday’s release.",note:"Native upload of the reel (v21)."});
+  let d=X_PLAN.find(z=>z.date==="2026-11-12"); if(!d){d={date:"2026-11-12",posts:[]};X_PLAN.push(d);} d.posts.push(q); d.posts.sort((a,b)=>a.t<b.t?-1:1);}
+})();
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
