@@ -2299,6 +2299,37 @@ function buildGrid(){
  X_PLAN.sort((a,b)=>a.date<b.date?-1:1); X_PLAN.forEach(d=>d.posts.sort((a,b)=>a.t<b.t?-1:1));
  Object.assign(STORIES,{"2026-11-16":"Share the retail sales reel, then the risk myths carousel.","2026-11-18":"Share the Nvidia reel. Later, share Life as a Capital Partner.","2026-11-19":"Share the clip to story.","2026-11-20":"One big number: the week’s biggest move, shared with The week in futures. Later, share the signs reel.","2026-11-21":"Share the revenge-trading reel, then the order types carousel."});
 })();
+// ---- 13 Nov: weekend polish pass (design polish skill, copy check) on today and the weekend (Gabriel) ----
+(function(){
+ const by=t=>POSTS.find(x=>x.title===t); const log=(p,s)=>{(p.changes=p.changes||[]).push("13 Nov polish: "+s);};
+ const dropB=n=>(n||"").replace(" Cover: portrait style (cover B), Jay full bleed in grayscale with the question over a fade, inside the square crop.","");
+ let p=by("Clip: 5 principles from an institutional desk"); if(p){ p.cover="cvfp_v6";
+  p.caption="What would an institutional desk expect of you?\n\nJay walks through the five principles every 18th Street trader is held to, starting with protecting the account.\n\nWhich one is hardest for you to keep?\n\n"+G;
+  p.notes=dropB(p.notes)+" Cover: faceless type cover (13 Nov), headline “We built the firm around 5 principles” from Jay’s own words.";
+  log(p,"faceless cover (five numbered steps) and a question-first caption, since question hooks did best."); }
+ p=by("Clip: The real value of a prop firm"); if(p){ p.cover="cvrv_v6"; p.notes=dropB(p.notes)+" Cover: faceless type cover (13 Nov) with a measuring-rule device."; log(p,"faceless cover."); }
+ p=by("Clip: Get paid at every phase"); if(p){ p.cover="cvgp_v6"; log(p,"new faceless cover (four phases, Phase 1 filled) to swap in on the live reel, since the portrait cover underperformed."); }
+ p=by("Running your own algo?"); if(p){ p.gfx=["au1v5_1"]; p.gver="v4"; p.onscreen="Headline “Running your own algo?” with the silver monogram top right, Allowed list with ticks and Not allowed list with crosses under a full-width hairline, all inside the square grid crop."; log(p,"rebuilt in the approved “Is 18th Street for you?” layout; photo circle removed; everything inside the grid crop."); }
+ p=by("This week: 16 to 20 Nov"); if(p){ p.gfx=["wk16v6c_1","wk16v7_2","wk16v7_3","wk16v7_4","wk16v7_5"]; p.gver="v6";
+  p.onscreen="Type cover: “A quieter week, one big evening” with the five-day strip (Tue and Wed marked). Event slides with photos graded to one dark monochrome look (server aisle for Nvidia in place of the circuit board). Closing slide: “Save this for the week.”";
+  log(p,"type-only cover in the grid style, CTA “Swipe for what to watch” (no count clash), photos graded to one look, circuit-board image replaced, motivational line and ornament cut from the last slide."); }
+ const ev=by("Life after you pass your first eval"), sg=by("When you’re long, there will be signs");
+ if(ev&&sg){ const a={date:ev.date,time:ev.time}, b={date:sg.date,time:sg.time}; Object.assign(ev,b); Object.assign(sg,a);
+  ev.notes=(ev.notes||"")+" 13 Nov: held back. The footage is from the film Limitless and shows a sports car and a villa, which reads as “pass the eval, get rich”. Needs legal’s OK, or a re-cut without the wealth shots, before it goes out.";
+  log(ev,"swapped out of Fri 13 for legal review (wealth imagery)."); log(sg,"moved up to Fri 13, 9:00 PM ET, in place of the eval reel."); }
+ X_PLAN.forEach(d=>d.posts.forEach(q=>{
+  if(q.from==="New for X (PPI morning)") q.text="PPI is out at 8:30 AM ET, the week’s second inflation read after Tuesday’s CPI.";
+  if(q.from==="Running your own algo?") q.gfx=["au1v5_1"];
+  if(q.from==="Clip: 5 principles from an institutional desk") q.text="What would an institutional desk expect of you?\n\nJay walks through the five principles every 18th Street trader is held to, starting with protecting the account.";
+  if(q.from==="This week: 16 to 20 Nov"){ q.gfx=["wk16v6c_1","wk16v7_2","wk16v7_3","wk16v7_4"]; if(q.replies&&q.replies[0]){ q.replies[0].gfx=["wk16v7_5"]; q.replies[0].text="Retail sales and Nvidia on Tuesday, the Fed minutes on Wednesday. Save this for the week."; } }
+ }));
+ const xs=from=>{let r=null; X_PLAN.forEach(d=>{const i=d.posts.findIndex(q=>q.from===from); if(i>=0&&!r) r={d,i};}); return r;};
+ const a1=xs("Life after you pass your first eval (reel)");
+ if(a1){ const qe=a1.d.posts.splice(a1.i,1)[0]; const a2=xs("When you’re long, there will be signs (reel)");
+  if(a2){ const qg=a2.d.posts.splice(a2.i,1)[0]; const te=qe.t; qe.t=qg.t; qg.t=te; a1.d.posts.push(qg); a2.d.posts.push(qe); qe.note=(qe.note||"")+" Held for legal (wealth imagery)."; }
+  else a1.d.posts.push(qe); }
+ X_PLAN.forEach(d=>d.posts.sort((a,b)=>a.t<b.t?-1:1));
+})();
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
