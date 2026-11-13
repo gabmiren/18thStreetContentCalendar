@@ -47,7 +47,7 @@ nav button.on{background:var(--s2);color:var(--ink);border-color:#3a4147}
 
 #editbtn{border:1px solid var(--line)!important}
 body.editing #editbtn{background:#E8C547!important;color:#16191C!important;border-color:#E8C547!important}
-#editbar{margin:0 0 14px;padding:12px 14px;border:1px solid #5A4F22;background:#1D1B12;font:400 13px/1.5 Archivo,sans-serif;color:var(--ink);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+#editbar{margin:0 0 14px;padding:12px 14px;border:1px solid var(--line);background:transparent;font:400 12px/1.5 Archivo,sans-serif;color:var(--ink2);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 #editbar .mono{font-size:11px;color:#C9B66A}
 #editbar button{background:transparent;border:1px solid #5A4F22;color:var(--ink);padding:6px 10px;font:500 12px Archivo,sans-serif;cursor:pointer}
 body.editing .card[data-uid]{cursor:grab;touch-action:none;-webkit-user-select:none;user-select:none}
@@ -65,7 +65,8 @@ body.editing .card .pub{cursor:pointer;width:14px;height:14px;top:6px;right:6px}
 .edp .acts{display:flex;gap:10px;margin-top:12px}
 .edp button{background:#E8C547;color:#16191C;border:0;padding:8px 14px;font:600 13px Archivo,sans-serif;cursor:pointer}
 .addp{display:none;margin-top:6px;width:100%;background:transparent;border:1px dashed #5A4F22;color:#C9B66A;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:6px 0;cursor:pointer}
-body.editing .addp{display:block}
+body.editing .day:hover>.addp,body.editing .day:focus-within>.addp{display:block}
+@media (hover:none){body.editing .addp{display:block}}
 .addp:hover{border-color:#E8C547;color:#E8C547}
 .edp button.sec{background:transparent;color:var(--ink);border:1px solid #5A4F22}
 .card,.fr{position:relative}
@@ -183,7 +184,7 @@ textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1p
 <nav id="nav">
   <button data-v="cal" class="on">Instagram</button>
   <button data-v="x">X</button>
-  <button id="editbtn" style="margin-left:auto">Edit</button>
+  <button id="editbtn" style="display:none">Edit</button>
 </nav>
 <div id="editbar" style="display:none"></div>
 
@@ -2298,12 +2299,11 @@ const nDel=()=>Object.keys(EDITS.del).length;
 let undoArm=false;
 function editBar(){ const b=document.getElementById("editbar"); if(!b) return;
  if(!EDITING){b.style.display="none";return;} b.style.display="flex";
- b.innerHTML=`<span>Drag a post to another day, or drop it on another post to swap them. Click + Add on a day to add a post. Open a post to edit or delete it. Click a status dot to change it.</span>
+ b.innerHTML=`<span>Drag posts to move or swap them · hover a day and click + Add · open a post to edit or delete it · click a status dot to change it. Everything saves automatically.</span>
   <span class="mono">${nEdits()} edit${nEdits()===1?"":"s"} · saved to ${EWHERE}</span>${EERR?`<span class="mono" style="color:#E5534B">${EERR}</span>`:""}
-  <span style="margin-left:auto;display:flex;gap:8px">${nDel()?`<button id="erest">Restore ${nDel()} deleted</button>`:""}<button id="ecopy">Copy my edits</button><button id="eundo">${undoArm?"Click again to undo all":"Undo all edits"}</button><button id="edone">Done</button></span>`;
+  <span style="margin-left:auto;display:flex;gap:8px">${nDel()?`<button id="erest">Restore ${nDel()} deleted</button>`:""}<button id="ecopy">Copy my edits</button><button id="eundo">${undoArm?"Click again to undo all":"Undo all edits"}</button></span>`;
  const rb=b.querySelector("#erest"); if(rb) rb.onclick=()=>{ EDITS.del={}; applyEdits(); rerender(); persist(); toast("Deleted posts restored"); };
  b.querySelector("#ecopy").onclick=()=>copy(JSON.stringify(EDITS,null,1),"Edits copied");
- b.querySelector("#edone").onclick=()=>toggleEdit(false);
  b.querySelector("#eundo").onclick=()=>{ if(!undoArm){undoArm=true;editBar();setTimeout(()=>{undoArm=false;editBar();},4000);return;} undoArm=false; EDITS=normE({}); applyEdits(); rerender(); persist(); };
 }
 function toggleEdit(on){ EDITING=on; document.body.classList.toggle("editing",on); editBar(); }
@@ -2341,22 +2341,28 @@ document.addEventListener("pointercancel",e=>endDrag(e,true));
 document.addEventListener("click",e=>{ if(Date.now()-SUPPRESS<400){ e.preventDefault(); e.stopImmediatePropagation(); } },true);
 document.addEventListener("dragstart",e=>{ if(e.target.closest&&e.target.closest(".card")) e.preventDefault(); });
 // edit panel in the side panel
-function editPanel(u){ if(!EDITING||!u) return; const dr=document.getElementById("dr"); const p=findU(u); if(!p) return; const ig=u.startsWith("ig|"), pos=curPos(u);
+function editPanel(u){ if(window.__edFlush) window.__edFlush(); if(!EDITING||!u) return; const dr=document.getElementById("dr"); const p=findU(u); if(!p) return; const ig=u.startsWith("ig|"), pos=curPos(u);
  const box=document.createElement("div"); box.className="edp";
  box.innerHTML=`<div class="mono" style="color:#C9B66A">Edit this post</div>
   <div class="row"><div><label>Date</label><input type="date" id="ed-d" value="${pos.date}"></div><div><label>Time (ET)</label><input type="time" id="ed-t" value="${pos.time}"></div></div>
   <label>${ig?"Caption (hashtags stay as they are)":"Post text"}</label><textarea id="ed-c">${esc(ig?p.caption:p.text)}</textarea>
   ${!ig&&p.replies?p.replies.map((r,i)=>`<label>Reply ${i+1} text</label><textarea class="ed-r" style="min-height:80px">${esc(r.text)}</textarea>`).join(""):""}
-  <div class="acts"><button id="ed-save">Save</button>${p._new?"":'<button class="sec" id="ed-reset">Back to original</button>'}<button class="sec" id="ed-del" style="margin-left:auto;border-color:#7A3B36;color:#E5847C">Delete post</button></div>`;
+  <div class="mono" id="ed-st" style="margin-top:8px;color:#8A8F94;text-transform:none;letter-spacing:.02em">Changes save automatically</div><div class="acts"><button id="ed-save">Done</button>${p._new?"":'<button class="sec" id="ed-reset">Back to original</button>'}<button class="sec" id="ed-del" style="margin-left:auto;border-color:#7A3B36;color:#E5847C">Delete post</button></div>`;
  const close=dr.querySelector(".x"); close.after(box);
- box.querySelector("#ed-save").onclick=()=>{ const d=box.querySelector("#ed-d").value||pos.date, tm=box.querySelector("#ed-t").value||pos.time, c=box.querySelector("#ed-c").value;
+ const doSave=()=>{ const d=box.querySelector("#ed-d").value||pos.date, tm=box.querySelector("#ed-t").value||pos.time, c=box.querySelector("#ed-c").value;
   if(ig) setEdit(u,{date:d,time:tm,caption:c}); else setEdit(u,{date:d,t:tm,text:c,replies:[...box.querySelectorAll(".ed-r")].map(x=>x.value)});
-  applyEdits(); rerender(); persist(); closeD(); toast("Saved"); };
- let delArm=false; box.querySelector("#ed-del").onclick=e=>{ const b=e.target; if(!delArm){ delArm=true; b.textContent="Click again to delete"; setTimeout(()=>{delArm=false; b.textContent="Delete post";},4000); return; }
+  applyEdits(); rerender(); persist();
+  const st=box.querySelector("#ed-st"); if(st){ st.textContent="Saved ✓"; clearTimeout(st._t); st._t=setTimeout(()=>{st.textContent="Changes save automatically";},1500); } };
+ let svT=null; const queue=(ms)=>{ clearTimeout(svT); svT=setTimeout(doSave,ms); };
+ box.querySelectorAll("#ed-c,.ed-r").forEach(el=>el.addEventListener("input",()=>queue(700)));
+ box.querySelectorAll("#ed-d,#ed-t").forEach(el=>el.addEventListener("change",()=>queue(50)));
+ window.__edFlush=()=>{ if(svT){ clearTimeout(svT); svT=null; doSave(); } window.__edFlush=null; };
+ box.querySelector("#ed-save").onclick=()=>closeD();
+ let delArm=false; box.querySelector("#ed-del").onclick=e=>{ const b=e.target; if(delArm){ clearTimeout(svT); window.__edFlush=null; } if(!delArm){ delArm=true; b.textContent="Click again to delete"; setTimeout(()=>{delArm=false; b.textContent="Delete post";},4000); return; }
   if(p._new){ const L=ig?EDITS.add.ig:EDITS.add.x; const i=L.findIndex(a=>a.id===u.split("|")[2]); if(i>=0) L.splice(i,1); }
   else { EDITS.del[u]=true; delete (ig?EDITS.ig:EDITS.x)[u]; }
   delete EDITS.pub[u]; applyEdits(); rerender(); persist(); closeD(); toast(p._new?"Post deleted":"Post deleted · restore it from the edit bar"); };
- const rs=box.querySelector("#ed-reset"); if(rs) rs.onclick=()=>{ delete (ig?EDITS.ig:EDITS.x)[u]; delete EDITS.pub[u]; applyEdits(); rerender(); persist(); closeD(); toast("Back to the original"); };
+ const rs=box.querySelector("#ed-reset"); if(rs) rs.onclick=()=>{ clearTimeout(svT); window.__edFlush=null; delete (ig?EDITS.ig:EDITS.x)[u]; delete EDITS.pub[u]; applyEdits(); rerender(); persist(); closeD(); toast("Back to the original"); };
 }
 // add a post: a + Add button on every day in edit mode
 function addButtons(root){ (root||document).querySelectorAll("#grid .day[data-iso], #xgrid .day[data-iso]").forEach(d=>{ if(d.querySelector(".addp")) return;
@@ -2384,6 +2390,7 @@ function addForm(pf,iso){ const ig=pf==="ig", dr=document.getElementById("dr");
   applyEdits(); rerender(); persist(); closeD(); toast("Post added to "+fmt(date)); };
  dr.classList.add("on"); document.getElementById("ov").classList.add("on"); dr.scrollTop=0; setTimeout(()=>dr.querySelector("#ad-title").focus(),50); }
 try{ const s=localStorage.getItem(EKEY); if(s) EDITS=normE(JSON.parse(s)); }catch(e){}
+setTimeout(()=>toggleEdit(true),0);
 applyEdits();
 (async()=>{ try{ if(typeof claude==="undefined"||!claude.use) return; const db=await claude.use("db"); if(!db) return; EDB=db; EWHERE="the shared calendar"; editBar();
   let first=true;
@@ -2549,7 +2556,7 @@ renderX();
 function openStory(date){const s=STORY_PLAN.find(x=>x.date===date);if(!s)return;
  $("#dr").innerHTML=`<button class="x" onclick="closeD()">Close</button>`+storyHTML(s).replace('class="sc"','class="sc" style="grid-template-columns:170px 1fr;border:0;padding-top:30px"');
  wireStory($("#dr"));$("#dr").classList.add("on");$("#ov").classList.add("on");$("#dr").scrollTop=0;}
-function closeD(){$("#dr").classList.remove("on");$("#ov").classList.remove("on");}
+function closeD(){ if(window.__edFlush) window.__edFlush(); $("#dr").classList.remove("on");$("#ov").classList.remove("on");}
 $("#ov").onclick=closeD; document.addEventListener("keydown",e=>{if(e.key==="Escape")closeD();});
 
 // nav
