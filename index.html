@@ -1121,7 +1121,7 @@ const REVIEW = {
   beats:"35.5 s. The board’s 24 s cut joined with the second half of “The real value of a prop firm”, which follows on in the same talk, so it now meets the 30 to 60 s rule and drops the repeated “selling accounts” line. Rebuilt with the clips kit: question card from 0 s, Archivo captions with teal key words, speaker label, lockup, and three dark brand cards in place of the old cards. Wide shots zoomed so no blurred strips show. QA passes (−14 LUFS, captions match the audio).",
   notes:"Industry view without naming competitors; Jay’s OK. Source label reads “Tickblaze webinar” (the board’s card mentioned the Tickblaze community): confirm before posting. Collab needs the partner’s agreement."});
  const b=by("Clip: 5 principles from an institutional desk");
- Object.assign(b,{video:"vid/clip_five_principles_v3.mp4",gstate:"ready",draftNote:"Re-rendered v3 (48 s)",
+ Object.assign(b,{video:"vid/clip_five_principles_v4.mp4",gstate:"ready",draftNote:"Re-rendered v3 (48 s)",
   beats:"48 s, the board’s cut re-rendered with the clips kit: question card from 0 s, Archivo captions with teal key words, speaker label and lockup. The two light webinar slides and the old card are now dark brand cards (“Built on an institutional standard.”, “Not every market needs a trade”, “Responsibility is earned”). Wide shots zoomed to fill the frame. QA passes."});
  b.hook="Question as text at 0 s: “What would an institutional desk expect of you?”";
  const t=by("Trade of the Week 01: the plan before the number");
@@ -1703,7 +1703,7 @@ const X_PLAN=[
   {t:"11:00",kind:"Video",from:"Four phases, with a payout at every one (reel)",vid:"vid/climb_gauge_v2.mp4",text:"Four phases, with a payout at every one.\n\nThe same published standard at each phase: "+QUAL+"",note:"Instagram ran this on Monday. Product post with rules and payouts, so it needs Jay’s explicit OK. No disclaimer on X; legal may still want the simulated-phases line here."}
  ]},
  {date:"2026-11-15",posts:[
-  {t:"11:00",kind:"Video",from:"Clip: 5 principles from an institutional desk",vid:"vid/clip_five_principles_v3.mp4",text:"What would an institutional desk expect of you?\n\nJay on the standard every 18th Street trader is held to, starting with protecting the account.",note:"Moved from Saturday. Jay’s OK, as on Instagram. Tag the partner only if they agree."},
+  {t:"11:00",kind:"Video",from:"Clip: 5 principles from an institutional desk",vid:"vid/clip_five_principles_v4.mp4",text:"What would an institutional desk expect of you?\n\nJay on the standard every 18th Street trader is held to, starting with protecting the account.",note:"Moved from Saturday. Jay’s OK, as on Instagram. Tag the partner only if they agree."},
   {t:"18:00",kind:"4 images, then reply",from:"This week: 16 to 20 Nov",gfx:["wk16v5_1","wk16v5_2","wk16v5_3","wk16v5_4"],text:"A quieter week, with one big evening in the middle.\n\nRetail sales on Tuesday morning, Nvidia’s results that evening and the Fed minutes on Wednesday.",
    replies:[{gfx:["wk16v5_5"],text:"Calm weeks are a good time to practice your plan at normal size."}],
    note:"Cover and the three big events in the post, the closing slide in the reply. Name Nvidia as a market event only, with no view on the stock."}
@@ -2310,7 +2310,7 @@ function buildGrid(){
  p=by("Clip: The real value of a prop firm"); if(p){ p.cover="cvrv_v6"; p.notes=dropB(p.notes)+" Cover: faceless type cover (13 Nov) with a measuring-rule device."; log(p,"faceless cover."); }
  p=by("Clip: Get paid at every phase"); if(p){ p.cover="cvgp_v6"; log(p,"new faceless cover (four phases, Phase 1 filled) to swap in on the live reel, since the portrait cover underperformed."); }
  p=by("Running your own algo?"); if(p){ p.gfx=["au1v5_1"]; p.gver="v4"; p.onscreen="Headline “Running your own algo?” with the silver monogram top right, Allowed list with ticks and Not allowed list with crosses under a full-width hairline, all inside the square grid crop."; log(p,"rebuilt in the approved “Is 18th Street for you?” layout; photo circle removed; everything inside the grid crop."); }
- p=by("This week: 16 to 20 Nov"); if(p){ p.gfx=["wk16v6c_1","wk16v7_2","wk16v7_3","wk16v7_4","wk16v7_5"]; p.gver="v6";
+ p=by("This week: 16 to 20 Nov"); if(p){ p.gfx=["wk16v6c_1","wk16v8_2","wk16v8_3","wk16v8_4","wk16v8_5"]; p.gver="v6";
   p.onscreen="Type cover: “A quieter week, one big evening” with the five-day strip (Tue and Wed marked). Event slides with photos graded to one dark monochrome look (server aisle for Nvidia in place of the circuit board). Closing slide: “Save this for the week.”";
   log(p,"type-only cover in the grid style, CTA “Swipe for what to watch” (no count clash), photos graded to one look, circuit-board image replaced, motivational line and ornament cut from the last slide."); }
  const ev=by("Life after you pass your first eval"), sg=by("When you’re long, there will be signs");
@@ -2321,7 +2321,7 @@ function buildGrid(){
   if(q.from==="New for X (PPI morning)") q.text="PPI is out at 8:30 AM ET, the week’s second inflation read after Tuesday’s CPI.";
   if(q.from==="Running your own algo?") q.gfx=["au1v5_1"];
   if(q.from==="Clip: 5 principles from an institutional desk") q.text="What would an institutional desk expect of you?\n\nJay walks through the five principles every 18th Street trader is held to, starting with protecting the account.";
-  if(q.from==="This week: 16 to 20 Nov"){ q.gfx=["wk16v6c_1","wk16v7_2","wk16v7_3","wk16v7_4"]; if(q.replies&&q.replies[0]){ q.replies[0].gfx=["wk16v7_5"]; q.replies[0].text="Retail sales and Nvidia on Tuesday, the Fed minutes on Wednesday. Save this for the week."; } }
+  if(q.from==="This week: 16 to 20 Nov"){ q.gfx=["wk16v6c_1","wk16v8_2","wk16v8_3","wk16v8_4"]; if(q.replies&&q.replies[0]){ q.replies[0].gfx=["wk16v8_5"]; q.replies[0].text="Retail sales and Nvidia on Tuesday, the Fed minutes on Wednesday. Save this for the week."; } }
  }));
  const xs=from=>{let r=null; X_PLAN.forEach(d=>{const i=d.posts.findIndex(q=>q.from===from); if(i>=0&&!r) r={d,i};}); return r;};
  const a1=xs("Life after you pass your first eval (reel)");
