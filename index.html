@@ -2310,7 +2310,7 @@ function buildGrid(){
  p=by("Clip: The real value of a prop firm"); if(p){ p.cover="cvrv_v6"; p.notes=dropB(p.notes)+" Cover: faceless type cover (13 Nov) with a measuring-rule device."; log(p,"faceless cover."); }
  p=by("Clip: Get paid at every phase"); if(p){ p.cover="cvgp_v6"; log(p,"new faceless cover (four phases, Phase 1 filled) to swap in on the live reel, since the portrait cover underperformed."); }
  p=by("Running your own algo?"); if(p){ p.gfx=["au1v5_1"]; p.gver="v4"; p.onscreen="Headline “Running your own algo?” with the silver monogram top right, Allowed list with ticks and Not allowed list with crosses under a full-width hairline, all inside the square grid crop."; log(p,"rebuilt in the approved “Is 18th Street for you?” layout; photo circle removed; everything inside the grid crop."); }
- p=by("This week: 16 to 20 Nov"); if(p){ p.gfx=["wk16v6c_1","wk16v8_2","wk16v8_3","wk16v8_4","wk16v8_5"]; p.gver="v6";
+ p=by("This week: 16 to 20 Nov"); if(p){ p.gfx=["wk16v9_1","wk16v8_2","wk16v8_3","wk16v8_4","wk16v8_5"]; p.gver="v6";
   p.onscreen="Type cover: “A quieter week, one big evening” with the five-day strip (Tue and Wed marked). Event slides with photos graded to one dark monochrome look (server aisle for Nvidia in place of the circuit board). Closing slide: “Save this for the week.”";
   log(p,"type-only cover in the grid style, CTA “Swipe for what to watch” (no count clash), photos graded to one look, circuit-board image replaced, motivational line and ornament cut from the last slide."); }
  const ev=by("Life after you pass your first eval"), sg=by("When you’re long, there will be signs");
@@ -2321,7 +2321,7 @@ function buildGrid(){
   if(q.from==="New for X (PPI morning)") q.text="PPI is out at 8:30 AM ET, the week’s second inflation read after Tuesday’s CPI.";
   if(q.from==="Running your own algo?") q.gfx=["au1v5_1"];
   if(q.from==="Clip: 5 principles from an institutional desk") q.text="What would an institutional desk expect of you?\n\nJay walks through the five principles every 18th Street trader is held to, starting with protecting the account.";
-  if(q.from==="This week: 16 to 20 Nov"){ q.gfx=["wk16v6c_1","wk16v8_2","wk16v8_3","wk16v8_4"]; if(q.replies&&q.replies[0]){ q.replies[0].gfx=["wk16v8_5"]; q.replies[0].text="Retail sales and Nvidia on Tuesday, the Fed minutes on Wednesday. Save this for the week."; } }
+  if(q.from==="This week: 16 to 20 Nov"){ q.gfx=["wk16v9_1","wk16v8_2","wk16v8_3","wk16v8_4"]; if(q.replies&&q.replies[0]){ q.replies[0].gfx=["wk16v8_5"]; q.replies[0].text="Retail sales and Nvidia on Tuesday, the Fed minutes on Wednesday. Save this for the week."; } }
  }));
  const xs=from=>{let r=null; X_PLAN.forEach(d=>{const i=d.posts.findIndex(q=>q.from===from); if(i>=0&&!r) r={d,i};}); return r;};
  const a1=xs("Life after you pass your first eval (reel)");
