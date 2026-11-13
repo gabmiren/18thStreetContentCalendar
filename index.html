@@ -2330,6 +2330,21 @@ function buildGrid(){
   else a1.d.posts.push(qe); }
  X_PLAN.forEach(d=>d.posts.sort((a,b)=>a.t<b.t?-1:1));
 })();
+// ---- 14 Nov: fixes from the independent review (wording only, published copy left as posted) ----
+(function(){
+ const by=t=>POSTS.find(x=>x.title===t); const log=(p,s)=>{ if(p)(p.changes=p.changes||[]).push("14 Nov review: "+s); };
+ const rk=by("4 risk myths that quietly drain accounts");
+ if(rk){ rk.gfx=rk.gfx.map(g=>g==="rk1_4"?"rk1v2_4":g); rk.caption=rk.caption.replace("Adding to a loser means doubling down on being wrong.","Adding to a loser raises your size while the trade goes against you."); rk.beats=(rk.beats||"").replace("It doubles down on being wrong.","It adds size to a losing idea."); log(rk,"slide 4 now reads “Nope. It adds size to a losing idea.” (rk1v2_4), since “doubles down” is gambling language. Caption line changed to match."); }
+ const ev=by("Life after you pass your first eval");
+ if(ev){ ev.video="vid/rl3_eval_v2.mp4"; log(ev,"on-screen line is now “Life after you complete Phase 1” (rl3_eval_v2), since “pass your first eval” isn’t the firm’s wording. Same clip, -14 LUFS. The calendar keeps the old title as its internal key."); }
+ X_PLAN.forEach(d=>d.posts.forEach(q=>{
+  if(q.vid==="vid/rl3_eval.mp4") q.vid="vid/rl3_eval_v2.mp4";
+  if(/Who’s trading the print\?/.test(q.text||"")) q.note=((q.note||"")+" 14 Nov review: “Who’s trading the print?” invites trading the release, which the news rule rules out. Already posted; if it’s still up, consider editing it to “Flat or holding into it?”. Don’t reuse the line.").trim();
+  if(/plan fee/.test(q.text||"")) q.note=((q.note||"")+" 14 Nov review: flag for legal. “The Phase 1 payout is more than the plan fee” can read as a return-on-fee claim.").trim();
+ }));
+ const gp=by("Clip: Get paid at every phase"); if(gp) gp.notes=((gp.notes||"")+"\n14 Nov review: flag for legal. The “Phase 1 payout vs plan fee” card and the caption line about the payout being more than the plan fee can read as a return-on-fee claim.").trim();
+ const th=by("Thursday: chip stocks’ worst day since 2020"); if(th) th.notes=((th.notes||"")+"\n14 Nov review: slide 5 prints “+70%” beside “~16” and “~28”, which works out to +75%. Already posted. From now on, exact closes and the exact change, no tildes.").trim();
+})();
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
