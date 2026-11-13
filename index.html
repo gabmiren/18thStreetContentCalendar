@@ -2257,6 +2257,48 @@ function buildGrid(){
  STORIES["2026-11-12"]="Share the Inside the 8:30 reel to story.";
 })();
 
+// ---- 13 Nov: next week (16 to 22 Nov) reworked from the 3 to 13 Nov results (Gabriel). Reels reached about 120 accounts each when they explained a market event or asked a broad question; carousels and statics reached 6 to 17; product reels about 30 to 37. So: a reel most days, product statics kept to one, average watch of 6 to 9 s means shorter reels with the answer up front. ----
+(function(){
+ const by=t=>POSTS.find(x=>x.title===t);
+ const note="13 Nov plan: week reworked from the 3 to 13 Nov results (reels about 120 reach, carousels and statics 6 to 17, product reels 30 to 37).";
+ const mv=(t,date,time,extra)=>{const p=by(t); if(!p) return; const was=`${p.date} ${p.time}`; p.date=date; p.time=time; if(extra) Object.assign(p,extra); (p.changes=p.changes||[]).push(`${note} Moved ${was} → ${date} ${time} ET.`); return p;};
+ const xmv=(from,date,t,extra)=>{ let q=null,src=null; X_PLAN.forEach(d=>{const i=d.posts.findIndex(z=>z.from===from); if(i>=0&&!q){src=d;q=d.posts.splice(i,1)[0];}}); if(!q) return; q.t=t; if(extra) Object.assign(q,extra); let d=X_PLAN.find(z=>z.date===date); if(!d){d={date,posts:[]};X_PLAN.push(d);} d.posts.push(q); return q; };
+ // Mon 16: a market explainer reel leads the day, the risk myths carousel moves to the afternoon
+ POSTS.push({id:"40",date:"2026-11-16",time:"07:00",week:"2026-W47",title:"Retail sales in 30 seconds",format:"Reel",board:"Motion explainers · market explainer",boardId:"rl6",skill:"18th-street-motion-design",
+  platform:"Instagram",pillar:"Market insights & analysis",production:"Motion graphics",status:"Idea",compliance:"Pending",silent:false,ai:true,gstate:"todo",draftNote:"Placeholder: reel to make",due:"Sun 15 Nov",
+  hook:"Question on screen and spoken in the first second, for example “What did Americans spend last month, and why do futures care?” (to finalise).",
+  onscreen:"Market explainer style that worked for CPI and PPI, with a new look so the feed doesn’t repeat. Sentence-case captions, full lockup at the bottom, inside the grid-safe zone.",
+  beats:"About 30 s, answer up front: what retail sales measures, out Tue 17 Nov at 8:30 AM ET from the Census Bureau, headline vs control group, why traders watch spending, the gap between forecast and actual is what moves markets.",
+  caption:"Retail sales lands Tuesday at 8:30 AM ET.\n\nHere’s what it measures, and why traders watch how much people spent last month.\n\n"+G+" Voiceover generated with AI.",
+  hashtags:"#futurestrading #retailsales #economy",
+  claims:"October retail sales Tue 17 Nov 8:30 AM ET (Census Bureau schedule; re-check on census.gov before posting). Education only, no forecasts.",
+  notes:"Placeholder. CPI and PPI explainers were the two best posts so far (about 120 accounts each). Aim for about 30 s, since average watch was 6 to 9 s on 44 to 60 s reels. AI voice (Alexey) means the AI line stays in the caption.",
+  why:"Follows the format that worked best, the day before a market-moving release.",audio:"Tech loop under the voice",crosspost:"X",
+  changes:[note+" New placeholder."]});
+ mv("4 risk myths that quietly drain accounts","2026-11-16","16:00");
+ // Wed 18: the Nvidia brief becomes a short reel at the best morning slot
+ mv("Nvidia earnings News brief","2026-11-18","07:00",{title:"Nvidia results: what NQ did overnight",format:"Reel",board:"Motion explainers · news reel",boardId:"rl6",skill:"18th-street-news-desk",gstate:"onday",draftNote:"Placeholder: made the morning after the results",
+  hook:"[One number on screen in the first second, written after the results: the NQ move from Tuesday’s close.]",
+  onscreen:"Short news reel, about 20 s: the number, what Nvidia reported, the per-contract move on NQ, one line on why one company can move the index. Must look different from the 13 Nov Nasdaq overnight reel.",
+  beats:"Made after Nvidia reports Tue 17 Nov (call 5:00 PM ET). Results from NVIDIA’s release, the NQ move from CME data, $20 a point.",
+  caption:"[Written after Nvidia’s results on Tue 17 Nov: one line on what NQ did overnight, with the per-contract move.]\n\n"+G,
+  why:"Reels reached about seven times more accounts than carousels, and this is the week’s biggest market event."});
+ // Thu 19: the founder clip keeps the morning slot; the revenge-trading reel moves to Saturday so Thursday has one reel
+ const clip=by("Clip: The real value of a prop firm"); if(clip){ clip.notes=(clip.notes||"")+" 13 Nov: broad question clips did about four times better than product clips (120 vs 29 reach), so open on the question and keep the product talk out of the first 5 s."; }
+ mv("The most expensive trade is often the one after a loss","2026-11-21","07:00");
+ // Fri 20: the meme reel goes out Friday night; the order types carousel moves to Saturday afternoon
+ mv("When you’re long, there will be signs","2026-11-20","21:00");
+ mv("All traders should know: order types","2026-11-21","16:00");
+ // X in step
+ X_PLAN.forEach(d=>{ if(d.date==="2026-11-16") d.posts.push({t:"07:00",kind:"Video",from:"Retail sales in 30 seconds (reel)",onday:true,text:"Retail sales lands Tuesday at 8:30 AM ET.\n\nWhat it measures, and why traders watch it.",note:"Placeholder. Native upload once the reel is made."}); });
+ xmv("4 risk myths that quietly drain accounts","2026-11-16","16:00");
+ xmv("Nvidia earnings News brief","2026-11-18","07:00",{from:"Nvidia results: what NQ did overnight (reel)",kind:"Video",gfx:[],text:"[One line on Nvidia’s results and the NQ move, written after the call.]",note:"Placeholder. Native upload of the reel."});
+ xmv("The most expensive trade is often the one after a loss (reel)","2026-11-21","07:00");
+ xmv("When you’re long, there will be signs (reel)","2026-11-20","21:00");
+ xmv("All traders should know: order types","2026-11-21","16:00");
+ X_PLAN.sort((a,b)=>a.date<b.date?-1:1); X_PLAN.forEach(d=>d.posts.sort((a,b)=>a.t<b.t?-1:1));
+ Object.assign(STORIES,{"2026-11-16":"Share the retail sales reel, then the risk myths carousel.","2026-11-18":"Share the Nvidia reel. Later, share Life as a Capital Partner.","2026-11-19":"Share the clip to story.","2026-11-20":"One big number: the week’s biggest move, shared with The week in futures. Later, share the signs reel.","2026-11-21":"Share the revenge-trading reel, then the order types carousel."});
+})();
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
