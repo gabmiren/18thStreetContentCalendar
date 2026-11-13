@@ -64,6 +64,9 @@ body.editing .card .pub{cursor:pointer;width:14px;height:14px;top:6px;right:6px}
 .edp .row{display:flex;gap:10px}.edp .row>div{flex:1}
 .edp .acts{display:flex;gap:10px;margin-top:12px}
 .edp button{background:#E8C547;color:#16191C;border:0;padding:8px 14px;font:600 13px Archivo,sans-serif;cursor:pointer}
+.addp{display:none;margin-top:6px;width:100%;background:transparent;border:1px dashed #5A4F22;color:#C9B66A;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:6px 0;cursor:pointer}
+body.editing .addp{display:block}
+.addp:hover{border-color:#E8C547;color:#E8C547}
 .edp button.sec{background:transparent;color:var(--ink);border:1px solid #5A4F22}
 .card,.fr{position:relative}
 .pub{position:absolute;top:8px;right:8px;width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.35)}
@@ -2255,22 +2258,29 @@ function buildGrid(){
 
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
-let EDITS={ig:{},x:{},pub:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
-const normE=d=>({ig:(d&&d.ig)||{},x:(d&&d.x)||{},pub:(d&&d.pub)||{}});
+let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
+const normE=d=>({ig:(d&&d.ig)||{},x:(d&&d.x)||{},pub:(d&&d.pub)||{},add:{ig:((d&&d.add&&d.add.ig)||[]),x:((d&&d.add&&d.add.x)||[])},del:(d&&d.del)||{}});
 POSTS.forEach(p=>{p._uid="ig|"+p.title+"|"+p.date+"|"+p.time; p._o={date:p.date,time:p.time,caption:p.caption};});
 const XFLAT=[]; if(typeof X_PLAN!=="undefined") X_PLAN.forEach(d=>d.posts.forEach(p=>{p._uid="x|"+(p.from||"")+"|"+d.date+"|"+p.t; p._o={date:d.date,t:p.t,text:p.text,replies:(p.replies||[]).map(r=>r.text)}; XFLAT.push(p);}));
+const IG0=POSTS.slice(); const NEWC={};
+const PIL0=Object.keys(PIL)[0];
+function mkIG(a){ const p=NEWC["ig"+a.id]||(NEWC["ig"+a.id]={}); Object.assign(p,{id:a.id,title:a.title||"New post",date:a.date,time:a.time,format:a.format||"Static",caption:a.caption||"",hashtags:a.hashtags||"",pillar:PIL[a.pillar]?a.pillar:PIL0,board:"Added on the page",platform:"Instagram",gstate:"todo",week:"",status:"Idea",compliance:"Pending",notes:a.notes||"",_new:true,_uid:"ig|new|"+a.id}); p._o={date:a.date,time:a.time,caption:p.caption}; return p; }
+function mkX(a){ const p=NEWC["x"+a.id]||(NEWC["x"+a.id]={}); Object.assign(p,{from:a.title||"New post",t:a.t,kind:a.kind||"Text",text:a.text||"",note:a.notes||"",_new:true,_uid:"x|new|"+a.id,_date:a.date}); p._o={date:a.date,t:a.t,text:p.text,replies:[]}; return p; }
+const addRec=u=>{ const id=u.split("|")[2]; return (u.startsWith("ig|")?EDITS.add.ig:EDITS.add.x).find(a=>a.id===id); };
 function applyEdits(){
+ POSTS.length=0; IG0.forEach(p=>{ if(!EDITS.del[p._uid]) POSTS.push(p); }); EDITS.add.ig.forEach(a=>POSTS.push(mkIG(a)));
  POSTS.forEach(p=>{const e=EDITS.ig[p._uid]||{}; p.date=e.date||p._o.date; p.time=e.time||p._o.time; p.caption=(e.caption!=null)?e.caption:p._o.caption;});
  if(typeof X_PLAN==="undefined") return;
- const g={}; XFLAT.forEach(p=>{const e=EDITS.x[p._uid]||{}; p.t=e.t||p._o.t; p.text=(e.text!=null)?e.text:p._o.text;
+ const g={}; XFLAT.filter(p=>!EDITS.del[p._uid]).concat(EDITS.add.x.map(mkX)).forEach(p=>{const e=EDITS.x[p._uid]||{}; p.t=e.t||p._o.t; p.text=(e.text!=null)?e.text:p._o.text;
   (p.replies||[]).forEach((r,i)=>{r.text=(e.replies&&e.replies[i]!=null)?e.replies[i]:p._o.replies[i];});
   const d=e.date||p._o.date; (g[d]=g[d]||[]).push(p);});
  X_PLAN.length=0; Object.keys(g).sort().forEach(d=>X_PLAN.push({date:d,posts:g[d]}));
 }
 function rerender(){ buildGrid(); if(window.renderX) renderX(); }
-const findU=u=>u.startsWith("ig|")?POSTS.find(p=>p._uid===u):XFLAT.find(p=>p._uid===u);
+const findU=u=>u.startsWith("ig|")?POSTS.find(p=>p._uid===u):(XFLAT.find(p=>p._uid===u)||Object.values(NEWC).find(p=>p._uid===u));
 const curPos=u=>{const p=findU(u); if(!p) return null; if(u.startsWith("ig|")) return {date:p.date,time:p.time}; const d=X_PLAN.find(z=>z.posts.includes(p)); return {date:d?d.date:p._o.date,time:p.t};};
 function setEdit(u,patch){
+ const ar=addRec(u); if(ar){ if(patch.date) ar.date=patch.date; if(patch.time) ar.time=patch.time; if(patch.t) ar.t=patch.t; if(patch.caption!=null) ar.caption=patch.caption; if(patch.text!=null) ar.text=patch.text; return; }
  const ig=u.startsWith("ig|"), p=findU(u), store=ig?EDITS.ig:EDITS.x, e=Object.assign({},store[u]||{},patch);
  const o=p._o; if(e.date===o.date) delete e.date;
  if(ig){ if(e.time===o.time) delete e.time; if(e.caption===o.caption) delete e.caption; }
@@ -2283,13 +2293,15 @@ async function dbWrite(){ if(!EDB) return; if(dbBusy){dbDirty=true;return;} dbBu
  catch(e){ EERR="Couldn’t save to the shared calendar, so this edit is saved in this browser only."; }
  dbBusy=false; if(dbDirty){dbDirty=false; dbWrite();} else editBar(); }
 function persist(){ try{localStorage.setItem(EKEY,JSON.stringify(EDITS));}catch(e){} dbWrite(); editBar(); }
-const nEdits=()=>Object.keys(EDITS.ig).length+Object.keys(EDITS.x).length+Object.keys(EDITS.pub).length;
+const nEdits=()=>Object.keys(EDITS.ig).length+Object.keys(EDITS.x).length+Object.keys(EDITS.pub).length+EDITS.add.ig.length+EDITS.add.x.length+Object.keys(EDITS.del).length;
+const nDel=()=>Object.keys(EDITS.del).length;
 let undoArm=false;
 function editBar(){ const b=document.getElementById("editbar"); if(!b) return;
  if(!EDITING){b.style.display="none";return;} b.style.display="flex";
- b.innerHTML=`<span>Drag a post to another day, or drop it on another post to swap them. Click a status dot to change it. Open a post to edit its time and copy.</span>
+ b.innerHTML=`<span>Drag a post to another day, or drop it on another post to swap them. Click + Add on a day to add a post. Open a post to edit or delete it. Click a status dot to change it.</span>
   <span class="mono">${nEdits()} edit${nEdits()===1?"":"s"} · saved to ${EWHERE}</span>${EERR?`<span class="mono" style="color:#E5534B">${EERR}</span>`:""}
-  <span style="margin-left:auto;display:flex;gap:8px"><button id="ecopy">Copy my edits</button><button id="eundo">${undoArm?"Click again to undo all":"Undo all edits"}</button><button id="edone">Done</button></span>`;
+  <span style="margin-left:auto;display:flex;gap:8px">${nDel()?`<button id="erest">Restore ${nDel()} deleted</button>`:""}<button id="ecopy">Copy my edits</button><button id="eundo">${undoArm?"Click again to undo all":"Undo all edits"}</button><button id="edone">Done</button></span>`;
+ const rb=b.querySelector("#erest"); if(rb) rb.onclick=()=>{ EDITS.del={}; applyEdits(); rerender(); persist(); toast("Deleted posts restored"); };
  b.querySelector("#ecopy").onclick=()=>copy(JSON.stringify(EDITS,null,1),"Edits copied");
  b.querySelector("#edone").onclick=()=>toggleEdit(false);
  b.querySelector("#eundo").onclick=()=>{ if(!undoArm){undoArm=true;editBar();setTimeout(()=>{undoArm=false;editBar();},4000);return;} undoArm=false; EDITS=normE({}); applyEdits(); rerender(); persist(); };
@@ -2335,13 +2347,42 @@ function editPanel(u){ if(!EDITING||!u) return; const dr=document.getElementById
   <div class="row"><div><label>Date</label><input type="date" id="ed-d" value="${pos.date}"></div><div><label>Time (ET)</label><input type="time" id="ed-t" value="${pos.time}"></div></div>
   <label>${ig?"Caption (hashtags stay as they are)":"Post text"}</label><textarea id="ed-c">${esc(ig?p.caption:p.text)}</textarea>
   ${!ig&&p.replies?p.replies.map((r,i)=>`<label>Reply ${i+1} text</label><textarea class="ed-r" style="min-height:80px">${esc(r.text)}</textarea>`).join(""):""}
-  <div class="acts"><button id="ed-save">Save</button><button class="sec" id="ed-reset">Back to original</button></div>`;
+  <div class="acts"><button id="ed-save">Save</button>${p._new?"":'<button class="sec" id="ed-reset">Back to original</button>'}<button class="sec" id="ed-del" style="margin-left:auto;border-color:#7A3B36;color:#E5847C">Delete post</button></div>`;
  const close=dr.querySelector(".x"); close.after(box);
  box.querySelector("#ed-save").onclick=()=>{ const d=box.querySelector("#ed-d").value||pos.date, tm=box.querySelector("#ed-t").value||pos.time, c=box.querySelector("#ed-c").value;
   if(ig) setEdit(u,{date:d,time:tm,caption:c}); else setEdit(u,{date:d,t:tm,text:c,replies:[...box.querySelectorAll(".ed-r")].map(x=>x.value)});
   applyEdits(); rerender(); persist(); closeD(); toast("Saved"); };
- box.querySelector("#ed-reset").onclick=()=>{ delete (ig?EDITS.ig:EDITS.x)[u]; delete EDITS.pub[u]; applyEdits(); rerender(); persist(); closeD(); toast("Back to the original"); };
+ let delArm=false; box.querySelector("#ed-del").onclick=e=>{ const b=e.target; if(!delArm){ delArm=true; b.textContent="Click again to delete"; setTimeout(()=>{delArm=false; b.textContent="Delete post";},4000); return; }
+  if(p._new){ const L=ig?EDITS.add.ig:EDITS.add.x; const i=L.findIndex(a=>a.id===u.split("|")[2]); if(i>=0) L.splice(i,1); }
+  else { EDITS.del[u]=true; delete (ig?EDITS.ig:EDITS.x)[u]; }
+  delete EDITS.pub[u]; applyEdits(); rerender(); persist(); closeD(); toast(p._new?"Post deleted":"Post deleted · restore it from the edit bar"); };
+ const rs=box.querySelector("#ed-reset"); if(rs) rs.onclick=()=>{ delete (ig?EDITS.ig:EDITS.x)[u]; delete EDITS.pub[u]; applyEdits(); rerender(); persist(); closeD(); toast("Back to the original"); };
 }
+// add a post: a + Add button on every day in edit mode
+function addButtons(root){ (root||document).querySelectorAll("#grid .day[data-iso], #xgrid .day[data-iso]").forEach(d=>{ if(d.querySelector(".addp")) return;
+ const b=document.createElement("button"); b.className="addp"; b.type="button"; b.textContent="+ Add"; b.dataset.iso=d.dataset.iso; b.dataset.pf=d.closest("#xgrid")?"x":"ig"; d.appendChild(b); }); }
+new MutationObserver(()=>addButtons()).observe(document.body,{childList:true,subtree:true});
+document.addEventListener("click",e=>{ const b=e.target.closest(".addp"); if(!b||!EDITING) return; e.preventDefault(); e.stopImmediatePropagation(); addForm(b.dataset.pf,b.dataset.iso); },true);
+document.addEventListener("pointerdown",e=>{ if(e.target.closest(".addp")) e.stopImmediatePropagation(); },true);
+function addForm(pf,iso){ const ig=pf==="ig", dr=document.getElementById("dr");
+ const opts=(arr,sel)=>arr.map(v=>`<option${v===sel?" selected":""}>${esc(v)}</option>`).join("");
+ dr.innerHTML=`<button class="x" onclick="closeD()">Close</button><div class="mono" style="margin-top:6px">${ig?"Instagram":"X"} · ${fmt(iso)}</div><h2>Add a post</h2>
+ <div class="edp"><label>Title</label><input id="ad-title" placeholder="What the post is">
+  <div class="row"><div><label>Date</label><input type="date" id="ad-d" value="${iso}"></div><div><label>Time (ET)</label><input type="time" id="ad-t" value="${ig?"07:00":"08:15"}"></div></div>
+  ${ig?`<div class="row"><div><label>Format</label><select id="ad-f">${opts(["Static","Carousel","Reel","Story"],"Static")}</select></div><div><label>Pillar</label><select id="ad-p">${opts(Object.keys(PIL),PIL0)}</select></div></div>
+  <label>Caption</label><textarea id="ad-c"></textarea><label>Hashtags</label><input id="ad-h" placeholder="#propfirm #futurestrading #futurestrader">`
+  :`<label>Type</label><select id="ad-k">${opts(["Text","Image","Video","2 images","4 images"],"Text")}</select><label>Post text</label><textarea id="ad-c"></textarea>`}
+  <label>Notes (optional)</label><input id="ad-n">
+  <div class="acts"><button id="ad-save">Add post</button><button class="sec" onclick="closeD()">Cancel</button></div></div>`;
+ dr.querySelectorAll("select").forEach(x=>x.style.cssText="width:100%;box-sizing:border-box;background:#121416;color:var(--ink);border:1px solid #3A3A2A;padding:8px;font:400 14px Archivo,sans-serif");
+ dr.querySelector("#ad-save").onclick=()=>{ const v=id=>{const el=dr.querySelector(id);return el?el.value.trim():"";};
+  const title=v("#ad-title"); if(!title){ toast("Add a title first"); return; }
+  const id="n"+Date.now().toString(36), date=v("#ad-d")||iso; let t=v("#ad-t")||(ig?"07:00":"08:15");
+  if(ig) EDITS.add.ig.push({id,title,date,time:t,format:v("#ad-f"),pillar:v("#ad-p"),caption:v("#ad-c"),hashtags:v("#ad-h"),notes:v("#ad-n")});
+  else { const taken=()=>{const d=X_PLAN.find(z=>z.date===date);return d&&d.posts.some(q=>q.t===t);}; let n=0; while(taken()&&n<59){ const [h,m]=t.split(":").map(Number); const mm=m+1; t=String(h+Math.floor(mm/60)).padStart(2,"0")+":"+String(mm%60).padStart(2,"0"); n++; }
+   EDITS.add.x.push({id,title,date,t,kind:v("#ad-k"),text:v("#ad-c"),notes:v("#ad-n")}); }
+  applyEdits(); rerender(); persist(); closeD(); toast("Post added to "+fmt(date)); };
+ dr.classList.add("on"); document.getElementById("ov").classList.add("on"); dr.scrollTop=0; setTimeout(()=>dr.querySelector("#ad-title").focus(),50); }
 try{ const s=localStorage.getItem(EKEY); if(s) EDITS=normE(JSON.parse(s)); }catch(e){}
 applyEdits();
 (async()=>{ try{ if(typeof claude==="undefined"||!claude.use) return; const db=await claude.use("db"); if(!db) return; EDB=db; EWHERE="the shared calendar"; editBar();
