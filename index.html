@@ -2621,6 +2621,97 @@ function buildGrid(){
  });
 })();
 
+// ---- 15 Nov: full audit of the 16 to 29 Nov plan. Figures re-checked against live sources; hooks, covers, scripts and captions sharpened for reach (Gabriel) ----
+(function(){
+ const PH="Phases 1–4 are simulated with notional capital. Payouts, advancement and profitability are not guaranteed. Futures trading involves substantial risk.";
+ const AI=" Voiceover generated with AI.";
+ const by=t=>POSTS.find(x=>x.title===t);
+ const up=(t,o,why)=>{ const p=by(t); if(!p) return; delete p._uid; delete p._o; Object.assign(p,o); (p.changes=p.changes||[]).push("15 Nov audit: "+why); };
+ const note=(t,s)=>{ const p=by(t); if(p) p.notes=((p.notes||"")+"\n15 Nov audit: "+s).trim(); };
+
+ up("Retail sales tomorrow: what counts as a surprise?",{
+  title:"Retail sales: the forecast said 0.3%, the number was 0.8%", gfx:["cvr1v2_1","rs1_1"],
+  hook:"On screen and spoken from frame 0: “Last month the forecast said 0.3%. The number was 0.8%.”",
+  onscreen:"Room: the paper (the Census release table, annotated live). Three numbers only: 0.3%, 0.8%, 0.2%. Cover: cvr1v2_1.",
+  beats:"About 21 s, narrated. Cut from 32 s because average watch time has been 5 to 9 s.\n0–3 s · Two figures side by side: FORECAST +0.3% and ACTUAL +0.8%. VO: “Last month the forecast said 0.3. The number came in at 0.8.”\n3–8 s · Tag: RETAIL SALES · TUE 17 NOV · 8:30 AM ET. VO: “That gap is what moves futures, and the next one lands Tuesday at 8:30 Eastern.”\n8–13 s · The October row opens with an empty Actual cell. VO: “It is the retail sales report: how much Americans spent in October.”\n13–17 s · “+0.2%” in the accent. VO: “This time the forecast is plus 0.2.”\n17–19.5 s · Payoff alone: “Watch the gap.”\n19.5–21 s · “Send this to someone who trades the 8:30.” Then the end card.",
+  caption:"Retail sales report: Tuesday 17 Nov, 8:30 AM ET.\n\nLast month the forecast was +0.3% and the number came in at +0.8%. This time the forecast is +0.2%. The gap between the two is what futures react to.\n\nAbove or below 0.2%? Drop your number.\n\n"+G+AI,
+  claims:"Release: Tue 17 Nov, 8:30 AM ET (Census Bureau). September: actual +0.8% against a +0.3% forecast (Forex Factory and Investing.com). October consensus +0.2%, control group +0.4% (Newsquawk week ahead and Forex Factory, re-checked 15 Nov; RBC forecasts +0.1%, Trading Economics shows 0.0%). Re-check Monday."
+ },"new hook from last month’s real surprise (forecast 0.3%, actual 0.8%), script cut to about 21 s, caption ends on a comment prompt. New cover cvr1v2_1.");
+
+ up("Intraday vs end-of-day drawdown",{
+  caption:"Intraday vs end-of-day trailing drawdown: the same $50,000 account, the same day, $1,300 less room.\n\nUp $1,500 by midday, closing up $200. With intraday trailing, the peak moves your threshold and leaves $1,200. With end-of-day trailing, only the close counts and you keep $2,500.\n\nWhich one does your firm use?\n\nAt 18th Street it is end of day. Rules and plans: link in bio.\n\n"+PH
+ },"caption opens on the number and asks a question people can answer in a word.");
+
+ up("Finish Phase 4 and the rules change",{
+  caption:"What happens after Phase 4 at 18th Street: the profit target, the consistency rule and the time limit all go.\n\nYou trade a Live account with real capital, a loss limit fixed at 50% of the starting balance, and you keep 90% of profits. Platform and data are $62 a month.\n\nSave this for the day you get there.\n\nRules and plans: link in bio.\n\n"+PH
+ },"caption leads with what falls away and ends on a save ask.");
+
+ up("A $50K plan gives you $2,500 of room",{
+  title:"Your $50K plan is really a $2,500 account", gfx:["cvr2v2_1"],
+  hook:"On screen and spoken from frame 0: “Your $50K plan is really a $2,500 account.”",
+  beats:"About 22 s, narrated.\n0–3 s · “$2,500” at numeral size under the claim. VO: “Your 50K plan is really a 2,500 dollar account.”\n3–8 s · “$50,000 plan · 5% trailing loss”. VO: “The trailing loss on a 50K plan is 5 percent. That is 2,500 dollars, and when it is gone the account is closed.”\n8–13 s · “Size for $2,500”. VO: “So size your trades for 2,500, the way you would on a small account.”\n13–18 s · “Measured at the close”. VO: “At 18th Street it is measured at the end of the day, so a swing during the session doesn’t move it.”\n18–20.5 s · Payoff alone: “Trade the room you have.”\n20.5–22 s · “Send this to a friend with a 50K plan.” Then the end card.",
+  caption:"A $50K prop firm plan with a 5% trailing drawdown is really a $2,500 account.\n\nThat is the number to size for. At 18th Street the trailing loss is measured at the end of the day and locks at your starting balance once you close 5% above it.\n\nDid you size for the plan or for the drawdown?\n\nRules and plans: link in bio.\n\n"+PH+AI,
+  claims:"5% trailing loss based on end-of-day balance; a breached account is closed and cannot be reset; locks at the starting balance once the account closes 5% above it (trade18th.com/faq and /qualification, re-checked 15 Nov). 5% of $50,000 = $2,500."
+ },"back to the research hook (“really a $2,500 account”), script cut to about 22 s, send line names who to send it to. “The account is closed” is now confirmed on the FAQ.");
+
+ up("Read the tape: what happens next?",{
+  title:"Read the tape: up or down?", gfx:["cvr5v2_1"],
+  hook:"On screen and spoken from frame 0: “Up or down? You have 5 seconds.”",
+  beats:"About 22 s, narrated. Fill the brackets from Tuesday’s chart.\n0–2 s · The chart draws to 8:29 and stops. VO: “Up or down? You have 5 seconds.”\n2–7 s · Hold on the still chart, cursor blinking. Tag: ES · TUE 17 NOV · 8:29 AM ET · RETAIL SALES IN 1 MINUTE.\n7–14 s · The chart draws on. VO: “Retail sales came in at [actual] against a forecast of 0.2. ES moved [N] points in [M] minutes.”\n14–18 s · The cursor runs to 9:00. VO: “[One sentence on whether the first move held or faded.]”\n18–20.5 s · Payoff alone: “Nobody knows the next candle. Have a plan for both.”\n20.5–22 s · “Send this to a friend and see who gets it.” Then the end card.",
+  caption:"ES futures, one minute before the retail sales report. Up or down?\n\nComment UP or DOWN before you watch the reveal.\n\n"+G+AI
+ },"back to “Up or down? You have 5 seconds.”, with a one-word comment prompt and a shorter script.");
+
+ up("This week: 23 to 27 Nov",{
+  caption:"Futures calendar, 23 to 27 Nov: four reports land in the same second on Wednesday.\n\n- Tue 10:00 AM ET: consumer confidence\n- Wed 8:30 AM ET: GDP (second estimate), PCE inflation, durable goods, jobless claims\n- Thu: Thanksgiving, index futures halt at 1:00 PM ET\n- Fri: index futures close at 1:15 PM ET\n\nSave this, and send it to whoever you trade with.\n\n"+G
+ },"caption opens on the week’s story and adds a send ask.");
+
+ up("What is NQ, really?",{
+  title:"Watch this before you trade NQ", gfx:["cvr6v2_1"],
+  hook:"On screen and spoken from frame 0: “Watch this before you trade NQ.”",
+  beats:"About 20 s, narrated.\n0–2 s · “Watch this before you trade NQ” in display type. VO: “Watch this before you trade NQ.”\n2–7 s · “$20” lands at numeral size. VO: “Every point NQ moves is 20 dollars on one contract.”\n7–12 s · “100 points = $2,000”. VO: “So a 100 point move is 2,000 dollars, up or down.”\n12–16 s · “MNQ · $2 a point”. VO: “The micro, MNQ, is a tenth of that. 2 dollars a point, same chart.”\n16–18.5 s · Payoff alone: “Know the dollars before the trade.”\n18.5–20 s · “Send this to someone new to NQ.” Then the end card.",
+  caption:"NQ futures: one point is $20 per contract, so 100 points is $2,000.\n\nThe micro contract, MNQ, is $2 a point. Same chart, a tenth of the size.\n\nNQ or MNQ, which do you trade?\n\n"+G+AI,
+  claims:"E-mini Nasdaq-100 (NQ) $20 x index; Micro E-mini Nasdaq-100 (MNQ) $2 x index (CME Group; confirmed 15 Nov against CME’s Micro E-mini FAQ, Schwab and NinjaTrader)."
+ },"hook changed to the “watch this before you trade NQ” line that kept winning in the research, the $20 lands by second 2, and the script is cut to about 20 s.");
+
+ up("Four reports. One second.",{
+  beats:"About 23 s, narrated.\n0–2 s · The clock sits at 8:29:59 beside a quiet ladder. VO: “Four reports land in the same second on Wednesday.”\n2–8 s · Four rows tick in: GDP, PCE inflation, durable goods, jobless claims. VO: “GDP, PCE inflation, durable goods and jobless claims, all at 8:30 Eastern, the day before Thanksgiving.”\n8–13 s · “GDP, first estimate: 3.4%”. VO: “The first read on GDP was 3.4 percent. This is the second look, next to the inflation number the Fed watches most.”\n13–19 s · The window 8:27 to 8:33 shades on the clock. VO: “At 18th Street, no new positions from 8:27 to 8:33. What you already hold can stay open.”\n19–21.5 s · Payoff alone: “Decide before 8:27.”\n21.5–23 s · “Send this to someone who trades Wednesday mornings.” Then the end card.",
+  caption:"Four economic reports at 8:30 AM ET on Wednesday 25 Nov: GDP, PCE inflation, durable goods and jobless claims.\n\nIt is the last busy morning before Thanksgiving. At 18th Street, no new positions are opened from 8:27 to 8:33 AM ET around high-impact releases, and earlier positions can be held.\n\nFlat or holding into it?\n\n"+G+AI,
+  claims:"Wed 25 Nov 8:30 AM ET: GDP Q3 second estimate and Personal Income and Outlays for October (BEA release schedule, re-checked 15 Nov; advance GDP 3.4%), durable goods (Census), jobless claims (Labor Department). News rule: no new position within three minutes either side of a red-folder release; earlier positions can be held (trade18th.com/faq, re-checked 15 Nov)."
+ },"script cut to about 23 s and the caption ends on a one-line question.");
+
+ up("The 25% consistency rule, explained",{
+  caption:"The 25% consistency rule: hit your profit target and you can still have more to do.\n\nOn a $50,000 plan, make $4,500 with one $1,800 day and that day is 40% of the total. You keep trading until the total reaches $7,200. Going over is not a breach, and the account stays open.\n\nWould this have caught you out?\n\nRules and plans: link in bio.\n\n"+PH
+ },"caption opens on the surprise and asks a question.");
+
+ up("Luke completed Phase 1",{
+  title:"$500: Luke’s first payout request", gfx:["lk1v2_1"], gver:"v2",
+  hook:"Numeral: “$500”, then “Luke’s first payout request, after Phase 1”.",
+  onscreen:"$500 at numeral size in the accent, the headline, three rows (plan $25,000, Phase 1 Trader Candidate complete, next Phase 2) and Jay’s line from the blog.",
+  beats:"Single graphic, Numeral archetype (v2). The number leads because a figure stops the scroll faster than a name.",
+  caption:"$500. Luke’s first payout request, after completing Phase 1 on a $25,000 plan.\n\nJay wrote about it on our blog: “Every payout represents more than a number.”\n\nRead the full story: link in bio.\n\nShared as published on trade18th.com. "+PH+" Past performance does not predict future results."
+ },"v2 leads with the $500 at numeral size; v1 (lk1_1) is kept.");
+
+ up("5 things to check before you buy a plan",{
+  title:"Check these 5 things before you pay for a prop firm", gfx:["cvr8v2_1"],
+  hook:"On screen from frame 0: “Check these 5 things before you pay for a prop firm”.",
+  beats:"About 9 s, loops cleanly.\n0–2 s · Headline: “Check these 5 things before you pay for a prop firm”.\n2–7 s · One line per second: 01 How the drawdown trails. 02 The daily loss limit. 03 The consistency rule. 04 News and overnight rules. 05 Every fee after the first.\n7–9 s · “The answers are in the caption.” The last frame matches the first so it loops.",
+  caption:"Check these 5 things before you pay for a prop firm. Here are 18th Street’s answers.\n\n- How the drawdown trails. Ours: 5%, measured at the end of the day.\n- The daily loss limit. Ours: none.\n- The consistency rule. Ours: best day no more than 25% of the phase’s profit.\n- News and overnight rules. Ours: no new positions within 3 minutes of high-impact news, and positions close at 3:55 PM CT.\n- Every fee after the first. Ours: one plan fee through Phase 4, then $62 a month on a Live account.\n\nSave this, and send it to a friend who is comparing firms.\n\nRules and plans: link in bio.\n\n"+PH
+ },"headline now speaks to the moment of paying, and the caption asks for a save and a send.");
+
+ note("Futures hours for Thanksgiving week","hours re-checked 15 Nov: index futures halt 12:00 PM CT Thu and close 12:15 PM CT Fri; energy and metals close 1:45 PM CT Fri.");
+ note("This week: 30 Nov to 4 Dec","not re-checked today; the ISM services date still has one source.");
+
+ // X lines to match the sharper hooks
+ const X=(date,from,text)=>{ const d=X_PLAN.find(x=>x.date===date); const q=d&&d.posts.find(p=>p.from===from||(from==="one"&&p.kind==="Text")); if(q){ delete q._uid; delete q._o; q.text=text; } };
+ const d16=X_PLAN.find(x=>x.date==="2026-11-16"); if(d16&&d16.posts[0]){ d16.posts[0].from="Retail sales: the forecast said 0.3%, the number was 0.8%"; d16.posts[0].text="Last month the forecast said +0.3%. Retail sales came in at +0.8%.\n\nThe next one lands tomorrow at 8:30 AM ET. Forecast: +0.2%."; }
+ X("2026-11-19","one","Your $50K plan is really a $2,500 account.\n\nA 5% trailing loss is the room you trade with. Size for that.");
+ X("2026-11-21","one","ES, one minute before retail sales. Up or down?\n\nMost people answer before they look at the chart.");
+ X("2026-11-23","one","Watch this before you trade NQ.\n\nOne point is $20. 100 points is $2,000. The micro is $2 a point.");
+ const d27=X_PLAN.find(x=>x.date==="2026-11-27"); if(d27){ const q=d27.posts.find(p=>p.from==="Luke completed Phase 1"); if(q){ q.from="$500: Luke’s first payout request"; q.gfx=["lk1v2_1"]; q.text="$500. Luke’s first payout request, after completing Phase 1 on a $25,000 plan.\n\nhttps://trade18th.com/exchange"; } }
+ const d28=X_PLAN.find(x=>x.date==="2026-11-28"); if(d28&&d28.posts[0]) d28.posts[0].text="Check these 5 things before you pay for a prop firm: how the drawdown trails, the daily loss limit, the consistency rule, the news and overnight rules, and every fee after the first.\n\nOurs are on one page: https://trade18th.com/qualification";
+ Object.assign(STORIES,{"2026-11-19":"Share the $2,500 account reel.","2026-11-21":"Share the up-or-down reel.","2026-11-23":"Share the NQ reel."});
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
