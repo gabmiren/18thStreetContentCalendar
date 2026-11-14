@@ -2345,6 +2345,19 @@ function buildGrid(){
  const gp=by("Clip: Get paid at every phase"); if(gp) gp.notes=((gp.notes||"")+"\n14 Nov review: flag for legal. The “Phase 1 payout vs plan fee” card and the caption line about the payout being more than the plan fee can read as a return-on-fee claim.").trim();
  const th=by("Thursday: chip stocks’ worst day since 2020"); if(th) th.notes=((th.notes||"")+"\n14 Nov review: slide 5 prints “+70%” beside “~16” and “~28”, which works out to +75%. Already posted. From now on, exact closes and the exact change, no tildes.").trim();
 })();
+// ---- 14 Nov: The week in futures, 9 to 13 Nov, built after Friday's close (Gabriel) ----
+(function(){
+ const p=POSTS.find(x=>x.title==="The week in futures: 9 to 13 Nov"); if(p){
+  p.gfx=["wd3_1"]; p.gstate="ready"; p.status="Review"; p.hook="Stocks rose, gold fell";
+  p.caption="Stocks found their feet this week, while gold had a hard one.\n\nFrom last Friday’s settle to this Friday’s, NQ rose 3.5%, about $18,990 on one contract, and ES gained 2.4%. Gold fell 4.6%, about $18,860 per contract, and crude slipped 2.5%.\n\nWhich of these did you trade this week?\n\n"+G;
+  p.claims="December contracts, settle to settle (6 Nov CME settlements, 13 Nov Barchart settles): ES 7,402 to 7,583 (+181 pts, +2.4%, +$9,050 at $50); NQ 27,085.25 to 28,034.75 (+949.5, +3.5%, +$18,990 at $20); YM 51,385 to 52,418 (+1,033, +2.0%, +$5,165 at $5); CL $90.83 to $88.56 (−$2.27, −2.5%, −$2,270 at $1,000); GC $4,074.90 to $3,886.30 (−$188.60, −4.6%, −$18,860 at $100). Cross-checked with AP (S&P 500 +2.5%, Dow +2.1% on the week) and Kitco/Investrade settles.";
+  (p.changes=p.changes||[]).push("14 Nov: graphic built after Friday’s close (wd3).");
+ }
+ const day=(typeof X_PLAN!=="undefined")&&X_PLAN.find(d=>d.date==="2026-11-13");
+ const x=day&&day.posts.find(q=>q.from==="The week in futures: 9 to 13 Nov");
+ if(x){ x.gfx=["wd3_1"]; x.onday=false; x.text="Stocks rose, gold fell.\n\nNQ +3.5% on the week, about $18,990 per contract. Gold −4.6%, about $18,860."; }
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
