@@ -2358,6 +2358,269 @@ function buildGrid(){
  if(x){ x.gfx=["wd3v2_1"]; x.onday=false; x.text="Stocks rose, gold fell.\n\nNQ +3.5% on the week, about $18,990 per contract. Gold −4.6%, about $18,860."; }
 })();
 
+// ---- 15 Nov: two-week plan, Mon 16 to Sun 29 Nov, rebuilt from the 3 to 14 Nov results and the research (Gabriel) ----
+(function(){
+ const PH="Phases 1–4 are simulated with notional capital. Payouts, advancement and profitability are not guaranteed. Futures trading involves substantial risk.";
+ const AI=" Voiceover generated with AI.";
+ const SIMLINE="On screen from the first rule mention, 26px, at least 3 s: “Phases 1–4 are simulated. Plan fees don’t guarantee completion of a phase, a payout or a live account.”";
+ const KW="No hashtags for these two weeks: the keyword sits in line one of the caption, in the on-screen text and in the alt text (a test, easy to reverse).";
+ const LOG="15 Nov plan: ";
+ const by=t=>POSTS.find(x=>x.title===t);
+ const set=(p,o,why)=>{ if(!p) return; delete p._uid; delete p._o; Object.assign(p,o); p.hashtags=""; (p.changes=p.changes||[]).push(LOG+why); };
+ let n=Math.max.apply(null,POSTS.map(x=>parseInt(x.id,10)||0));
+ const base={platform:"Instagram",compliance:"Pending",silent:false,ai:false,fromSanti:null,fromBoard:false,ref:"",draft:"",hashtags:"",crosspost:"X"};
+ const add=o=>{ n+=1; POSTS.push(Object.assign({},base,{id:String(n),changes:[LOG+"new."]},o)); };
+
+ // Parked: kept out of the next two weeks.
+ window.PARKED=window.PARKED||[];
+ [["4 risk myths that quietly drain accounts","Parked: meme-led carousel, and carousels reached 4 to 10 accounts against about 120 for narrated reels."],
+  ["All traders should know: order types","Parked for December: ready to go, held so the two weeks stay reel-first."],
+  ["The most expensive trade is often the one after a loss","Parked: replaced by the drawdown reframe reel, the stronger prop-firm topic in the research."]
+ ].forEach(([t,why])=>{ const i=POSTS.findIndex(x=>x.title===t&&x.date>="2026-11-16"); if(i>=0){ const p=POSTS.splice(i,1)[0]; p.parked=why; window.PARKED.push(p); } });
+
+ // ---------- Week 47: Mon 16 to Sun 22 Nov ----------
+ set(by("Retail sales in 30 seconds"),{
+  title:"Retail sales tomorrow: what counts as a surprise?", date:"2026-11-16", time:"07:00", week:"2026-W47", status:"Scripted", gstate:"todo",
+  board:"Motion explainers · the paper", gfx:["cvr1_1","rs1_1"], ai:true, due:"Sun 15 Nov (script ready; reel to render)",
+  draftNote:"Script, storyboard, cover and fallback card ready. Reel not rendered.",
+  hook:"On screen: “Retail sales: what counts as a surprise?” Spoken from frame 0: “What counts as a surprise at 8:30 tomorrow?”",
+  onscreen:"Room: the paper (the Census release table, annotated live). Flat look, sentence-case captions 72px, lockup 210px centred. Three numbers only: 8:30, +0.8%, +0.2%. Cover: cvr1_1.",
+  beats:"About 32 s, narrated.\n0–2 s · The release table fills the frame, question in display type. VO: “What counts as a surprise at 8:30 tomorrow?”\n2–7 s · Tag: TUE 17 NOV · 8:30 AM ET · RETAIL SALES, OCTOBER. VO: “Retail sales for October lands Tuesday at 8:30 Eastern. It shows how much Americans spent in shops and online.”\n7–12 s · The September row lights up: +0.8%. VO: “September came in strong, up 0.8 percent.”\n12–19 s · The forecast row in the accent: +0.2%. VO: “For October, forecasters expect a rise of 0.2 percent. That number is already in the price.”\n19–26 s · A bracket opens between the forecast and an empty Actual cell. VO: “So watch the gap. A number well above or below 0.2 is the surprise futures react to.”\n26–29 s · Payoff alone, held 2 s: “Markets move on the gap to the forecast.”\n29–31 s · “Save this for Tuesday morning.”\n31–32.5 s · End card: lockup and tagline.",
+  caption:"Retail sales, October: Tuesday 17 Nov at 8:30 AM ET.\n\nSeptember rose 0.8%. The forecast for October is +0.2%, and futures react to the gap between that forecast and the actual number.\n\nSave this for Tuesday morning.\n\n"+G+AI,
+  claims:"Release: Tue 17 Nov, 8:30 AM ET (US Census Bureau schedule). September retail sales +0.8% month over month (Census). October consensus +0.2% (Forex Factory and Newsquawk, 14 Nov; Investing.com and Trading Economics showed 0.0%). Control group forecast +0.4% (Newsquawk). Re-check all three on Monday before posting.",
+  notes:"Fallback if the reel isn’t rendered by Monday 7:00 AM ET: post the calendar card rs1_1 as a single graphic with the same caption (drop the AI voiceover line). The card’s last row (“no new entries 8:27–8:33”) assumes retail sales is marked high impact on Forex Factory: confirm on the day, and crop or rebuild without the row if it isn’t. The voice needs Gabriel’s OK on its credit cost before any render. "+KW+"\nAlt text: Dark card listing October retail sales, out Tuesday 17 November at 8:30 AM Eastern: last print +0.8%, forecast +0.2%.",
+  why:"The three best posts so far (CPI, PPI and Nvidia, 113 to 124 accounts) were narrated market explainers with a question hook, posted at 6 to 7 AM ET on a weekday. This is a preview with a stake, the day before the release.",
+  audio:"Voice over the approved track, music 12 to 14 dB under"
+ },"rescripted as a preview with a stake (the gap to the forecast). New cover and a fallback card.");
+
+ set(by("Intraday vs end-of-day drawdown"),{
+  date:"2026-11-17", time:"07:00", week:"2026-W47", status:"Review", gstate:"ready", gver:"v3", board:"The rulebook, explained · 01", compliance:"Needs client OK",
+  gfx:["dd3_1","dd3_2","dd3_3","dd3_4"], due:"Mon 16 Nov", draftNote:"Graphics ready (v3, design system)",
+  hook:"Cover: “Same day. $1,300 less room.” with $1,200 against $2,500.",
+  onscreen:"4 slides. 1 Cover (numeral). 2 Chart: intraday trailing follows your high, $1,200 of room. 3 Chart: end-of-day trailing only counts the close, $2,500 of room. 4 Clause: at 18th Street the 5% trailing loss is measured at the close, there is no daily loss limit, and it locks at the starting balance once you close 5% above it.",
+  beats:"Carousel in the new system: series tab, one accent per slide, no meme. Replaces the earlier version with the pointing character.",
+  caption:"Intraday vs end-of-day trailing drawdown, on the same $50,000 account and the same day.\n\nUp $1,500 by midday, closing up $200. With intraday trailing, the peak moves your threshold and leaves $1,200 of room. With end-of-day trailing, only the close counts and you keep $2,500.\n\nAt 18th Street the 5% trailing loss is measured at the end of the day. Save this for when you compare plans.\n\nRules and plans: link in bio.\n\n"+PH,
+  claims:"5% trailing loss measured at the end of day (“End of day is 1600 CST”), locks at the starting balance once the account closes 5% above it, no daily loss limit (trade18th.com/qualification and /faq, checked 14 Nov). The example is illustrative: $50,000 start, high of $51,500, close of $50,200, a $2,500 trail.",
+  notes:"For the client: the example trails by a flat $2,500. If the threshold is 5% of the highest end-of-day balance, the end-of-day figure would be $47,690 and the room $2,510. Please confirm which the firm uses, and I’ll match the slide. Product post, needs Jay’s OK. "+KW+"\nAlt text: Four slides comparing intraday and end-of-day trailing drawdown on a $50,000 account, leaving $1,200 or $2,500 of room after the same day.",
+  why:"Drawdown is the strongest prop-firm topic in the research, and the end-of-day rule is a real difference. First issue of a named series built for saving."
+ },"redesigned in the design system as “The rulebook, explained · 01”, new cover line, no meme.");
+
+ set(by("Nvidia results: what NQ did overnight"),{
+  date:"2026-11-18", time:"07:00", week:"2026-W47", status:"Scripted", gstate:"onday", ai:true, board:"Motion explainers · the tape", due:"Wed 18 Nov, by 6:30 AM ET",
+  draftNote:"Script template ready; numbers go in after Tuesday’s call",
+  hook:"On screen and spoken from frame 0: “Nvidia reported last night. Here is what NQ did.”",
+  onscreen:"Room: the tape (one real NQ chart drawn left to right with a cursor). Three numbers only: the NQ move in points, $20 a point, the dollars per contract.",
+  beats:"About 30 s, narrated. Fill the brackets after the results (Tue 17, after the close; call at 5:00 PM ET).\n0–2 s · The NQ overnight chart starts to draw. VO: “Nvidia reported last night. Here is what NQ did.”\n2–7 s · Tag: TUE 17 NOV · AFTER THE CLOSE. VO: “Results came out after Tuesday’s close, with the call at 5 Eastern.”\n7–13 s · Bracket on the first move: [N] points. VO: “NQ moved [N] points in the first [M] minutes. At 20 dollars a point, that is [$X] on one contract.”\n13–24 s · The cursor travels through the call and the overnight session. VO: “[One sentence on what the call changed.] [One sentence on where NQ sat by the morning.]”\n24–27 s · Payoff alone: “[The reaction in one calm line.]”\n27–29 s · “Send this to someone who trades NQ.”\n29–30.5 s · End card.",
+  caption:"Nvidia earnings and NQ futures: what happened overnight.\n\n[Two sentences with the NQ move in points and dollars per contract, from the chart.]\n\n"+G+AI,
+  claims:"To fill on the day: Nvidia’s results release (investor.nvidia.com), NQ front-month prices (Yahoo Finance NQ=F, cross-checked with a second outlet), NQ $20 a point (cmegroup.com). Facts only, no forecast.",
+  notes:"Leave the Nvidia CEO news out of the post. If the move is small, lead with the range instead. The voice needs Gabriel’s OK on its credit cost. "+KW,
+  why:"The last Nvidia and NQ reel reached 113 accounts, third best so far. Same slot and shape, in a different room from Monday’s reel.",
+  audio:"Voice over the approved track"
+ },"script template in the new reel structure (the tape).");
+
+ set(by("Life as a Capital Partner"),{
+  title:"Finish Phase 4 and the rules change", date:"2026-11-18", time:"16:00", week:"2026-W47", status:"Review", gstate:"ready", gver:"v3", gfx:["lv3_1"], due:"Mon 16 Nov",
+  board:"Why 18th Street · 05 (table)", draftNote:"Graphic ready (v3, design system)", compliance:"Needs client OK",
+  hook:"Headline: “Finish Phase 4 and the rules change”.",
+  onscreen:"One table, Phases 1–4 against the Live account: capital, account size, profit target, consistency, time limit, loss limit, what you earn, platform and data. The 90% profit split is the one accent.",
+  beats:"Single graphic, Table archetype. Replaces the numbered version with the archive photo.",
+  caption:"What changes after Phase 4 at 18th Street: a Live account as a Capital Partner.\n\nThe profit target, consistency rule and time limit fall away. Capital is real, the loss limit is fixed at 50% of the starting balance, and you keep 90% of profits. Platform and data are $62 a month.\n\nRules and plans: link in bio.\n\n"+PH,
+  claims:"Live accounts $3,000 to $18,000 by plan; no profit target, consistency rule or time limit; maximum loss fixed at 50% of the starting balance; 90% profit split; $62 a month platform and data on Rithmic; Phases 1–4: 9% target, 25% consistency, 60 days, 5% trailing, fixed payouts, fees included (trade18th.com/progression, /qualification and /faq, checked 14 Nov).",
+  notes:"Product post, needs Jay’s explicit OK. The Live account also needs a trade every 7 days; the table leaves that out for space and the rules page covers it. Fed minutes land at 2:00 PM ET, before this posts. "+KW+"\nAlt text: Table comparing Phases 1 to 4 with the Live account at 18th Street: simulated against real capital, 5% trailing against a fixed 50% loss limit, fixed payout against a 90% profit split.",
+  why:"Shows where the four phases lead, as a table people can save and compare."
+ },"redesigned as a table (v3) with a clearer headline.");
+
+ add({date:"2026-11-19",time:"07:00",week:"2026-W47",title:"A $50K plan gives you $2,500 of room",format:"Reel",board:"The rulebook, explained · 02 (reel) · the type",boardId:"rl6",skill:"18th-street-motion-design",
+  pillar:"Futures education & strategies",production:"Motion graphics",status:"Scripted",compliance:"Needs client OK",ai:true,gstate:"todo",gfx:["cvr2_1"],due:"Tue 17 Nov",
+  draftNote:"Script, storyboard and cover ready. Reel not rendered.",
+  hook:"On screen and spoken from frame 0: “A $50K plan gives you $2,500 of room.”",
+  onscreen:"Room: the type (display words cut on the beat), with $2,500 as the hero numeral. Three numbers only: $50,000, 5%, $2,500. "+SIMLINE+" Cover: cvr2_1.",
+  beats:"About 32 s, narrated.\n0–2 s · “$2,500” at numeral size, the claim above it. VO: “A 50K plan gives you 2,500 dollars of room.”\n2–7 s · “$50,000 plan · 5% trailing loss”. VO: “On a 50,000 dollar plan, the trailing loss is 5 percent. That is 2,500 dollars.”\n7–12 s · “This is the room you trade with”. VO: “That 2,500 is the room you actually have. Reach it and the account closes.”\n12–19 s · “Size for $2,500”. VO: “So plan your size and your stops around 2,500, the way you would on a small account.”\n19–26 s · “Measured at the close” with a small end-of-day marker. VO: “At 18th Street it is measured at the end of the day, so a swing during the session doesn’t move it. It locks at your starting balance once you close 5 percent above.”\n26–29 s · Payoff alone: “Trade the room you have.”\n29–31 s · “Send this to a trader choosing a plan.”\n31–32.5 s · End card.",
+  caption:"A $50K prop firm plan with a 5% trailing drawdown gives you $2,500 of room.\n\nThat is the number to size for. At 18th Street the trailing loss is measured at the end of the day and locks at your starting balance once you close 5% above it.\n\nRules and plans: link in bio.\n\n"+PH+AI,
+  claims:"5% trailing loss, measured at the end of day, locks at the starting balance once the account closes 5% above it (trade18th.com/qualification and /faq, checked 14 Nov). 5% of $50,000 = $2,500.",
+  notes:"“Reach it and the account closes” should be confirmed against the Trader Agreement wording before the render. Product post, needs Jay’s OK. The voice needs Gabriel’s OK on its credit cost. "+KW,
+  why:"The drawdown reframe was the strongest prop-firm hook in the TikTok and Instagram research, and it follows Tuesday’s carousel two days later so the series builds.",
+  audio:"Voice over the approved track"});
+
+ set(by("Clip: The real value of a prop firm"),{
+  date:"2026-11-20", time:"07:00", week:"2026-W47", due:"Wed 18 Nov",
+  notes:((by("Clip: The real value of a prop firm")||{}).notes||"")+"\n15 Nov plan: moved from Thu 19 to Fri 20, 7:00 AM ET. Edit notes: open on the strongest line as a 2 s cold open, the question over the top of the footage for the first 3 s, sentence-case captions at 62px, a visual change every 4 to 6 s, brand cards from the Clause and Table archetypes, the faceless cover cvrv_v6 set in the Instagram app. The 5 principles clip with the same cover style reached 35 accounts with a 5 s average watch, so the first 3 s matter most. "+KW
+ },"moved to Fri 20, 7:00 AM ET, with edit notes from the clip results.");
+
+ const wf=by("The week in futures: 16 to 20 Nov");
+ set(wf,{ hook:"Header “The week in futures”, subheader on the week’s biggest mover, written after Friday’s close.", onscreen:"Five-contract scoreboard in the header and subheader layout from 13 Nov (wd3v2).",
+  notes:((wf||{}).notes||"")+" "+KW },"header and subheader layout, keyword-led caption.");
+
+ add({date:"2026-11-21",time:"11:00",week:"2026-W47",title:"Read the tape: what happens next?",format:"Reel",board:"Read the tape · 01 · the tape",boardId:"rl6",skill:"18th-street-motion-design",
+  pillar:"Futures education & strategies",production:"Motion graphics",status:"Scripted",compliance:"Pending",ai:true,gstate:"onday",gfx:["cvr5_1"],due:"Fri 20 Nov",
+  draftNote:"Script, storyboard and cover ready. Chart data comes from Tuesday’s release.",
+  hook:"On screen and spoken from frame 0: “What happens next on this chart?”",
+  onscreen:"Room: the tape. One real ES one-minute chart from Tue 17 Nov, drawn to 8:29 AM ET, then held. No countdown graphic (on the client’s avoid list): the pause is a still chart with a blinking cursor. Three numbers only: the forecast, the actual, the ES move in points.",
+  beats:"About 30 s, narrated. Fill the brackets from Tuesday’s chart.\n0–2 s · The chart draws to 8:29 and stops. VO: “What happens next on this chart? Take five seconds.”\n2–7 s · Hold on the still chart, cursor blinking. Tag: ES · TUE 17 NOV · 8:29 AM ET.\n7–12 s · VO: “This is ES one minute before retail sales. The forecast was plus 0.2 percent.”\n12–20 s · The chart draws on. VO: “The number came in at [actual]. ES moved [N] points in [M] minutes.”\n20–26 s · The cursor runs to 9:00. VO: “[One sentence on whether the first move held or faded.]”\n26–29 s · Payoff alone: “The chart can’t tell you which way. Your plan covers both.”\n29–30.5 s · “Send this to a friend and compare answers.” Then the end card.",
+  caption:"ES futures, one minute before the retail sales report. What happens next?\n\nWatch what happened next, then tell us what you saw in the chart before it.\n\n"+G+AI,
+  claims:"To fill on the day: ES one-minute prices for Tue 17 Nov, 8:00 to 9:00 AM ET (a named chart source, cross-checked), the retail sales actual (Census) and the +0.2% consensus. A past chart shown as education, with no call on future direction.",
+  notes:"For legal: the format asks viewers to read a past chart before the reveal. The first draft said “Up or down? You have 5 seconds.”; the fresh-eyes review flagged that as binary-option framing, so it now asks “What happens next on this chart?” with no score and no timer. If legal would rather not run a prompt at all, the same chart works as “What ES did at 8:30”. The voice needs Gabriel’s OK on its credit cost. "+KW,
+  why:"The chart-reveal game was the most repeatable format in the finance accounts we studied, and it gives the weekend a comment prompt. Saturday 11:00 AM ET replaces Friday 9:00 PM, where the signs reel reached 8 accounts.",
+  audio:"Voice over the approved track"});
+
+ set(by("This week: 23 to 27 Nov"),{
+  date:"2026-11-22", time:"18:00", week:"2026-W47", status:"Review", gstate:"ready", gfx:["tw23_1","tw23_2"], due:"Fri 20 Nov", draftNote:"Graphics ready (design system)",
+  hook:"Cover: “Four reports land in the same second”.",
+  onscreen:"2 slides. 1 The week as a table: Tue consumer confidence, Wed 8:30 AM GDP, PCE, durable goods and jobless claims, Thu Thanksgiving halt, Fri early close. 2 Wednesday’s window as a timeline: 8:27, 8:30, 8:33, with the news rule.",
+  beats:"Carousel, Table then Timeline. Shorter than earlier weeks: two slides people can save.",
+  caption:"This week in futures, 23 to 27 Nov: a short week with one very busy morning.\n\n- Tue 10:00 AM ET: consumer confidence\n- Wed 8:30 AM ET: GDP (second estimate), PCE inflation, durable goods, jobless claims\n- Thu: Thanksgiving, index futures halt at 1:00 PM ET\n- Fri: index futures close at 1:15 PM ET\n\nSave this for the week.\n\n"+G,
+  claims:"Consumer confidence Tue 24 Nov 10:00 AM ET (Conference Board). Wed 25 Nov 8:30 AM ET: GDP Q3 second estimate (advance estimate 3.4%, BEA), PCE for October (September +0.5% month over month, BEA), durable goods (Census), jobless claims (Labor Department). Thanksgiving: equity index futures halt 12:00 PM CT and reopen 5:00 PM CT; Fri 27 Nov close 12:15 PM CT (CME Group holiday calendar). News rule: no new position within three minutes either side of a high-impact release (trade18th.com/faq). All checked 14 Nov; re-check Fri 20.",
+  notes:"Slide 2 assumes Wednesday’s releases are marked high impact on Forex Factory; confirm on Friday. "+KW+"\nAlt text: Calendar for 23 to 27 November: consumer confidence Tuesday, four reports Wednesday at 8:30 AM Eastern, Thanksgiving hours Thursday and Friday.",
+  why:"Fixed Sunday slot. The cover leads with the week’s real story, four releases in one second."
+ },"built in the design system with a story-led cover.");
+
+ // ---------- Week 48: Mon 23 to Sun 29 Nov ----------
+ add({date:"2026-11-23",time:"07:00",week:"2026-W48",title:"What is NQ, really?",format:"Reel",board:"Before you trade it · NQ · the type",boardId:"rl6",skill:"18th-street-motion-design",
+  pillar:"Futures education & strategies",production:"Motion graphics",status:"Scripted",compliance:"Pending",ai:true,gstate:"todo",gfx:["cvr6_1"],due:"Fri 20 Nov",
+  draftNote:"Script, storyboard and cover ready. Reel not rendered.",
+  hook:"On screen and spoken from frame 0: “What is NQ, really?”",
+  onscreen:"Room: the type, with “$20” as the hero numeral. Three figures only: $20 a point, 100 points = $2,000, $2 a point on MNQ. Cover: cvr6_1.",
+  beats:"About 30 s, narrated.\n0–2 s · “What is NQ, really?” in display type. VO: “What is NQ, really?”\n2–7 s · Tag: E-MINI NASDAQ-100 FUTURES · CME. VO: “NQ is the E-mini Nasdaq-100 future, traded on CME. One contract tracks the Nasdaq-100 index.”\n7–12 s · “$20” lands at numeral size. VO: “Every point the index moves is 20 dollars on one contract.”\n12–18 s · “100 points = $2,000”. VO: “A 100 point move is 2,000 dollars per contract, up or down.”\n18–24 s · “MNQ · $2 a point”. VO: “The micro contract, MNQ, is a tenth of that: 2 dollars a point. Same chart, smaller size.”\n24–27 s · Payoff alone: “Know the dollars before the trade.”\n27–29 s · “Save this before your next NQ session.”\n29–30.5 s · End card.",
+  caption:"NQ futures, explained: the E-mini Nasdaq-100 contract on CME.\n\nOne point is $20 per contract, so 100 points is $2,000. The micro contract, MNQ, is $2 a point.\n\nSave this before your next session.\n\n"+G+AI,
+  claims:"E-mini Nasdaq-100 (NQ) $20 x index; Micro E-mini Nasdaq-100 (MNQ) $2 x index (CME Group contract specs). Re-check on cmegroup.com before the render.",
+  notes:"First of a possible “Before you trade it” series (ES, CL and GC could follow). The voice needs Gabriel’s OK on its credit cost. "+KW,
+  why:"“Watch this before you trade NQ” origin videos were a repeat winner in the research, and NQ is the contract behind our third-best reel. A universal trader question for Monday 7:00 AM ET.",
+  audio:"Voice over the approved track"});
+
+ add({date:"2026-11-24",time:"07:00",week:"2026-W48",title:"Four reports. One second.",format:"Reel",board:"Motion explainers · the ladder",boardId:"rl6",skill:"18th-street-motion-design",
+  pillar:"Market insights & analysis",production:"Motion graphics",status:"Scripted",compliance:"Pending",ai:true,gstate:"todo",gfx:["cvr7_1"],due:"Fri 20 Nov",
+  draftNote:"Script, storyboard and cover ready. Reel not rendered.",
+  hook:"On screen and spoken from frame 0: “Four reports land in the same second on Wednesday.”",
+  onscreen:"Room: the ladder (order book and a live clock reading 8:29:59). Three numbers only: 8:30, 3.4%, 8:27 to 8:33. Cover: cvr7_1.",
+  beats:"About 32 s, narrated.\n0–2 s · The clock sits at 8:29:59 beside a quiet ladder. VO: “Four reports land in the same second on Wednesday.”\n2–6 s · Tag: WED 25 NOV · 8:30 AM ET. VO: “Wednesday the 25th at 8:30 Eastern, the day before Thanksgiving.”\n6–12 s · Four rows tick in: GDP, PCE inflation, durable goods, jobless claims. VO: “GDP, PCE inflation, durable goods and jobless claims, all at once.”\n12–19 s · “GDP, first estimate: 3.4%”. VO: “The first estimate of third-quarter GDP was 3.4 percent. This is the second look, and PCE is the inflation measure the Fed watches most.”\n19–26 s · The window 8:27 to 8:33 shades on the clock. VO: “At 18th Street, no new positions from three minutes before to three minutes after. Positions you already hold can stay open.”\n26–29 s · Payoff alone: “Decide before 8:27.”\n29–31 s · “Send this to someone who trades Wednesday mornings.”\n31–32.5 s · End card.",
+  caption:"Four economic reports at 8:30 AM ET on Wednesday 25 Nov: GDP, PCE inflation, durable goods and jobless claims.\n\nIt is the last busy morning before Thanksgiving. At 18th Street, no new positions are opened from 8:27 to 8:33 AM ET around high-impact releases, and earlier positions can be held.\n\nSave this for Wednesday.\n\n"+G+AI,
+  claims:"Wed 25 Nov 8:30 AM ET: GDP Q3 second estimate (advance 3.4%, BEA), PCE for October (BEA), durable goods (Census), jobless claims (Labor Department). News rule: no new position within three minutes either side of a red-folder release; earlier positions can be held (trade18th.com/faq, checked 14 Nov). Re-check the schedule Mon 23.",
+  notes:"Confirm on Monday that these releases are marked high impact on Forex Factory. The voice needs Gabriel’s OK on its credit cost. "+KW,
+  why:"A preview with a stake, the day before the busiest minute of the two weeks. Same shape as the CPI and PPI reels, in a room not used since.",
+  audio:"Voice over the approved track"});
+
+ add({date:"2026-11-24",time:"16:00",week:"2026-W48",title:"Futures hours for Thanksgiving week",format:"Static",board:"Know your hours · Thanksgiving",boardId:"fmt11",skill:"18th-street-evergreen-graphics",
+  pillar:"Market insights & analysis",production:"Slides (HTML)",status:"Review",compliance:"Pending",gstate:"ready",gfx:["kh5_1"],due:"Fri 20 Nov",draftNote:"Graphic ready (design system)",
+  hook:"Headline: “Futures hours for Thanksgiving week”.",
+  onscreen:"Three rows: Wed 25 normal hours, Thu 26 index futures halt at 1:00 PM ET and reopen at 6:00 PM ET, Fri 27 index futures close at 1:15 PM ET, energy and metals at 2:45 PM ET. One outlined note: the 3:55 PM CT (4:55 PM ET) auto-close may not run on these shorter days.",
+  beats:"Single graphic, Timeline rows. The 18th Street note is the one accent.",
+  caption:"Futures trading hours for Thanksgiving week 2026.\n\n- Wed 25 Nov: normal hours\n- Thu 26 Nov: equity index futures halt at 1:00 PM ET and reopen at 6:00 PM ET\n- Fri 27 Nov: equity index futures close at 1:15 PM ET, energy and metals at 2:45 PM ET\n\nAt 18th Street, the 3:55 PM CT auto-close may not run on early-close days, so please close your positions yourself.\n\nSave this, and confirm final hours on cmegroup.com.\n\n"+G,
+  claims:"CME Group holiday calendar, Thanksgiving 2026: equity index futures halt 12:00 PM CT Thu 26 Nov, reopen 5:00 PM CT; Fri 27 Nov equity index close 12:15 PM CT, energy and metals 1:45 PM CT. Auto-close may not happen on holiday early closes, so closing is the trader’s responsibility (trade18th.com/faq). Checked 14 Nov; re-check Mon 23.",
+  notes:"The most useful save of the fortnight for anyone holding a position into Thursday. "+KW+"\nAlt text: Futures hours for Thanksgiving week: normal Wednesday, index futures halt 1:00 PM Eastern Thursday, close 1:15 PM Eastern Friday.",
+  why:"Hours change this week, and the auto-close note is a real risk for 18th Street traders."});
+
+ add({date:"2026-11-25",time:"07:00",week:"2026-W48",title:"The 25% consistency rule, explained",format:"Carousel",board:"The rulebook, explained · 03",boardId:"fmt14",skill:"18th-street-evergreen-graphics",
+  pillar:"Futures education & strategies",production:"Slides (HTML)",status:"Review",compliance:"Needs client OK",gstate:"ready",gfx:["cr1_1","cr1_2","cr1_3","cr1_4"],due:"Mon 23 Nov",draftNote:"Graphics ready (design system)",
+  hook:"Cover: “Hit the target and still not done?” with four bars, $1,800 then three of $900.",
+  onscreen:"4 slides. 1 Cover (chart). 2 Clause: best day no more than 25% of the phase’s profit, same in all four phases, going over is not a breach. 3 “$4,500 made. Best day: 40%.” Seven bars to $7,200. 4 “Four even days is the shortest path”: four days of $1,125.",
+  beats:"Carousel: Chart, Clause, Chart, Table. Uses the firm’s own blog example.",
+  caption:"The 25% consistency rule, explained with a $50,000 plan.\n\nYour best day can be no more than 25% of the phase’s profit. Make $4,500 with one $1,800 day and that day is 40%, so you keep trading until the total reaches $7,200. Going over is not a breach, and the account stays open.\n\nSave this for your next phase.\n\nRules and plans: link in bio.\n\n"+PH,
+  claims:"Best day no more than 25% of phase profit; not a breach, the account stays open; no phase in fewer than four trading days; 60 calendar days per phase (trade18th.com/qualification and /faq). Example from the firm’s consistency blog post: $50K plan, $4,500 target, +$1,800, +$900, +$900, +$900 = 40%, needs $7,200 total; four $1,125 days = 25% (trade18th.com/exchange). Checked 14 Nov.",
+  notes:"Product post, needs Jay’s OK. Posts on the morning of the four releases; the X plan carries the on-day line. "+KW+"\nAlt text: Four slides on the 25% consistency rule: a $1,800 best day out of $4,500 is 40%, so trading continues to $7,200.",
+  why:"Consistency is on the client’s objection list and nobody has explained it with a picture. Third issue of the rulebook series."});
+
+ set(by("Life after you pass your first eval"),{
+  date:"2026-11-26", time:"11:00", week:"2026-W48", due:"Mon 23 Nov", compliance:"Needs client OK",
+  notes:((by("Life after you pass your first eval")||{}).notes||"")+"\n15 Nov plan: moved to Thanksgiving morning as the one light post of the fortnight. Still held for legal over the car and villa shots. If legal hasn’t cleared it by Tue 24, Thursday stays empty, which is fine on a holiday. "+KW
+ },"moved to Thu 26 Nov, 11:00 AM ET. Memes cut back to one after the signs reel reached 8 accounts.");
+
+ add({date:"2026-11-27",time:"07:00",week:"2026-W48",title:"Luke completed Phase 1",format:"Static",board:"From the traders · 01",boardId:"fmt10",skill:"18th-street-evergreen-graphics",
+  pillar:"Traders & community",production:"Slides (HTML)",status:"Review",compliance:"Needs client OK",gstate:"ready",gfx:["lk1_1"],due:"Mon 23 Nov",draftNote:"Graphic ready (design system)",
+  hook:"Headline: “Luke completed Phase 1”.",
+  onscreen:"Four rows: plan $25,000, Phase 1 Trader Candidate complete, Phase 1 payout $500 requested, next Phase 2. Jay’s line from the blog underneath.",
+  beats:"Single graphic, Document rows. Only what the firm has published.",
+  caption:"Luke completed Phase 1, Trader Candidate, on a $25,000 plan and requested his first $500 payout.\n\nJay wrote about it on our blog: “Every payout represents more than a number.”\n\nRead the full story: link in bio.\n\nShared as published on trade18th.com. "+PH+" Past performance does not predict future results.",
+  claims:"Blog post of 29 Oct 2026 by Jay R. Pocius on trade18th.com/exchange: Luke, $25,000 plan, Phase 1 Trader Candidate complete, $500 first payout requested. Quote as published.",
+  notes:"For legal and Jay: please confirm Luke’s written permission covers Instagram, and whether the payout has since been paid (the blog says requested, so the graphic says requested). "+KW+"\nAlt text: Card reading Luke completed Phase 1 on a $25,000 plan, with a $500 Phase 1 payout requested.",
+  why:"Community posts were 3% of the mix against the client’s 10%. This is the one real trader story the firm has published."});
+
+ add({date:"2026-11-27",time:"14:30",week:"2026-W48",title:"The week in futures: 23 to 27 Nov",format:"Static",board:"The week in futures",boardId:"fmt16",skill:"18th-street-news-desk",
+  pillar:"Market insights & analysis",production:"Slides (HTML)",status:"Idea",compliance:"Pending",silent:true,gstate:"onday",due:"Fri 27 Nov, after the 1:15 PM ET close",draftNote:"Template; built after the close",
+  hook:"Header “The week in futures”, subheader on the week’s biggest mover, written after Friday’s early close.",
+  onscreen:"Five-contract scoreboard in the header and subheader layout (wd3v2).",
+  beats:"Single graphic, made after Friday’s 1:15 PM ET close.",
+  caption:"[One line on how the holiday week ended.]\n\n[Two sentences with the biggest moves in percent and dollars per contract.]\n\n"+G,
+  claims:"Settle to settle, Fri 20 Nov to Fri 27 Nov, front month: ES, NQ, YM, CL, GC from CME settlement data, per-contract dollars from CME point values. Checked after the close.",
+  notes:"Earlier slot than usual because index futures close at 1:15 PM ET. Energy and metals settle later, so check CL and GC after 2:45 PM ET. "+KW,
+  why:"Fixed Friday slot, moved to fit the early close."});
+
+ add({date:"2026-11-28",time:"11:00",week:"2026-W48",title:"5 things to check before you buy a plan",format:"Reel",board:"Before you buy · caption-first loop · the paper",boardId:"rl6",skill:"18th-street-motion-design",
+  pillar:"18th Street differentiation",production:"Motion graphics",status:"Scripted",compliance:"Needs client OK",gstate:"todo",gfx:["cvr8_1"],due:"Wed 25 Nov",
+  draftNote:"Script, storyboard and cover ready. Loop not rendered.",
+  hook:"On screen from frame 0: “5 things to check before you buy a prop firm plan”.",
+  onscreen:"Room: the paper (a checklist page). An 8 to 10 s loop, music only, no voice. The five items tick in one by one, then “The answers are in the caption.” "+SIMLINE+" Cover: cvr8_1.",
+  beats:"About 9 s, loops cleanly.\n0–2 s · Headline: “5 things to check before you buy a prop firm plan”.\n2–7 s · One line per second: 01 How the drawdown trails. 02 The daily loss limit. 03 The consistency rule. 04 News and overnight rules. 05 Every fee after the first.\n7–9 s · “The answers are in the caption.” The last frame matches the first so it loops.",
+  caption:"5 things to check before you buy a prop firm plan, with 18th Street’s answers.\n\n- How the drawdown trails. Ours: 5%, measured at the end of the day.\n- The daily loss limit. Ours: none.\n- The consistency rule. Ours: best day no more than 25% of the phase’s profit.\n- News and overnight rules. Ours: no new positions within 3 minutes of high-impact news, and positions close at 3:55 PM CT.\n- Every fee after the first. Ours: one plan fee through Phase 4, then $62 a month on a Live account.\n\nSave this for when you compare firms.\n\nRules and plans: link in bio.\n\n"+PH,
+  claims:"5% end-of-day trailing loss, no daily loss limit, 25% consistency, news rule, 3:55 PM CT auto-close, one-time plan fee with platform and data included through Phase 4, $62 a month on the Live account (trade18th.com/qualification, /progression and /faq, checked 14 Nov).",
+  notes:"Caption-first format from the reel we studied on 14 Nov: a short loop sends people to a list caption with a save ask. No competitor is named. Product post, needs Jay’s OK. "+KW,
+  why:"A protective checklist was the strongest differentiation angle in the research, and the loop format costs little to make. It also tests whether a caption-led post earns the first saves.",
+  audio:"Approved track, music only"});
+
+ add({date:"2026-11-29",time:"18:00",week:"2026-W48",title:"This week: 30 Nov to 4 Dec",format:"Carousel",board:"This week",boardId:"fmt5",skill:"18th-street-news-desk",
+  pillar:"Market insights & analysis",production:"Slides (HTML)",status:"Review",compliance:"Pending",silent:true,gstate:"ready",gfx:["tw30_1","tw30_2"],due:"Fri 27 Nov",draftNote:"Graphics ready (design system)",
+  hook:"Cover: “It all builds to Friday’s jobs report”.",
+  onscreen:"2 slides. 1 The week as a table: Tue ISM manufacturing and JOLTS, Thu jobless claims and ISM services, Fri the November jobs report. 2 Friday’s window as a timeline: 8:27, 8:30, 8:33.",
+  beats:"Carousel, Table then Timeline.",
+  caption:"This week in futures, 30 Nov to 4 Dec: it all builds to Friday’s jobs report.\n\n- Tue 10:00 AM ET: ISM manufacturing, JOLTS job openings\n- Thu 8:30 AM ET: jobless claims\n- Thu 10:00 AM ET: ISM services\n- Fri 8:30 AM ET: jobs report for November\n\nThe Fed decides five days later, on 9 Dec.\n\nSave this for the week.\n\n"+G,
+  claims:"ISM manufacturing and JOLTS Tue 1 Dec 10:00 AM ET; jobless claims Thu 3 Dec 8:30 AM ET; ISM services Thu 3 Dec 10:00 AM ET (one source so far); jobs report Fri 4 Dec 8:30 AM ET (BLS schedule); Fed decision 9 Dec (federalreserve.gov). Checked 14 Nov; re-check Fri 27.",
+  notes:"The ISM services date has one source and needs a second check on ismworld.org. ADP is left off because its date isn’t verified. "+KW+"\nAlt text: Calendar for 30 November to 4 December ending with the November jobs report on Friday at 8:30 AM Eastern.",
+  why:"Fixed Sunday slot."});
+
+ POSTS.sort((a,b)=>(a.date+a.time)<(b.date+b.time)?-1:1);
+
+ // ---------- X plan, 16 to 29 Nov (no disclaimer, no polls, link allowed) ----------
+ for(let i=X_PLAN.length-1;i>=0;i--) if(X_PLAN[i].date>="2026-11-16") X_PLAN.splice(i,1);
+ const xd=(date,posts)=>X_PLAN.push({date,posts});
+ const T=(t,text,note)=>({t,kind:"Text",from:"New for X (one-line take)",text,note:note||"One-line take."});
+ xd("2026-11-16",[{t:"07:00",kind:"Image",from:"Retail sales tomorrow: what counts as a surprise?",gfx:["rs1_1"],text:"The retail sales report lands tomorrow at 8:30 AM ET.\n\nSeptember was +0.8%. The forecast for October is +0.2%. Futures react to the gap.",note:"The calendar card. Swap in the reel as a native upload once it exists."}]);
+ xd("2026-11-17",[{t:"08:45",kind:"Text",from:"Retail sales, on the day",onday:true,text:"[Retail sales, October: actual against the +0.2% forecast, in one line, written after 8:30 AM ET.]",note:"Facts only, no call on direction."},
+  {t:"12:00",kind:"4 images",from:"Intraday vs end-of-day drawdown",gfx:["dd3_1","dd3_2","dd3_3","dd3_4"],text:"Same account, same day, $1,300 less room.\n\nIntraday trailing against end-of-day trailing, in two charts.",note:"All four slides in one post."}]);
+ xd("2026-11-18",[{t:"07:00",kind:"Text",from:"Nvidia results: what NQ did overnight",onday:true,text:"[Nvidia reported after the close. NQ moved N points overnight, $X per contract at $20 a point.]",note:"Written after the call. Add the reel as a native upload if it is made."},
+  {t:"16:00",kind:"Image",from:"Finish Phase 4 and the rules change",gfx:["lv3_1"],text:"Finish Phase 4 and the rules change.\n\nReal capital, a fixed loss limit and a 90% profit split.\n\nhttps://trade18th.com/progression",note:"Product post, needs Jay’s OK."}]);
+ xd("2026-11-19",[T("07:00","A $50,000 plan with a 5% trailing loss gives you $2,500 of room.\n\nSize for the $2,500.","The line from Thursday’s reel. Add the reel as a native upload once it is made.")]);
+ xd("2026-11-20",[{t:"07:00",kind:"Video",from:"Clip: The real value of a prop firm",onday:true,text:"Starting a prop firm is the easy part. Building one that lasts takes longer.",note:"Native upload once the clip is edited."},
+  {t:"17:30",kind:"Image",from:"The week in futures: 16 to 20 Nov",gfx:[],onday:true,text:"[One line on how the week ended, written after the close.]",note:"Same graphic as Instagram, built after Friday’s close."}]);
+ xd("2026-11-21",[T("11:00","Read the chart before you read the headline.")]);
+ xd("2026-11-22",[{t:"18:00",kind:"Image, then reply",from:"This week: 23 to 27 Nov",gfx:["tw23_1"],text:"A short week with one very busy morning.\n\nGDP, PCE inflation, durable goods and jobless claims all land Wednesday at 8:30 AM ET.",replies:[{gfx:["tw23_2"],text:"At 18th Street, no new positions from 8:27 to 8:33 AM ET. Earlier positions can be held."}],note:"The reply can’t be scheduled on X; post it by hand."}]);
+ xd("2026-11-23",[T("07:00","One NQ point is $20. One MNQ point is $2.\n\nSame chart, a tenth of the size.","The line from Monday’s reel.")]);
+ xd("2026-11-24",[T("07:00","Four reports at 8:30 AM ET tomorrow: GDP, PCE inflation, durable goods, jobless claims.\n\nDecide what you’re holding before 8:27."),
+  {t:"16:00",kind:"Image",from:"Futures hours for Thanksgiving week",gfx:["kh5_1"],text:"Futures hours for Thanksgiving week.\n\nIndex futures halt at 1:00 PM ET on Thursday and close at 1:15 PM ET on Friday.",note:"Hours from CME’s holiday calendar; re-check Mon 23."}]);
+ xd("2026-11-25",[{t:"08:45",kind:"Text",from:"Wednesday’s releases, on the day",onday:true,text:"[GDP second estimate and October PCE against forecasts, in one line, written after 8:30 AM ET.]",note:"Facts only."},
+  {t:"12:00",kind:"4 images",from:"The 25% consistency rule, explained",gfx:["cr1_1","cr1_2","cr1_3","cr1_4"],text:"Hit the target and still not done?\n\nThe 25% consistency rule, with the numbers.",note:"All four slides in one post."}]);
+ xd("2026-11-26",[T("09:00","Index futures halt at 1:00 PM ET today and reopen at 6:00 PM ET.\n\nHappy Thanksgiving.","Hours from CME’s holiday calendar.")]);
+ xd("2026-11-27",[{t:"07:00",kind:"Image",from:"Luke completed Phase 1",gfx:["lk1_1"],text:"Luke completed Phase 1 on a $25,000 plan and requested his first $500 payout.\n\nhttps://trade18th.com/exchange",note:"Needs legal’s and Jay’s OK, and Luke’s permission confirmed."},
+  {t:"14:30",kind:"Image",from:"The week in futures: 23 to 27 Nov",gfx:[],onday:true,text:"[One line on how the holiday week ended, written after the 1:15 PM ET close.]",note:"Same graphic as Instagram."}]);
+ xd("2026-11-28",[T("11:00","Before you buy a prop firm plan, check five things: how the drawdown trails, the daily loss limit, the consistency rule, the news and overnight rules, and every fee after the first.\n\nOurs are on one page: https://trade18th.com/qualification","The checklist from Saturday’s reel, with the link.")]);
+ xd("2026-11-29",[{t:"18:00",kind:"Image, then reply",from:"This week: 30 Nov to 4 Dec",gfx:["tw30_1"],text:"It all builds to Friday’s jobs report.\n\nISM manufacturing and JOLTS on Tuesday, claims and ISM services on Thursday, jobs on Friday at 8:30 AM ET.",replies:[{gfx:["tw30_2"],text:"Friday’s window at 18th Street: no new positions from 8:27 to 8:33 AM ET."}],note:"The reply can’t be scheduled on X; post it by hand."}]);
+ X_PLAN.sort((a,b)=>a.date<b.date?-1:1);
+
+ // ---------- Stories: reshare the day's post, nothing interactive ----------
+ Object.assign(STORIES,{
+  "2026-11-16":"Share the retail sales reel (or the calendar card).",
+  "2026-11-17":"Share the drawdown carousel. After 8:30 AM ET, the retail sales number as plain text over the card.",
+  "2026-11-18":"Share the Nvidia reel, then the Capital Partner table in the afternoon.",
+  "2026-11-19":"Share the $2,500 of room reel.",
+  "2026-11-20":"Share Jay’s clip, then The week in futures after the close.",
+  "2026-11-21":"Share the chart reel.",
+  "2026-11-22":"Share This week.",
+  "2026-11-23":"Share the NQ reel.",
+  "2026-11-24":"Share the four reports reel, then the Thanksgiving hours card.",
+  "2026-11-25":"Share the consistency carousel.",
+  "2026-11-26":"Share the Thanksgiving hours card again in the morning.",
+  "2026-11-27":"Share Luke’s card, then The week in futures after the early close.",
+  "2026-11-28":"Share the checklist reel.",
+  "2026-11-29":"Share This week."
+ });
+ if(typeof EVENTS!=="undefined") Object.assign(EVENTS,{
+  "2026-11-17":["8:30 AM ET · Retail sales (Oct)","After the close · Nvidia results"],
+  "2026-11-18":["2:00 PM ET · Fed minutes"],
+  "2026-11-24":["10:00 AM ET · Consumer confidence"],
+  "2026-12-01":["10:00 AM ET · ISM manufacturing, JOLTS"],
+  "2026-12-03":["8:30 AM ET · Jobless claims","10:00 AM ET · ISM services"],
+  "2026-12-04":["8:30 AM ET · Jobs report (Nov)"]
+ });
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
