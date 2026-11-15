@@ -2755,6 +2755,19 @@ function buildGrid(){
  POSTS.filter(x=>x.date>="2026-11-16"&&x.date<="2026-11-29"&&x.format==="Reel"&&!/^Clip|^Life after/.test(x.title)).forEach(x=>{ x.notes=((x.notes||"")+"\nOpening for these reels: a 1.5 s title in two lines (topic, then the pull in teal italic) with an “in N seconds” tab, voice starting at frame 0, and the cover taken from that frame.").trim(); });
 })();
 
+// ---- 15 Nov: retail sales reel v5: 2.5 s title before the voice, lofi track at minus 20 dB, full render QA passed (Gabriel) ----
+(function(){
+ const p=POSTS.find(x=>x.title==="Retail sales: the forecast said 0.3%, the number was 0.8%");
+ if(p){ delete p._uid; delete p._o; Object.assign(p,{video:"vid/rs_reel_v5.mp4",cover:"cvr1v4_1",gfx:["cvr1v4_1","rs1_1"],audio:"Gabriel’s voice track over “lofi technology” (zephiramusic) at −20 dB, very subtle",
+   draftNote:"Reel rendered (v5, 27.3 s): 2.5 s title, then the voice starts with the body. Render QA passed.",
+   hook:"Title held for 2.5 s with music only: “Retail sales, what moves futures.” with an “in 25 seconds” tab and the two sketched bars drawing on. The voice starts as the body begins: “Last month, the forecast said 0.3%. The number came in at 0.8.”",
+   beats:"27.3 s.\n0–2.5 s · Title: “Retail sales, what moves futures.” The forecast and actual bars and the gap bracket draw on. Music only.\n2.5–10.7 s · “Forecast: 0.3%.” then “Actual: 0.8%.” VO: “Last month, the forecast said 0.3 percent. The number came in at 0.8. That gap is what moves futures,”\n10.7–13.9 s · “The next one: Tuesday, 8:30 AM.” Calendar page and clock. VO: “and the next one lands Tuesday at 8:30 Eastern.”\n13.9–18.0 s · “The retail sales report.” A receipt with October open. VO: “It’s the retail sales report: how much Americans spent in October.”\n18.0–21.7 s · “This time, forecast: 0.2%.” VO: “This time, the forecast is plus 0.2 percent.”\n21.7–24.1 s · Payoff: “Watch the gap.”\n24.1–25.7 s · “Send this to someone who trades the 8:30.”\n25.7–27.3 s · End card: lockup and tagline, the only place the logo appears."});
+   p.notes=(p.notes||"")+"\n15 Nov: v5 replaces v4. Render QA: no black frames, no unplanned silence, transcript matches the script word for word, every caption within 3 frames of its spoken word, everything inside the 9:16 safe zone, −14.0 LUFS, −1.6 dB peak.";
+   (p.changes=p.changes||[]).push("15 Nov: v5 with a 2.5 s title before the voice, the lofi track at −20 dB, and the render QA pass."); }
+ const x=X_PLAN.find(q=>q.date==="2026-11-16"); if(x&&x.posts[0]) x.posts[0].vid="vid/rs_reel_v5.mp4";
+ POSTS.filter(x=>x.date>="2026-11-16"&&x.date<="2026-11-29"&&x.format==="Reel"&&!/^Clip|^Life after/.test(x.title)).forEach(x=>{ if(x.notes) x.notes=x.notes.replace("a 1.5 s title in two lines (topic, then the pull in teal italic) with an “in N seconds” tab, voice starting at frame 0, and the cover taken from that frame.","a 2.5 s title in two lines (topic, then the pull in teal italic) with an “in N seconds” tab, music only; the voice starts when the body begins; the cover is taken from the title frame. Music: “lofi technology” at −20 dB. Run the video render QA before sending."); });
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
