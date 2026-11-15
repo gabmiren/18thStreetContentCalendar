@@ -2729,6 +2729,20 @@ function buildGrid(){
  const x=X_PLAN.find(q=>q.date==="2026-11-16"); if(x&&x.posts[0]){ delete x.posts[0]._uid; x.posts[0].kind="Video"; x.posts[0].vid="vid/rs_reel_v2.mp4"; x.posts[0].note="The reel as a native upload. The calendar card stays as the fallback."; }
 })();
 
+// ---- 15 Nov: retail sales reel v3 (Gabriel's ElevenLabs voice, sketch-chart style, no branding until the outro) and the two-week no-logo test ----
+(function(){
+ const by=t=>POSTS.find(x=>x.title===t);
+ const p=by("Retail sales: the forecast said 0.3%, the number was 0.8%");
+ if(p){ delete p._uid; delete p._o; Object.assign(p,{video:"vid/rs_reel_v3.mp4",draftNote:"Reel rendered (v3, 24.8 s). Voice by Gabriel (Mark, ElevenLabs v4). Sketch-chart style, logo on the end card only.",
+   onscreen:"Sketch-chart style adapted from @finance_90seconds onto the brand’s dark page and Archivo: a two-part headline per scene with the second line in teal italic, hand-drawn hatched bars that draw on, a small source line per scene. Word-by-word captions. No logo, series tag or date strip until the end card. Three numbers only: 0.3%, 0.8%, 0.2%.",
+   beats:"24.8 s, narrated.\n0–8.2 s · “Forecast: 0.3%.” then “Actual: 0.8%.” Two sketched bars; the second grows past the first and a bracket marks the gap. VO: “Last month, the forecast said 0.3 percent. The number came in at 0.8. That gap is what moves futures,”\n8.2–11.4 s · “The next one: Tuesday, 8:30 AM.” A calendar page (17 November) and a clock drawn to 8:30. VO: “and the next one lands Tuesday at 8:30 Eastern.”\n11.4–15.5 s · “The retail sales report.” A sketched receipt with October still open. VO: “It’s the retail sales report: how much Americans spent in October.”\n15.5–19.2 s · “This time, forecast: 0.2%.” A small forecast bar beside an empty outline. VO: “This time, the forecast is plus 0.2 percent.”\n19.2–21.6 s · Payoff alone: “Watch the gap.”\n21.6–23.2 s · “Send this to someone who trades the 8:30.”\n23.2–24.8 s · End card: lockup and tagline, the only place the logo appears."});
+   p.notes=(p.notes||"")+"\n15 Nov: v3 replaces v2. Loudness −14.0 LUFS, true peak −1.5 dB. v2 (Alexey voice, flat look with the series tag and logo) is kept as vid/rs_reel_v2.mp4.";
+   (p.changes=p.changes||[]).push("15 Nov: v3 with the new voice, the sketch-chart style and no branding until the outro."); }
+ const TEST="Two-week test (16 to 29 Nov, Gabriel): reels carry no logo, series tag or date strip until the end card, to see whether unbranded content gets more views. Just the animation and the captions. Motion style: sketch charts adapted from @finance_90seconds.";
+ POSTS.filter(x=>x.date>="2026-11-16"&&x.date<="2026-11-29"&&x.format==="Reel"&&!/^Clip|^Life after/.test(x.title)).forEach(x=>{ delete x._uid; x.notes=((x.notes||"")+"\n"+TEST).trim(); });
+ const x=X_PLAN.find(q=>q.date==="2026-11-16"); if(x&&x.posts[0]){ x.posts[0].vid="vid/rs_reel_v3.mp4"; }
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
