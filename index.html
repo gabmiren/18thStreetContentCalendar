@@ -2743,6 +2743,18 @@ function buildGrid(){
  const x=X_PLAN.find(q=>q.date==="2026-11-16"); if(x&&x.posts[0]){ x.posts[0].vid="vid/rs_reel_v3.mp4"; }
 })();
 
+// ---- 15 Nov: retail sales reel v4 with a title opening, and a matching unbranded cover (Gabriel) ----
+(function(){
+ const p=POSTS.find(x=>x.title==="Retail sales: the forecast said 0.3%, the number was 0.8%");
+ if(p){ delete p._uid; delete p._o; Object.assign(p,{video:"vid/rs_reel_v4.mp4",cover:"cvr1v3_1",gfx:["cvr1v3_1","rs1_1"],draftNote:"Reel rendered (v4, 24.8 s) with a title opening. Cover cvr1v3_1 is the title frame, no logo.",
+   hook:"Title on screen for the first 1.6 s: “Retail sales, what moves futures.” with an “in 25 seconds” tab, while the voice starts at frame 0: “Last month, the forecast said 0.3%. The number came in at 0.8.”"});
+   p.beats="0–1.6 s · Title: “Retail sales, what moves futures.” with the tab “in 25 seconds”. The first bar draws on underneath and the voice has already started.\n"+p.beats.replace("0–8.2 s · ","1.6–8.2 s · ");
+   p.notes=(p.notes||"")+"\n15 Nov: v4 adds the title opening. v3 (no title) is kept as vid/rs_reel_v3.mp4 for comparison. The cover now matches the first frame and carries no logo, in line with the two-week test.";
+   (p.changes=p.changes||[]).push("15 Nov: v4 with a title opening and a matching cover."); }
+ const x=X_PLAN.find(q=>q.date==="2026-11-16"); if(x&&x.posts[0]) x.posts[0].vid="vid/rs_reel_v4.mp4";
+ POSTS.filter(x=>x.date>="2026-11-16"&&x.date<="2026-11-29"&&x.format==="Reel"&&!/^Clip|^Life after/.test(x.title)).forEach(x=>{ x.notes=((x.notes||"")+"\nOpening for these reels: a 1.5 s title in two lines (topic, then the pull in teal italic) with an “in N seconds” tab, voice starting at frame 0, and the cover taken from that frame.").trim(); });
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
