@@ -2782,6 +2782,17 @@ function buildGrid(){
  POSTS.filter(x=>x.date>="2026-11-16"&&x.date<="2026-11-29"&&x.format==="Reel"&&!/^Clip|^Life after/.test(x.title)).forEach(x=>{ x.notes=((x.notes||"")+"\nFrom the retail sales reel (15 Nov): swipe sound from the title into the body, the voice fades in, and the script ends on a question the viewer can answer in a word.").trim(); });
 })();
 
+// ---- 16 Nov: retail sales reel v7, swipe sound 13 dB quieter (Gabriel) ----
+(function(){
+ const p=POSTS.find(x=>x.title==="Retail sales: the forecast said 0.3%, the number was 0.8%");
+ if(p){ delete p._uid; delete p._o; p.video="vid/rs_reel_v7.mp4";
+   p.draftNote="Reel rendered (v7, 35.7 s). Same picture as v6 with the swipe sound 13 dB quieter. Render QA passed.";
+   p.notes=(p.notes||"")+"\n16 Nov: v7 lowers the swipe sound by 13 dB so it sits just above the music and well under the voice. Picture identical to v6. −14.0 LUFS, −2.0 dB true peak, no unplanned silence, transcript unchanged.";
+   (p.changes=p.changes||[]).push("16 Nov: v7, swipe sound lowered."); }
+ const x=X_PLAN.find(q=>q.date==="2026-11-16"); if(x&&x.posts[0]) x.posts[0].vid="vid/rs_reel_v7.mp4";
+ POSTS.filter(x=>x.date>="2026-11-16"&&x.date<="2026-11-29"&&x.format==="Reel"&&!/^Clip|^Life after/.test(x.title)).forEach(x=>{ if(x.notes) x.notes=x.notes.replace("swipe sound from the title into the body,","swipe sound from the title into the body (subtle, about 7 dB under the voice),"); });
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
