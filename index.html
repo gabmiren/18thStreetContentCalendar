@@ -2712,6 +2712,23 @@ function buildGrid(){
  Object.assign(STORIES,{"2026-11-19":"Share the $2,500 account reel.","2026-11-21":"Share the up-or-down reel.","2026-11-23":"Share the NQ reel."});
 })();
 
+// ---- 15 Nov: retail sales reel rendered (v2), drawdown example settled against the site, hashtags-off confirmed (Gabriel) ----
+(function(){
+ const by=t=>POSTS.find(x=>x.title===t);
+ const p=by("Retail sales: the forecast said 0.3%, the number was 0.8%");
+ if(p){ delete p._uid; delete p._o; Object.assign(p,{video:"vid/rs_reel_v2.mp4",cover:"cvr1v2_1",gfx:["cvr1v2_1","rs1_1"],gstate:"video",status:"Review",draftNote:"Reel rendered (v2, 26.9 s, narrated). Cover cvr1v2_1.",
+   beats:"26.9 s, narrated (Alexey), flat look.\n0–8.9 s · Last month’s two figures: forecast +0.3%, then the actual counts up to +0.8% and the gap lights up. VO: “Last month, the forecast said 0.3 percent. The number came in at 0.8. That gap is what moves futures,”\n8.9–12.8 s · Tue 17 Nov, 8:30 AM ET. VO: “and the next one lands Tuesday, at 8:30 Eastern.”\n12.8–17.3 s · The Census release with October still open. VO: “It’s the retail sales report: how much Americans spent in October.”\n17.3–21.2 s · This time: forecast +0.2%, actual still a question mark. VO: “This time, the forecast is plus 0.2 percent.”\n21.2–23.6 s · Payoff alone: “Watch the gap.”\n23.6–25.3 s · “Send this to someone who trades the 8:30.”\n25.3–26.9 s · End card: lockup and tagline."});
+   p.notes=(p.notes||"")+"\n15 Nov: rendered as v2. Voice cost 2.2 Higgsfield credits, approved by Gabriel. Loudness −14.0 LUFS, true peak −1.4 dB. Re-check the +0.2% forecast on Monday before posting; if it has moved, the reel needs a new voice line.";
+   (p.changes=p.changes||[]).push("15 Nov: reel rendered (v2)."); }
+ const d=by("Intraday vs end-of-day drawdown");
+ if(d){ delete d._uid; delete d._o; d.compliance="Pending";
+   d.claims="5% end-of-day trailing loss; the site’s own $50,000 example trails by a flat $2,500: start $50,000 gives $47,500, a $51,000 close gives $48,500, a $52,500 close locks it at $50,000 (trade18th.com/qualification, checked 15 Nov). Our example follows the same step: a $50,200 close gives $47,700. No daily loss limit (trade18th.com/faq).";
+   d.notes=(d.notes||"").replace(/For the client: the example trails by a flat \$2,500\.[^.]*\.[^.]*\. /,"")+"\n15 Nov: settled. The carousel matches the worked examples on the qualification page, which trail by a flat $2,500 on a $50K plan. One thing to mention to the client: the page’s sentence says the threshold sits 5% below the highest end-of-day balance, which would be $2,550 under a $51,000 close, while its own examples use $2,500. The carousel follows the examples.";
+   (d.changes=d.changes||[]).push("15 Nov: drawdown example checked against the qualification page and kept."); }
+ POSTS.filter(x=>x.date>="2026-11-16"&&x.date<="2026-11-29").forEach(x=>{ if(x.notes) x.notes=x.notes.replace("No hashtags for these two weeks: the keyword sits in line one of the caption, in the on-screen text and in the alt text (a test, easy to reverse).","No hashtags for these two weeks (confirmed by Gabriel, 15 Nov): the keyword sits in line one of the caption, in the on-screen text and in the alt text."); });
+ const x=X_PLAN.find(q=>q.date==="2026-11-16"); if(x&&x.posts[0]){ delete x.posts[0]._uid; x.posts[0].kind="Video"; x.posts[0].vid="vid/rs_reel_v2.mp4"; x.posts[0].note="The reel as a native upload. The calendar card stays as the fallback."; }
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
