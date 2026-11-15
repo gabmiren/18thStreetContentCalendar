@@ -2768,6 +2768,20 @@ function buildGrid(){
  POSTS.filter(x=>x.date>="2026-11-16"&&x.date<="2026-11-29"&&x.format==="Reel"&&!/^Clip|^Life after/.test(x.title)).forEach(x=>{ if(x.notes) x.notes=x.notes.replace("a 1.5 s title in two lines (topic, then the pull in teal italic) with an “in N seconds” tab, voice starting at frame 0, and the cover taken from that frame.","a 2.5 s title in two lines (topic, then the pull in teal italic) with an “in N seconds” tab, music only; the voice starts when the body begins; the cover is taken from the title frame. Music: “lofi technology” at −20 dB. Run the video render QA before sending."); });
 })();
 
+// ---- 15 Nov: retail sales reel v6: new script (above and below the forecast, question ending), swipe from the title, voice fades in; render QA passed (Gabriel) ----
+(function(){
+ const p=POSTS.find(x=>x.title==="Retail sales: the forecast said 0.3%, the number was 0.8%");
+ if(p){ delete p._uid; delete p._o; Object.assign(p,{video:"vid/rs_reel_v6.mp4",cover:"cvr1v5_1",gfx:["cvr1v5_1","rs1_1"],
+   draftNote:"Reel rendered (v6, 35.7 s): new script with above and below the forecast, ending on a question. Render QA passed.",
+   hook:"Title held for 2.5 s with music only: “Retail sales, what moves futures.” with an “in 30 seconds” tab. A swipe carries it into the body and the voice fades in: “Last month, the forecast said 0.3%. The number came in at 0.8.”",
+   beats:"35.7 s.\n0–2.5 s · Title: “Retail sales, what moves futures.” Bars and the gap bracket draw on. Music only, then a swipe.\n2.5–10.9 s · “Forecast: 0.3%.” then “Actual: 0.8%.” VO: “Last month, the forecast said 0.3 percent. The number came in at 0.8. That gap is what moves futures.”\n10.9–13.9 s · “The next one: Tuesday, 8:30 AM.” VO: “The next one lands Tuesday at 8:30 Eastern:”\n13.9–17.4 s · “Retail sales: what people spent.” VO: “retail sales, how much Americans spent in October.”\n17.4–20.5 s · “This time, forecast: 0.2%.” VO: “The forecast is plus 0.2 percent.”\n20.5–28.5 s · “Above it: hotter. Below it: cooling.” The actual bar rises above the forecast, then drops below it; then “Bigger gap, bigger move.” as the bar and a move arrow grow together. VO: “Above it, and spending is running hotter than expected. Below it, and it’s cooling. The bigger the gap, the bigger the move.”\n28.5–34.1 s · “Before 8:30, decide:” then two boxes, “Flat?” and “Or holding through it?” VO: “So before 8:30 on Tuesday, decide: are you flat, or are you holding through it?”\n34.1–35.7 s · End card: lockup and tagline, the only place the logo appears.",
+   caption:"Retail sales report: Tuesday 17 Nov, 8:30 AM ET.\n\nLast month the forecast was +0.3% and the number came in at +0.8%. This time the forecast is +0.2%. The gap between the two is what futures react to.\n\nFlat or holding into 8:30?\n\n"+G+" Voiceover generated with AI."});
+   p.notes=(p.notes||"")+"\n15 Nov: v6 replaces v5. The above and below scene explains what each side means and makes no call on direction. Render QA on the final file: no black frames, no unplanned silence, transcript matches the script word for word, captions within 3 frames of the voice, everything inside the 9:16 safe zone, −14.0 LUFS, −1.5 dB peak.";
+   (p.changes=p.changes||[]).push("15 Nov: v6 with the new script, the swipe from the title, the voice fade-in and a question ending."); }
+ const x=X_PLAN.find(q=>q.date==="2026-11-16"); if(x&&x.posts[0]) x.posts[0].vid="vid/rs_reel_v6.mp4";
+ POSTS.filter(x=>x.date>="2026-11-16"&&x.date<="2026-11-29"&&x.format==="Reel"&&!/^Clip|^Life after/.test(x.title)).forEach(x=>{ x.notes=((x.notes||"")+"\nFrom the retail sales reel (15 Nov): swipe sound from the title into the body, the voice fades in, and the script ends on a question the viewer can answer in a word.").trim(); });
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
