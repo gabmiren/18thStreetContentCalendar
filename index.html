@@ -2952,6 +2952,15 @@ function buildGrid(){
  }
 })();
 
+// ---- 16 Nov: Nvidia results graphic: option B (Numeral) chosen (Gabriel) ----
+(function(){
+ const p=POSTS.find(x=>x.title==="Nvidia results: the numbers"); if(!p) return; delete p._uid; delete p._o;
+ p.gfx=["nanv1b_1"]; p.draftNote="Option B (Numeral) chosen, placeholder figures";
+ p.hook="The next-quarter revenue forecast at numeral size: “$[X]B”, under the label “Nvidia · next quarter’s revenue forecast”.";
+ p.onscreen="Series tab “News alert · 17 Nov”. The Q4 guide at numeral size in teal, headline “Nvidia’s guide for the January quarter”, “Analysts expected $125.0B.”, three cells for Q3 revenue (expected $109.1B), adjusted EPS (expected $2.47) and gross margin (guided 74.0%), then NQ futures after hours in points and dollars per contract. Source line, “After-hours prices are thin and can reverse by the open.”, lockup bottom right. Every actual is a 000 placeholder until the release; remove the “Placeholder figures” tag on the day.";
+ (p.changes=p.changes||[]).push("16 Nov: option B (Numeral) chosen; option A dropped.");
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
