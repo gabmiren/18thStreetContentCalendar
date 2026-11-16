@@ -2793,6 +2793,17 @@ function buildGrid(){
  POSTS.filter(x=>x.date>="2026-11-16"&&x.date<="2026-11-29"&&x.format==="Reel"&&!/^Clip|^Life after/.test(x.title)).forEach(x=>{ if(x.notes) x.notes=x.notes.replace("swipe sound from the title into the body,","swipe sound from the title into the body (subtle, about 7 dB under the voice),"); });
 })();
 
+// ---- 16 Nov: final Instagram caption for the retail sales reel, keyword-led with no hashtags; forecast re-checked (Gabriel) ----
+(function(){
+ const p=POSTS.find(x=>x.title==="Retail sales: the forecast said 0.3%, the number was 0.8%");
+ if(!p) return; delete p._uid; delete p._o;
+ Object.assign(p,{date:"2026-11-16",time:"07:00",status:"Review",hashtags:"",
+  caption:"Retail sales report tomorrow: what moves futures at 8:30 AM ET\n\nThe US retail sales report for October lands Tuesday 17 Nov at 8:30 AM ET. Last month the forecast was +0.3% and the actual came in at +0.8%. This time the forecast is +0.2%.\n\nAbove the forecast means consumer spending is running hotter than expected. Below it means spending is cooling. The bigger the gap between forecast and actual, the bigger the move in futures.\n\nFlat or holding into 8:30? Tell us below, and save this for tomorrow morning.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice. Voiceover generated with AI.",
+  claims:"Release Tue 17 Nov, 8:30 AM ET (U.S. Census Bureau schedule). September: +0.8% actual against a +0.3% forecast (Forex Fundamentals economic calendar). October forecast +0.2% (Continuum Economics preview; Newsquawk week ahead). Re-checked Mon 16 Nov.",
+  notes:(p.notes||"")+"\n16 Nov: final caption written, keyword-led with no hashtags (keywords: retail sales report, futures, 8:30 AM ET, forecast vs actual, consumer spending). Post at 7:00 AM ET, which is 8:00 PM MYT on Mon 16 Nov. Set the cover to cvr1v5_1 in the app.\nAlt text: Sketch-style animation explaining the US retail sales report on Tuesday 17 November at 8:30 AM Eastern. Last month the forecast was 0.3% and the actual was 0.8%. This month the forecast is 0.2%, and the reel shows what a number above or below it means."});
+ (p.changes=p.changes||[]).push("16 Nov: final Instagram caption and alt text; forecast re-checked.");
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
