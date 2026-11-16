@@ -2842,7 +2842,7 @@ function buildGrid(){
 (function(){
  const d=X_PLAN.find(q=>q.date==="2026-11-16"); if(!d) return;
  const q=d.posts.find(p=>/^Retail sales/.test(p.from||"")); if(!q) return; delete q._uid; delete q._o;
- q.t="Posted";
+ q.posted=true;
  q.text="Last month the retail sales forecast was +0.3%. The actual came in at +0.8%.\n\nThat gap is what moves futures, and the next report lands Tuesday at 8:30 AM ET.";
  if(q.replies&&q.replies[2]) q.replies[2].text="So before 8:30 AM ET on Tuesday, decide: are you flat, or are you holding through it?";
  q.note="Posted live on @trade18th, Mon 16 Nov at 12:29 PM MYT (Sun 11:29 PM ET), as a 4-post thread with one square image each: https://x.com/trade18th/status/2122185204437835850. “Tomorrow” became “Tuesday” in posts 1 and 4 because it was still Sunday in New York.";
