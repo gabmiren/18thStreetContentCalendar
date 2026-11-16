@@ -2878,6 +2878,40 @@ function buildGrid(){
   note:"Scheduled on @trade18th in X’s composer for Tue 17 Nov, 8:00 PM MYT (7:00 AM ET), the same time as the Instagram carousel. The same four v4 slides, each with alt text. 273 of 280 characters, no disclaimer, no hashtags."});
 })();
 
+// ---- 16 Nov: Nvidia earnings explainer reel (v5) added for Mon 16 Nov, 6:00 PM ET (7:00 AM MYT Tue), at Gabriel's request ----
+(function(){
+ if(POSTS.find(x=>x.title==="Nvidia earnings, explained")) return;
+ const id=String(Math.max(...POSTS.map(x=>+x.id||0))+1);
+ POSTS.push({id,date:"2026-11-16",time:"18:00",week:"2026-W47",title:"Nvidia earnings, explained",format:"Reel",
+  board:"Motion explainers · sketch look",boardId:"rl6",skill:"18th-street-motion-design",platform:"Instagram",pillar:"Market insights & analysis",production:"Motion graphics",
+  status:"Review",compliance:"Pending",silent:false,ai:true,
+  hook:"Title from frame 0: “Nvidia earnings, explained.” (tab “in 50 seconds”), then the voice: “Nvidia reports on Tuesday, and Nasdaq futures are waiting on it.”",
+  onscreen:"One hand-drawn stage held from the title to the question: Nvidia’s line into a Tuesday dot, the unknown move as a dashed band with a “?”. Weight bars (Nvidia 6.5%, Apple 8.5%) fold into a “6.5% of Nasdaq-100” label; the band’s edges become ±9.2%; a teal up path (“beats $125B”), a grey down path (“light”), four small bars for the last four reports (3 down, 1 up); the release time 3:20 PM CT and a 3:55 close line; then “Flat? / Or holding into it?” and the end card. Source line on every scene. No logo until the end card.",
+  beats:"48.7 s, narrated (Mark, ElevenLabs). Title 2.5 s with music only, then: 1 Nvidia reports Tuesday, NQ is waiting. 2 About 6.5% of the Nasdaq-100, second to Apple. 3 Nvidia options price a big move either way. 4 Which way? 5 Forecast beats the $125B analysts expect: NQ can rally fast. 6 Comes in light: NQ can drop just as fast. 7 Even beats were sold after 3 of the last 4 reports. 8 Nobody knows. 9 Results about 3:20 PM CT; every 18th Street position closes by 3:55. 10 Before 3:20: flat, or holding into it? End card.",
+  caption:"Nvidia earnings explained: what Nasdaq futures are pricing in for Tuesday\n\nNvidia is about 6.5% of the Nasdaq 100, and its options are pricing a big move either way. If next quarter's forecast beats the $125B analysts expect, NQ can rally fast. If it comes in light, NQ can drop just as fast, and even beats were sold after 3 of the last 4 reports.\n\nResults land around 3:20 PM CT. Flat by then, or holding into it? Tell us below.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.",
+  hashtags:"",
+  claims:"Results Tue 17 Nov at about 1:20 PM PT, which is 3:20 PM CT, call 5:00 PM ET (NVIDIA IR, 28 Oct 2026). Nasdaq-100 weight: Nvidia 6.53%, Apple 8.45% (Invesco QQQ holdings as of 12 Nov 2026). Options-implied move ±9.2% (EarningsWatcher, as of 14 Nov 2026; refresh on posting day, the voice says only “a big move”). Q4 revenue consensus $125B (The National, 16 Nov 2026; $124.73B elsewhere). Next-day closes after the last four reports: Nov 2025 −3.2%, Feb 2026 −5.5%, May 2026 about −1.3 to −1.8%, all after beats; Aug 2026 +8.7% (Bloomberg, Motley Fool, Reuters, EarningsWatcher). Auto-close 1555 CST and holding through news permitted (trade18th.com/qualification, checked 16 Nov 2026).",
+  notes:"Education only: both paths shown, no call on direction, nothing invites trading the release. The CEO news stays out (brief). Nvidia earnings isn’t a Forex Factory red-folder release, so the 3-minute rule doesn’t apply, and the video doesn’t call it one. Before posting: re-check the implied move and the QQQ weights (Nvidia leads Microsoft by only 0.2 points); the on-screen ±% can change without a new voice. An independent fact and sense check (16 Nov) led to v5: the 3-of-4 line now says the falls came after beats, the 9% figure left the voice, and “NQ 100” became “Nasdaq-100”. No hashtags for these two weeks (keyword-led caption). The voice was recorded with “on Tuesday”, which suits this Monday evening slot; for a Tuesday morning post, line 1 needs “today after the close”. The drawdown carousel stays at Tue 7:00 AM ET (already scheduled), 13 hours after this reel.\nAlt text: Sketch-style animation explaining Nvidia’s earnings on Tuesday 17 November after the close. Nvidia is about 6.5% of the Nasdaq-100, options price a big move either way, and the reel shows the two paths, the last four reactions and 18th Street’s 3:55 PM Central auto-close.",
+  why:"Nvidia earnings is the biggest scheduled event of the week for NQ traders and a much bigger search term than retail sales. Posting Monday evening ET gives about 22 hours of reach before the release, and it sets up Wednesday’s “what NQ did overnight” reel.",
+  ref:"https://www.tiktok.com/@potatomarketsofficial/video/7708060039826689301",audio:"zephiramusic “lofi technology” at −23 dB under the voice; −14 LUFS, true peak −2.4 dB",
+  draft:"",draftNote:"Reel rendered (v5, 48.7 s). Render QA, flow check and two independent reviews done. Cover cvrnv5_1 (title frame, no logo).",
+  due:"Mon 16 Nov, approval before 6:00 PM ET",fromSanti:null,story:"Share the reel to story after it posts.",crosspost:"YouTube Shorts",
+  gfx:["cvrnv5_1"],cover:"cvrnv5_1",gstate:"video",video:"vid/nvda_explainer_v5.mp4",
+  changes:["16 Nov: new post, the Nvidia earnings explainer (v5) for Mon 16 Nov 6:00 PM ET (Gabriel)."]});
+})();
+
+// ---- 16 Nov: swap on Instagram: the drawdown carousel moves to Wed 18 Nov 4:00 PM ET, Finish Phase 4 takes Tue 17 Nov 7:00 AM ET (Gabriel) ----
+(function(){
+ const dd=POSTS.find(x=>x.title==="Intraday vs end-of-day drawdown"), lv=POSTS.find(x=>x.title==="Finish Phase 4 and the rules change");
+ if(!dd||!lv) return; [dd,lv].forEach(q=>{delete q._uid; delete q._o;});
+ dd.date="2026-11-18"; dd.time="16:00"; dd.status="Review";
+ dd.notes=(dd.notes||"")+"\n16 Nov: moved to Wed 18 Nov, 4:00 PM ET (5:00 AM MYT Thu), swapping slots with Finish Phase 4, so Tuesday morning stays clear for Nvidia day. It is still scheduled in Meta Business Suite for Tue 17 Nov 7:00 AM ET: reschedule it there to the new time.";
+ (dd.changes=dd.changes||[]).push("16 Nov: swapped with Finish Phase 4, now Wed 18 Nov 4:00 PM ET (reschedule in Meta).");
+ lv.date="2026-11-17"; lv.time="07:00";
+ lv.notes=(lv.notes||"")+"\n16 Nov: moved to Tue 17 Nov, 7:00 AM ET (8:00 PM MYT), swapping slots with the drawdown carousel. Product post, so it needs Jay’s explicit OK before then.";
+ (lv.changes=lv.changes||[]).push("16 Nov: swapped with the drawdown carousel, now Tue 17 Nov 7:00 AM ET.");
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
