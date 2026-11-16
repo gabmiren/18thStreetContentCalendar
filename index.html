@@ -2820,6 +2820,14 @@ function buildGrid(){
  (p.changes=p.changes||[]).push("16 Nov: scheduled on Instagram for 8:00 PM MYT.");
 })();
 
+// ---- 16 Nov: Gabriel rescheduled the retail sales reel himself with the designed cover as the thumbnail ----
+(function(){
+ const p=POSTS.find(x=>x.title==="Retail sales: the forecast said 0.3%, the number was 0.8%");
+ if(!p) return; delete p._uid; delete p._o;
+ p.notes=(p.notes||"").replace("Meta’s reel composer has no alt text or custom cover option: add the alt text (Edit, then Advanced settings, then Accessibility) and set the cover in the Instagram app after it posts.","Gabriel rescheduled it himself with cover cvr1v5_1 uploaded as the thumbnail (Meta’s Thumbnail section: Upload image). Add the alt text in the Instagram app after it posts (Edit, then Advanced settings, then Accessibility).");
+ (p.changes=p.changes||[]).push("16 Nov: rescheduled by Gabriel with the designed thumbnail.");
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
