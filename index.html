@@ -2961,6 +2961,16 @@ function buildGrid(){
  (p.changes=p.changes||[]).push("16 Nov: option B (Numeral) chosen; option A dropped.");
 })();
 
+// ---- 16 Nov: Nvidia results graphic removed; the drawdown carousel goes back to Tue 17 Nov 7:00 AM ET, where it is already scheduled in Meta and on X (Gabriel) ----
+(function(){
+ const i=POSTS.findIndex(x=>x.title==="Nvidia results: the numbers"); if(i>=0) POSTS.splice(i,1);
+ const dd=POSTS.find(x=>x.title==="Intraday vs end-of-day drawdown"); if(!dd) return; delete dd._uid; delete dd._o;
+ dd.date="2026-11-17"; dd.time="07:00"; dd.status="Scheduled";
+ dd.notes=(dd.notes||"").replace("\n16 Nov: moved to Wed 18 Nov, 4:00 PM ET (5:00 AM MYT Thu), swapping slots with Finish Phase 4, so Tuesday morning stays clear for Nvidia day. It is still scheduled in Meta Business Suite for Tue 17 Nov 7:00 AM ET: reschedule it there to the new time.","")
+  +"\n16 Nov: back at Tue 17 Nov, 7:00 AM ET (8:00 PM MYT), the slot it is already scheduled for in Meta Business Suite and on X, so nothing needs rescheduling. It posts 13 hours after the Nvidia explainer and 90 minutes before the 8:30 AM ET retail sales release.";
+ (dd.changes=dd.changes||[]).push("16 Nov: back to Tue 17 Nov 7:00 AM ET (already scheduled there); the Nvidia results graphic was removed.");
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
