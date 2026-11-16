@@ -2804,6 +2804,13 @@ function buildGrid(){
  (p.changes=p.changes||[]).push("16 Nov: final Instagram caption and alt text; forecast re-checked.");
 })();
 
+// ---- 16 Nov: captions end at "not financial advice."; the AI voiceover line is dropped (Gabriel) ----
+(function(){
+ POSTS.filter(x=>x.date>="2026-11-16"&&x.date<="2026-11-29").forEach(x=>{
+  if(x.caption&&x.caption.includes(" Voiceover generated with AI.")){ delete x._uid; delete x._o; x.caption=x.caption.split(" Voiceover generated with AI.").join(""); (x.changes=x.changes||[]).push("16 Nov: dropped the AI voiceover line from the caption."); }
+ });
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
