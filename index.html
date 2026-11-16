@@ -2912,6 +2912,46 @@ function buildGrid(){
  (lv.changes=lv.changes||[]).push("16 Nov: swapped with the drawdown carousel, now Tue 17 Nov 7:00 AM ET.");
 })();
 
+// ---- 16 Nov: Nvidia results single graphic on Tue 17 Nov 6:00 PM ET (placeholder figures); Finish Phase 4 to Thu 19 Nov 4:00 PM ET; Wednesday's Nvidia reel becomes a News brief carousel (Gabriel) ----
+(function(){
+ const by=t=>POSTS.find(x=>x.title===t);
+ const lv=by("Finish Phase 4 and the rules change");
+ if(lv){ delete lv._uid; delete lv._o; lv.date="2026-11-19"; lv.time="16:00";
+  lv.notes=(lv.notes||"")+"\n16 Nov: moved again, to Thu 19 Nov 4:00 PM ET (5:00 AM MYT Fri), so Tuesday belongs to Nvidia. Product post, needs Jay’s explicit OK.";
+  (lv.changes=lv.changes||[]).push("16 Nov: moved to Thu 19 Nov 4:00 PM ET; the Nvidia results graphic takes Tuesday."); }
+ if(!by("Nvidia results: the numbers")){
+  const id=String(Math.max(...POSTS.map(x=>+x.id||0))+1);
+  POSTS.push({id,date:"2026-11-17",time:"18:00",week:"2026-W47",title:"Nvidia results: the numbers",format:"Static",
+   board:"News alert · results",boardId:"fmt3",skill:"18th-street-news-desk",platform:"Instagram",pillar:"Market insights & analysis",production:"Slides (HTML)",
+   status:"Idea",compliance:"Pending",silent:true,ai:false,
+   hook:"Headline: “Nvidia guided to $[X]B for next quarter” (option A) or the guide alone as one big number (option B).",
+   onscreen:"Two options, both with the series tab “News alert · 17 Nov”. A (Table): headline with the guide in teal, a table of expected against actual (Q3 revenue, Q4 revenue forecast, adjusted EPS, gross margin), then NVDA and NQ after hours with NQ in dollars per contract. B (Numeral): the Q4 guide at numeral size, “Analysts expected $125.0B.”, three cells for Q3 revenue, EPS and gross margin, the NQ after-hours line. Source line, “After-hours prices are thin and can reverse by the open.”, lockup bottom right. Every actual is a 000 placeholder until the release.",
+   beats:"Single graphic, made between the release (about 4:20 PM ET) and 5:45 PM ET: fill the actuals from NVIDIA’s release, the NVDA and NQ after-hours figures at 5:45 PM ET, recompute NQ dollars at $20 a point, re-check, post at 6:00 PM ET.",
+   caption:"Nvidia earnings: the numbers against the forecasts\n\nNvidia guided to $[X]B for next quarter, against the $125B analysts expected. Third-quarter revenue came in at $[X]B against $109.1B. NQ futures moved [±X] points after hours, [$X] on one contract.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.",
+   hashtags:"",
+   claims:"Expected: Q3 revenue $109.1B and adjusted EPS $2.47 (Saxo, The National, 16 Nov 2026); Q4 revenue consensus $125B (The National, 16 Nov 2026); gross margin 74.0% is NVIDIA’s own guide (CFO commentary, 26 Aug 2026). Actuals from NVIDIA’s release and CFO commentary on the day (results about 1:20 PM PT). NVDA after hours from a named outlet; NQ front month from Yahoo Finance (NQ=F), cross-checked; NQ $20 a point (CME). All placeholders until then.",
+   notes:"Fast lane: needs Jay’s same-day OK on the template now, so only the numbers change on the day. Facts only, no view on the stock, no trade ideas. The 18th Street window (results 3:20 PM CT, auto-close 3:55) is left to the reel and Wednesday’s carousel. No hashtags for these two weeks (keyword-led caption).\nAlt text: [Write on the day: Nvidia’s results against expectations, the next-quarter guide, and NQ’s after-hours move in points and dollars per contract.]",
+   why:"Gives the numbers the same evening, about 1.5 hours after the release, for traders who saw Monday’s explainer. Wednesday’s carousel then covers the overnight session and the call.",
+   ref:"",audio:"n/a (single graphic)",draft:"",draftNote:"Two options, placeholder figures (A Table, B Numeral). Pick one.",
+   due:"Template OK by Tue 17 Nov morning; numbers by 5:45 PM ET",fromSanti:null,story:"Share to story after it posts.",
+   gfx:["nanv1a_1","nanv1b_1"],gstate:"ready",
+   changes:["16 Nov: new post, the Nvidia results single graphic, in place of Finish Phase 4 on Tuesday (Gabriel). Two placeholder options."]});
+ }
+ const w=by("Nvidia results: what NQ did overnight");
+ if(w){ delete w._uid; delete w._o;
+  Object.assign(w,{format:"Carousel",board:"News brief",boardId:"fmt4",skill:"18th-street-news-desk",production:"Slides (HTML)",gstate:"onday",status:"Idea",
+   hook:"Cover: NQ’s overnight move in points and dollars per contract, in one line (for example “NQ moved [X] points overnight on Nvidia”).",
+   onscreen:"5 slides. 1 Cover: the overnight NQ move, numeral archetype. 2 Chart: NQ from Tuesday’s 4:00 PM ET close to 7:00 AM ET Wednesday, a marker at the 4:20 PM release and the 5:00 PM call, the move labelled in points. 3 Per contract: the move on NQ ($20 a point) and MNQ ($2 a point). 4 What the call added: up to three facts from NVIDIA’s call or CFO commentary, numbered rows. 5 At 18th Street: results landed about 35 minutes before the 3:55 PM CT auto-close, so the overnight move happened after every account was flat; the save line.",
+   beats:"Built on the morning of Wed 18 Nov from final overnight prices at about 6:45 AM ET. No figure from Tuesday’s graphic is repeated except the guide, once, for context.",
+   caption:"Nvidia earnings: what NQ futures did overnight\n\n[Two sentences: the NQ move from Tuesday’s close to Wednesday morning in points and dollars per contract, and the one fact from the results or the call that drove it.]\n\nSave this for the next big report.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.",
+   claims:"To fill on the day: NQ front month (Yahoo Finance NQ=F, cross-checked with a second outlet), NQ $20 and MNQ $2 a point (cmegroup.com), NVIDIA’s release and CFO commentary, the call transcript or a named outlet’s write-up. Auto-close 1555 CST (trade18th.com/qualification). Facts only, no forecast.",
+   notes:(w.notes||"")+"\n16 Nov: changed from a reel to a News brief carousel (Gabriel asked for a carousel or single graphic). A carousel because the story has steps the Tuesday graphic can’t hold: the overnight move, the call and the 18th Street window. Leave the Nvidia CEO news out.",
+   why:"Completes the run: Monday’s explainer sets it up, Tuesday’s graphic gives the numbers, Wednesday shows what the market did with them overnight and why 18th Street traders were flat for it.",
+   draftNote:"Made the morning of Wed 18 Nov (News brief, design system)"});
+  (w.changes=w.changes||[]).push("16 Nov: reel changed to a News brief carousel.");
+ }
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
