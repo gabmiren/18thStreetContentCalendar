@@ -2971,6 +2971,14 @@ function buildGrid(){
  (dd.changes=dd.changes||[]).push("16 Nov: back to Tue 17 Nov 7:00 AM ET (already scheduled there); the Nvidia results graphic was removed.");
 })();
 
+// ---- 16 Nov: Nvidia explainer reel scheduled on Instagram through Meta Business Suite for Tue 17 Nov, 7:00 AM MYT (Mon 16 Nov, 6:00 PM ET), at Gabriel's request ----
+(function(){
+ const p=POSTS.find(x=>x.title==="Nvidia earnings, explained"); if(!p) return; delete p._uid; delete p._o;
+ p.status="Scheduled";
+ p.notes=(p.notes||"")+"\n16 Nov: scheduled on Instagram in Meta Business Suite for Tue 17 Nov, 7:00 AM MYT (Mon 16 Nov, 6:00 PM ET), public, with the v5 video (re-encoded to 3.6 MB for the upload, same picture, sound and length), the caption from this card and cover cvrnv5_1 uploaded as the thumbnail. Meta’s copyright check passed. Add the alt text in the Instagram app after it posts (Edit, then Advanced settings, then Accessibility).";
+ (p.changes=p.changes||[]).push("16 Nov: scheduled on Instagram for 7:00 AM MYT Tue (6:00 PM ET Mon) with the designed thumbnail.");
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
