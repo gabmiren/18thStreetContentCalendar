@@ -2838,6 +2838,16 @@ function buildGrid(){
   note:"Square images (1080x1080) in the reel’s sketch style; logo on the last image only, in line with the two-week no-logo test. Post at 8:00 PM MYT (7:00 AM ET), the same time as the Instagram reel. X can’t schedule replies, so post the thread by hand: the first post can be scheduled, then add posts 2 to 4 as replies when it goes live. No disclaimer on X."});
 })();
 
+// ---- 16 Nov: retail sales X thread posted live on @trade18th at 12:29 PM MYT (Gabriel); "tomorrow" changed to "Tuesday" in posts 1 and 4 ----
+(function(){
+ const d=X_PLAN.find(q=>q.date==="2026-11-16"); if(!d) return;
+ const q=d.posts.find(p=>/^Retail sales/.test(p.from||"")); if(!q) return; delete q._uid; delete q._o;
+ q.t="Posted";
+ q.text="Last month the retail sales forecast was +0.3%. The actual came in at +0.8%.\n\nThat gap is what moves futures, and the next report lands Tuesday at 8:30 AM ET.";
+ if(q.replies&&q.replies[2]) q.replies[2].text="So before 8:30 AM ET on Tuesday, decide: are you flat, or are you holding through it?";
+ q.note="Posted live on @trade18th, Mon 16 Nov at 12:29 PM MYT (Sun 11:29 PM ET), as a 4-post thread with one square image each: https://x.com/trade18th/status/2122185204437835850. “Tomorrow” became “Tuesday” in posts 1 and 4 because it was still Sunday in New York.";
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
