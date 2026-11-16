@@ -2848,6 +2848,19 @@ function buildGrid(){
  q.note="Posted live on @trade18th, Mon 16 Nov at 12:29 PM MYT (Sun 11:29 PM ET), as a 4-post thread with one square image each: https://x.com/trade18th/status/2122185204437835850. “Tomorrow” became “Tuesday” in posts 1 and 4 because it was still Sunday in New York.";
 })();
 
+// ---- 16 Nov: drawdown carousel v4 after a full fact check on trade18th.com and the design polish loop ----
+(function(){
+ const p=POSTS.find(x=>x.title==="Intraday vs end-of-day drawdown");
+ if(!p) return; delete p._uid; delete p._o;
+ p.gfx=["dd4_1","dd4_2","dd4_3","dd4_4"]; p.gver="v4"; p.gstate="ready";
+ p.draftNote="Graphics ready (v4, fact-checked 16 Nov)";
+ p.hook="Cover: “On a $50,000 account, intraday trailing leaves $1,300 less room”, with $1,200 against $2,500 underneath.";
+ p.onscreen="4 slides, page markers 01–04. 1 Cover: the $1,300 headline and a two-row answer table. 2 Chart: intraday trailing follows your high, threshold rises to $49,000, $1,200 of room. 3 Chart: end-of-day trailing only counts the close, threshold $47,500 all day and set to $47,700 at the close, a faint line showing where intraday would sit, $2,500 of room. 4 Clause: at 18th Street the 5% trailing loss is measured at the close (4:00 PM CT), there is no daily loss limit, and it locks at the starting balance once you close 5% above it. Save line, source line.";
+ p.claims="Checked on trade18th.com on 16 Nov 2026. Qualification page: maximum trailing loss “5% · end of day”, $2,500 on the $50K plan, daily loss limit “None”, trailing loss lock “Starting balance · after a 5% gain”. Its $50K examples (start $50,000 → threshold $47,500; close $51,000 → $48,500; close $52,500 → $50,000, locked) confirm the trail is a flat $2,500, which is what the slides use. FAQ: “On a $100,000 plan, the account may draw down to $95,000. If it closes at $102,000, the threshold rises to $97,000… End of day is 1600 CST. There is no daily loss limit.” Example on the slides is illustrative (round numbers): start $50,000, midday high $51,500, close $50,200; intraday threshold $49,000 (room $1,200); end-of-day threshold $47,700 (room $2,500); difference $1,300. All arithmetic re-run.";
+ p.notes="The earlier $2,510 question is settled: the site’s own examples trail by a flat $2,500, so the end-of-day figure is $47,700. The slide says 4:00 PM CT; the FAQ writes 1600 CST, the same time. Product post, needs Jay’s OK. No hashtags for these two weeks: the keyword sits in line one of the caption, in the on-screen text and in the alt text (a test, easy to reverse).\nAlt text: Four slides comparing intraday and end-of-day trailing drawdown on a $50,000 account. After the same day, up $1,500 at midday and closing up $200, intraday trailing leaves $1,200 of room and end-of-day trailing leaves $2,500.";
+ (p.changes=p.changes||[]).push("16 Nov v4: every figure re-checked on trade18th.com/qualification and /faq; cover headline now names the account and the comparison; the step to $47,700 at the close is visible on the chart, with the intraday line shown faintly for comparison; labels sit on their marks; page markers added; stronger save line on slide 4; source date 16 Nov.");
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
