@@ -2861,6 +2861,15 @@ function buildGrid(){
  (p.changes=p.changes||[]).push("16 Nov v4: every figure re-checked on trade18th.com/qualification and /faq; cover headline now names the account and the comparison; the step to $47,700 at the close is visible on the chart, with the intraday line shown faintly for comparison; labels sit on their marks; page markers added; stronger save line on slide 4; source date 16 Nov.");
 })();
 
+// ---- 16 Nov: drawdown carousel scheduled on Instagram through Meta Business Suite for Tue 17 Nov, 8:00 PM MYT (7:00 AM ET), at Gabriel's request ----
+(function(){
+ const p=POSTS.find(x=>x.title==="Intraday vs end-of-day drawdown");
+ if(!p) return; delete p._uid; delete p._o;
+ p.status="Scheduled";
+ p.notes=(p.notes||"")+"\n16 Nov: scheduled on Instagram in Meta Business Suite for Tue 17 Nov, 8:00 PM MYT (7:00 AM ET): the four v4 slides in order, with the caption from this card. Meta’s photo composer has no alt text field, so add the alt text in the Instagram app after it posts (Edit, then Accessibility).";
+ (p.changes=p.changes||[]).push("16 Nov: scheduled on Instagram for 8:00 PM MYT.");
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
