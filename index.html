@@ -3004,6 +3004,22 @@ function buildGrid(){
  STORIES["2026-11-18"]="Share the Nvidia carousel after it posts. Later, share the Capital Partner table.";
 })();
 
+// ---- 17 Nov: Nvidia carousel moves to the start of the call, Tue 17 Nov 5:00 PM ET (6:00 AM MYT Wed); v10 mockup with the 4:00 to 5:00 PM window (Gabriel) ----
+(function(){
+ const w=POSTS.find(x=>x.title==="Nvidia earnings: what NQ did after the close"); if(!w) return; delete w._uid; delete w._o;
+ Object.assign(w,{date:"2026-11-17",time:"17:00",gfx:["nvc10_1","nvc10_2","nvc10_3","nvc10_4","nvc10_5","nvc10_6"],gver:"v10 · MOCKUP with Q2 numbers",
+  draftNote:"BUILD ON THE DAY: mockup v10 ready. Rebuild with the real figures between the 4:20 PM ET results and the 5:00 PM ET call (5:20 to 6:00 AM MYT Wed).",
+  due:"Jay’s OK on the v10 template by Tue 17 Nov, before the results; real figures in by 4:55 PM ET (5:55 AM MYT Wed)",
+  caption:w.caption.replace("after Tuesday’s 4:00 PM ET close. Nasdaq futures kept trading, and NQ moved [+0.9%] by [7:53 PM] ET, about [264] points.","after today’s 4:00 PM ET close. NQ futures moved [+0.9%] by 5:00 PM ET, when the call began, about [264] points."),
+  notes:"BUILD ON THE DAY, POST WHEN THE CALL GOES LIVE. Results land about 4:20 PM ET (5:20 AM MYT Wed); the call starts at 5:00 PM ET (6:00 AM MYT Wed), per NVIDIA’s press release. That leaves about 40 minutes: fill DATA in nvda_carousel_v10.html, check every figure against two sources, re-render, fill the caption and X brackets, post at 5:00 PM ET. NQ starts its daily one-hour pause at 5:00 PM ET, so the move shown is 4:00 to 5:00 PM ET.\nFast lane: Jay needs to OK the v10 template before the results so only the figures change on the morning. Gabriel will check in on Wed 18 Nov morning MYT to do this.\n"+(w.notes||"").replace(/^BUILD ON THE DAY\. [^\n]*\n/,"")});
+ (w.changes=w.changes||[]).push("17 Nov: moved to Tue 17 Nov 5:00 PM ET (6:00 AM MYT Wed), posted as the call goes live; v10 mockup shows the 4:00 to 5:00 PM ET window.");
+ X_PLAN.forEach(d=>{ const i=d.posts.findIndex(q=>q.from==="Nvidia earnings: what NQ did after the close"); if(i<0) return; const q=d.posts.splice(i,1)[0]; delete q._uid; delete q._o;
+  Object.assign(q,{t:"17:00",gfx:["nvc10_1","nvc10_2","nvc10_4","nvc10_5"],text:"Nvidia reported after the close, and NQ futures didn’t wait for morning.\n\n[+0.9%] by 5:00 PM ET: [$5,280] on one NQ contract, [$528] on one MNQ micro.",note:"BUILD ON THE DAY: post at 5:00 PM ET with Instagram. Slides 1, 2, 4 and 5 of the rebuilt carousel. Same figures as Instagram."});
+  let t=X_PLAN.find(z=>z.date==="2026-11-17"); if(!t){t={date:"2026-11-17",posts:[]};X_PLAN.push(t);} t.posts.push(q); });
+ STORIES["2026-11-18"]="Share Life as a Capital Partner in the afternoon.";
+ STORIES["2026-11-17"]=(STORIES["2026-11-17"]||"")+" Share the Nvidia carousel once it posts at 5:00 PM ET.";
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
