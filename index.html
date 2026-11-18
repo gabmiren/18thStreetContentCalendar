@@ -3041,6 +3041,16 @@ function buildGrid(){
  (w.changes=w.changes||[]).push("18 Nov: cover drops the NQ time label (v12); scheduled in Metricool for 9:00 PM ET.");
  X_PLAN.forEach(d=>d.posts.forEach(q=>{ if(q.from===w.title){ delete q._uid; delete q._o; q.gfx=["nvc12_1","nvc11_2","nvc11_4","nvc11_5"]; } })); })();
 
+// ---- 18 Nov: NQ refreshed to 8:47 PM ET (+0.6%) after the move faded from +1.1%; v13 scheduled in Metricool for 10:04 AM MYT (Gabriel) ----
+(function(){ const w=POSTS.find(x=>x.title==="Nvidia earnings: what NQ did after the close"); if(!w) return; delete w._uid; delete w._o;
+ Object.assign(w,{time:"21:04",gfx:["nvc13_1","nvc13_2","nvc13_3","nvc13_4","nvc13_5","nvc13_6"],gver:"v13 · real numbers, NQ at 8:47 PM ET",status:"Review",
+  draftNote:"Scheduled in Metricool for 10:04 AM MYT Wed 18 Nov (9:04 PM ET Tue). v13, two checks passed.",caption:"Nvidia earnings and NQ futures: what the move meant on one contract.\n\nNvidia reported its fiscal third-quarter results after Tuesday’s 4:00 PM ET close. Nasdaq futures kept trading, and NQ was up 0.6% by 8:47 PM ET, a move of 149.75 points.\n\nOn one NQ contract that was $2,995, a gain if long and a loss if short, before fees. On one MNQ micro contract, $299.50. Same points, a tenth of the dollars, which is why contract size is the first risk decision.\n\nRevenue came in at $115.8B against the $109.15B forecast, and adjusted earnings per share at $2.68 against $2.47. Next quarter’s outlook of $130.0B was above the $125.25B expected.\n\nSave this for the next earnings season, or send it to a trader who watches NQ.\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.",
+  claims:w.claims.replace("NQ Dec 26 (NQZ6): 4:00 PM ET settle 27,075.50","NQ Dec 26 (NQZ6): 4:00 PM ET settle 27,075.50; at posting, 27,225.25 (+149.75, +0.55%) at 8:47 PM ET on Barchart (CME data), CME 27,224.00 (+148.50) at the same time. Earlier")});
+ w.notes=w.notes.replace(/NQ up 1\.1% from the 4:00 PM ET close to about 8:05 PM ET/,"NQ up 0.6% from the 4:00 PM ET close to 8:47 PM ET").replace("($6,090)","($2,995)").replace("($609)","($299.50)");
+ w.notes="18 Nov: NQ faded from +1.1% at 8:05 PM to +0.6% by 8:47 PM ET, so the figures were refreshed and the time label put back on the cover before posting.\n"+w.notes;
+ (w.changes=w.changes||[]).push("18 Nov: NQ refreshed to 8:47 PM ET (+0.6%), v13; scheduled in Metricool for 10:04 AM MYT.");
+ X_PLAN.forEach(d=>d.posts.forEach(q=>{ if(q.from===w.title){ delete q._uid; delete q._o; q.t="21:04"; q.gfx=["nvc13_1","nvc13_2","nvc13_4","nvc13_5"]; q.text="Nvidia reported after the close, and NQ futures didn’t wait for morning.\n\nUp 0.6% by 8:47 PM ET: $2,995 on one NQ contract, $299.50 on one MNQ micro.\n\nFutures trading involves substantial risk and may result in losses."; } })); })();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
