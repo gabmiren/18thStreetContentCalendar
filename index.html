@@ -3169,8 +3169,8 @@ function buildGrid(){
  L.forEach(([nn,date,week,pillar,title,dur,hook,beats,caption,claims,why])=>{
   if(POSTS.some(p=>p.title==="Jay: "+title)) return;
   POSTS.push(Object.assign({},base,{id:String(++id),date,week,pillar,title:"Jay: "+title,hook,beats,caption,claims,why,
-   video:`vid/jay_short_${nn}.mp4`,draftNote:`Clip ${nn}, ${dur} s, exported. Full quality in Drive (“18th Street ${nn} - …”); the video here is a smaller preview.`,
-   notes:"Draft for legal and Jay. "+claims,changes:["19 Nov: added to the calendar (Gabriel)."]}));
+   video:`vid/jay_short_${nn}.mp4`,draftNote:`Scheduled in Metricool (18th_street_trading, auto-publish Reel) for ${myt(date,"18:30")}, 6:30 PM ET, cover frame from the hook. Clip ${nn}, ${dur} s. Uploaded file: 1080p from the GitHub release jay-shorts-ig-v1; masters in Drive; the video here is a smaller preview.`,
+   notes:"Draft for legal and Jay. "+claims,changes:["19 Nov: added to the calendar (Gabriel).","19 Nov: scheduled in Metricool for 6:30 PM ET (Gabriel)."]}));
  });
 })();
 
