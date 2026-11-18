@@ -3037,7 +3037,7 @@ function buildGrid(){
 
 // ---- 18 Nov: Nvidia carousel cover without the NQ time label (v12, Gabriel); the window stays in the source line ----
 (function(){ const w=POSTS.find(x=>x.title==="Nvidia earnings: what NQ did after the close"); if(!w) return; delete w._uid; delete w._o;
- w.gfx=["nvc12_1","nvc11_2","nvc11_3","nvc11_4","nvc11_5","nvc11_6"]; w.gver="v12 · real numbers"; w.status="Approved"; w.draftNote="Scheduled in Metricool for 10:00 AM MYT Wed 18 Nov (9:00 PM ET Tue). Cover v12.";
+ w.gfx=["nvc12_1","nvc11_2","nvc11_3","nvc11_4","nvc11_5","nvc11_6"]; w.gver="v12 · real numbers"; w.status="Review"; w.draftNote="Scheduled in Metricool for 10:00 AM MYT Wed 18 Nov (9:00 PM ET Tue). Cover v12.";
  (w.changes=w.changes||[]).push("18 Nov: cover drops the NQ time label (v12); scheduled in Metricool for 9:00 PM ET.");
  X_PLAN.forEach(d=>d.posts.forEach(q=>{ if(q.from===w.title){ delete q._uid; delete q._o; q.gfx=["nvc12_1","nvc11_2","nvc11_4","nvc11_5"]; } })); })();
 
