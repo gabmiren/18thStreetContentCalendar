@@ -3178,7 +3178,7 @@ function buildGrid(){
 (function(){ const a=POSTS.find(p=>p.title==="Your $50K plan is really a $2,500 account"); if(!a) return;
  Object.assign(a,{format:"Static",production:"Static graphic",skill:"18th-street-design-system",gfx:["g50i1_1"],gstate:"ready",status:"Review",ai:false,audio:"n/a (static)",
   board:"The rulebook, explained · single graphic (Numeral + true-scale bar)",
-  draftNote:"Single graphic v1 (20 Nov), was a reel script. Instagram scheduled in Metricool (18th_street_trading, auto-publish) for Sat 21 Nov 7:00 AM ET, 8:00 PM MYT. X square not scheduled. Figures checked on trade18th.com/qualification 20 Nov.",
+  draftNote:"Single graphic v1 (20 Nov), was a reel script. Instagram scheduled in Metricool (18th_street_trading, auto-publish) for Fri 20 Nov 7:00 AM ET, 8:00 PM MYT (moved from Sat at Gabriel's ask). X square not scheduled. Figures checked on trade18th.com/qualification 20 Nov.",
   hook:"Headline from the reel, set as the graphic: “Your $50K plan is really a $2,500 account.”",
   onscreen:"Series tab THE RULEBOOK, EXPLAINED. Headline (Archivo 500) with $2,500 at numeral size in the accent. True-scale bar: a $50,000 track with the 5% segment in the accent, labelled $2,500 ROOM and $47,500 START THRESHOLD, title MAX TRAILING LOSS 5% · END OF DAY. Line: Every trade draws on that same room. Phases line and source in full, lockup bottom right.",
   beats:"Numeral archetype with a chart. The sizing line was kept descriptive (no amount per trade) after the review flagged “size for $2,500” as readable as risking the whole room.",
@@ -3192,7 +3192,7 @@ function buildGrid(){
  if(!q) q={};
  delete q._uid; delete q._o;
  Object.assign(q,{from:"Your $50K plan is really a $2,500 account",t:"07:00",kind:"Image",gfx:["g50x1_1"],onday:false,text:"Your $50K plan is really a $2,500 account.\n\nThe 5% trailing loss is measured at the close, so the threshold starts at $47,500. Every trade draws on that room.\n\n$25K: $1,250 · $100K: $5,000 · $150K: $7,500\n\nPhases 1–4 are simulated. Futures trading involves substantial risk."});
- const XD="2026-11-21"; // the IG post's day after Gabriel's 20 Nov move (edits.json)
+ const XD="2026-11-20"; // the IG post's day (moved to Fri 20 Nov, 8:00 PM MYT, at Gabriel's ask)
  let d=X_PLAN.find(x=>x.date===XD); if(!d){ d={date:XD,posts:[]}; X_PLAN.push(d); X_PLAN.sort((x,y)=>x.date.localeCompare(y.date)); }
  d.posts.unshift(q);
  if(typeof STORIES!=="undefined") STORIES[XD]="Share the $2,500 account graphic.";
