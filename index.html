@@ -3216,7 +3216,7 @@ const nDel=()=>Object.keys(EDITS.del).length;
 let undoArm=false;
 function editBar(){ const b=document.getElementById("editbar"); if(!b) return;
  if(!EDITING){b.style.display="none";return;} b.style.display="flex";
- b.innerHTML=`<span>Drag posts to move or swap them · hover a day and click + Add · open a post to edit or delete it · click a status dot to change it. Everything saves automatically.</span>
+ b.innerHTML=`<span>Drag posts to move or swap them · hover a day and click + Add · open a post to edit or delete it · click a status dot to change it. Edits save in this browser as you go; click Save to GitHub to share them.</span>
   <span class="mono">${nEdits()} edit${nEdits()===1?"":"s"} · saved to ${EWHERE}</span>${EERR?`<span class="mono" style="color:#E5534B">${EERR}</span>`:""}
   <span style="margin-left:auto;display:flex;gap:8px">${nDel()?`<button id="erest">Restore ${nDel()} deleted</button>`:""}<button id="ecopy">Copy my edits</button><button id="eundo">${undoArm?"Click again to undo all":"Undo all edits"}</button></span>`;
  const rb=b.querySelector("#erest"); if(rb) rb.onclick=()=>{ EDITS.del={}; applyEdits(); rerender(); persist(); toast("Deleted posts restored"); };
@@ -3316,6 +3316,73 @@ applyEdits();
    else if(first && nEdits()) dbWrite();
    first=false; }, ()=>{ EDB=null; EWHERE="this browser"; editBar(); });
  }catch(e){} })();
+
+
+// ---- Save to GitHub: edits.json in the repo is the shared copy of on-page edits. Each Save is a commit. The token stays in this browser only. ----
+const GH={repo:"gabmiren/18thstreetcontentcalendar",path:"edits.json",branch:"main",tk:"cal18-gh-token",bk:"cal18-gh-base"};
+let GHBASE=null, GHBUSY=false, GHERR="", GHMSG="", GHLOADED=false;
+const ghTok=()=>{try{return localStorage.getItem(GH.tk)||"";}catch(e){return "";}};
+const ghDirty=()=>GHBASE!==null && JSON.stringify(EDITS)!==GHBASE;
+const ghApi=`https://api.github.com/repos/${GH.repo}/contents/${GH.path}`;
+function b64(str){ const u=new TextEncoder().encode(str); let bin=""; for(let i=0;i<u.length;i+=8192) bin+=String.fromCharCode.apply(null,u.subarray(i,i+8192)); return btoa(bin); }
+const unb64=str=>new TextDecoder().decode(Uint8Array.from(atob(str.replace(/\s/g,"")),c=>c.charCodeAt(0)));
+function mergeE(base,top){ const ids=new Set(top.add.ig.map(a=>a.id)), idx=new Set(top.add.x.map(a=>a.id));
+ return normE({ig:Object.assign({},base.ig,top.ig),x:Object.assign({},base.x,top.x),pub:Object.assign({},base.pub,top.pub),
+  add:{ig:base.add.ig.filter(a=>!ids.has(a.id)).concat(top.add.ig),x:base.add.x.filter(a=>!idx.has(a.id)).concat(top.add.x)},del:Object.assign({},base.del,top.del)}); }
+async function ghRead(){ const tok=ghTok();
+ if(tok){ const r=await fetch(ghApi+"?ref="+GH.branch+"&t="+Date.now(),{headers:{Authorization:"Bearer "+tok,Accept:"application/vnd.github+json"},cache:"no-store"});
+  if(r.status===404) return {edits:normE({}),sha:null};
+  if(r.status===401){ throw new Error("token"); }
+  if(!r.ok) throw new Error("read "+r.status); const j=await r.json(); return {edits:normE(JSON.parse(unb64(j.content))),sha:j.sha}; }
+ const r=await fetch(GH.path+"?v="+Date.now(),{cache:"no-store"}); if(r.status===404) return {edits:normE({}),sha:null};
+ if(!r.ok) throw new Error("read "+r.status); return {edits:normE(await r.json()),sha:null}; }
+function askToken(){ return new Promise(res=>{ const o=document.createElement("div"); o.id="ghmodal";
+ o.style.cssText="position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center";
+ o.innerHTML=`<div style="background:#1F2428;border:1px solid #2C3136;padding:24px;width:min(460px,92vw);color:#E4E6E6;font:15px/1.45 Archivo,sans-serif">
+  <div style="font-weight:700;font-size:18px;margin-bottom:8px">Connect this browser to GitHub</div>
+  <div style="color:#9BA1A6;margin-bottom:14px">Paste a fine-grained token with access to <span class="mono">${GH.repo.split("/")[1]}</span> only, and Contents set to Read and write. It's kept in this browser and sent only to GitHub. <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener" style="color:#7FA0A3">Make a token</a></div>
+  <input id="ghtok" type="password" autocomplete="off" placeholder="github_pat_…" style="width:100%;box-sizing:border-box;padding:10px;background:#16191C;border:1px solid #2C3136;color:#E4E6E6;font:14px 'IBM Plex Mono',monospace">
+  <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px"><button id="ghno">Cancel</button><button id="ghyes" style="background:#7FA0A3;color:#16191C;border-color:#7FA0A3">Connect and save</button></div></div>`;
+ document.body.appendChild(o); const i=o.querySelector("#ghtok"); setTimeout(()=>i.focus(),30);
+ const done=v=>{ o.remove(); res(v); };
+ o.querySelector("#ghno").onclick=()=>done("");
+ o.querySelector("#ghyes").onclick=()=>{ const v=i.value.trim(); if(!v) return; try{localStorage.setItem(GH.tk,v);}catch(e){} done(v); };
+ i.addEventListener("keydown",e=>{ if(e.key==="Enter") o.querySelector("#ghyes").click(); if(e.key==="Escape") done(""); }); }); }
+function ghStore(){ try{ localStorage.setItem(GH.bk,GHBASE); localStorage.setItem(EKEY,JSON.stringify(EDITS)); }catch(e){} }
+async function ghSave(){ if(GHBUSY) return; if(!ghTok()){ const t=await askToken(); if(!t) return; }
+ if(window.__edFlush) try{ window.__edFlush(); }catch(e){}
+ GHBUSY=true; GHERR=""; editBar();
+ try{
+  for(let attempt=0;attempt<2;attempt++){
+   const {edits,sha}=await ghRead(); const remoteS=JSON.stringify(edits);
+   if(GHBASE!==null && remoteS!==GHBASE){ EDITS=mergeE(edits,EDITS); applyEdits(); rerender(); }
+   const body=JSON.stringify(EDITS,null,1), n=nEdits();
+   const r=await fetch(ghApi,{method:"PUT",headers:{Authorization:"Bearer "+ghTok(),Accept:"application/vnd.github+json","Content-Type":"application/json"},
+    body:JSON.stringify(Object.assign({message:`Calendar edits saved from the page (${n} edit${n===1?"":"s"})`,content:b64(body+"\n"),branch:GH.branch},sha?{sha}:{}))});
+   if(r.status===401||r.status===403||r.status===404) throw new Error("token");
+   if((r.status===409||r.status===422)&&attempt===0){ GHBASE=remoteS; continue; }
+   if(!r.ok) throw new Error("save "+r.status);
+   GHBASE=JSON.stringify(EDITS); ghStore();
+   GHMSG="Saved to GitHub at "+new Date().toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"}); toast("Saved to GitHub. Live for everyone in about a minute"); break; }
+ }catch(e){ if(e.message==="token"){ try{localStorage.removeItem(GH.tk);}catch(_){} GHERR="GitHub didn’t accept the token. Click Save to GitHub to paste a new one."; }
+  else GHERR="Couldn’t save to GitHub ("+e.message+"). Your edits are still saved in this browser."; }
+ GHBUSY=false; editBar(); }
+const _editBar0=editBar;
+editBar=function(){ _editBar0(); const b=document.getElementById("editbar"); if(!b||!EDITING||!GHLOADED) return;
+ const m=b.querySelector(".mono"); if(m) m.textContent=`${nEdits()} edit${nEdits()===1?"":"s"} · `+(GHBUSY?"saving to GitHub…":ghDirty()?"unsaved changes, in this browser only":(GHMSG||"all saved to GitHub"));
+ const btns=b.querySelector("span[style*='margin-left:auto']"); if(!btns) return;
+ const sv=document.createElement("button"); sv.id="ghsave"; sv.textContent=GHBUSY?"Saving…":"Save to GitHub"; sv.disabled=GHBUSY||!ghDirty();
+ if(ghDirty()&&!GHBUSY) sv.style.cssText="background:#E8C547;color:#16191C;border-color:#E8C547;font-weight:700"; else sv.style.opacity=".55";
+ sv.onclick=ghSave; btns.prepend(sv);
+ if(ghTok()){ const f=document.createElement("button"); f.textContent="Forget token"; f.title="Remove the GitHub token from this browser"; f.onclick=()=>{ try{localStorage.removeItem(GH.tk);}catch(e){} GHMSG=""; editBar(); toast("Token removed from this browser"); }; btns.appendChild(f); }
+ if(GHERR){ const e=document.createElement("span"); e.className="mono"; e.style.color="#E5534B"; e.textContent=GHERR; m.after(e); } };
+(async()=>{ if(typeof claude!=="undefined"&&claude.use) return;
+ try{ const {edits}=await ghRead(); const repoS=JSON.stringify(edits); let lb=null; try{lb=localStorage.getItem(GH.bk);}catch(e){}
+  const localS=JSON.stringify(EDITS);
+  if(!nEdits() || localS===lb) EDITS=edits; else if(localS!==repoS) EDITS=mergeE(edits,EDITS);
+  GHBASE=repoS; ghStore(); }
+ catch(e){ GHBASE=JSON.stringify(EDITS); GHERR=e.message==="token"?"GitHub didn’t accept the saved token. Click Save to GitHub to paste a new one.":"Couldn’t load saved edits from GitHub, showing this browser’s edits."; if(e.message==="token") try{localStorage.removeItem(GH.tk);}catch(_){} }
+ GHLOADED=true; applyEdits(); rerender(); editBar(); })();
 
 buildGrid();
 
