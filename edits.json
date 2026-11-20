@@ -1,0 +1,52 @@
+{
+ "ig": {
+  "ig|Life after you pass your first eval|2026-11-13|21:00": {
+   "date": "2026-11-15"
+  },
+  "ig|Intraday vs end-of-day drawdown|2026-11-17|07:00": {
+   "date": "2026-11-22"
+  },
+  "ig|Nvidia results: what NQ did overnight|2026-11-18|07:00": {
+   "date": "2026-11-17"
+  },
+  "ig|Nvidia earnings: what NQ did after the close|2026-11-17|21:04": {
+   "date": "2026-11-18"
+  },
+  "ig|Jay: Signs a prop firm isn’t right for you|2026-11-20|18:30": {
+   "date": "2026-11-21",
+   "time": "11:00"
+  },
+  "ig|Your $50K plan is really a $2,500 account|2026-11-19|07:00": {
+   "date": "2026-11-20"
+  }
+ },
+ "x": {},
+ "pub": {
+  "ig|CPI News alert|2026-11-10|11:30": "posted",
+  "ig|Inside the 8:30: the first second after PPI|2026-11-12|07:00": "posted",
+  "ig|When you’re long, there will be signs|2026-11-13|21:00": "posted",
+  "ig|The week in futures: 9 to 13 Nov|2026-11-13|17:30": "posted",
+  "ig|Clip: 5 principles from an institutional desk|2026-11-14|07:00": "posted",
+  "ig|Running your own algo?|2026-11-14|16:00": "posted",
+  "ig|This week: 16 to 20 Nov|2026-11-15|18:00": "posted",
+  "ig|Intraday vs end-of-day drawdown|2026-11-17|07:00": "none",
+  "ig|Nvidia earnings: what NQ did after the close|2026-11-17|21:04": "posted",
+  "ig|Terms all traders need to know: trading terms|2026-11-18|10:50": "posted",
+  "ig|Jay: What losing $20,000 taught me|2026-11-18|18:30": "posted",
+  "ig|Terms all traders need to know: liquidity terms|2026-11-19|10:50": "posted",
+  "ig|Jay: What I do after a big losing day|2026-11-19|18:30": "posted",
+  "ig|Nvidia earnings, explained|2026-11-16|18:00": "posted",
+  "ig|Retail sales: the forecast said 0.3%, the number was 0.8%|2026-11-16|07:00": "posted",
+  "ig|Clip: The real value of a prop firm|2026-11-20|07:00": "none",
+  "ig|Your $50K plan is really a $2,500 account|2026-11-19|07:00": "none"
+ },
+ "add": {
+  "ig": [],
+  "x": []
+ },
+ "del": {
+  "ig|Finish Phase 4 and the rules change|2026-11-19|16:00": true,
+  "ig|The week in futures: 16 to 20 Nov|2026-11-20|17:30": true,
+  "ig|Read the tape: up or down?|2026-11-21|11:00": true
+ }
+}
