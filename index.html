@@ -3174,6 +3174,30 @@ function buildGrid(){
  });
 })();
 
+// ---- 20 Nov: "Your $50K plan is really a $2,500 account" becomes a single graphic (Gabriel), IG 4:5 and an X square. Polished through 4 critic rounds and a final review. ----
+(function(){ const a=POSTS.find(p=>p.title==="Your $50K plan is really a $2,500 account"); if(!a) return;
+ Object.assign(a,{format:"Static",production:"Static graphic",skill:"18th-street-design-system",gfx:["g50i1_1"],gstate:"ready",status:"Review",ai:false,audio:"n/a (static)",
+  board:"The rulebook, explained · single graphic (Numeral + true-scale bar)",
+  draftNote:"Single graphic v1 (20 Nov), was a reel script. IG 1080x1350 and X 1080x1080. Figures checked on trade18th.com/qualification 20 Nov.",
+  hook:"Headline from the reel, set as the graphic: “Your $50K plan is really a $2,500 account.”",
+  onscreen:"Series tab THE RULEBOOK, EXPLAINED. Headline (Archivo 500) with $2,500 at numeral size in the accent. True-scale bar: a $50,000 track with the 5% segment in the accent, labelled $2,500 ROOM and $47,500 START THRESHOLD, title MAX TRAILING LOSS 5% · END OF DAY. Line: Every trade draws on that same room. Phases line and source in full, lockup bottom right.",
+  beats:"Numeral archetype with a chart. The sizing line was kept descriptive (no amount per trade) after the review flagged “size for $2,500” as readable as risking the whole room.",
+  caption:"A $50K prop firm plan with a 5% trailing drawdown is really a $2,500 account.\n\nAt 18th Street the trailing loss is measured at the end of the day. On a $50,000 plan the threshold starts at $47,500, rises with your highest closing balance, and locks at your starting balance once you close 5% above it. Every trade you take draws on that same room.\n\nThe same rule on the other plans: $1,250 of room on $25K, $5,000 on $100K and $7,500 on $150K.\n\nHow do you size your trades around the drawdown?\n\nRules and plans: link in bio.\n\nPhases 1–4 are simulated with notional capital. Payouts, advancement and profitability are not guaranteed. Futures trading involves substantial risk.",hashtags:"",
+  alt:"Graphic on a dark background. Headline: Your $50K plan is really a $2,500 account, with $2,500 in large teal type. Below, a bar labelled max trailing loss 5%, end of day, with a small teal segment at the right end marked $2,500 room and $47,500 start threshold. Line: Every trade draws on that same room.",
+  claims:"Checked 20 Nov on trade18th.com/qualification: maximum trailing loss 5% · end of day; $1,250 / $2,500 / $5,000 / $7,500 by plan; threshold sits 5% below the highest end-of-day balance and locks at the starting balance after a 5% gain; resets not available. 5% of $50,000 = $2,500; $50,000 − $2,500 = $47,500.",
+  notes:"Product post, needs Jay’s OK and legal. “Really a $2,500 account” is a framing of the loss limit, flag it to legal with the post. Sunday’s carousel (Intraday vs end-of-day drawdown) goes deeper on the same rule."});
+ if(typeof X_PLAN==="undefined") return;
+ // move the matching X post onto the graphic's day and give it the square image
+ let q=null; for(const d of X_PLAN){ const i=d.posts.findIndex(p=>(p.text||"").startsWith("Your $50K plan is really a $2,500 account")); if(i>=0){ q=d.posts.splice(i,1)[0]; break; } }
+ if(!q) q={};
+ delete q._uid; delete q._o;
+ Object.assign(q,{from:"Your $50K plan is really a $2,500 account",t:"07:00",kind:"Image",gfx:["g50x1_1"],onday:false,text:"Your $50K plan is really a $2,500 account.\n\nThe 5% trailing loss is measured at the close, so the threshold starts at $47,500. Every trade draws on that room.\n\n$25K: $1,250 · $100K: $5,000 · $150K: $7,500\n\nPhases 1–4 are simulated. Futures trading involves substantial risk."});
+ const XD="2026-11-21"; // the IG post's day after Gabriel's 20 Nov move (edits.json)
+ let d=X_PLAN.find(x=>x.date===XD); if(!d){ d={date:XD,posts:[]}; X_PLAN.push(d); X_PLAN.sort((x,y)=>x.date.localeCompare(y.date)); }
+ d.posts.unshift(q);
+ if(typeof STORIES!=="undefined") STORIES[XD]="Share the $2,500 account graphic.";
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
