@@ -3359,12 +3359,14 @@ async function ghSave(){ if(GHBUSY) return; if(!ghTok()){ const t=await askToken
    const body=JSON.stringify(EDITS,null,1), n=nEdits();
    const r=await fetch(ghApi,{method:"PUT",headers:{Authorization:"Bearer "+ghTok(),Accept:"application/vnd.github+json","Content-Type":"application/json"},
     body:JSON.stringify(Object.assign({message:`Calendar edits saved from the page (${n} edit${n===1?"":"s"})`,content:b64(body+"\n"),branch:GH.branch},sha?{sha}:{}))});
-   if(r.status===401||r.status===403||r.status===404) throw new Error("token");
+   if(r.status===401||r.status===403||r.status===404){ let gm=""; try{ gm=(await r.json()).message||""; }catch(_){}
+    const why=r.status===401?"the token isn’t valid (check it was copied whole and hasn’t expired)":r.status===403?"the token can see the repo but can’t write to it (Contents must be Read and write)":"the token can’t see this repo (it must be made on the account that owns gabmiren/18thstreetcontentcalendar, with this repo selected)";
+    const err=new Error("token"); err.detail=`GitHub said ${r.status}${gm?" ("+gm+")":""}: ${why}.`; throw err; }
    if((r.status===409||r.status===422)&&attempt===0){ GHBASE=remoteS; continue; }
    if(!r.ok) throw new Error("save "+r.status);
    GHBASE=JSON.stringify(EDITS); ghStore();
    GHMSG="Saved to GitHub at "+new Date().toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"}); toast("Saved to GitHub. Live for everyone in about a minute"); break; }
- }catch(e){ if(e.message==="token"){ try{localStorage.removeItem(GH.tk);}catch(_){} GHERR="GitHub didn’t accept the token. Click Save to GitHub to paste a new one."; }
+ }catch(e){ if(e.message==="token"){ try{localStorage.removeItem(GH.tk);}catch(_){} GHERR=(e.detail||"GitHub didn’t accept the token.")+" Click Save to GitHub to paste a new one."; }
   else GHERR="Couldn’t save to GitHub ("+e.message+"). Your edits are still saved in this browser."; }
  GHBUSY=false; editBar(); }
 const _editBar0=editBar;
