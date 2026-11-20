@@ -3360,7 +3360,7 @@ async function ghSave(){ if(GHBUSY) return; if(!ghTok()){ const t=await askToken
    const r=await fetch(ghApi,{method:"PUT",headers:{Authorization:"Bearer "+ghTok(),Accept:"application/vnd.github+json","Content-Type":"application/json"},
     body:JSON.stringify(Object.assign({message:`Calendar edits saved from the page (${n} edit${n===1?"":"s"})`,content:b64(body+"\n"),branch:GH.branch},sha?{sha}:{}))});
    if(r.status===401||r.status===403||r.status===404){ let gm=""; try{ gm=(await r.json()).message||""; }catch(_){}
-    const why=r.status===401?"the token isn’t valid (check it was copied whole and hasn’t expired)":r.status===403?"the token can see the repo but can’t write to it (Contents must be Read and write)":"the token can’t see this repo (it must be made on the account that owns gabmiren/18thstreetcontentcalendar, with this repo selected)";
+    const why=r.status===401?"the token isn’t valid (check it was copied whole and hasn’t expired)":r.status===403?"the token can’t write to this repo (it needs this repo selected under Repository access, Contents set to Read and write, and to be made on the account that owns the repo)":"the token can’t see this repo (it must be made on the account that owns gabmiren/18thstreetcontentcalendar, with this repo selected)";
     const err=new Error("token"); err.detail=`GitHub said ${r.status}${gm?" ("+gm+")":""}: ${why}.`; throw err; }
    if((r.status===409||r.status===422)&&attempt===0){ GHBASE=remoteS; continue; }
    if(!r.ok) throw new Error("save "+r.status);
