@@ -71,7 +71,7 @@ body.editing .day:hover>.addp,body.editing .day:focus-within>.addp{display:block
 .edp button.sec{background:transparent;color:var(--ink);border:1px solid #5A4F22}
 .card,.fr{position:relative}
 .pub{position:absolute;top:8px;right:8px;width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.35)}
-.pub.posted{background:#3FB37F}.pub.sched{background:#E8C547}.pub.none{background:#E5534B}
+.pub.posted,.pub.sched{background:#3FB37F}.pub.none{background:#E5534B}
 .publeg{display:flex;gap:18px;align-items:center;font:400 11px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2,#9BA1A6);margin:6px 0 12px}
 .publeg span{display:flex;align-items:center;gap:7px}.publeg i{width:10px;height:10px;border-radius:50%;display:inline-block}
 .fr .hd{padding-right:22px}
@@ -261,7 +261,7 @@ textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1p
 <div class="toast" id="toast">Copied</div>
 
 <script>
-// Publishing status dots: green posted, yellow scheduled, red not scheduled. PUB comes from the data (scheduled-through date and per-post overrides).
+// Publishing status dots: green scheduled or posted, red not scheduled (yellow retired 20 Nov, Gabriel). PUB comes from the data (scheduled-through date and per-post overrides).
 function pubState(date,t,key,uid){
   const P=(typeof PUB!=="undefined")?PUB:{through:"",over:{}};
   if(uid&&typeof EDITS!=="undefined"&&EDITS.pub[uid]) return EDITS.pub[uid];
@@ -273,8 +273,8 @@ function pubState(date,t,key,uid){
   if(date<=thr) return Date.now()>=at?"posted":"sched";
   return "none";
 }
-function pubDot(date,t,key,uid){const s=pubState(date,t,key,uid);const lab={posted:"Posted",sched:"Scheduled",none:"Not scheduled"}[s];return `<span class="pub ${s==="sched"?"sched":s}" title="${lab}"></span>`;}
-const PUBLEG='<div class="publeg"><span><i style="background:#3FB37F"></i>Posted</span><span><i style="background:#E8C547"></i>Scheduled</span><span><i style="background:#E5534B"></i>Not scheduled</span></div>';
+function pubDot(date,t,key,uid){const s=pubState(date,t,key,uid);const lab={posted:"Scheduled or posted",sched:"Scheduled or posted",none:"Not scheduled"}[s];return `<span class="pub ${s==="sched"?"sched":s}" title="${lab}"></span>`;}
+const PUBLEG='<div class="publeg"><span><i style="background:#3FB37F"></i>Scheduled or posted</span><span><i style="background:#E5534B"></i>Not scheduled</span></div>';
 </script>
 <script>
 // 18th Street two-week calendar data, v1 (3 Nov 2026)
@@ -3253,11 +3253,11 @@ function editBar(){ const b=document.getElementById("editbar"); if(!b) return;
 function toggleEdit(on){ EDITING=on; document.body.classList.toggle("editing",on); editBar(); }
 document.addEventListener("click",e=>{ if(e.target.id==="editbtn"){ e.preventDefault(); e.stopImmediatePropagation(); toggleEdit(!EDITING); } },true);
 // status dots
-const CYC=["posted","sched","none"];
+const CYC=["posted","none"];
 document.addEventListener("click",e=>{ if(!EDITING) return; const d=e.target.closest(".card .pub"); if(!d) return; const c=d.closest(".card[data-uid]"); if(!c) return;
  e.preventDefault(); e.stopPropagation(); const u=c.dataset.uid, cur=EDITS.pub[u], i=cur?CYC.indexOf(cur):-1;
  if(i===CYC.length-1) delete EDITS.pub[u]; else EDITS.pub[u]=CYC[i+1]; rerender(); persist();
- toast(EDITS.pub[u]?{posted:"Marked posted",sched:"Marked scheduled",none:"Marked not scheduled"}[EDITS.pub[u]]:"Status back to automatic"); },true);
+ toast(EDITS.pub[u]?{posted:"Marked scheduled",sched:"Marked scheduled",none:"Marked not scheduled"}[EDITS.pub[u]]:"Status back to automatic"); },true);
 // drag and drop (pointer based: works inside frames, on touch screens and with images in cards)
 let DRAG=null, PD=null, GHOST=null, SUPPRESS=0;
 const dropAt=(x,y)=>{ const el=document.elementFromPoint(x,y); if(!el||!DRAG) return null;
