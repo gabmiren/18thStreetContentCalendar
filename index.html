@@ -3198,6 +3198,9 @@ function buildGrid(){
  if(typeof STORIES!=="undefined") STORIES[XD]="Share the $2,500 account graphic.";
 })();
 
+// ---- 20 Nov: Jay clip 03 moved to 7:00 AM Sat MYT (6:00 PM ET Fri) in Metricool at Gabriel's ask ----
+(function(){ const a=POSTS.find(p=>p.title==="Jay: Signs a prop firm isn’t right for you"); if(a&&a.draftNote) a.draftNote=a.draftNote.replace(/7:30 AM Sat MYT, 6:30 PM ET/,"7:00 AM Sat MYT, 6:00 PM ET Fri (moved 20 Nov)"); })();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
