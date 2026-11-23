@@ -3332,6 +3332,11 @@ function buildGrid(){
   draftNote:"v5 final (23 Nov), 47 s. Not scheduled: waiting on Gabriel’s command (Tue 24 Nov 7:00 AM ET = 8:00 PM MYT). Cover: the title in the terminal (img/double-top-or-fakeout-v4-cover.jpg)."});
  (a.changes=a.changes||[]).push("23 Nov v5: end card is the logo only, centred on dark (Gabriel)."); })();
 
+// ---- 23 Nov: Double top or fakeout? scheduled in Metricool (Gabriel) ----
+(function(){ const a=POSTS.find(p=>p.title==="Double top or fakeout?"); if(!a) return;
+ Object.assign(a,{status:"Scheduled",draftNote:"v5 final (23 Nov), 47 s. Scheduled in Metricool (18th_street_trading, auto-publish Reel, custom cover, alt text) for Tue 24 Nov 7:00 AM ET, 8:00 PM MYT. ES figures from Yahoo Finance, partly cross-checked on Barchart 23 Nov (3-month high, 1-month high and the Nov 20 low match)."});
+ (a.changes=a.changes||[]).push("23 Nov: scheduled in Metricool for 8:00 PM MYT (Gabriel)."); })();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
