@@ -3337,6 +3337,23 @@ function buildGrid(){
  Object.assign(a,{status:"Scheduled",draftNote:"v5 final (23 Nov), 47 s. Scheduled in Metricool (18th_street_trading, auto-publish Reel, custom cover, alt text) for Tue 24 Nov 7:00 AM ET, 8:00 PM MYT. ES figures from Yahoo Finance, partly cross-checked on Barchart 23 Nov (3-month high, 1-month high and the Nov 20 low match)."});
  (a.changes=a.changes||[]).push("23 Nov: scheduled in Metricool for 8:00 PM MYT (Gabriel)."); })();
 
+// ---- 23 Nov: News reel, Jensen Huang reinstated (Gabriel's brief), 90s finance TV look, Mark voice ----
+(function(){ if(POSTS.find(p=>p.title==="Jensen Huang is back and NVDA is surging")) return;
+ const G="Futures trading involves substantial risk and may result in losses. Educational content, not financial advice.";
+ POSTS.push({date:"2026-11-23",time:"12:30",title:"Jensen Huang is back and NVDA is surging",format:"Reel",board:"News alert · reel",pillar:"Market insights & analysis",
+  production:"Motion explainer (90s finance TV look, voiced, all drawn in code)",skill:"18th-street-motion-design",status:"Review",gstate:"ready",
+  video:"vid/nvda-huang-back-v1.mp4",cover:"img/nvda-huang-back-v1-cover.jpg",
+  audio:"Mark voice (ElevenLabs via Higgsfield, 1.95 credits, Gabriel's OK); lofi technology track about 15 dB under the voice; channel static at the three cuts, chimes on labels, clicks on draws, TV-off. -14 LUFS, true peak -3 dB.",
+  hook:"Header pinned from frame 0: “Jensen Huang is back and NVDA is surging”. NVDA daily bars draw in, the close line falls for four weeks, then jumps to Monday’s open.",
+  onscreen:"CRT: NVDA daily, Oct 26 to Nov 23, reinstated tag, an 11-day bracket from Nov 12, the gap labelled +33.1% at the open. NASDAQ-100.EXE: an illustration of the index as blocks with NVDA lifting it, readout +7.4% at the open. CRT: Nasdaq-100 daily, last week −10.4%, Friday −1,488.07, today’s gap up. PLAN.EXE: a size box drawn before the 9:30 AM ET open line. End card: logo and “Professional trading begins with risk management.”",
+  beats:"Hook → what happened (reinstated, 11 days, +33.1% open) → why the index moved → last week’s context → one headline, plan your size before the open.",
+  caption:"Jensen Huang is back as Nvidia’s CEO, and NVDA opened more than 30% higher.\n\nNvidia’s board reinstated him this morning, 11 days after he resigned. NVDA opened at $167.04, up 33.1% on Friday’s close, and the Nasdaq-100 opened 7.4% higher. Last week the Nasdaq-100 fell 10.4%, including 1,488 points on Friday alone.\n\nHow do you set your size on a morning like this?\n\n"+G,
+  claims:"Reinstatement: NVIDIA 8-K press release, 23 Nov 2026 (resignation announced 12 Nov). Yahoo Finance, read 23 Nov 10:52 AM ET: NVDA Fri close 125.53, Mon open 167.04 (+33.1%). Nasdaq-100 (^NDX) Fri 13 Nov close 27,943.74, Fri 20 Nov close 25,028.98 (−10.4%); Thu 19 Nov close 26,517.05 (Friday −1,488.07); Mon open 26,889.29 (+7.4%). Nasdaq Composite last week 25,136.27 to 22,617.73 (−10.0%), which the voice’s “the Nasdaq fell 10%” refers to. Re-check before posting.",
+  notes:"States the reinstatement only: no reasons for the resignation, no investigation, no politics. No photo or likeness of Jensen Huang. The blocks scene is labelled as an illustration, not to scale. Words like “this morning” only work if it posts Mon 23 Nov ET. No hashtags (test to 29 Nov). Draft for legal and Jay.",
+  draftNote:"v1 (23 Nov), 40 s. Not scheduled: waiting on Gabriel’s command.",
+  changes:["23 Nov v1: built from Gabriel’s brief in the 90s finance TV look; figures checked live; wording “more than 30%” and “about 7%” (Gabriel)."]});
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
