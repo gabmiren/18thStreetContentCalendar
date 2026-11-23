@@ -3369,6 +3369,12 @@ function buildGrid(){
  a.audio=a.audio.replace("about 15 dB under the voice","from its high-tempo section (16.4 s in) from the first frame, about 15 dB under the voice");
  (a.changes=a.changes||[]).push("v4: music starts at the track’s high-tempo section from frame 0 (Gabriel)."); })();
 
+// ---- 24 Nov MYT: Nvidia reel v5: end card is the logo only (Gabriel) ----
+(function(){ const a=POSTS.find(p=>p.title==="Jensen Huang is back and Nvidia is surging"); if(!a) return;
+ Object.assign(a,{video:"vid/nvidia-huang-back-v5.mp4",draftNote:"v5 (24 Nov MYT), 35.6 s. Not scheduled: waiting on Gabriel’s command. Must post Mon 23 Nov ET (“this morning”)."});
+ a.onscreen=(a.onscreen||"").replace("End card: logo and “Professional trading begins with risk management.”","End card: the logo only.");
+ (a.changes=a.changes||[]).push("v5: end card is the logo only, no tagline (Gabriel)."); })();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
