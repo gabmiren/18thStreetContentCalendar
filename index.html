@@ -3375,6 +3375,13 @@ function buildGrid(){
  a.onscreen=(a.onscreen||"").replace("End card: logo and “Professional trading begins with risk management.”","End card: the logo only.");
  (a.changes=a.changes||[]).push("v5: end card is the logo only, no tagline (Gabriel)."); })();
 
+// ---- 24 Nov MYT: Nvidia reel scheduled in Metricool to go out now (Gabriel) ----
+(function(){ const a=POSTS.find(p=>p.title==="Jensen Huang is back and Nvidia is surging"); if(!a) return;
+ Object.assign(a,{time:"11:55",status:"Scheduled",
+  caption:"Jensen Huang is back as Nvidia’s CEO, and Nvidia shares opened more than 30% higher.\n\nNvidia’s board reinstated him this morning, 11 days after he resigned. NVDA opened at $167.04, up 33.1% on Friday’s close, and the Nasdaq-100 opened 7.4% higher. Last week the Nasdaq-100 fell 10.4%, including 1,488 points on Friday alone.\n\nHow do you set your size on a morning like this?\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.",
+  draftNote:"v5, 35.6 s. Scheduled in Metricool (18th_street_trading, auto-publish Reel, custom cover, alt text) for Mon 23 Nov 11:55 AM ET, 12:55 AM Tue MYT, to go out now (Gabriel). Figures from Yahoo Finance and NVIDIA's 8-K, checked 23 Nov 10:52 AM ET."});
+ (a.changes=a.changes||[]).push("24 Nov MYT: scheduled in Metricool to go out at 11:55 AM ET (Gabriel)."); })();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
