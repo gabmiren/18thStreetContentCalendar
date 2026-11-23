@@ -3307,6 +3307,18 @@ function buildGrid(){
   "2026-11-29":"Share the head and shoulders reel, then the gap fill."});
 })();
 
+// ---- 23 Nov: Tue 24 Nov chart pattern reel becomes "Double top or fakeout?" (Gabriel: the script shows a fakeout and a confirmed one, so the title follows it) and tests the 90s finance TV look from Halcyon's reels, recoloured to 18th Street ----
+(function(){ const a=POSTS.find(p=>p.title==="Double top, explained"); if(!a) return;
+ Object.assign(a,{title:"Double top or fakeout?",production:"Motion explainer (90s finance TV look, voiced, all drawn in code)",status:"Review",gstate:"todo",
+  hook:"Title in the trading terminal from frame 0, over blurred ES bars: “DOUBLE TOP / OR FAKEOUT?” (series tab CHART PATTERNS · 01). Spoken from frame 0.",
+  onscreen:"90s finance TV look recoloured to 18th Street (pinned headline bar, CRT terminal, Windows 95 dialogs, channel-change static at cuts, TV switch-off before the end card; no ticker, no footage). Act 1, ES Dec 26 daily Aug 24 to Oct 9 on screen whole: peaks 7,850.75 (Aug 28) and 7,848.50 (Sep 22), an M outline, a dialog “Not a double top yet”, neckline 7,575.00, Oct 6 close 7,874.00 above both peaks, NO PATTERN stamp. Act 2, Sep 28 to Nov 3: peaks 7,897.50 (Oct 6) and 7,819.50 (Oct 28), neckline 7,648.50, Oct 30 close 7,614.00, “Double top confirmed” dialog, then a zoom out to the Nov 20 low 6,898.00. Checklist notepad held 0.5 s longer. Closing dialog “Wait for the close below the neckline?”. End card: question, lockup, source line.",
+  beats:"Fakeout first, then the real one, on one ES chart from August to November. Rule: no close below the neckline, no double top.",
+  caption:"Double top or fakeout? Two peaks at the same price aren’t enough on their own.\n\nOn ES this autumn, one double top never closed below its neckline. The next one did, on October 30, and ES traded at 6,898 three weeks later.\n\nWould you wait for the close below the neckline?\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice. Past performance does not predict future results. Chart examples shown for education, with hindsight.",
+  claims:"ES December 2026 (ESZ26) daily highs, lows and closes from Yahoo Finance, read 23 Nov 2026: Aug 28 high 7,850.75; Sep 22 high 7,848.50; Sep 16 low 7,575.00; Oct 6 high 7,897.50 and close 7,874.00; Oct 23 low 7,648.50; Oct 28 high 7,819.50; Oct 30 close 7,614.00; Nov 20 low 6,898.00. Cross-check against a second source (Barchart or CME settlements) before scheduling.",
+  draftNote:"Picture v3 (23 Nov): 90s TV look, retitled. Voice (Mark, about 2.2 credits) waiting on Gabriel’s OK; timing is estimated until then. Not scheduled.",
+  notes:"Style test: does the 90s TV look lift views on 18th Street the way it did on Halcyon? Brand notes for Jay: channel static is 2 frames per cut at low contrast (the avoid list mentions flashing graphics); no AI footage. Two reels a day plan. No hashtags (test to 29 Nov). Draft for legal and Jay."});
+ (a.changes=a.changes||[]).push("23 Nov v1 to v3: built in the 90s finance TV look; title moved into the terminal; ticker removed; full patterns on screen with an M outline; checklist held 0.5 s longer; retitled “Double top or fakeout?” (Gabriel)."); })();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
