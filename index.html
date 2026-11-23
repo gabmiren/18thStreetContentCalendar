@@ -3354,6 +3354,15 @@ function buildGrid(){
   changes:["23 Nov v1: built from Gabriel’s brief in the 90s finance TV look; figures checked live; wording “more than 30%” and “about 7%” (Gabriel)."]});
 })();
 
+// ---- 24 Nov MYT: Nvidia reel v3 (Gabriel): says Nvidia, Eleven v4 voice, Kling hook with a big header and +33.1% on the screen, his music ----
+(function(){ const a=POSTS.find(p=>p.title==="Jensen Huang is back and NVDA is surging"); if(!a) return;
+ Object.assign(a,{title:"Jensen Huang is back and Nvidia is surging",video:"vid/nvidia-huang-back-v3.mp4",cover:"img/nvidia-huang-back-v3-cover.jpg",
+  audio:"Mark voice on Eleven v4 (Higgsfield, 2.99 credits), sped up 1.15x without a pitch change; music: “Movement” by SoulProdMusic (Pixabay, Gabriel's pick) about 15 dB under the voice; static at the cuts, chimes, clicks, TV-off. -14 LUFS, true peak -2.5 dB.",
+  hook:"0 to 4.6 s: Kling 3.0 clip (from a GPT Image 2.6 still, no logos or text) of a 90s CRT trading monitor with the line shooting up and a slow push-in. Big header “Jensen Huang is back and Nvidia is surging” and “+33.1%” with “NVDA · AT THE OPEN” on the screen. Then the chart scenes.",
+  draftNote:"v3 (24 Nov MYT), 35.6 s. Not scheduled: waiting on Gabriel’s command. Must post Mon 23 Nov ET (“this morning”). Generation: 2.99 voice + 3.00 stills + 8.75 Kling = 14.74 credits."});
+ (a.changes=a.changes||[]).push("v2/v3 (Gabriel): the voice says Nvidia instead of NVDA; Eleven v4 at 1.15x; Kling hook with a big header and +33.1% on the CRT screen; music swapped to “Movement”.");
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
