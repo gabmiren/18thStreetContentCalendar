@@ -3319,6 +3319,13 @@ function buildGrid(){
   notes:"Style test: does the 90s TV look lift views on 18th Street the way it did on Halcyon? Brand notes for Jay: channel static is 2 frames per cut at low contrast (the avoid list mentions flashing graphics); no AI footage. Two reels a day plan. No hashtags (test to 29 Nov). Draft for legal and Jay."});
  (a.changes=a.changes||[]).push("23 Nov v1 to v3: built in the 90s finance TV look; title moved into the terminal; ticker removed; full patterns on screen with an M outline; checklist held 0.5 s longer; retitled “Double top or fakeout?” (Gabriel)."); })();
 
+// ---- 23 Nov: Double top or fakeout? v4 final: Mark voice (Higgsfield, 2.25 credits, Gabriel's OK), timed to the words, sound, QA and a fresh-eyes review (the confirmation is now a stamp on the chart so the Oct 30 break stays visible) ----
+(function(){ const a=POSTS.find(p=>p.title==="Double top or fakeout?"); if(!a) return;
+ Object.assign(a,{video:"vid/double-top-or-fakeout-v4.mp4",cover:"img/double-top-or-fakeout-v4-cover.jpg",gstate:"ready",status:"Review",
+  audio:"Mark voice (ElevenLabs via Higgsfield, 2.25 credits) with a 0.5 s gap before the closing question; lofi technology track about 15 dB under the voice; channel static, dialog pops, typing ticks and a TV-off sound. -14 LUFS, true peak -2 dB.",
+  draftNote:"v4 final (23 Nov), 47 s. Not scheduled: waiting on Gabriel’s command (Tue 24 Nov 7:00 AM ET = 8:00 PM MYT). Cover: the title in the terminal (img/double-top-or-fakeout-v4-cover.jpg)."});
+ (a.changes=a.changes||[]).push("23 Nov v4: voiced and timed; confirmation shown as a CONFIRMED stamp on the chart instead of a dialog; axis labels and the series tab raised to 26 px."); })();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
