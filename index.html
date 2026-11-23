@@ -3228,6 +3228,85 @@ function buildGrid(){
  if(q){ q.gfx=["tw23x_1"]; if(q.replies&&q.replies[0]) q.replies[0].gfx=["tw23x_2"]; q.note="Square images v1 (21 Nov). The reply can’t be scheduled on X; post it by hand."; }
 })();
 
+// ---- 23 Nov: week of 24 to 29 Nov rebuilt around last week's numbers (Gabriel): two reels a day, no memes on this account, four formats only: founder clips, list loops (the glossary style that got 1,237 views and 17 saves), Chart patterns traders should know and Strategies traders should know, one per reel with real outcomes. Graphics and carousels for these days are parked (deleted in edits.json, so they can come back). ----
+(function(){
+ const liq=POSTS.find(p=>p.title==="Terms all traders need to know: liquidity terms");
+ if(liq){ Object.assign(liq,{date:"2026-11-25",time:"11:00",week:"2026-W48",status:"Review",
+  draftNote:"v3 built 19 Nov (static list from frame 0, same sound as the trading terms reel). Moved to Wed 25 Nov 11:00 AM ET (midnight MYT) for the list-loop slot. Not scheduled.",
+  notes:"List loop 1 of 3 this week. Music is Gabriel's TikTok sound, rights not cleared: flag to legal, or swap to the lofi technology track before scheduling."});
+  (liq.changes=liq.changes||[]).push("23 Nov: moved into the week as list loop 1 (two reels a day plan)."); }
+ const fiv=POSTS.find(p=>p.title==="Check these 5 things before you pay for a prop firm");
+ if(fiv){ (fiv.changes=fiv.changes||[]).push("23 Nov: kept as list loop 3 (two reels a day plan); build in the glossary-loop look, list on screen, answers in the caption."); fiv.board="List loop · the glossary look"; }
+ const jayM=["Jay: What it actually takes to reach Phase 4","Jay: What I check before I size up"];
+ POSTS.filter(p=>jayM.includes(p.title)).forEach(p=>{ p.notes=(p.notes||"")+" 23 Nov: no memes on this account any more. This clip still has a meme panel and is already scheduled in Metricool; re-cut without it (drawn panel instead) and replace the scheduled post once Gabriel says so."; });
+ const base={platform:"Instagram",format:"Reel",week:"2026-W48",ai:false,fromSanti:null,fromBoard:false,ref:"",draft:"",hashtags:"",crosspost:"",compliance:"Pending",gstate:"todo",status:"Scripted",
+  production:"Motion explainer (sketch look, voiced)",skill:"18th-street-motion-design",audio:"Mark voice (ElevenLabs via Higgsfield, about 2.2 credits a script, needs Gabriel's OK) over the lofi technology track at -23 dB",changes:["23 Nov: new in the two reels a day plan."]};
+ const G="Futures trading involves substantial risk and may result in losses. Educational content, not financial advice.";
+ const T=G+" Past performance does not predict future results. Chart examples shown for education, with hindsight.";
+ const CP="Chart patterns traders should know", SG="Strategies traders should know";
+ const REAL="Real outcomes: one real ES or NQ example where the pattern worked and one where it failed, picked from 2026 charts and checked against a named data source (Barchart or CME settlements) at build. Prices and dates shown exactly, with the source line on screen. No call on what happens next.";
+ const L=[
+  {date:"2026-11-24",time:"07:00",title:"Double top, explained",board:CP+" · 01",pillar:"Futures education & strategies",
+   hook:"Title tab “in 30 seconds”, two lines: “Double top, / explained.”",
+   onscreen:"One stage: a hand-drawn ES daily line. Two peaks at the same level, the neckline under them, the break, then what happened next. Second half: a real one that failed (price broke back above the peaks). Source line per scene.",
+   beats:"Example (two peaks at the same price) → the neckline → the break and where it went → the failed one → the rule: it isn’t a double top until the neckline breaks → question.",
+   caption:"Double top, explained: two peaks at the same price, and the line that decides it.\n\nA double top only counts once price closes below the low between the two peaks. Here’s a real one that followed through on ES, and one that didn’t.\n\nWhere would you put your stop on a double top?\n\n"+T,
+   claims:REAL,why:"Named-topic hooks won last week (Nvidia earnings explained, 2,863 views; What is a correction, 1,189). Chart patterns keep the reach of that hook style without needing a news event."},
+  {date:"2026-11-26",time:"11:00",title:"Futures tickers all traders need to know",board:"List loop · the glossary look",pillar:"Futures education & strategies",
+   production:"Motion graphics (list loop, no voice)",skill:"18th-street-design-system",audio:"Same loop music as the glossary reels (or the lofi technology track if rights aren’t cleared)",status:"Scripted",
+   hook:"Title from frame 0: “Futures tickers all traders need to know”.",
+   onscreen:"10 s list loop in the glossary layout: ES, MES, NQ, MNQ, YM, MYM, RTY, M2K, CL, GC, each with its full name and dollars per point. Rows reveal one by one, all on screen by 5 s. Lockup 210 px centred.",
+   beats:"Glossary loop. The list does the work; the caption repeats it for saving.",
+   caption:"Futures tickers every trader should know, with what one point is worth.\n\n- ES: E-mini S&P 500, $50 a point. MES: Micro, $5.\n- NQ: E-mini Nasdaq-100, $20 a point. MNQ: Micro, $2.\n- YM: E-mini Dow, $5 a point. MYM: Micro, $0.50.\n- RTY: E-mini Russell 2000, $50 a point. M2K: Micro, $5.\n- CL: crude oil, $1,000 a point. GC: gold, $100 a point.\n\nWhich one do you trade most?\n\n"+G,
+   claims:"Point values to check on cmegroup.com contract specs at build: ES $50, MES $5, NQ $20, MNQ $2, YM $5, MYM $0.50, RTY $50, M2K $5, CL $1,000 (per $1 a barrel), GC $100 (per $1 an ounce).",
+   why:"List loop 2 of 3. Same save-and-rewatch format as the trading terms reel (lowest skip rate last week, 10%). Light build for Thanksgiving."},
+  {date:"2026-11-26",time:"18:30",title:"The opening range breakout, explained",board:SG+" · 01",pillar:"Futures education & strategies",
+   hook:"Title tab “in 30 seconds”: “The opening range / breakout.”",
+   onscreen:"One stage: a hand-drawn ES 5-minute chart. The first 15 minutes after 9:30 AM ET boxed as the range, the break of the high or low, then what happened next. Second half: a real day it reversed back into the range. Source line per scene.",
+   beats:"The range (first 15 minutes) → the break → how far it ran on the real day → the day it failed → the rule people pair with it: a stop on the other side of the range → question.",
+   caption:"The opening range breakout, explained: mark the first 15 minutes, then watch which side breaks.\n\nHere’s a real ES session where the break followed through, and one where price snapped back inside the range.\n\nDo you trade the open, or wait for the range to set?\n\n"+T,
+   claims:REAL.replace("ES or NQ example where the pattern","ES session where the breakout").replace("2026 charts","2026 sessions (5-minute bars)"),
+   why:"Strategy series 01. The most searched day-trading setup, and it can be shown on one chart. Thanksgiving evening slot."},
+  {date:"2026-11-27",time:"07:00",title:"Bull flag, explained",board:CP+" · 02",pillar:"Futures education & strategies",
+   hook:"Title tab “in 30 seconds”: “Bull flag, / explained.”",
+   onscreen:"One stage: a hand-drawn NQ line. A sharp leg up (the pole), a tight drift down (the flag), the break, and where it went. Second half: a real flag that broke down instead.",
+   beats:"The pole → the flag → the break and the measured move people use → the one that failed → the rule: the flag shouldn’t give back most of the pole → question.",
+   caption:"Bull flag, explained: a sharp move up, a quiet pause, then a decision.\n\nHere’s a real NQ flag that broke higher, and one that broke down instead.\n\nHow much of the pole would you let the flag give back?\n\n"+T,
+   claims:REAL,why:"Chart patterns 02. Friday morning slot, before the 1:15 PM ET early close."},
+  {date:"2026-11-28",time:"18:30",title:"VWAP pullback, explained",board:SG+" · 02",pillar:"Futures education & strategies",
+   hook:"Title tab “in 30 seconds”: “VWAP pullback, / explained.”",
+   onscreen:"One stage: a hand-drawn ES 5-minute chart with the VWAP line. A trend, a pullback to VWAP, the bounce and how far it went. Second half: a real day price sliced through VWAP and kept going.",
+   beats:"What VWAP is in one line → the trend → the pullback → the bounce on the real day → the day it failed → the rule: a close through VWAP ends the idea → question.",
+   caption:"VWAP pullback, explained: the line a lot of desks measure their fills against.\n\nIn a trend, price often comes back to VWAP. Here’s a real ES session where it bounced, and one where it cut straight through.\n\nDo you keep VWAP on your chart?\n\n"+T,
+   claims:REAL.replace("ES or NQ example where the pattern","ES session where the pullback").replace("2026 charts","2026 sessions (5-minute bars)")+" VWAP from the same data source.",
+   why:"Strategy series 02. Saturday evening slot."},
+  {date:"2026-11-29",time:"11:00",title:"Head and shoulders, explained",board:CP+" · 03",pillar:"Futures education & strategies",
+   hook:"Title tab “in 30 seconds”: “Head and shoulders, / explained.”",
+   onscreen:"One stage: a hand-drawn ES daily line. Left shoulder, head, right shoulder, the neckline, the break and what happened next. Second half: a real one where the neckline held.",
+   beats:"Three peaks, the middle one highest → the neckline → the break and where it went → the one that never broke → the rule: no neckline break, no pattern → question.",
+   caption:"Head and shoulders, explained: three peaks, and the neckline under them.\n\nHere’s a real one on ES that broke the neckline and followed through, and one where the neckline held.\n\nDo you wait for the close below the neckline, or act sooner?\n\n"+T,
+   claims:REAL,why:"Chart patterns 03."},
+  {date:"2026-11-29",time:"18:30",title:"The gap fill, explained",board:SG+" · 03",pillar:"Futures education & strategies",
+   hook:"Title tab “in 30 seconds”: “The gap fill, / explained.”",
+   onscreen:"One stage: a hand-drawn ES chart across two days. Yesterday’s 4:00 PM ET close, today’s open above or below it (the gap), and whether price came back to the close. Second half: a real gap that never filled.",
+   beats:"What the gap is (close to open) → the fill on the real day → the day it ran away instead → the rule: decide where you’re wrong before the open → question.",
+   caption:"The gap fill, explained: when price opens away from yesterday’s close, does it come back?\n\nHere’s a real ES session where the gap filled, and one where price never looked back.\n\nDo you trade gaps, or wait for the first hour?\n\n"+T,
+   claims:REAL.replace("ES or NQ example where the pattern","ES session where the gap").replace("2026 charts","2026 sessions"),
+   why:"Strategy series 03. Sunday evening, before the week opens."}];
+ let id=Math.max(...POSTS.map(x=>+x.id||0));
+ L.forEach(o=>{ if(POSTS.some(p=>p.title===o.title)) return;
+  POSTS.push(Object.assign({},base,o,{id:String(++id),
+   notes:(o.notes||"")+"Two reels a day plan (23 Nov). No hashtags (test to 29 Nov). Keyword in caption line one, on screen and in the alt text. Education only: both outcomes shown, no direction called. Draft for legal and Jay.",
+   draftNote:"Scripted 23 Nov. Build: script and storyboard → voice → picture → QA. Not scheduled."})); });
+ if(typeof STORIES!=="undefined") Object.assign(STORIES,{
+  "2026-11-24":"Share the double top reel, then Jay’s clip.",
+  "2026-11-25":"Share the liquidity terms reel, then Jay’s clip.",
+  "2026-11-26":"Share the futures tickers reel, then the opening range breakout.",
+  "2026-11-27":"Share the bull flag reel, then Jay’s clip.",
+  "2026-11-28":"Share the checklist reel, then the VWAP pullback.",
+  "2026-11-29":"Share the head and shoulders reel, then the gap fill."});
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
