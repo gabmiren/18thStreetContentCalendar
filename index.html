@@ -3431,6 +3431,14 @@ function buildGrid(){
  }
 })();
 
+// ---- 24 Nov MYT: PCE reel v2 (Gabriel): checklist hook written on with his writing.mp3, everything centred, logo-only end card ----
+(function(){ const a=POSTS.find(p=>p.title==="4 things before PCE tomorrow"); if(!a) return;
+ Object.assign(a,{video:"https://d2ol7oe51mr4n9.cloudfront.net/user_3LHWvJJRZifcPv7vxD3eF8SiaxU/65113620-ea42-4fbf-b94a-5977b351382e.mp4",cover:"img/pce_v2_cover.png",
+  hook:"Centred header pinned from frame 0. The four points write on as a checklist during the first line (The Fed’s gauge at 8:30 / Core PCE at 3.1% / Three reports at once / Holiday hours), each with the writing.mp3 pen sound; item 1 ticks on “One:”, then the stage arrives.",
+  draftNote:"v2 (24 Nov MYT), 38.0 s. Not scheduled: waiting on Gabriel’s command."});
+ a.onscreen=a.onscreen.replace("End card: lockup and “Risk management before profitability.”","End card: the logo only.");
+ (a.changes=a.changes||[]).push("v2 (Gabriel): checklist hook and cover, header and source line centred, logo-only end card, Gabriel's writing.mp3 under each line."); })();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
