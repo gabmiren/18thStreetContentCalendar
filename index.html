@@ -3399,6 +3399,18 @@ function buildGrid(){
   changes:["24 Nov v1: built in the correction reel's look; fresh-eyes review fixes (safe zone on pans, both answers in the same weight, CORE · SEP bar label, neutral “?”, Nasdaq-100 futures label)."]});
 })();
 
+// ---- 24 Nov: Micro vs E-mini carousel (from Jay's blog), scheduled in Metricool for 2:15 AM ET (Gabriel) ----
+(function(){ if(POSTS.find(p=>p.title==="Micro vs E-mini: same chart, 10× the dollars")) return;
+ POSTS.push({date:"2026-11-24",time:"02:15",title:"Micro vs E-mini: same chart, 10× the dollars",format:"Carousel",board:"The rulebook, explained · 04",pillar:"Futures education & strategies",
+  production:"Design system v1 with hand-drawn sketches (rough.js)",skill:"18th-street-evergreen-graphics",status:"Scheduled",gstate:"ready",
+  graphics:"mv2_1, mv2_2, mv2_3, mv2_4, mv2_5, mv2_6, mv2_7",cover:"img/mv2_1.jpg",
+  onscreen:"7 slides: cover ($50 vs $500 bars), point values (bars), stop in dollars (sketch chart and sums), sizing ($250 box, 5 MNQ vs 1 NQ), max contracts per plan (steps), the limit is a ceiling (two tanks of the $2,500 trailing loss), close.",
+  caption:"Micro vs E-mini futures: a 25-point stop is $50 on one MNQ and $500 on one NQ.\n\nEvery plan sets a maximum number of contracts, from 1 or 10 on $25,000 to 9 or 90 on $150,000. On a $50,000 plan, 3 NQ at that stop would put $1,500 at risk, 60% of the $2,500 trailing loss in one trade.\n\nRules and plans: link in bio.\n\nPhases 1–4 are simulated with notional capital. Payouts, advancement and profitability are not guaranteed. Futures trading involves substantial risk. Examples are hypothetical.",
+  claims:"Contract values and the stop example from Jay's blog post (trade18th.com/exchange/micro-vs-e-mini-futures-prop-firm-risk, 23 Nov). Contract limits, plan fees and 5% trailing loss from trade18th.com/qualification, checked 24 Nov. Slides 4 and 6 are our own arithmetic, marked hypothetical.",
+  notes:"X version: 4 square images (mvx_1 to mvx_4) and copy given to Gabriel to post by hand.",
+  draftNote:"v2, scheduled in Metricool (Instagram carousel, auto-publish, alt text) for Tue 24 Nov 3:15 PM MYT (Gabriel)."});
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
