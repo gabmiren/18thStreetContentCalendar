@@ -3382,6 +3382,23 @@ function buildGrid(){
   draftNote:"v5, 35.6 s. Scheduled in Metricool (18th_street_trading, auto-publish Reel, custom cover, alt text) for Mon 23 Nov 11:55 AM ET, 12:55 AM Tue MYT, to go out now (Gabriel). Figures from Yahoo Finance and NVIDIA's 8-K, checked 23 Nov 10:52 AM ET."});
  (a.changes=a.changes||[]).push("24 Nov MYT: scheduled in Metricool to go out at 11:55 AM ET (Gabriel)."); })();
 
+// ---- 24 Nov MYT: PCE explainer reel, built in the correction reel's sketch look as a design test against the Nvidia CRT reel (Gabriel) ----
+(function(){ if(POSTS.find(p=>p.title==="4 things before PCE tomorrow")) return;
+ const G="Futures trading involves substantial risk and may result in losses. Educational content, not financial advice.";
+ POSTS.push({date:"2026-11-24",time:"12:00",title:"4 things before PCE tomorrow",format:"Reel",board:"Motion explainers · sketch look",pillar:"Market insights & analysis",
+  production:"Motion explainer (sketch look of the correction reel, voiced, all drawn in code)",skill:"18th-street-motion-design",status:"Review",gstate:"ready",
+  video:"https://d2ol7oe51mr4n9.cloudfront.net/user_3LHWvJJRZifcPv7vxD3eF8SiaxU/8052f01b-92d3-49e0-86d1-69aef702cc95.mp4",cover:"img/pce_v1_cover.png",
+  audio:"Mark voice on Eleven v4 (Higgsfield, Gabriel's OK); lofi technology track about 23 dB under; land and pencil effects on state changes. -14.0 LUFS, true peak -2.5 dB.",
+  hook:"Header pinned from frame 0: “4 things before / PCE tomorrow.” with the Wednesday clock at 8:30 and the PCE ticket already on the stage.",
+  onscreen:"One stage, a Wed/Thu/Fri week strip, with the camera moving to each point. 1 clock at 8:30 AM ET and the PCE ticket. 2 core PCE 3.1% (Sep) over the Fed's 2% line, Oct “?”. 3 GDP and durable goods tickets stack into 8:30:00, arrows into an NQ tag labelled Nasdaq-100 futures. 4 Thu Thanksgiving halt 1:00 PM ET, Fri close 1:15 PM ET. Question: FLAT or HOLDING, equal weight. End card: lockup and “Risk management before profitability.”",
+  beats:"Hook → Fed gauge, Wed 8:30 → 3.1% above 2% → same second, NQ → holiday hours → flat or holding?",
+  caption:"PCE lands tomorrow at 8:30 AM ET: 4 things to know first\n\nOctober’s PCE, the Fed’s preferred inflation gauge, comes out Wednesday 25 Nov at 8:30 AM ET. In September, core PCE was 3.1% year on year, still above the Fed’s 2% target.\n\nGDP and durable goods land in the same second. Thursday is Thanksgiving, so equity index futures halt at 1:00 PM ET, and Friday closes early at 1:15 PM ET.\n\nFlat at 8:30, or holding through it? Tell us below, and save this for tomorrow morning.\n\n"+G,
+  claims:"PCE (Oct) and GDP Q3 second estimate Wed 25 Nov 8:30 AM ET (financecalendar.com, BEA schedule). Core PCE Sep 3.1% y/y, in line (forexfundamentals). Fed 2% goal. Durable goods (Oct) Wed 25 Nov 8:30 AM ET (thetrading.tools Census dates; Continuum Economics preview). CME equity index futures halt 1:00 PM ET Thu 26 Nov and close 1:15 PM ET Fri 27 Nov (financecalendar.com, QuantVPS from CME calendars). Checked 24 Nov MYT.",
+  notes:"Design test: same voice and pacing family as the Nvidia reel, sketch look instead of the 90s CRT look. Post on 24 Nov ET only (“tomorrow”). Overlaps “Four reports. One second.”: post one of the two. No hashtags (test to 29 Nov). Draft for legal and Jay.",
+  draftNote:"v1 (24 Nov MYT), 38.0 s. Not scheduled: waiting on Gabriel’s command.",
+  changes:["24 Nov v1: built in the correction reel's look; fresh-eyes review fixes (safe zone on pans, both answers in the same weight, CORE · SEP bar label, neutral “?”, Nasdaq-100 futures label)."]});
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
