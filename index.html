@@ -3444,6 +3444,46 @@ function buildGrid(){
  Object.assign(a,{time:"07:00",status:"Scheduled",draftNote:"v2, 38.0 s. Scheduled in Metricool (18th_street_trading, auto-publish Reel, custom cover pce_v2_cover.png, alt text) for Tue 24 Nov 7:00 AM ET, 8:00 PM MYT (Gabriel). Takes the slot planned for “Four reports. One second.”"});
  (a.changes=a.changes||[]).push("24 Nov MYT: scheduled in Metricool for 8:00 PM MYT with the checklist cover (Gabriel)."); })();
 
+// ---- 24 Nov MYT: calendar synced with Metricool (Gabriel): founder clips spread to Mon/Wed/Fri, posted reels logged, PCE takes today's 7:00 AM slot ----
+(function(){
+ const G="Futures trading involves substantial risk and may result in losses. Educational content, not financial advice.";
+ const find=t=>POSTS.find(p=>p.title===t);
+ // Founder clips: no two on back-to-back days (Gabriel). Moved in Metricool on 24 Nov MYT.
+ const J=[["Jay: What’s the catch? The honest answer","2026-11-25","16:00"],["Jay: What every trader should do before the open","2026-11-27","16:00"],
+  ["Jay: What it actually takes to reach Phase 4","2026-11-30","18:30"],["Jay: What I check before I size up","2026-12-02","18:30"],
+  ["Jay: What’s real money and what isn’t","2026-12-04","18:30"],["Jay: Own money or a prop firm? How I’d decide","2026-12-07","18:30"],
+  ["Jay: Buying a promise vs earning progress","2026-12-09","18:30"],["Jay: What it means to treat trading like a job","2026-12-11","18:30"],
+  ["Jay: What replaces a daily loss limit","2026-12-14","18:30"]];
+ J.forEach(([t,d,tm])=>{ const a=find(t); if(!a) return; const was=a.date+" "+a.time; Object.assign(a,{date:d,time:tm,status:"Scheduled"});
+  (a.changes=a.changes||[]).push("24 Nov MYT: founder clips spread to Mon/Wed/Fri so none land on back-to-back days (Gabriel). Was "+was+" ET; Metricool updated."); });
+ [["Jay: What I do after a big losing day","https://www.instagram.com/reel/Df8RCVjCJNu/"],["Jay: Signs a prop firm isn’t right for you","https://www.instagram.com/reel/Df-yj0jk9jg/"],
+  ["Jay: How I’d start futures trading today","https://www.instagram.com/reel/DgGkJ7wE2ar/"],["Jensen Huang is back and Nvidia is surging","https://www.instagram.com/reel/DgF3A_AAD55/"]]
+  .forEach(([t,u])=>{ const a=find(t); if(a) Object.assign(a,{status:"Posted",live:u}); });
+ const sj=find("Jay: Signs a prop firm isn’t right for you"); if(sj) Object.assign(sj,{time:"18:00"});
+ // Today's 7:00 AM slot went to the PCE reel.
+ const fr=POSTS.findIndex(p=>p.title==="Four reports. One second."); if(fr>=0) POSTS.splice(fr,1);
+ const pce=find("4 things before PCE tomorrow"); if(pce) (pce.changes=pce.changes||[]).push("Replaces “Four reports. One second.” in the Tue 24 Nov 7:00 AM ET slot; that reel is dropped.");
+ // NQ reel, posted Mon 23 Nov 8:00 AM ET
+ const nq=find("Watch this before you trade NQ"); if(nq){ Object.assign(nq,{date:"2026-11-23",time:"08:00",status:"Posted",live:"https://www.instagram.com/reel/DgFcxLWgJDx/",
+  video:"https://d2ol7oe51mr4n9.cloudfront.net/user_3LHWvJJRZifcPv7vxD3eF8SiaxU/e2876d53-458d-40ac-b983-c4454fb2657c.mp4",cover:"img/nq_v1_cover.png",gstate:"ready",
+  caption:"Watch this before you trade NQ futures.\n\nOne point is $20 per contract, so 100 points is $2,000. On Friday the Nasdaq-100 fell 1,488 points, which at that size is $29,760 on one NQ contract. The micro, MNQ, is $2 a point: same chart, a tenth of the size.\n\nNQ or MNQ, which do you trade?\n\n"+G+" Voiceover generated with AI.",
+  production:"Motion explainer (sketch look, centred, Mark voice via Higgsfield)"}); (nq.changes=nq.changes||[]).push("Built and posted 23 Nov 8:00 AM ET via Metricool, centred layout (Gabriel)."); }
+ // Posted reels that weren't on the calendar yet
+ const add=o=>{ if(!find(o.title)) POSTS.push(Object.assign({format:"Reel",platform:"Instagram",pillar:"Market insights & analysis",skill:"18th-street-motion-design",status:"Posted",gstate:"ready",compliance:"Pending",changes:[]},o)); };
+ add({date:"2026-11-19",time:"07:00",week:"2026-W47",title:"Anthropic IPO: the biggest listing in history",board:"Motion explainers · sketch look",production:"Motion explainer (sketch look, Mark voice)",
+  video:"vid/ant_ipo_v9.mp4",cover:"img/ant_ipo_v9_cover.png",live:"https://www.instagram.com/reel/Df7CjOvEuJK/",
+  caption:"Anthropic IPO: the biggest listing in history, after a $104 billion loss\n\nAnthropic starts trading on Nasdaq today as ANT. Its filing shows a $104 billion net loss for the nine months to September, more than three times its $33 billion in sales.\n\nLook closer and about $94 billion of that loss never left the company. It comes from notes that turn into shares, and they grew in value as Anthropic did. The business itself lost about $1.3 billion.\n\nBloomberg reports ANT is on track to join the Nasdaq-100 at the open on Monday 21 December. If it does, a little bit of Anthropic sits inside the index every NQ contract tracks.\n\nDid you know most of that loss lives on paper? Save this for 21 December.\n\n"+G,
+  notes:"An X square carousel of this explainer is drafted (img/ant_x_v3_1 to 4) and not posted: Metricool has no X account connected.",changes:["Posted 19 Nov 7:00 AM ET via Metricool."]});
+ add({date:"2026-11-20",time:"09:37",week:"2026-W47",title:"Anthropic’s first 24 hours",board:"Motion explainers · sketch look",production:"Motion explainer (sketch look, drawn hook, Mark voice via Higgsfield)",
+  video:"vid/antday_v4.mp4",cover:"img/antday_v4_cover.png",live:"https://www.instagram.com/reel/Df94vfvAjrg/",
+  caption:"Anthropic's record IPO and a seven-month low for the Nasdaq happened on the same afternoon. Here's how.\n\nANT priced at $83 and closed at $97.17 on Thursday, with more than 746 million shares traded by mid-afternoon. Analysts had warned that investors might sell other tech stocks to pay for it. The Nasdaq-100 fell 2.2%, and that's the index NQ futures track.\n\nNext date to watch: Nasdaq is reported to rank ANT on November 30 for a place in the Nasdaq-100.\n\nWere you watching NQ when ANT opened?\n\n"+G,
+  changes:["v4: simpler drawn hook “Anthropic’s first 24 hours” replaced the Higgsfield clip (Gabriel). Posted 20 Nov 9:37 AM ET via Metricool."]});
+ add({date:"2026-11-21",time:"12:00",week:"2026-W47",title:"What is a correction?",board:"Motion explainers · sketch look",pillar:"Futures education & strategies",production:"Motion explainer (sketch look, Mark voice via Higgsfield)",
+  video:"https://d2ol7oe51mr4n9.cloudfront.net/user_3LHWvJJRZifcPv7vxD3eF8SiaxU/1eb6b597-cf13-4dc9-ba06-fc4dbbc6a51a.mp4",cover:"img/corr_v3_cover.png",live:"https://www.instagram.com/reel/DgAuzTaCtPt/",
+  caption:"The S&P 500 is in a correction. Here's what that word means.\n\n- A correction is a fall of more than 10% from a record high\n- The S&P 500 and the Dow both closed past that line on Friday\n- The S&P lost 8.6% this week, after seven straight down days\n- A bear market starts at 20%, and the Nasdaq-100 touched it during Friday's session\n\nA correction tells you how far prices have fallen. It can't tell you what comes next, so risk comes first.\n\nWhat do you change in your trading when the daily range gets this wide?\n\n"+G+" Voiceover generated with AI.",
+  notes:"The sketch-look reference for the 24 Nov PCE design test.",changes:["Posted 21 Nov 12:00 PM ET via Metricool (midday US, Gabriel)."]});
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
