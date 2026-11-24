@@ -3411,6 +3411,26 @@ function buildGrid(){
   draftNote:"v2, scheduled in Metricool (Instagram carousel, auto-publish, alt text) for Tue 24 Nov 3:15 PM MYT (Gabriel)."});
 })();
 
+// ---- 24 Nov MYT: calendar synced with Metricool (Gabriel) ----
+(function(){
+ const F=t=>POSTS.find(p=>p.title===t);
+ let a=F("Watch this before you trade NQ"); if(a){ a.time="08:00"; a.status="Posted"; a.draftNote="Posted on Instagram Mon 23 Nov 8:00 AM ET via Metricool."; }
+ a=F("Jensen Huang is back and Nvidia is surging"); if(a){ a.status="Posted"; a.cover="nvidia-huang-back-v3-cover"; a.draftNote="v5, posted on Instagram Mon 23 Nov 11:55 AM ET via Metricool."; }
+ a=F("Jay: How I’d start futures trading today"); if(a){ a.status="Posted"; }
+ a=F("Double top or fakeout?"); if(a){ a.date="2026-11-25"; a.time="08:00"; a.cover="double-top-or-fakeout-v4-cover"; a.draftNote="v5, scheduled in Metricool for Wed 25 Nov 8:00 AM ET (9:00 PM MYT); the slot was moved in Metricool from Tue 7:00 AM ET."; }
+ a=F("Micro vs E-mini: same chart, 10× the dollars"); if(a){ delete a.cover; a.gfx=["mv2_1","mv2_2","mv2_3","mv2_4","mv2_5","mv2_6","mv2_7"]; a.gver="v2"; }
+ if(typeof X_PLAN!=="undefined"){
+  const day=d=>{let e=X_PLAN.find(x=>x.date===d); if(!e){e={date:d,posts:[]};X_PLAN.push(e);X_PLAN.sort((p,q)=>p.date.localeCompare(q.date));} return e;};
+  const d23=day("2026-11-23"); if(!d23.posts.find(p=>p.from==="Jensen Huang is back and Nvidia is surging")) d23.posts.push({t:"12:00",kind:"Video",from:"Jensen Huang is back and Nvidia is surging",
+   text:"Jensen Huang is back as Nvidia’s CEO. Nvidia opened 33.1% higher and the Nasdaq-100 opened up 7.4%, a week after it fell 10.4%.\n\nHow do you size a day like this?\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.",
+   note:"Post by hand with vid/nvidia-huang-back-v5.mp4. 273 characters."});
+  const d24=day("2026-11-24"); if(!d24.posts.find(p=>p.from==="Micro vs E-mini: same chart, 10× the dollars")) d24.posts.push({t:"03:15",kind:"4 images",from:"Micro vs E-mini: same chart, 10× the dollars",gfx:["mvx_1","mvx_2","mvx_3","mvx_4"],
+   text:"Micro vs E-mini: the same 25-point stop is $50 on one MNQ and $500 on one NQ.\n\nSize from your stop, and treat your plan's contract limit as a ceiling.\n\nPhases 1–4 are simulated. Payouts and advancement are not guaranteed. Futures trading involves substantial risk.",
+   note:"Post by hand with the four square images (1080x1080)."});
+  d24.posts.sort((p,q)=>p.t.localeCompare(q.t)); d23.posts.sort((p,q)=>p.t.localeCompare(q.t));
+ }
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
