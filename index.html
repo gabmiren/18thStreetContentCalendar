@@ -3484,22 +3484,6 @@ function buildGrid(){
   notes:"The sketch-look reference for the 24 Nov PCE design test.",changes:["Posted 21 Nov 12:00 PM ET via Metricool (midday US, Gabriel)."]});
 })();
 
-// ---- 25 Nov MYT: calendar synced with Metricool (Gabriel) ----
-(function(){
- const F=t=>POSTS.find(p=>p.title===t);
- let a=F("4 things before PCE tomorrow"); if(a){ a.status="Posted"; a.draftNote="Posted on Instagram Tue 24 Nov 7:00 AM ET (8:00 PM MYT) via Metricool."; }
- a=F("Sessions all traders need to know"); if(a){ a.time="16:00"; a.status="Posted"; a.draftNote="Posted on Instagram Tue 24 Nov 4:00 PM ET (Wed 5:00 AM MYT) via Metricool."; }
- a=F("Double top or fakeout?"); if(a){ a.time="06:00"; a.status="Posted"; a.draftNote="v5, posted on Instagram Wed 25 Nov 6:00 AM ET (7:00 PM MYT) via Metricool."; }
- a=F("Jay: What’s the catch? The honest answer"); if(a){ a.time="17:00"; a.draftNote="Scheduled in Metricool for Wed 25 Nov 5:00 PM ET (Thu 6:00 AM MYT)."; }
- a=F("Terms all traders need to know: liquidity terms"); if(a){ a.draftNote="Not in Metricool, so it did not go out on Wed 25 Nov. Music rights still not cleared."; }
- if(!F("How far tech has fallen from its highs")) POSTS.push({date:"2026-11-25",time:"12:00",title:"How far tech has fallen from its highs",format:"Reel",board:"List loop",pillar:"Market insights & analysis",
-  production:"Table loop reel",skill:"18th-street-news-desk",status:"Scheduled",gstate:"ready",
-  video:"https://static.metricool.com/planner/202611/8150060-file-14032597439471114273.mp4",
-  caption:"How far tech has fallen from its highs.\n\nAt the 24 November close, Sandisk sat 74% below its 52-week high, with Nebius and CoreWeave close behind. Even Nvidia was 36% off its peak. Twenty well-known tech names, ranked by their distance from the top.\n\nWhich of these surprised you most?\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.",
-  claims:"Yahoo Finance, 24 Nov 2026 close: 20 tech stocks ranked by % below the 52-week high (Sandisk −74% to Adobe −36%).",
-  draftNote:"Scheduled in Metricool for Wed 25 Nov 12:00 PM ET (Thu 1:00 AM MYT). Added to the calendar from Metricool on 25 Nov."});
-})();
-
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
@@ -3516,6 +3500,22 @@ POSTS.push({"date": "2026-11-24", "time": "17:00", "week": "2026-W48", "title": 
   a.draftNote="Scheduled in Metricool for Mon 30 Nov 6:30 PM ET. Still has the stair-skipping meme panel (no memes on this account from 23 Nov)."; }
  a=F("Jay: What I check before I size up"); if(a){ a.draftNote="Scheduled in Metricool for Wed 2 Dec 6:30 PM ET. Its alt text still mentions a meme panel."; }
 })();
+// ---- 25 Nov MYT: calendar synced with Metricool (Gabriel) ----
+(function(){
+ const F=t=>POSTS.find(p=>p.title===t);
+ let a=F("4 things before PCE tomorrow"); if(a){ a.status="Posted"; a.draftNote="Posted on Instagram Tue 24 Nov 7:00 AM ET (8:00 PM MYT) via Metricool."; }
+ a=F("Sessions all traders need to know"); if(a){ a.time="16:00"; a.status="Posted"; a.draftNote="Posted on Instagram Tue 24 Nov 4:00 PM ET (Wed 5:00 AM MYT) via Metricool."; }
+ a=F("Double top or fakeout?"); if(a){ a.time="06:00"; a.status="Posted"; a.draftNote="v5, posted on Instagram Wed 25 Nov 6:00 AM ET (7:00 PM MYT) via Metricool."; }
+ a=F("Jay: What’s the catch? The honest answer"); if(a){ a.time="17:00"; a.draftNote="Scheduled in Metricool for Wed 25 Nov 5:00 PM ET (Thu 6:00 AM MYT)."; }
+ a=F("Terms all traders need to know: liquidity terms"); if(a){ a.draftNote="Not in Metricool, so it did not go out on Wed 25 Nov. Music rights still not cleared."; }
+ if(!F("How far tech has fallen from its highs")) POSTS.push({date:"2026-11-25",time:"12:00",title:"How far tech has fallen from its highs",format:"Reel",board:"List loop",pillar:"Market insights & analysis",
+  production:"Table loop reel",skill:"18th-street-news-desk",status:"Scheduled",gstate:"ready",
+  video:"https://static.metricool.com/planner/202611/8150060-file-14032597439471114273.mp4",
+  caption:"How far tech has fallen from its highs.\n\nAt the 24 November close, Sandisk sat 74% below its 52-week high, with Nebius and CoreWeave close behind. Even Nvidia was 36% off its peak. Twenty well-known tech names, ranked by their distance from the top.\n\nWhich of these surprised you most?\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.",
+  claims:"Yahoo Finance, 24 Nov 2026 close: 20 tech stocks ranked by % below the 52-week high (Sandisk −74% to Adobe −36%).",
+  draftNote:"Scheduled in Metricool for Wed 25 Nov 12:00 PM ET (Thu 1:00 AM MYT). Added to the calendar from Metricool on 25 Nov."});
+})();
+
 POSTS.forEach(p=>{p._uid="ig|"+p.title+"|"+p.date+"|"+p.time; p._o={date:p.date,time:p.time,caption:p.caption};});
 const XFLAT=[]; if(typeof X_PLAN!=="undefined") X_PLAN.forEach(d=>d.posts.forEach(p=>{p._uid="x|"+(p.from||"")+"|"+d.date+"|"+p.t; p._o={date:d.date,t:p.t,text:p.text,replies:(p.replies||[]).map(r=>r.text)}; XFLAT.push(p);}));
 const IG0=POSTS.slice(); const NEWC={};
