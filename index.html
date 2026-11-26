@@ -3484,6 +3484,20 @@ function buildGrid(){
   notes:"The sketch-look reference for the 24 Nov PCE design test.",changes:["Posted 21 Nov 12:00 PM ET via Metricool (midday US, Gabriel)."]});
 })();
 
+// ---- 26 Nov MYT: PCE data recap reel, music only, modelled on Gabriel's Halcyon PCE reel (his "a good man with a broken heart" track and SFX library) ----
+(function(){ if(POSTS.find(p=>p.title==="PCE inflation rose to 3.8%")) return;
+ POSTS.push({date:"2026-11-26",time:"12:00",week:"2026-W48",title:"PCE inflation rose to 3.8%",format:"Reel",platform:"Instagram",board:"Motion explainers · sketch look",pillar:"Market insights & analysis",
+  production:"Music-only data recap (sketch look, centred), cut to the track's bars",skill:"18th-street-motion-design",status:"Review",gstate:"ready",compliance:"Pending",
+  video:"vid/pced_v1.mp4",cover:"img/pced_v1_cover.png",
+  audio:"Gabriel's “a good man with a broken heart” from 3.65 s (same cut as the Halcyon PCE reel), fade over the last 1.8 s. SFX from his library: writing under each bar, pops on values, two heartbeats into the lift, swoosh on the bracket, clicks, card flip, whoosh to the logo. -13.8 LUFS, peak -2.4 dB.",
+  hook:"Centred header from frame 0: “PCE inflation / rose to 3.8%.”",
+  onscreen:"Headline 3.8% and core 3.3% bars over the Fed's 2% line; bracket +1.8 pts on the track's lift at 6.8 s; +0.3% m/m on both; question “How are you sizing your trades this week?”; logo-only end card.",
+  caption:"PCE inflation rose to 3.8% in October\n\nThe Fed’s favourite inflation gauge rose 3.8% from a year earlier, BEA data showed on Wednesday. Core prices, without food and energy, rose 3.3%. Both climbed 0.3% from September.\n\nThat leaves headline PCE 1.8 points above the Fed’s 2% goal.\n\nHow are you sizing your trades this week?\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.",
+  claims:"BEA, Personal Income and Outlays, October 2026 (25 Nov 2026, 8:30 AM ET): PCE price index +3.8% y/y, excluding food and energy +3.3% y/y, both +0.3% m/m. September y/y was below 3.8% (3.6% first print; some outlets cite a 3.7% revision). Fed 2% target. Checked 26 Nov MYT.",
+  notes:"Not scheduled. 3.8% is not the highest since 2023: May 2026 was 4.1%, so no “highest since” claim.",draftNote:"v1 (26 Nov MYT), 16.3 s. Draft for legal and Jay.",
+  changes:["v1: built from the Halcyon PCE reel idea in the 18th Street sketch look; fresh-eyes fixes (count lands before its caption, chart fully out behind the question, larger m/m tags)."]});
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
