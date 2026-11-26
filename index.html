@@ -3506,6 +3506,11 @@ function buildGrid(){
  a.notes=(a.notes||"")+" Legal check: the closing question asks how people traded the release; the brand list avoids inviting trades on a release.";
  a.changes.push("v2 (Gabriel): closing question “How did you trade this news? Comment below”."); })();
 
+// ---- 26 Nov MYT: PCE data recap v2 scheduled in Metricool for Thu 26 Nov 8:00 AM ET, 9:00 PM MYT, the Thursday heat-map peak (Gabriel) ----
+(function(){ const a=POSTS.find(p=>p.title==="PCE inflation rose to 3.8%"); if(!a) return;
+ Object.assign(a,{time:"08:00",status:"Scheduled",draftNote:"v2, 16.3 s. Scheduled in Metricool (auto-publish Reel, custom cover, alt text) for Thu 26 Nov 8:00 AM ET, 9:00 PM MYT, Thursday's heat-map peak (Gabriel)."});
+ a.changes.push("26 Nov MYT: scheduled for 8:00 AM ET Thursday from the Metricool heat map (Gabriel)."); })();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
