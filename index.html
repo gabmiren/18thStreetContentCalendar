@@ -3498,6 +3498,14 @@ function buildGrid(){
   changes:["v1: built from the Halcyon PCE reel idea in the 18th Street sketch look; fresh-eyes fixes (count lands before its caption, chart fully out behind the question, larger m/m tags)."]});
 })();
 
+// ---- 26 Nov MYT: PCE data recap v2, closing question changed (Gabriel) ----
+(function(){ const a=POSTS.find(p=>p.title==="PCE inflation rose to 3.8%"); if(!a) return;
+ Object.assign(a,{video:"vid/pced_v2.mp4",cover:"img/pced_v2_cover.png",draftNote:"v2 (26 Nov MYT), 16.3 s. Draft for legal and Jay.",
+  caption:a.caption.replace("How are you sizing your trades this week?","How did you trade this news? Comment below.")});
+ a.onscreen=a.onscreen.replace("question “How are you sizing your trades this week?”","question “How did you trade this news?” with COMMENT BELOW");
+ a.notes=(a.notes||"")+" Legal check: the closing question asks how people traded the release; the brand list avoids inviting trades on a release.";
+ a.changes.push("v2 (Gabriel): closing question “How did you trade this news? Comment below”."); })();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
