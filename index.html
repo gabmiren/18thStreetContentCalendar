@@ -3511,6 +3511,17 @@ function buildGrid(){
  Object.assign(a,{time:"08:00",status:"Scheduled",draftNote:"v2, 16.3 s. Scheduled in Metricool (auto-publish Reel, custom cover, alt text) for Thu 26 Nov 8:00 AM ET, 9:00 PM MYT, Thursday's heat-map peak (Gabriel)."});
  a.changes.push("26 Nov MYT: scheduled for 8:00 AM ET Thursday from the Metricool heat map (Gabriel)."); })();
 
+// ---- 26 Nov: Jay 01 v3 (10% faster, header "Profitable traders do these 4 things in pre-market", new track from the first frame, no logo outro) with the soft-photo four-ticks cover; moved to Fri 27 Nov 9:00 PM MYT (8:00 AM ET). Metricool updated (Gabriel) ----
+(function(){ const p=POSTS.find(x=>x.title==="Jay: What every trader should do before the open"); if(!p) return;
+ Object.assign(p,{date:"2026-11-27",time:"08:00",week:"2026-W48",video:"vid/jay_short_01_v3.mp4",cover:"cvjay01_4things",status:"Scheduled",
+  hook:"Header for the whole clip: “Profitable traders do these 4 things in pre-market”. Jay’s opener “Sometimes the best trade is no trade at all” with SELL and BUY scribbled out.",
+  onscreen:"New header pill (same style and size as the old one, drawn over it), word-by-word captions, the SELL / BUY hook over blurred Jay, the four-item checklist panel. No logo end card: it ends 0.2 s after Jay’s last word.",
+  audio:"Jay’s voice at 1.1x (pitch kept), original hook sound design, riser and camera click. Track: “a good man with a broken heart” from the first frame, about 8 dB under the voice, the beat dropping on the hook cut. Loudness −14 LUFS.",
+  draftNote:"v3, 27.5 s. Scheduled in Metricool (18th_street_trading, auto-publish Reel) for 9:00 PM MYT Fri 27 Nov (8:00 AM ET), custom cover (soft photo, four ticks). Uploaded file: 1080p from the GitHub release jay-shorts-ig-v1 (18th-street-jay-01-v3.mp4); the video here is a smaller preview.",
+  notes:(p.notes||"")+" 26 Nov: “Profitable traders” in the header and cover implies a results claim: legal to clear (Gabriel chose it over “Disciplined traders”). Music rights for the trending track not cleared. Jay also mentions max daily risk, so the “4 things” are the four checklist items."});
+ (p.changes=p.changes||[]).push("26 Nov: v3 (10% faster, new header and track, outro removed) and the four-ticks cover; moved to Fri 27 Nov 8:00 AM ET (9:00 PM MYT); Metricool updated (Gabriel).");
+})();
+
 // ---- On-screen editing. Edits are an overlay on the published data: saved to the artifact's shared store when it is available (owner writes), and always in this browser. ----
 const EKEY="cal18-edits-v1";
 let EDITS={ig:{},x:{},pub:{},add:{ig:[],x:[]},del:{}}, EDB=null, EDITING=false, EWHERE="this browser", EERR="";
