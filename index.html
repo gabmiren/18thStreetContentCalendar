@@ -3559,6 +3559,14 @@ POSTS.push({"date": "2026-11-24", "time": "17:00", "week": "2026-W48", "title": 
  L.forEach(it=>{ let e=X_PLAN.find(x=>x.date===it.date); if(!e){e={date:it.date,posts:[]};X_PLAN.push(e);} if(e.posts.find(p=>p.from===it.from&&p.t===it.t)) return; e.posts.push({t:it.t,kind:'Video',from:it.from,text:it.text,note:'Scheduled on X (@trade18th) via Chrome on 25 Nov, same slot as Instagram. Video re-encoded to 720p under 3.8 MB for the upload.'}); e.posts.sort((a,b)=>a.t.localeCompare(b.t)); });
  X_PLAN.sort((a,b)=>a.date.localeCompare(b.date)); })();
 
+// ---- 26 Nov MYT: Terms all traders need to know, part 2 (liquidity) rebuilt as version D and scheduled in Metricool (Gabriel) ----
+(function(){ const a=POSTS.find(p=>p.title==="Terms all traders need to know: liquidity terms"); if(!a) return;
+ Object.assign(a,{date:"2026-11-26",time:"17:00",week:"2026-W48",status:"Scheduled",gstate:"ready",video:"vid/terms_part2_liquidity_d_v1.mp4",cover:"img/terms_part2_liquidity_d_v1_cover.jpg",
+  board:"List loop · the glossary look, Part 2",caption:"Liquidity terms every futures trader should know.\n\n- VI and LV are a volume imbalance and a liquidity void, the thin spots price often comes back to fill\n- MT is the mean threshold, the halfway point of an order block\n- SMT is smart money technique, when related markets like ES and NQ stop moving together\n- LS is a liquidity sweep, a quick run through highs or lows before price turns\n\nBSL and SSL are buy side and sell side liquidity, the stops resting above highs and below lows. EQH and EQL are equal highs and equal lows, and PDH and PDL are the previous day's high and low.\n\nWhich one do you mark on your chart first?\n\nFutures trading involves substantial risk and may result in losses. Educational content, not financial advice.",hashtags:"",
+  onscreen:"Part 2 tab, Terms all traders need to know. VI, LV, MT, SMT, LS, BSL, SSL, EQH, EQL, PDH, PDL land two at a time on the music's soft hits, a teal underline runs down the list on the drum roll. Bottom band: price climbs into equal highs, sweeps the stops above them on the drop, then sells off. No logo. 11.5 s loop on Runaway.",
+  draftNote:"Version D picked from B, D and E on 26 Nov. Scheduled in Metricool for Thu 26 Nov 5:00 PM ET (Fri 27 Nov 6:00 AM MYT), 4 hours after the stop loss reel. Music: Runaway (Gabriel's track)."});
+ (a.changes=a.changes||[]).push("26 Nov: rebuilt as Part 2 in the glossary look with a liquidity sweep background (version D), new caption, scheduled in Metricool.");
+})();
 POSTS.forEach(p=>{p._uid="ig|"+p.title+"|"+p.date+"|"+p.time; p._o={date:p.date,time:p.time,caption:p.caption};});
 const XFLAT=[]; if(typeof X_PLAN!=="undefined") X_PLAN.forEach(d=>d.posts.forEach(p=>{p._uid="x|"+(p.from||"")+"|"+d.date+"|"+p.t; p._o={date:d.date,t:p.t,text:p.text,replies:(p.replies||[]).map(r=>r.text)}; XFLAT.push(p);}));
 const IG0=POSTS.slice(); const NEWC={};
